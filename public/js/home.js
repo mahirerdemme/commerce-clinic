@@ -68,8 +68,17 @@
 
   // ===== MOBILE MENU =====
   const mb=$('.menu-btn');
-  mb.addEventListener('click',()=>{const o=document.body.classList.toggle('menu-open');mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Menüyü kapat':'Menüyü aç')});
-  $$('.nav a').forEach(a=>a.addEventListener('click',()=>{document.body.classList.remove('menu-open');mb.setAttribute('aria-expanded',false)}));
+  // açılış/kapanışta header geçişsiz değişir (menu-snap), açıkken sayfa kilitlenir (menu-lock)
+  function setMenu(o){
+    const b=document.body;if(b.classList.contains('menu-open')===o)return;
+    b.classList.add('menu-snap');b.classList.toggle('menu-open',o);document.documentElement.classList.toggle('menu-lock',o);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>b.classList.remove('menu-snap')));
+    mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Menüyü kapat':'Menüyü aç');
+  }
+  mb.addEventListener('click',()=>setMenu(!document.body.classList.contains('menu-open')));
+  $$('.nav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+  matchMedia('(min-width:861px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});
 
   // ===== DRAFT FLAGS =====
   const ft=$('#flagToggle');
@@ -189,7 +198,8 @@
   function open(fromHash){
     if(!gp.hidden)return;
     lastFocus=document.activeElement;
-    document.body.classList.remove('menu-open');
+    document.body.classList.remove('menu-open');document.documentElement.classList.remove('menu-lock');
+    const mbt=$('.menu-btn');if(mbt){mbt.setAttribute('aria-expanded',false);mbt.setAttribute('aria-label','Menüyü aç')}
     gp.hidden=false;document.body.classList.add('gp-open');
     requestAnimationFrame(()=>gp.classList.add('on'));
     setStep(1);

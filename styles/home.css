@@ -1190,3 +1190,23 @@ body.gp-open{overflow:hidden}
 
 /* ===== canlı ortam: prototip yardımcıları kapalı ===== */
 .flag,.flag-toggle,.obj-toggle{display:none!important}
+
+/* ============ v0.18 · mobil: menü ve yerleşim kaymaları ============ */
+@media (max-width:860px){
+  /* menü paneli tam genişlik ve ekranın altına kadar; masaüstünden gelen justify-self:center paneli içerik genişliğine küçültüyordu */
+  .nav{justify-self:stretch;height:auto;bottom:0;overflow-y:auto;overscroll-behavior:contain;padding-bottom:calc(1.5rem + env(safe-area-inset-bottom,0px))}
+  /* menü açıkken arkadaki sayfa kaymaz */
+  html.menu-lock,html.menu-lock body{overflow:hidden}
+  /* menü açılıp kapanırken header kapsülden tam genişliğe kayarak değil, anında geçer */
+  .menu-open .header,.menu-open .header .bar,.menu-open .header .logo,.menu-open .header .logo svg,.menu-open .topbar,
+  .menu-snap .header,.menu-snap .header .bar,.menu-snap .header .logo,.menu-snap .header .logo svg,.menu-snap .topbar{transition:none!important}
+  /* blur (backdrop-filter) sabit konumlu menüyü bar'ın içine hapsediyordu; menü açıkken bar düz zemin */
+  .menu-open .header .bar{background:var(--cc-surface)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none}
+  /* menüdeki Görüşme Planla butonu, menü linklerinin köşesiz/büyük yazı stilini almasın */
+  .nav .nav-cta,.header.scrolled .nav .nav-cta{flex:none;height:auto;min-height:52px;padding:0 1.375rem;border:0;border-radius:var(--r-m);font-size:1rem;letter-spacing:-.01em}
+}
+@media (max-width:900px){
+  /* "Ajans değil" ilkeleri: masaüstündeki 7/span 4 kolonu mobilde de geçerli kalıyor, metni dar bir sütuna sıkıştırıyordu */
+  .chapter .about-l,.chapter .about-r{grid-column:1/-1}
+  .chapter .prin h3{white-space:normal}
+}

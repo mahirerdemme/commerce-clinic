@@ -151,9 +151,11 @@
 
 (function(){
   // sayfa geçişi: header sabit, içerik çapraz geçişle (Sendr gibi)
-  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!RM){document.body.classList.add('pg-in');setTimeout(()=>document.body.classList.remove('pg-in'),600)}
+  // Cross-document View Transitions destekleniyorsa geçişi tarayıcı yapar (styles/<sayfa>.css · @view-transition)
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches, VT='PageRevealEvent' in window;
+  if(!RM&&!VT){document.body.classList.add('pg-in');setTimeout(()=>document.body.classList.remove('pg-in'),600)}
   document.addEventListener('click',e=>{
+    if(VT||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
     const a=e.target.closest('a[data-go]');if(!a)return;
     e.preventDefault();const url=a.href;
     if(RM){location.href=url;return}

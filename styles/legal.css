@@ -1,0 +1,152 @@
+/* Yasal metinler: sağdan açılan panel (public/js/legal.js) + doğrudan açılan sayfa (lib/legal.tsx).
+   Sayfa CSS'lerinden bağımsız; koyu sayfalarda da panel açık zeminde açılır. */
+.legal-doc,.ldr,.legal-page{--l-text:#111;--l-text-2:#666;--l-line:#ECECEA;--l-soft:#F5F5F3;--l-ease:cubic-bezier(.2,.7,.1,1);
+  font-family:var(--font,"Inter Variable","Inter","Inter Fallback",system-ui,sans-serif);color:var(--l-text)}
+
+/* ---------- metin ---------- */
+.legal-doc{font-size:.9375rem;line-height:1.65}
+.legal-kicker{margin:0 0 .75rem;font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--l-text-2)}
+.legal-doc h1{margin:0;font-size:clamp(1.75rem,3.2vw,2.5rem);font-weight:500;line-height:1.1;letter-spacing:-.03em;text-wrap:balance}
+.legal-date{margin:.75rem 0 2rem;font-size:.8125rem;color:var(--l-text-2)}
+.legal-doc h2{margin:2.25rem 0 .75rem;font-size:1.0625rem;font-weight:600;letter-spacing:-.01em}
+.legal-doc p{margin:0 0 1rem}
+.legal-doc ul{margin:0 0 1rem;padding-left:1.1rem}
+.legal-doc li{margin:.3rem 0}
+.legal-doc a{color:inherit;text-decoration:underline;text-decoration-color:#C9C9C6;text-underline-offset:3px}
+.legal-doc a:hover{text-decoration-color:currentColor}
+.legal-doc strong{font-weight:600}
+.legal-doc table{width:100%;border-collapse:collapse;margin:0 0 1.25rem;font-size:.875rem}
+.legal-doc th,.legal-doc td{text-align:left;vertical-align:top;padding:.6rem .75rem .6rem 0;border-bottom:1px solid var(--l-line)}
+.legal-doc th{font-weight:500;color:var(--l-text-2);font-size:.8125rem}
+.legal-doc blockquote{margin:0 0 1.25rem;padding:1rem 1.15rem;background:var(--l-soft);border-radius:12px;font-size:.9063rem}
+.legal-see{margin-top:2.5rem!important;padding-top:1.25rem;border-top:1px solid var(--l-line);font-size:.875rem;color:var(--l-text-2)}
+@media (max-width:640px){
+  .legal-doc table,.legal-doc thead,.legal-doc tbody,.legal-doc tr,.legal-doc th,.legal-doc td{display:block}
+  .legal-doc thead{display:none}
+  .legal-doc tr{padding:.6rem 0;border-bottom:1px solid var(--l-line)}
+  .legal-doc td{border:0;padding:.1rem 0}
+  .legal-doc td:first-child{font-weight:600}
+}
+
+/* ---------- panel ---------- */
+.ldr{position:fixed;inset:0;z-index:1000;display:flex;justify-content:flex-end}
+.ldr[hidden]{display:none}
+.ldr-bg{position:absolute;inset:0;background:rgba(10,10,10,.32);opacity:0;transition:opacity .3s var(--l-ease)}
+.ldr-p{position:relative;display:flex;flex-direction:column;width:min(640px,100%);height:100%;background:#fff;box-shadow:-30px 0 60px -30px rgba(0,0,0,.35);transform:translateX(100%);transition:transform .38s var(--l-ease);outline:0}
+.ldr.on .ldr-bg{opacity:1}
+.ldr.on .ldr-p{transform:none}
+.ldr-h{flex:none;display:flex;align-items:center;gap:.75rem;height:64px;padding:0 1rem 0 1.75rem;border-bottom:1px solid var(--l-line)}
+.ldr-t{flex:1;min-width:0;margin:0;font-size:.9375rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ldr-full{font-size:.8125rem;color:var(--l-text-2);text-decoration:none;white-space:nowrap}
+.ldr-full:hover{color:var(--l-text)}
+.ldr-x{flex:none;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:10px;background:none;color:var(--l-text);cursor:pointer}
+.ldr-x:hover{background:var(--l-soft)}
+.ldr-b{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:2rem 1.75rem calc(3rem + env(safe-area-inset-bottom,0px))}
+.ldr-b .legal-kicker{display:none}
+.ldr-load{color:var(--l-text-2);font-size:.875rem}
+html.ldr-lock,html.ldr-lock body{overflow:hidden}
+@media (max-width:640px){.ldr-h{padding-left:1.25rem}.ldr-b{padding:1.5rem 1.25rem calc(3rem + env(safe-area-inset-bottom,0px))}.ldr-full{display:none}}
+@media (prefers-reduced-motion:reduce){.ldr-bg,.ldr-p{transition:none}}
+
+/* ---------- doğrudan açılan sayfa ---------- */
+.legal-page{min-height:100svh;display:flex;flex-direction:column;background:#fff}
+.legal-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:760px;width:100%;margin:0 auto;padding:1.5rem 1.25rem}
+.legal-logo{display:inline-flex;color:var(--l-text)}
+.legal-logo svg{height:24px;width:auto}
+.legal-back{font-size:.875rem;color:var(--l-text-2);text-decoration:none}
+.legal-back:hover{color:var(--l-text)}
+.legal-main{flex:1;max-width:760px;width:100%;margin:0 auto;padding:2.5rem 1.25rem 4rem}
+.legal-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem 1.5rem;max-width:760px;width:100%;margin:0 auto;padding:1.5rem 1.25rem 2rem;border-top:1px solid var(--l-line);font-size:.8125rem;color:var(--l-text-2)}
+.legal-foot nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
+.legal-foot a{color:inherit;text-decoration:none}
+.legal-foot a:hover{color:var(--l-text)}
+
+/* ---------- çerez bandı + tercih penceresi (public/js/consent.js) ---------- */
+.ccb,.ccm{--c-text:#111;--c-text-2:#666;--c-line:#ECECEA;--c-ink:#0A0A0A;--c-ease:cubic-bezier(.2,.7,.1,1);
+  font-family:var(--font,"Inter Variable","Inter","Inter Fallback",system-ui,sans-serif);color:var(--c-text)}
+.cc-btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 1rem;border-radius:10px;border:1px solid #E5E5E3;background:#fff;color:var(--c-text);font:500 .875rem/1 inherit;font-family:inherit;cursor:pointer;transition:border-color .2s,background .2s}
+.cc-btn:hover{border-color:#CFCFCC}
+.cc-btn-dark{color:#fff;border-color:rgba(255,255,255,.08);background:radial-gradient(70% 140% at 100% 100%,rgba(229,131,160,.32) 0%,rgba(229,131,160,0) 70%),radial-gradient(60% 140% at 0% 0%,rgba(139,92,246,.30) 0%,rgba(139,92,246,0) 70%),var(--c-ink)}
+.cc-btn-dark:hover{border-color:rgba(255,255,255,.08);background:radial-gradient(80% 150% at 100% 100%,rgba(229,131,160,.45) 0%,rgba(229,131,160,0) 70%),radial-gradient(70% 150% at 0% 0%,rgba(139,92,246,.42) 0%,rgba(139,92,246,0) 70%),var(--c-ink)}
+
+.ccb{position:fixed;z-index:950;left:max(1rem,env(safe-area-inset-left));bottom:calc(1rem + env(safe-area-inset-bottom,0px));width:min(380px,calc(100vw - 2rem));padding:1.1rem 1.1rem 1rem;background:#fff;border:1px solid var(--c-line);border-radius:16px;box-shadow:0 24px 50px -24px rgba(0,0,0,.28);
+  opacity:0;transform:translateY(12px);transition:opacity .35s var(--c-ease),transform .4s var(--c-ease)}
+.ccb.on{opacity:1;transform:none}
+.ccb p{margin:0;font-size:.8438rem;line-height:1.55;color:var(--c-text-2)}
+.ccb a{color:var(--c-text);text-decoration:underline;text-decoration-color:#C9C9C6;text-underline-offset:3px}
+.ccb-a{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.9rem}
+.ccb-pref{display:block;margin:.65rem auto 0;padding:.2rem .4rem;border:0;background:none;color:var(--c-text-2);font:500 .8125rem/1.2 inherit;font-family:inherit;cursor:pointer}
+.ccb-pref:hover{color:var(--c-text)}
+@media (max-width:560px){.ccb{left:.75rem;right:.75rem;width:auto;bottom:calc(.75rem + env(safe-area-inset-bottom,0px))}}
+
+.ccm{position:fixed;inset:0;z-index:990;display:grid;place-items:center;padding:1rem}
+.ccm[hidden]{display:none}
+.ccm-bg{position:absolute;inset:0;background:rgba(10,10,10,.36);opacity:0;transition:opacity .3s var(--c-ease)}
+.ccm-p{position:relative;width:min(520px,100%);max-height:calc(100dvh - 2rem);overflow:auto;padding:1.75rem;background:#fff;border-radius:20px;box-shadow:0 40px 80px -30px rgba(0,0,0,.4);outline:0;
+  opacity:0;transform:translateY(10px) scale(.98);transition:opacity .3s var(--c-ease),transform .35s var(--c-ease)}
+.ccm.on .ccm-bg{opacity:1}
+.ccm.on .ccm-p{opacity:1;transform:none}
+.ccm-x{position:absolute;top:1rem;right:1rem;display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:10px;background:none;color:var(--c-text);cursor:pointer}
+.ccm-x:hover{background:#F5F5F3}
+.ccm-t{margin:0 2.5rem 0 0;font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
+.ccm-d{margin:.5rem 0 1.25rem;font-size:.875rem;line-height:1.55;color:var(--c-text-2)}
+.ccm-d a{color:var(--c-text);text-decoration:underline;text-decoration-color:#C9C9C6;text-underline-offset:3px}
+.ccm-row{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;padding:1rem 0;border-top:1px solid var(--c-line);cursor:default}
+label.ccm-row{cursor:pointer}
+.ccm-row b{display:block;font-size:.9375rem;font-weight:500}
+.ccm-row span{display:block;margin-top:.2rem;font-size:.8125rem;line-height:1.5;color:var(--c-text-2)}
+.ccm-on{flex:none;font-style:normal;font-size:.75rem;font-weight:500;color:var(--c-text-2);background:#F5F5F3;border-radius:999px;padding:.35rem .7rem}
+.cc-sw{flex:none;appearance:none;-webkit-appearance:none;position:relative;width:44px;height:26px;margin:0;border-radius:999px;background:#E2E2DF;cursor:pointer;transition:background .25s}
+.cc-sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .25s var(--c-ease)}
+.cc-sw:checked{background:radial-gradient(80% 140% at 100% 100%,rgba(229,131,160,.55) 0%,rgba(229,131,160,0) 70%),var(--c-ink)}
+.cc-sw:checked::after{transform:translateX(18px)}
+.cc-sw:focus-visible{outline:2px solid var(--c-ink);outline-offset:2px}
+.ccm-a{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1.25rem}
+html.ccm-lock,html.ccm-lock body{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.ccb,.ccm-bg,.ccm-p{transition:none}}
+
+/* footer: çerez tercihleri butonu (5 sayfa) */
+.f-cookie{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .7rem;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:none;color:inherit;font:inherit;font-size:inherit;cursor:pointer;transition:border-color .2s,background .2s}
+.f-cookie:hover{border-color:rgba(255,255,255,.34);background:rgba(255,255,255,.06)}
+.f-cookie svg{width:14px;height:14px;flex:none}
+
+/* formlar: aydınlatma notu + ticari ileti onayı */
+.form-note{margin:.6rem 0 0;font-size:.75rem;line-height:1.5;color:inherit;opacity:.72}
+.form-note a,.form-consent a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.form-consent{display:flex;align-items:flex-start;gap:.5rem;margin:.75rem 0 0;font-size:.8125rem;line-height:1.45;cursor:pointer}
+.form-consent input{flex:none;width:16px;height:16px;margin:.1rem 0 0;accent-color:currentColor;cursor:pointer}
+.form-consent.is-err{color:#E5484D}
+/* sayfa CSS'lerindeki genel input kuralları (.notes input, .cn-sub input) onay kutusuna uygulanmasın */
+.footer .notes .form-consent input,.notes .form-consent input,.cn-sub .form-consent input{flex:none;width:16px;height:16px;min-height:0;min-width:0;padding:0;border:0;border-radius:3px;background:none}
+.cn-sub .form-consent,.notes .form-consent{font-size:.8125rem;font-weight:400;max-width:none;white-space:nowrap}
+
+/* bant: siyah; Kabul et önde (beyaz), Reddet yanında eşit boyutta, çarpı = reddet */
+.ccb{background:#0A0A0A;border-color:rgba(255,255,255,.12);box-shadow:0 24px 50px -20px rgba(0,0,0,.5);padding-right:2.6rem}
+.ccb p{color:#B4B4B1}
+.ccb a{color:#fff;text-decoration-color:rgba(255,255,255,.4)}
+.ccb .ccb-a{margin-right:-1.5rem}
+.ccb .ccb-yes{background:#fff;color:#0A0A0A;border-color:#fff}
+.ccb .ccb-yes:hover{background:#ECECEA;border-color:#ECECEA}
+.ccb .ccb-no{background:none;color:#fff;border-color:rgba(255,255,255,.22)}
+.ccb .ccb-no:hover{border-color:rgba(255,255,255,.45)}
+.ccb .ccb-pref{color:#9C9C9A;margin-right:-1.5rem}
+.ccb .ccb-pref:hover{color:#fff}
+.ccb-x{position:absolute;top:.55rem;right:.55rem;display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:8px;background:none;color:#9C9C9A;cursor:pointer}
+.ccb-x:hover{color:#fff;background:rgba(255,255,255,.08)}
+/* bant v2: Kabul et (beyaz) + Tercihler (çerçeve); reddetme sağ üstteki çarpıyla */
+.ccb .ccb-a{margin-right:0}
+.ccb{padding-right:1.1rem}
+.ccb p{padding-right:1.6rem}
+/* bülten onay satırı: aydınlatma linki satır sonunda, daha soluk */
+
+@media (max-width:420px){.cn-sub .form-consent,.notes .form-consent{white-space:normal}}
+/* bülten onay satırı: linkler alt çizgisiz ve vurgulu, cümlenin kalanı gri */
+.form-consent a{text-decoration:none}
+.form-consent a:hover{text-decoration:underline;text-underline-offset:2px}
+.footer .form-consent{color:#8E8E8B}
+.footer .form-consent a{color:#fff}
+.cn-sub .form-consent{color:var(--cc-text-2,#666)}
+.cn-sub .form-consent a{color:var(--cc-text,#111)}
+/* footer bülteni: form, onay cümlesi kadar geniş */
+.footer .notes{width:fit-content;max-width:100%}
+body .footer .notes form#notesForm{max-width:none;width:100%}

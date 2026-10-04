@@ -15,14 +15,6 @@
     header.classList.toggle('theme-dark',dark);
   }
 
-  // ===== HERO LAPTOP MOTION =====
-  const lap=$('#lapInner'),hero=$('.hero');
-  function lapMotion(){
-    if(RM||innerWidth<=1100){lap.style.setProperty('--p',0);return}
-    const p=Math.min(1,Math.max(0,scrollY/(hero.offsetHeight*.75)));
-    lap.style.setProperty('--p',p.toFixed(3));
-  }
-
   // ===== ECOSYSTEM STACK: depth + tone per active card =====
   const eco=$('#ekosistem'),cards=$$('.scard'),ecoHead=$('#ecoHead');
   const TONES={a:['#0C0C0B','#151412','#19141C','#10151A','#1A1510','#16141D','#0F1613'],
@@ -31,6 +23,8 @@
   setEh();document.fonts&&document.fonts.ready.then(setEh);addEventListener('resize',setEh);
   function paintCards(){const v=eco.dataset.v;cards.forEach((c,k)=>c.style.setProperty('--card-bg',v==='b'?TONES.b[k]:''))}
   function stack(){
+    // bölüm ekranda değilken kartları ölçme (her scroll karesinde 7 kart için yerleşim okuyordu)
+    const er=eco.getBoundingClientRect();if(er.bottom<0||er.top>innerHeight)return;
     const desk=innerWidth>860,rs=cards.map(c=>c.getBoundingClientRect());
     let active=0;
     cards.forEach((c,k)=>{
@@ -52,19 +46,18 @@
     b.addEventListener('click',()=>{const o=!s.classList.contains('open');$$('.sys.open').forEach(x=>{x.classList.remove('open');x.querySelector('.avs').setAttribute('aria-expanded','false')});s.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
   });
   let tick=false;
-  function onScroll(){if(tick)return;tick=true;requestAnimationFrame(()=>{hdr();lapMotion();stack();tick=false})}
+  function onScroll(){if(tick)return;tick=true;requestAnimationFrame(()=>{hdr();stack();tick=false})}
   addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
 
-  // ===== CONSULTING OBJECT: yaylanma (sprite, merkez sabit) =====
-  const rock=$('#coRock');let rockOn=false,rockT0=0;
-  if(!RM){
-    new IntersectionObserver(es=>{rockOn=es[0].isIntersecting;if(rockOn){rockT0=performance.now();requestAnimationFrame(rockLoop)}}).observe(rock);
+  // ===== EKRAN DIŞI ANİMASYONLAR: görünmeyen bölümlerdeki sonsuz animasyonlar durur (styles/home.css · anim-off) =====
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('anim-off',!e.isIntersecting)),{rootMargin:'200px 0px'});
+    $$('.topbar,main section,footer').forEach(el=>io.observe(el));
   }
-  const rl=rock.querySelectorAll('i'),NF=32,CO=8,RO=4,PER=7000;
-  const rpos=k=>`${(k%CO)/(CO-1)*100}% ${Math.floor(k/CO)/(RO-1)*100}%`;
-  rl[0].style.backgroundPosition=rpos(16);
-  function rockLoop(t){if(!rockOn)return;const x=(Math.sin((t-rockT0)/PER*2*Math.PI)+1)/2*(NF-1),a=Math.floor(x),f=x-a;
-    rl[0].style.backgroundPosition=rpos(a);rl[1].style.backgroundPosition=rpos(Math.min(NF-1,a+1));rl[1].style.opacity=f.toFixed(3);requestAnimationFrame(rockLoop)}
+
+  // ===== CONSULTING OBJECT =====
+  // Eski sprite döngüsü kaldırıldı: obje artık tek sabit görsel (styles/home.css · 0f889b9fd806.webp) + CSS süzülme (coFloat).
+  // Döngü her karede stil yazıyor ve süzülmeyen ikinci katmanı yarı saydam gösterip gölge kopya oluşturuyordu.
 
   // ===== MOBILE MENU =====
   const mb=$('.menu-btn');
@@ -153,7 +146,7 @@
   const toast=document.createElement('div');toast.className='toast';toast.setAttribute('role','status');document.body.appendChild(toast);let tt;
   const say=m=>{toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),2600)};
   $$('a[data-page]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();say('Bu sayfa yakında yayında.')}));
-  $('#notesForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#nEmail');if(!v.checkValidity()){v.focus();say('Geçerli bir e-posta adresi girin.');return}say('Teşekkürler. Bülten kaydı çok yakında aktif olacak.');v.value=''});
+  $('#notesForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#nEmail');if(!v.checkValidity()){v.focus();say('Geçerli bir e-posta adresi girin.');return}const nc=$('#nConsent');$('#nConsent-l').classList.toggle('is-err',!nc.checked);if(!nc.checked){nc.focus();say('Bülten için ticari ileti onay kutusunu işaretleyin.');return}say('Teşekkürler. Bülten kaydı çok yakında aktif olacak.');v.value=''});
 })();
 
 ;
@@ -199,7 +192,7 @@
     if(!gp.hidden)return;
     lastFocus=document.activeElement;
     document.body.classList.remove('menu-open');document.documentElement.classList.remove('menu-lock');
-    const mbt=$('.menu-btn');if(mbt){mbt.setAttribute('aria-expanded',false);mbt.setAttribute('aria-label','Menüyü aç')}
+    const mbt=document.querySelector('.menu-btn');if(mbt){mbt.setAttribute('aria-expanded',false);mbt.setAttribute('aria-label','Menüyü aç')}
     gp.hidden=false;document.body.classList.add('gp-open');
     requestAnimationFrame(()=>gp.classList.add('on'));
     setStep(1);
@@ -247,7 +240,7 @@
     if($('#gp-c2').checked)req.push($('#gp-phone'));
     let ok=true;
     req.forEach(el=>{const v=el.value.trim();const bad=!v||(el.type==='email'&&!el.checkValidity());el.classList.toggle('is-err',bad);if(bad)ok=false});
-    const k=$('#gp-kvkk');$('.gp-kvkk').classList.toggle('is-err',!k.checked);if(!k.checked)ok=false;
+    
     $('#gp-err2').hidden=ok;
     if(!ok){const f=form.querySelector('.is-err')||k;f.focus();return}
 

@@ -23,9 +23,10 @@ npm run build    # canlı derleme kontrolü
 
 - Sayfalar onaylı HTML prototiplerinden birebir taşındı (`lib/legacy-page.tsx`). Metin/görsel revizesi ilgili `content/pages/*.html` dosyasında yapılır.
 - Sayfa başlığı, açıklama, canonical, OG ve JSON-LD: `data/pages.json`.
-- Görseller `public/media/`, font Inter (self-host, `@fontsource-variable/inter`).
+- Görseller `public/media/`. Font Inter (self-host): dosyalar `public/fonts/` (Latin + Latin Ext, layout'ta preload), tanımlar `styles/fonts.css`; kaynak `@fontsource-variable/inter`.
 - Sayfalar arası geçiş tam sayfa yüklemesi; her sayfa yalnızca kendi CSS'ini yükler.
-- Ortak parçalar (header, footer, Görüşme Planla popup'ı) şimdilik her sayfanın HTML'inde ayrı ayrı duruyor. Bir sonraki adım bunları React bileşenlerine ayırmak.
+- Ortak parçalar (header, footer, Görüşme Planla popup'ı) tek kaynaktan: `content/partials/`. Sayfalarda `<!--#header-->` gibi işaretlerle yer alır; aktif menü, logo linki, koyu tema ve formun kaynak sayfası `lib/legacy-page.tsx`'te sayfaya göre uygulanır.
+- Yasal metinler `public/legal/*.html` (sağdan açılan panel + `/kvkk` gibi sayfalar), çerez onayı `public/js/consent.js`, açık işler `docs/acik-isler.md`.
 
 ## Arama motoru görünürlüğü
 

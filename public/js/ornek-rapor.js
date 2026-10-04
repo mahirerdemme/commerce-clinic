@@ -362,7 +362,7 @@ function vOverview(){
       <p class="cover-kicker" style="margin:.9rem 0 0;font-size:1.125rem;color:var(--cc-text);font-weight:500">Commerce Check-up raporu</p>
       <p class="cover-site" style="margin-top:.35rem">${esc(R.site)} · ${esc(R.sector)}</p></div>
       <aside class="how-card" aria-labelledby="hc-t"><h2 id="hc-t">Bu rapor nasıl hazırlandı?</h2>
-        <p>Bu rapordaki her bulgu Commerce Clinic danışmanları tarafından incelendi, kanıtla desteklendi ve yorumlandı.</p>
+        <p>Bu rapordaki her bulgu Commerce Clinic tarafından incelendi, kanıtla desteklendi ve yorumlandı.</p>
         <ul><li>Uzman incelemesi<b>18 saat</b></li><li>İncelenen ekran ve akış<b>46</b></li><li>İncelenen rakip<b>${COMP.length}</b></li></ul>
         <button type="button" data-how>Yöntemi ve tanımları görün</button></aside>
     </div>
@@ -494,7 +494,7 @@ function vPlan(){
 
 function howHTML(){
   return `<div class="help-top"><h2 id="how-t">Bu rapor nasıl hazırlandı?</h2><button type="button" data-close>Kapat</button></div>
-  <p class="lead-s">Bu rapor otomatik bir tarama değildir. Bulgular ve yorumlar Commerce Clinic danışmanları tarafından yapılır; her bulgu kanıtla desteklenir ve ticari etkisine göre önceliklendirilir.</p>
+  <p class="lead-s">Bu rapor otomatik bir tarama değildir. Bulgular ve yorumlar Commerce Clinic tarafından yapılır; her bulgu kanıtla desteklenir ve ticari etkisine göre önceliklendirilir.</p>
   <h3>Gizlilik</h3>
   <p class="small muted">Bu rapor ve incelenen veriler gizlidir. Commerce Clinic raporu yalnızca markanın yetkili kişisine teslim eder ve üçüncü kişilerle paylaşmaz. Rapora kimlerin erişeceğine rapor sahibi karar verir; erişimler kayıt altındadır.</p>
   
@@ -538,7 +538,7 @@ function pbar(c,big){const n=c[0]+c[1]+c[2]||1;return `<div class="pb${big?' big
 /* ---------- render + routing ---------- */
 let curPh='all',curArea='';
 function render(){
-  $('#main').innerHTML=vOverview()+AREAS.map(vArea).join('')+vPlan()+`<footer class="rfoot"><span>Bu rapordaki bulgular ve yorumlar Commerce Clinic danışmanları tarafından hazırlanmıştır. Gizlidir; yalnızca yetkilendirilen kişilerle paylaşılır.</span><span>© 2026 Commerce Clinic · Tüm hakları saklıdır.</span></footer>`;
+  $('#main').innerHTML=vOverview()+AREAS.map(vArea).join('')+vPlan()+`<footer class="rfoot"><span>Bu rapordaki bulgular ve yorumlar Commerce Clinic tarafından hazırlanmıştır. Gizlidir; yalnızca yetkilendirilen kişilerle paylaşılır.</span><span>© 2026 Commerce Clinic · Tüm hakları saklıdır.</span></footer>`;
   $('#how').innerHTML=howHTML();$('#how [data-close]').addEventListener('click',()=>how(false));
   $$('.pager button').forEach(b=>b.addEventListener('click',()=>{location.hash=b.dataset.go}));
   $$('.filters button').forEach(b=>b.addEventListener('click',()=>{curPh=b.dataset.f;applyPlan()}));
@@ -607,7 +607,7 @@ const tour=(()=>{
     {v:'aksiyon-plani',sel:'#planBody .ac',t:'Aksiyon kartı',d:'İşin türü, hangi bulgudan geldiği ve yapıldığında neyin değişmesi gerektiği. "Nasıl anlaşılır?" satırı, işin sonuç verip vermediğini neye bakarak anlayacağınızı söyler.'},
     {v:'aksiyon-plani',sel:'#planBody .ac .stw',t:'İlerlemenizi işaretleyin',d:'Her aksiyonu Başlanmadı, Devam ediyor ya da Tamamlandı olarak işaretleyin. Değişiklik rapora erişimi olan herkese görünür.'},
     {v:'aksiyon-plani',sel:'#ilerleme .prog',t:'İlerleme takibi',d:'İşaretlediğiniz durumlar burada toplanır: genel ilerleme, dönemlere ve işin türüne göre dağılım. Sol menüden doğrudan buraya gelebilirsiniz.'},
-    {v:'aksiyon-plani',sel:'#shareBtn',g:1,t:'Ekibinizle paylaşın',d:'Rapor sahibi, Paylaş ile ekibinden en fazla 5 kişiyi e-postayla davet edebilir ve erişimlerini yönetebilir.'},
+    {v:'aksiyon-plani',sel:'#shareBtn',g:1,t:'Ekibinizle paylaşın',d:'Rapor sahibi, Paylaş ile ekibinden en fazla 10 kişiyi e-postayla davet edebilir ve erişimlerini yönetebilir.'},
     {v:'genel-bakis',sel:'.rail-foot .tour-btn',rail:1,t:'Tur bitti',d:'Bu turu istediğiniz zaman buradan yeniden başlatabilirsiniz.'}
   ];
   let i=0,on=false;const el=$('#tour'),spot=$('#tSpot'),card=$('#tCard');
@@ -654,7 +654,7 @@ $('#menuBtn').addEventListener('click',()=>{const o=document.body.classList.togg
 $('#scrim').addEventListener('click',()=>{document.body.classList.remove('nav-open');$('#menuBtn').setAttribute('aria-expanded','false')});
 
 /* ---------- giriş ve paylaşım (prototip: tarayıcıda simüle edilir) ---------- */
-const OWNER='ayse@loma.com.tr',MAXP=5;
+const OWNER='ayse@loma.com.tr',MAXP=10;
 const lock='<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>';
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let people=LS.get('cc-people',[{e:OWNER,owner:1,st:'Giriş yaptı'},{e:'mehmet@loma.com.tr',st:'Giriş yaptı'},{e:'eticaret@ajans.com',st:'Davet gönderildi'}]);

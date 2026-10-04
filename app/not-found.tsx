@@ -1,43 +1,44 @@
-export const metadata = { title: "Sayfa bulunamadı | Commerce Clinic", robots: { index: false } };
+import "@/styles/not-found.css";
+import { logoSvg } from "@/lib/legal";
+
+export const metadata = { title: { absolute: "Sayfa bulunamadı | Commerce Clinic" }, robots: { index: false } };
+
+const LINKS = [
+  ["/check-up", "Commerce Check-up", "8 alanda teşhis ve 90 günlük plan"],
+  ["/danismanlik", "Danışmanlık", "İhtiyaca özel e-ticaret danışmanlığı"],
+  ["/hakkimizda", "Hakkımızda", "Commerce Clinic'in yaklaşımı"],
+  ["/commerce-notes", "Commerce Notes", "Notlar ve ücretsiz rehberler"],
+];
 
 export default function NotFound() {
   return (
-    <main
-      style={{
-        minHeight: "100svh",
-        display: "grid",
-        placeItems: "center",
-        padding: "2rem",
-        fontFamily: '"Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif',
-        color: "#111",
-        background: "#fff",
-        textAlign: "center",
-      }}
-    >
-      <div>
-        <p style={{ fontSize: ".75rem", letterSpacing: ".14em", textTransform: "uppercase", color: "#666", margin: 0 }}>
-          404
-        </p>
-        <h1 style={{ fontSize: "clamp(2rem,5vw,3.5rem)", fontWeight: 500, letterSpacing: "-.03em", margin: "1rem 0" }}>
-          Bu sayfa bulunamadı.
-        </h1>
-        <a
-          href="/"
-          style={{
-            display: "inline-flex",
-            minHeight: 48,
-            alignItems: "center",
-            padding: "0 1.375rem",
-            borderRadius: 12,
-            background: "#0A0A0A",
-            color: "#fff",
-            textDecoration: "none",
-            fontWeight: 500,
-          }}
-        >
-          Ana sayfaya dön
-        </a>
-      </div>
-    </main>
+    <div className="nf">
+      <header className="nf-top">
+        <a className="nf-logo" href="/" aria-label="Commerce Clinic ana sayfa" dangerouslySetInnerHTML={{ __html: logoSvg() }} />
+        <a className="nf-btn nf-btn-dark nf-btn-sm" href="/#gorusme-planla">Görüşme Planla</a>
+      </header>
+      <main className="nf-main">
+        <p className="nf-code">404</p>
+        <h1>Aradığınız sayfa bulunamadı.</h1>
+        <p className="nf-lead">Adres değişmiş ya da sayfa kaldırılmış olabilir. Ana sayfadan ya da aşağıdaki sayfalardan devam edebilirsiniz.</p>
+        <div className="nf-ctas">
+          <a className="nf-btn nf-btn-dark" href="/">Ana sayfaya dön</a>
+          <a className="nf-btn nf-btn-ghost" href="/#gorusme-planla">Görüşme Planla</a>
+        </div>
+        <nav className="nf-links" aria-label="Sayfalar">
+          {LINKS.map(([href, t, d]) => (
+            <a key={href} href={href}>
+              <b>{t}</b>
+              <span>{d}</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
+            </a>
+          ))}
+        </nav>
+      </main>
+      <footer className="nf-foot">
+        <span>© {new Date().getFullYear()} Commerce Clinic</span>
+        <a href="mailto:hello@thecommerceclinic.com">hello@thecommerceclinic.com</a>
+      </footer>
+    </div>
   );
 }

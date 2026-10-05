@@ -214,20 +214,50 @@ addEventListener('scroll',function(){if(tk)return;tk=requestAnimationFrame(funct
 })();
 
 ;
-/* Ücretsiz rehber · kontrol listesi. İşaretler, "Bizde yok"lar, sorumlu ve tarih alanları tarayıcıda (localStorage) tutulur, hiçbir yere gönderilmez.
-   Anahtarlar design/kontrol-listesi/*.mjs'ten gelir (s1-1, s1-o, s1-d …); "Bizde yok" denen madde "<anahtar>:na" ile tutulur ve sayımdan düşer. */
+/* Ücretsiz rehber · kontrol listesi. İşaretler, kaldırılan maddeler, sorumlu ve tarih alanları tarayıcıda (localStorage) tutulur, hiçbir yere gönderilmez.
+   Anahtarlar design/kontrol-listesi/*.mjs'ten gelir (s1-1, s1-o, s1-d …); × ile kaldırılan madde "<anahtar>:na" ile tutulur ve sayımdan düşer.
+   Paylaşım: durum adresin #k= kısmına sıkıştırılıp yazılır (sunucuya gitmez). Adres her değişiklikte güncellenir; #k= ile açılan sayfa o durumu yükler.
+   Biçim: 1.<işaretler bit dizisi>.<kaldırılanlar bit dizisi>.<adım sorumlu/tarih JSON> (base64url). Madde sırası değişirse sürüm artırılmalı. */
 (function(){
   const root=document.querySelector('.kl');if(!root)return;
   const KEY='cc-kl:'+location.pathname.replace(/\/+$/,'');
   let st={};try{st=JSON.parse(localStorage.getItem(KEY))||{}}catch(_){}
-  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(_){}};
-  const fields=[...root.querySelectorAll('[data-k]')],boxes=fields.filter(f=>f.type==='checkbox'),nas=[...root.querySelectorAll('[data-na]')];
-  const say=m=>{const t=document.querySelector('.toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(say.t);say.t=setTimeout(()=>t.classList.remove('show'),2600)};
+  const fields=[...root.querySelectorAll('[data-k]')],boxes=fields.filter(f=>f.type==='checkbox'),nas=[...root.querySelectorAll('[data-na]')],steps=[...root.querySelectorAll('.kl-step')];
+  const say=m=>{const t=document.querySelector('.toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(say.t);say.t=setTimeout(()=>t.classList.remove('show'),3200)};
   const live=b=>!b.disabled;
+  /* ---------- bağlantı kodu ---------- */
+  const b64=u=>btoa(String.fromCharCode(...u)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  const unb64=t=>Uint8Array.from(atob(t.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
+  const bits=a=>{const u=new Uint8Array(Math.ceil(a.length/8));a.forEach((v,i)=>{if(v)u[i>>3]|=1<<(i&7)});return b64(u)};
+  const unbits=(t,n)=>{const u=t?unb64(t):new Uint8Array(0);return Array.from({length:n},(_,i)=>!!(u[i>>3]&(1<<(i&7))))};
+  function encode(){
+    const m={};steps.forEach((x,i)=>{const o=st[x.id+'-o'],d=st[x.id+'-d'];if(o||d)m[i+1]=[o||'',d||'']});
+    const hasM=Object.keys(m).length;
+    return '1.'+bits(boxes.map(b=>!!st[b.dataset.k]))+'.'+bits(nas.map(b=>!!st[b.dataset.na+':na']))+'.'+(hasM?b64(new TextEncoder().encode(JSON.stringify(m))):'');
+  }
+  function decode(code){
+    const [v,c,n,m]=code.split('.');if(v!=='1')throw 0;
+    const o={};unbits(c,boxes.length).forEach((on,i)=>{if(on)o[boxes[i].dataset.k]=true});
+    unbits(n,nas.length).forEach((on,i)=>{if(on){const k=nas[i].dataset.na;o[k+':na']=true;delete o[k]}});
+    if(m){const j=JSON.parse(new TextDecoder().decode(unb64(m)));for(const i in j){const x=steps[i-1];if(!x)continue;if(j[i][0])o[x.id+'-o']=String(j[i][0]).slice(0,120);if(j[i][1]&&/^\d{4}-\d\d-\d\d$/.test(j[i][1]))o[x.id+'-d']=j[i][1]}}
+    return o;
+  }
+  const empty=()=>!Object.keys(st).length;
+  const link=()=>location.origin+location.pathname+(empty()?'':'#k='+encode());
+  const syncUrl=()=>{try{history.replaceState(null,'',link())}catch(_){}};
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(_){}syncUrl()};
+  // paylaşılan bağlantıyla açıldıysa o durum yüklenir (bu tarayıcıdaki kaydın yerine geçer)
+  const hk=location.hash.match(/^#k=([\w.-]+)$/);let shared=false;
+  if(hk){try{st=decode(hk[1]);shared=true;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(_){}}catch(_){say('Bağlantıdaki kayıt okunamadı.')}}
+  const X='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg>';
   function fill(){
     fields.forEach(f=>{const v=st[f.dataset.k];if(f.type==='checkbox')f.checked=!!v;else f.value=v||''});
     nas.forEach(b=>{const on=!!st[b.dataset.na+':na'],li=b.closest('li'),cb=li.querySelector('input');
-      li.classList.toggle('is-na',on);b.setAttribute('aria-pressed',on);b.textContent=on?'Geri al':'Bizde yok';cb.disabled=on;if(on)cb.checked=false});
+      li.classList.toggle('is-na',on);cb.disabled=on;if(on)cb.checked=false;
+      b.classList.toggle('is-undo',on);b.innerHTML=on?'Geri al':X;b.setAttribute('aria-label',on?'Maddeyi geri al':'Maddeyi listeden kaldır')});
+    steps.forEach(x=>{const n=x.querySelectorAll('li.is-na').length,h=x.querySelector('.kl-hid');h.hidden=!n;
+      if(!n)x.classList.remove('kl-open');h.querySelector('span').textContent=n+' madde kaldırıldı';
+      h.querySelector('.kl-show').textContent=x.classList.contains('kl-open')?'Gizle':'Göster'});
   }
   function sum(){
     const act=boxes.filter(live),done=act.filter(b=>b.checked).length,all=act.length,pct=all?Math.round(done/all*100):0;
@@ -235,7 +265,7 @@ addEventListener('scroll',function(){if(tk)return;tk=requestAnimationFrame(funct
     document.getElementById('klCnt').textContent=done+' / '+all+' madde';
     document.getElementById('klBar').style.width=pct+'%';
     root.querySelector('.kl-bar').setAttribute('aria-valuenow',pct);
-    root.querySelectorAll('.kl-step').forEach(s=>{const b=[...s.querySelectorAll('input[type=checkbox]')].filter(live),d=b.filter(x=>x.checked).length;
+    steps.forEach(s=>{const b=[...s.querySelectorAll('input[type=checkbox]')].filter(live),d=b.filter(x=>x.checked).length;
       s.querySelector('.kl-sc b').textContent=d;s.querySelector('.kl-sc i').textContent=b.length;s.classList.toggle('is-done',d===b.length)});
     root.querySelectorAll('.kl-nav a').forEach(a=>{const b=[...document.getElementById(a.dataset.ph).querySelectorAll('input[type=checkbox]')].filter(live);
       a.querySelector('em').textContent=b.filter(x=>x.checked).length+'/'+b.length});
@@ -243,16 +273,24 @@ addEventListener('scroll',function(){if(tk)return;tk=requestAnimationFrame(funct
   root.addEventListener('input',e=>{const f=e.target.closest('[data-k]');if(!f)return;
     const v=f.type==='checkbox'?f.checked:f.value.trim();if(v)st[f.dataset.k]=v;else delete st[f.dataset.k];save();
     if(f.type==='checkbox'){sum();if(f.checked&&boxes.filter(live).every(b=>b.checked))say('Tüm maddeler tamam. Ellerinize sağlık.')}});
-  root.addEventListener('click',e=>{const b=e.target.closest('[data-na]');if(!b)return;
+  root.addEventListener('click',e=>{const sh=e.target.closest('.kl-show');if(sh){sh.closest('.kl-step').classList.toggle('kl-open');fill();return}
+    const b=e.target.closest('[data-na]');if(!b)return;
     const k=b.dataset.na;if(st[k+':na'])delete st[k+':na'];else{st[k+':na']=true;delete st[k]}save();fill();sum()});
+  // aşama linkleri adresi (#k=) bozmadan kaydırır
+  root.querySelectorAll('.kl-nav a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.getElementById(a.dataset.ph).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}));
   document.getElementById('klPrint').addEventListener('click',()=>print());
-  document.getElementById('klCopy').addEventListener('click',()=>{const u=location.origin+location.pathname;
-    (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>say('Bağlantı kopyalandı. İşaretler yalnız sizin tarayıcınızda görünür.'),()=>prompt('Bağlantı',u))});
+  document.getElementById('klSave').addEventListener('click',()=>{
+    if(empty()){say('Önce birkaç madde işaretleyin; kayıt bağlantısı ilerlemenizi taşır.');return}
+    const u=link();syncUrl();
+    (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>say('Kayıt bağlantısı kopyalandı. Saklayın ya da ekibinizle paylaşın; açan herkes bu durumu görür.'),()=>prompt('Kayıt bağlantısı',u));
+    (window.dataLayer=window.dataLayer||[]).push({event:'resource_save',resource:location.pathname});
+  });
   document.getElementById('klReset').addEventListener('click',()=>{if(!confirm('Tüm işaretler, sorumlular ve tarihler silinsin mi?'))return;st={};save();fill();sum();say('Liste sıfırlandı.')});
   // içindekiler: ekrandaki aşama vurgulanır
   if('IntersectionObserver' in window){const links=[...root.querySelectorAll('.kl-nav a')];
     const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.dataset.ph===x.target.id))}),{rootMargin:'-30% 0px -60% 0px'});
     root.querySelectorAll('.kl-ph').forEach(p=>io.observe(p))}
-  fill();sum();
-  (window.dataLayer=window.dataLayer||[]).push({event:'resource_view',resource:location.pathname});
+  fill();sum();if(!empty())syncUrl();
+  if(shared)setTimeout(()=>say('Kayıtlı ilerleme yüklendi.'),600);
+  (window.dataLayer=window.dataLayer||[]).push({event:'resource_view',resource:location.pathname,shared});
 })();

@@ -4,7 +4,7 @@
 // Anahtarlar (s1-1 …) sıradan üretilir; madde ekleyip çıkarınca kullanıcıların tarayıcıdaki işaretleri kayabilir. Yayından sonra sona ekleyin.
 import fs from "node:fs";
 
-// Madde: "metin" ya da ["metin", "koşul"] → koşullu maddelerde "Bizde yok" seçeneği çıkar, seçilirse sayımdan düşer
+// Madde: "metin" ya da ["metin", "koşul"] → koşul küçük etiket olarak görünür. Her madde × ile listeden kaldırılabilir, kaldırılan sayımdan düşer.
 const PHASES = [
   { id: "once", n: 1, t: "Geçiş öncesi", d: "Kapsam netleşir; veri, üyeler, adresler, entegrasyonlar ve ölçüm kodları taşınmaya hazırlanır.", steps: [
     { t: "Geçişin amacını, kapsamını ve takvimini netleştirin", d: "Yalnız altyapı mı değişiyor, yoksa tasarım, ERP ya da alan adı da mı? Kapsam baştan net değilse takvim de net olmaz.", i: [
@@ -58,8 +58,7 @@ const PHASES = [
       "E-ticaret olayları (ürün görüntüleme, sepete ekleme, ödeme, satın alma) yeni altyapıda kuruldu",
       ["Meta Conversions API ve sunucu taraflı etiketleme yeniden kuruldu", "Kullanılıyorsa"],
       "Google Merchant Center ve diğer ürün feed'leri yeni adreslere göre hazır",
-      "Çerez onayı ve Consent Mode yeni sitede çalışıyor",
-      "Canlıya geçiş günü reklamların duraklatılması ya da bütçenin kısılması planlandı" ] },
+      "Çerez onayı ve Consent Mode yeni sitede çalışıyor" ] },
   ] },
   { id: "sirasi", n: 2, t: "Test ve canlıya geçiş", d: "Yeni site gerçek senaryolarla denenir, geçiş günü adım adım yürütülür.", steps: [
     { t: "Tasarımı ve içeriği tüm çözünürlüklerde kontrol edin", d: "Yeni tasarım varsa her ekran mobil, tablet ve masaüstünde ayrı ayrı gözden geçirilmeli.", i: [
@@ -112,10 +111,11 @@ const all = PHASES.flatMap((p) => p.steps);
 const total = all.reduce((a, s) => a + s.i.length, 0);
 let n = 0;
 
+const xIco = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg>';
 const item = (id, j, it) => {
   const [t, cond] = Array.isArray(it) ? it : [it];
   const k = `${id}-${j + 1}`;
-  return `          <li${cond ? " class=\"kl-c\"" : ""}><label class="kl-it"><input type="checkbox" data-k="${k}"><span class="kl-bx" aria-hidden="true">${chk}</span><span class="kl-tx">${cond ? `<em class="kl-if">${esc(cond)}</em> ` : ""}${esc(t)}</span></label>${cond ? `<button type="button" class="kl-na" data-na="${k}" aria-pressed="false">Bizde yok</button>` : ""}</li>`;
+  return `          <li><label class="kl-it"><input type="checkbox" data-k="${k}"><span class="kl-bx" aria-hidden="true">${chk}</span><span class="kl-tx">${cond ? `<em class="kl-if">${esc(cond)}</em> ` : ""}${esc(t)}</span></label><button type="button" class="kl-x" data-na="${k}" aria-label="Maddeyi listeden kaldır">${xIco}</button></li>`;
 };
 
 const phases = PHASES.map((p) => `
@@ -126,6 +126,7 @@ ${p.steps.map((s) => { n++; const id = `s${n}`; return `      <article class="kl
         <ul class="kl-items">
 ${s.i.map((it, j) => item(id, j, it)).join("\n")}
         </ul>
+        <p class="kl-hid" hidden><span></span> · <button type="button" class="kl-show">Göster</button></p>
         <div class="kl-meta"><label class="kl-f"><span>Sorumlu</span><input type="text" data-k="${id}-o" placeholder="Ad veya ekip" autocomplete="off"></label><label class="kl-f"><span>Hedef tarih</span><input type="date" data-k="${id}-d"></label></div>
       </article>`; }).join("\n")}
     </section>`).join("\n");
@@ -139,7 +140,7 @@ const html = `<!--#header-->
   <div class="wrap">
     <p class="ab-pill"><a href="/" data-go>Commerce Clinic</a><span aria-hidden="true">/</span><a href="/rehber/e-ticaret-altyapi-gecisi" data-go>Ücretsiz rehber</a><span aria-hidden="true">/</span>Kontrol listesi</p>
     <h1 class="display" id="kl-title">E-ticaret altyapısı değiştirirken 12 adımlık rehber</h1>
-    <p class="lead">Altyapı değiştiren markalar için; geçiş öncesinden canlıya çıktıktan sonraki ilk 30 güne kadar kontrol listesi. Yıllardır yürüttüğümüz geçişlerde baktığımız her şey burada. Maddeleri işaretleyin, size uymayanları "Bizde yok" ile çıkarın, her adıma sorumlu ve tarih yazın.</p>
+    <p class="lead">Altyapı değiştiren markalar için; geçiş öncesinden canlıya çıktıktan sonraki ilk 30 güne kadar kontrol listesi. Yıllardır yürüttüğümüz geçişlerde baktığımız her şey burada. Maddeleri işaretleyin, size uymayanları × ile listeden kaldırın, her adıma sorumlu ve tarih yazın.</p>
     <ul class="kl-facts"><li>12 adım · 3 aşama</li><li>${total} kontrol maddesi</li><li>Hazırlayan: Mahir Erdem</li></ul>
   </div>
 </section>
@@ -153,11 +154,11 @@ const html = `<!--#header-->
       </div>
       <ol class="kl-nav">${nav}</ol>
       <div class="kl-acts">
-        <button type="button" class="kl-a" id="klPrint"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 6V2h7v4M4.5 11.5H2.5v-5h11v5h-2M4.5 9.5h7V14h-7z"/></svg>Yazdır / PDF kaydet</button>
-        <button type="button" class="kl-a" id="klCopy"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6.5 9.5l3-3M7 4.5l1.2-1.2a2.6 2.6 0 0 1 3.7 3.7L10.7 8.2M9 11.5l-1.2 1.2a2.6 2.6 0 0 1-3.7-3.7L5.3 7.8"/></svg>Bağlantıyı kopyala</button>
+        <button type="button" class="kl-a kl-a-dark" id="klSave"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6.5 9.5l3-3M7 4.5l1.2-1.2a2.6 2.6 0 0 1 3.7 3.7L10.7 8.2M9 11.5l-1.2 1.2a2.6 2.6 0 0 1-3.7-3.7L5.3 7.8"/></svg><span>İlerlemeyi kaydet</span></button>
+        <button type="button" class="kl-a" id="klPrint"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 6V2h7v4M4.5 11.5H2.5v-5h11v5h-2M4.5 9.5h7V14h-7z"/></svg><span>Yazdır / PDF kaydet</span></button>
         <button type="button" class="kl-a kl-a-mute" id="klReset">Sıfırla</button>
       </div>
-      <p class="kl-note">İşaretler ve notlar yalnız bu tarayıcıda tutulur; hiçbir yere gönderilmez.</p>
+      <p class="kl-note">İlerleme bu tarayıcıda otomatik tutulur. Başka cihazda devam etmek ya da ekibinizle paylaşmak için <b>İlerlemeyi kaydet</b>'e basın: işaretler, sorumlular ve tarihler bağlantının içine yazılır. Bağlantıyı açan herkes aynı durumu görür; bize hiçbir veri gelmez.</p>
     </aside>
 
     <div class="kl-main">

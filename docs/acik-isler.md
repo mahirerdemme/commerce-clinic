@@ -33,8 +33,9 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 ## Ücretsiz rehber
 
 - Tanıtım sayfası `/rehber/e-ticaret-altyapi-gecisi` indexlenir. Form doldurana `/rehber/e-ticaret-altyapi-gecisi/kontrol-listesi` bağlantısı verilir; bu sayfa noindex ve sitemap dışı, ama şifreli değil.
-- 79 kontrol maddesi var; 13'ü koşullu ve "Bizde yok" ile çıkarılabilir (`design/kontrol-listesi/altyapi-gecisi.mjs`). Mahir son okumayı yapmalı. Madde değişince script yeniden çalıştırılır; tanıtım sayfasındaki adım listesi de güncellenir.
-- Bekleyen karar: "Bizde yok" tüm maddelerde olsun mu?
+- 78 kontrol maddesi var; 13'ü koşullu ve "Bizde yok" ile çıkarılabilir (`design/kontrol-listesi/altyapi-gecisi.mjs`). Mahir son okumayı yapmalı. Madde değişince script yeniden çalıştırılır; tanıtım sayfasındaki adım listesi de güncellenir.
+- Her madde × ile listeden kaldırılabilir; adımın altında "N madde kaldırıldı · Göster" ile geri alınır. Kullanıcı kendi maddesini ekleyemez (karar: liste bizim uzmanlığımız, link de kısa kalsın).
+- İlerleme tarayıcıda tutulur (Safari 7 gün girilmezse siler). "İlerlemeyi kaydet" durumu bağlantının `#k=` kısmına yazar: her cihazda açılır, ekiple paylaşılır, sunucuya gitmez. Madde sırası değişirse kod sürümü (`1.`) artırılmalı.
 - Teşekkür metni "bir kopyasını e-postanıza da gönderdik" diyor; Resend bağlanınca bağlantı gerçekten e-postayla gitmeli.
 
 ## Mobil revizyon
@@ -61,6 +62,12 @@ Hedef: blog yazılarından SEO'da olabildiğince verim almak. Yazılar Kadir'le 
   - yazar Mahir Erdem ve yazar sayfası;
   - datePublished/dateModified, sitemap'te lastmod;
   - Check-up, Danışmanlık ve rehberlere iç linkler.
+- Google'ın yapay zekâ içerik rehberi (güncelleme: 1 Ekim 2026, developers.google.com/search/docs/fundamentals/using-gen-ai-content) ile yazı kuralları:
+  - Az ama derin yazı; değer katmayan seri üretim spam sayılır.
+  - Fark yaratan şey sahadan deneyim: Kadir ve Mahir anlatır, metin birlikte toparlanır.
+  - Yayın öncesi elle doğrulanır: isim, tarih, fiyat, rakam, alıntı/kaynak, linkler, title/description, yapısal veri, görsel alt metinleri.
+  - Yapay zekâ ile üretilen görsel kullanılırsa IPTC DigitalSourceType (TrainedAlgorithmicMedia) eklenir.
+  - Üretim şeklini belirtmek önerilen ama zorunlu değil; yazar ve gerçek tarih her yazıda var.
 - Yayın tarihleri gerçek olmalı; şu anki Ağustos–Eylül tarihleri yer tutucu.
 - Şu an 1 gerçek yazı + 4 "yakında" başlık var.
 

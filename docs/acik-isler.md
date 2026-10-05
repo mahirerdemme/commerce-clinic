@@ -30,6 +30,40 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 - Çerez bandı Consent Mode v2 ile hazır; GTM kimliği `NEXT_PUBLIC_GTM_ID` olarak Vercel'e girilince GTM yüklenir. GA4 etiketi GTM içinde, Consent Mode **temel (basic)** ayarıyla kurulmalı: onay yoksa etiket hiç çalışmaz, Google'a veri gitmez.
 - Örnek rapor sayfasında (`/ornek-rapor`) footer'da çerez tercihleri bağlantısı yok; bant orada da çıkıyor.
 
+## Ücretsiz rehber
+
+- Tanıtım sayfası `/rehber/e-ticaret-altyapi-gecisi` indexlenir. Form doldurana `/rehber/e-ticaret-altyapi-gecisi/kontrol-listesi` bağlantısı verilir; bu sayfa noindex ve sitemap dışı, ama şifreli değil.
+- 79 kontrol maddesi var; 13'ü koşullu ve "Bizde yok" ile çıkarılabilir (`design/kontrol-listesi/altyapi-gecisi.mjs`). Mahir son okumayı yapmalı. Madde değişince script yeniden çalıştırılır; tanıtım sayfasındaki adım listesi de güncellenir.
+- Bekleyen karar: "Bizde yok" tüm maddelerde olsun mu?
+- Teşekkür metni "bir kopyasını e-postanıza da gönderdik" diyor; Resend bağlanınca bağlantı gerçekten e-postayla gitmeli.
+
+## Mobil revizyon
+
+- Kadir tüm sayfaları mobilde gezip belirli alanlar için revize listesi verecek; gelince sayfa sayfa ele alınacak.
+
+## Blog (Commerce Notes) ve rehberler · SEO
+
+Hedef: blog yazılarından SEO'da olabildiğince verim almak. Yazılar Kadir'le birlikte yazılacak.
+
+- Adres yapısı kuruldu:
+  - Liste: `/blog` (`/commerce-notes` 308 ile buraya yönlenir).
+  - Yazı: `/blog/<yazi>`.
+  - Rehber tanıtımı: `/rehber/<rehber>`.
+  - Form sonrası kontrol listesi: `/rehber/<rehber>/kontrol-listesi` (noindex).
+  - Eski `#yazı` bağlantıları JS ile yeni adreslere gider.
+  - Yazı ve rehber sayfalarında Article/BlogPosting + BreadcrumbList var, rehberde FAQPage de var.
+  - Yeni yazı eklerken: `content/pages/<slug>.html`, `data/pages.json`, `app/blog/<yazi>/page.tsx`; davranış `commerce-notes.js`'ten (`"js": "commerce-notes"`).
+- Slug'da yıl yok. Yıl gerekiyorsa başlıkta durur ("… (2026)") ve yazı güncellenince değişir; adres kalıcı kalır.
+- Her yazı için:
+  - kendi adresi, benzersiz title ve description, canonical;
+  - kendi OG görseli;
+  - Article + BreadcrumbList yapısal verisi, SSS varsa FAQPage;
+  - yazar Mahir Erdem ve yazar sayfası;
+  - datePublished/dateModified, sitemap'te lastmod;
+  - Check-up, Danışmanlık ve rehberlere iç linkler.
+- Yayın tarihleri gerçek olmalı; şu anki Ağustos–Eylül tarihleri yer tutucu.
+- Şu an 1 gerçek yazı + 4 "yakında" başlık var.
+
 ## Örnek rapor (/ornek-rapor)
 
 - Görseller kurgusal "Loma Ev" mağazası için tasarlandı (`design/rapor-gorselleri/`). Brief'teki "sahte arayüz yok" kuralına örnek rapor için bilinçli istisna; gerçek raporda ekranlar müşterinin kendi sitesinden alınır.

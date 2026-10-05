@@ -22,7 +22,7 @@ export function legacyMetadata(slug: PageSlug): Metadata {
     authors: [{ name: "Mahir Erdem" }],
     openGraph: p.ogImage
       ? {
-          type: "website",
+          type: p.route.startsWith("/blog/") ? "article" : "website",
           siteName: "Commerce Clinic",
           locale: "tr_TR",
           title: p.title,
@@ -53,7 +53,7 @@ const read = (...p: string[]) => fs.readFileSync(path.join(process.cwd(), ...p),
 /**
  * Ortak parçalar tek kaynaktan: content/partials/{header,footer,gp}.html
  * Sayfa HTML'inde <!--#header--> <!--#footer--> <!--#gp--> işaretlerinin yerine konur; sayfaya özgü farklar burada uygulanır:
- * logo linki, menüde aktif sayfa, koyu tema, Notes'ta sayfa içi rehber linkleri, formun kaynak sayfası.
+ * logo linki, menüde aktif sayfa, koyu tema, blog listesinde "Tüm notları oku" linki, formun kaynak sayfası.
  */
 function withShared(slug: PageSlug, html: string) {
   const p = getPage(slug);
@@ -71,9 +71,7 @@ function withShared(slug: PageSlug, html: string) {
   }
   if (p.colorScheme === "dark") header = header.replace('<header class="header"', '<header class="header theme-dark"');
   if (slug === "commerce-notes") {
-    const local = (s: string) => s.replaceAll('href="/commerce-notes#altyapi-kontrol-listesi" data-go>', 'href="#altyapi-kontrol-listesi">');
-    header = local(header);
-    footer = local(footer).replace('<a class="f-all" href="/commerce-notes" data-go>', '<a class="f-all" href="#liste">');
+    footer = footer.replace('<a class="f-all" href="/blog" data-go>', '<a class="f-all" href="#liste">');
   }
   gp = gp.replace('name="source_page" value="home"', `name="source_page" value="${slug}"`);
   return html.replace("<!--#header-->", header).replace("<!--#footer-->", footer).replace("<!--#gp-->", gp);
@@ -88,7 +86,7 @@ export function LegacyPage({ slug }: { slug: PageSlug }) {
       {early && <script dangerouslySetInnerHTML={{ __html: early }} />}
       {p.jsonld && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: p.jsonld }} />}
       <div style={{ display: "contents" }} dangerouslySetInnerHTML={{ __html: html }} />
-      <script src={`/js/${slug}.js`} />
+      <script src={`/js/${p.js ?? slug}.js`} />
     </>
   );
 }

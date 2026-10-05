@@ -7,7 +7,7 @@ const LINKS = [
   ["/check-up", "Commerce Check-up", "8 alanda teşhis ve 90 günlük plan"],
   ["/danismanlik", "Danışmanlık", "İhtiyaca özel e-ticaret danışmanlığı"],
   ["/hakkimizda", "Hakkımızda", "Commerce Clinic'in yaklaşımı"],
-  ["/commerce-notes", "Commerce Notes", "Notlar ve ücretsiz rehberler"],
+  ["/blog", "Commerce Notes", "Notlar ve ücretsiz rehberler"],
 ];
 
 export default function NotFound() {

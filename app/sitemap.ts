@@ -4,7 +4,7 @@ import { PUBLIC_ROUTES, SITE_URL } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   return PUBLIC_ROUTES.map((route) => ({
     url: `${SITE_URL}${route === "/" ? "/" : route}`,
-    changeFrequency: route === "/commerce-notes" ? "weekly" : "monthly",
+    changeFrequency: route === "/blog" ? "weekly" : "monthly",
     priority: route === "/" ? 1 : 0.8,
   }));
 }

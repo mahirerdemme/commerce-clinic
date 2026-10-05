@@ -18,6 +18,8 @@ export type PageData = {
   bodyClass: string;
   early: string;
   jsonld: string | null;
+  /** sayfa başka bir sayfanın davranış dosyasını kullanıyorsa (public/js/<js>.js) */
+  js?: string;
 };
 
 export function getPage(slug: PageSlug): PageData {
@@ -25,5 +27,5 @@ export function getPage(slug: PageSlug): PageData {
 }
 
 export const PUBLIC_ROUTES = Object.values(pages as Record<string, PageData>)
-  .filter((p) => p.route !== "/ornek-rapor")
+  .filter((p) => p.route !== "/ornek-rapor" && !(p.robots ?? "").includes("noindex"))
   .map((p) => p.route);

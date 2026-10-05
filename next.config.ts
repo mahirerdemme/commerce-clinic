@@ -4,7 +4,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
     // Görüşme Planla bir popup; adres doğrudan açılırsa ana sayfada popup açılır
-    return [{ source: "/gorusme-planla", destination: "/#gorusme-planla", permanent: false }];
+    return [
+      { source: "/gorusme-planla", destination: "/#gorusme-planla", permanent: false },
+      // Commerce Notes'un eski adresi; eski #yazı bağlantıları /blog'da yazının kendi adresine yönlenir (public/js/commerce-notes.js)
+      { source: "/commerce-notes", destination: "/blog", permanent: true },
+    ];
   },
   async headers() {
     return [
@@ -16,6 +20,14 @@ const nextConfig: NextConfig = {
         // yasal metin parçaları yalnız panel ve sayfa için; tek başına indexlenmesin
         source: "/legal/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
+      {
+        // rehberler form doldurana verilen gizli bağlantılar; arama motorlarına kapalı
+        source: "/rehber/:slug/kontrol-listesi",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Referrer-Policy", value: "no-referrer" },
+        ],
       },
       {
         source: "/fonts/:path*",

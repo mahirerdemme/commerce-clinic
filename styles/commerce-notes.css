@@ -1352,7 +1352,7 @@ a.cov:hover{transform:translateY(-3px)}
 .rp-small{margin:1rem 0 0;font-size:.8125rem;color:#8A8A8A;text-align:right}
 .rp-done-act{justify-content:flex-start}
 .rp-done-act .gp-back{margin-right:0}
-.rp-gp{display:inline-flex;align-items:center;text-decoration:none}
+.gp-done p .rp-gp{color:inherit;text-decoration:underline;text-underline-offset:3px}
 #rp .gp-done>p{margin:.75rem 0 0;color:#666;font-size:1.0625rem;line-height:1.55}
 @media (max-width:900px){.rp-e{margin-top:1rem}.rp-title{font-size:1.5rem}.rp-facts{display:none}}
 
@@ -1582,3 +1582,4 @@ body.gp-open{overflow:hidden}
 /* yazılar gelene kadar: örnek yazı kartları ve konu filtresi gizli, yalnız rehber kartı görünür (brief v2 · yazı yoksa kartlar gizlenir). Açmak için bu iki satırı silin. */
 .cn-list .cn-row:not(.cn-feat){display:none}
 .cn-list .cn-filter{display:none}
+.rp-done-act a.gp-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}

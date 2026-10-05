@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Örnek rapor görselleri · Loma Ev (kurgu)</title>
+<!--
+  Örnek rapordaki (/ornek-rapor) görsel alanlarının kaynağı. Loma Ev kurgusal bir mağazadır; ekranlar örnek rapor için tasarlanmıştır.
+  Her <section class="cv" id="..."> 1200×750 bir görsel olur; render.mjs ile public/media/rapor/<id>.webp olarak üretilir.
+-->
+<style>
+@font-face{font-family:"Inter Variable";src:url(../../public/fonts/inter-latin-opsz.woff2) format("woff2-variations");font-weight:100 900;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+20AC,U+20BA}
+@font-face{font-family:"Inter Variable";src:url(../../public/fonts/inter-latin-ext-opsz.woff2) format("woff2-variations");font-weight:100 900;unicode-range:U+0100-02BA,U+20BA}
+*{box-sizing:border-box}
+body{margin:0;background:#ddd;font-family:"Inter Variable",system-ui,sans-serif;color:#111;-webkit-font-smoothing:antialiased}
+.cv{position:relative;width:1200px;height:750px;overflow:hidden;background:#F3F3F1;margin:0 0 40px}
+/* ---------- işaretler ---------- */
+.pin{position:absolute;z-index:5;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#E5484D;color:#fff;font-size:13px;font-weight:600;box-shadow:0 0 0 4px rgba(229,72,77,.18)}
+.pin.ok{background:#16A34A;box-shadow:0 0 0 4px rgba(22,163,74,.18)}
+.hl{position:absolute;z-index:4;border:2px solid #E5484D;border-radius:10px;background:rgba(229,72,77,.06)}
+.hl.ok{border-color:#16A34A;background:rgba(22,163,74,.06)}
+.notes{position:absolute;right:56px;top:50%;transform:translateY(-50%);width:430px;display:grid;gap:14px}
+.note{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;background:#fff;border:1px solid #E6E6E3;border-radius:14px;padding:16px 18px}
+.note .n{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#E5484D;color:#fff;font-size:13px;font-weight:600}
+.note.ok .n{background:#16A34A}
+.note b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em}
+.note span{display:block;margin-top:4px;font-size:13.5px;line-height:1.5;color:#666}
+.cap{position:absolute;left:56px;top:22px;margin:0;font-size:13px;color:#777;letter-spacing:.01em}
+.cap b{color:#111;font-weight:600}
+/* ---------- telefon ---------- */
+.phone{position:absolute;width:318px;height:668px;border-radius:44px;background:#111;padding:11px;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
+.scr{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:#fff}
+.sb{height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 24px 0 28px;font-size:13px;font-weight:600}
+.sb i{display:inline-block;width:18px;height:9px;border:1.5px solid #111;border-radius:3px;margin-left:5px;vertical-align:middle;position:relative}
+.sb i::after{content:"";position:absolute;inset:1px;right:5px;background:#111;border-radius:1px}
+.url{margin:0 12px 6px;height:30px;border-radius:9px;background:#F1F1EF;display:flex;align-items:center;justify-content:center;font-size:12px;color:#555}
+.lh{display:flex;align-items:center;justify-content:space-between;height:46px;padding:0 16px;border-bottom:1px solid #EFEFEC}
+.logo{font-weight:700;font-size:19px;letter-spacing:-.04em;color:#2F3A33}
+.ic{display:flex;gap:14px}
+.ic span{width:18px;height:18px;border:1.6px solid #333;border-radius:5px}
+.ic span:first-child{border-radius:50%}
+/* ürün görseli (çizim, fotoğraf değil) */
+.pimg{position:relative;height:250px;background:linear-gradient(180deg,#EFE9E1,#E7DFD4);overflow:hidden}
+.bed{position:absolute;left:30px;right:30px;bottom:34px;height:120px;border-radius:14px 14px 6px 6px;background:repeating-linear-gradient(90deg,#D8CCBC 0 6px,#DCD1C2 6px 12px);box-shadow:0 18px 30px -18px rgba(70,50,30,.45)}
+.bed::before{content:"";position:absolute;left:-8px;right:-8px;top:-34px;height:58px;border-radius:16px;background:#F7F3EE;box-shadow:inset 0 -6px 0 #EAE3D9}
+.pil{position:absolute;top:-58px;width:92px;height:48px;border-radius:14px;background:#FBF8F4;box-shadow:0 6px 10px -6px rgba(0,0,0,.25)}
+.pil.a{left:24px}.pil.b{right:24px}
+.dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.2)}.dots i:first-child{background:#2F3A33}
+.pb{padding:14px 16px 0}
+.pb h1{margin:0;font-size:16px;font-weight:600;line-height:1.3;letter-spacing:-.01em}
+.stars{margin-top:6px;font-size:12px;color:#777}.stars b{color:#C9A227;letter-spacing:1px}
+.price{margin-top:8px;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.price s{font-size:13px;color:#999;font-weight:500;margin-left:6px}
+.opt{margin-top:12px;font-size:12px;color:#666}
+.sw{display:flex;gap:8px;margin-top:6px}
+.sw i{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #D6D6D2}
+.sel{margin-top:10px;height:38px;border:1px solid #DDDDD9;border-radius:9px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:13px}
+.cta{margin:12px 16px 0;height:46px;border-radius:11px;background:#2F3A33;color:#fff;display:grid;place-items:center;font-size:15px;font-weight:600}
+.acc{margin:0 16px;border-bottom:1px solid #EDEDEA;height:46px;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:500}
+.acc::after{content:"+";font-size:20px;font-weight:300;color:#777}
+.fold{position:absolute;left:-40px;right:-40px;z-index:6;border-top:2px dashed #E5484D}
+.fold span{position:absolute;right:44px;top:-26px;background:#E5484D;color:#fff;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:6px;white-space:nowrap}
+/* akış içi işaretler: işaret ettiği öğeye bağlı, koordinat gerektirmez */
+.mk{position:relative;outline:2px solid #E5484D;outline-offset:2px;border-radius:10px;background:rgba(229,72,77,.06)}
+.mk.ok{outline-color:#16A34A;background:rgba(22,163,74,.06)}
+.mk>.b{position:absolute;z-index:3;right:-6px;top:-12px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#E5484D;color:#fff;font-size:11.5px;font-weight:600;box-shadow:0 0 0 3px #fff}
+.mk.ok>.b{background:#16A34A}
+.fi{position:relative;z-index:3;height:0;margin:10px -16px 0;border-top:2px dashed #E5484D}
+.fi span{position:absolute;right:10px;top:-11px;background:#E5484D;color:#fff;font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:5px}
+.fi.ok{border-color:#16A34A}.fi.ok span{background:#16A34A}
+/* ---------- tarayıcı penceresi ---------- */
+.win{position:absolute;left:56px;top:84px;width:1088px;height:610px;background:#fff;border:1px solid #E3E3E0;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(0,0,0,.35)}
+.wbar{height:38px;background:#F6F6F4;border-bottom:1px solid #ECECE9;display:flex;align-items:center;gap:7px;padding:0 14px}
+.wbar i{width:11px;height:11px;border-radius:50%;background:#DADAD6}
+.wbar span{margin-left:14px;flex:0 0 420px;height:24px;border-radius:7px;background:#fff;border:1px solid #E6E6E3;font-size:12px;color:#777;display:flex;align-items:center;padding:0 10px}
+</style>
+</head>
+<body>
+
+<!-- 3.1-a · Mobil ürün sayfası: karar bilgileri kapalı akordeonlarda -->
+<section class="cv" id="ux1-a">
+  <p class="cap"><b>Loma Ev</b> · mobil ürün sayfası · iPhone 13, Safari · 10 Eylül 2026</p>
+  <div class="phone" style="left:441px;top:62px"><div class="scr">
+    <div class="sb"><span>14:32</span><span>5G <i></i></span></div>
+    <div class="url">loma.com.tr</div>
+    <div class="lh"><span class="logo">loma</span><span class="ic"><span></span><span></span></span></div>
+    <div class="pimg" style="height:190px"><div class="bed" style="bottom:22px;height:96px"><i class="pil a"></i><i class="pil b"></i></div><div class="dots"><i></i><i></i><i></i><i></i></div></div>
+    <div class="pb"><h1>Pamuk Saten Nevresim Takımı · Çift Kişilik</h1><div class="stars"><b>★★★★★</b> 4,7 · 312 değerlendirme</div>
+      <div class="mk" style="margin-top:8px;padding:2px 6px;margin-left:-6px;margin-right:-6px"><span class="b">2</span><div class="price" style="margin-top:0">1.249 ₺<s>1.590 ₺</s></div></div></div>
+    <div class="cta">Sepete ekle</div>
+    <div class="fi"><span>ilk ekran sınırı</span></div>
+    <div class="mk" style="margin:14px 12px 0;padding:0 4px"><span class="b">1</span>
+      <div class="acc" style="margin:0 6px">Teslimat</div><div class="acc" style="margin:0 6px">İade ve değişim</div><div class="acc" style="margin:0 6px;border:0">Kargo ücreti</div></div>
+    <div class="acc" style="margin-top:6px">Ürün özellikleri</div>
+  </div></div>
+</section>
+
+<!-- 3.1-b · Kaydırma derinliği -->
+<section class="cv" id="ux1-b">
+  <p class="cap"><b>Kaydırma derinliği</b> · mobil ürün sayfası · Clarity, 26 Ağu–8 Eyl 2026 · 18.420 oturum</p>
+  <div class="phone" style="left:441px;top:62px"><div class="scr">
+    <div class="sb"><span>14:32</span><span>5G <i></i></span></div>
+    <div class="url">loma.com.tr</div>
+    <div class="lh"><span class="logo">loma</span><span class="ic"><span></span><span></span></span></div>
+    <div class="pimg" style="height:190px"><div class="bed" style="bottom:22px;height:96px"><i class="pil a"></i><i class="pil b"></i></div></div>
+    <div class="pb"><h1>Pamuk Saten Nevresim Takımı · Çift Kişilik</h1><div class="stars"><b>★★★★★</b> 4,7 · 312 değerlendirme</div><div class="price">1.249 ₺<s>1.590 ₺</s></div></div>
+    <div class="cta">Sepete ekle</div>
+    <div class="fi"><span>ilk ekran sınırı · %29 aşağı iniyor</span></div>
+    <div style="margin:14px 12px 0;padding:0 4px"><div class="acc" style="margin:0 6px">Teslimat</div><div class="acc" style="margin:0 6px">İade ve değişim</div><div class="acc" style="margin:0 6px">Kargo ücreti</div></div>
+    <div class="acc" style="margin-top:6px">Ürün özellikleri</div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(229,72,77,.40) 0%,rgba(243,150,117,.34) 50%,rgba(250,204,21,.26) 70%,rgba(59,130,246,.22) 78%,rgba(59,130,246,.12) 100%);mix-blend-mode:multiply"></div>
+  </div></div>
+  <div style="position:absolute;left:776px;top:136px;font-size:13px;color:#555"><b style="color:#111">%100</b> sayfanın başı</div>
+  <div style="position:absolute;left:776px;top:400px;font-size:13px;color:#555"><b style="color:#111">%62</b> fiyata kadar</div>
+  <div style="position:absolute;left:776px;top:530px;font-size:13px;color:#555"><b style="color:#E5484D">%29</b> ilk ekranın altına iniyor</div>
+  <div style="position:absolute;left:776px;top:640px;font-size:13px;color:#555"><b style="color:#111">%14</b> karar bilgilerine ulaşıyor</div>
+</section>
+
+<!-- 3.2-a · Sepet: kargo ücreti yok -->
+<section class="cv" id="ux2-a">
+  <p class="cap"><b>Loma Ev</b> · mobil sepet · 10 Eylül 2026</p>
+  <div class="phone" style="left:150px;top:60px"><div class="scr">
+    <div class="sb"><span>14:36</span><span>5G <i></i></span></div>
+    <div class="url">loma.com.tr/sepet</div>
+    <div class="lh"><span style="font-size:16px;font-weight:600">Sepetim (2)</span><span class="ic"><span></span></span></div>
+    <div style="padding:6px 16px">
+      <div style="display:grid;grid-template-columns:70px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #EFEFEC"><div style="height:70px;border-radius:10px;background:repeating-linear-gradient(0deg,#E9E2D8 0 7px,#F2EDE6 7px 14px)"></div><div style="font-size:13px"><b style="font-weight:600">Pamuk Havlu Seti · 2'li</b><div style="color:#777;margin-top:3px">Adaçayı · 50×90 + 70×140</div><div style="margin-top:8px;font-weight:600">389 ₺</div></div></div>
+      <div style="display:grid;grid-template-columns:70px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #EFEFEC"><div style="height:70px;border-radius:10px;background:#EEE7DE;box-shadow:inset 0 -18px 0 #E3D9CC"></div><div style="font-size:13px"><b style="font-weight:600">Pike Yastık Kılıfı · 2'li</b><div style="color:#777;margin-top:3px">Kırık beyaz · 50×70</div><div style="margin-top:8px;font-weight:600">251 ₺</div></div></div>
+      <div class="mk" style="margin-top:18px;padding:8px 8px 10px;margin-left:-8px;margin-right:-8px"><span class="b">1</span>
+      <div style="font-size:14px;display:flex;justify-content:space-between"><span style="color:#666">Ara toplam</span><b style="font-weight:600">640 ₺</b></div>
+      <div style="margin-top:10px;font-size:13px;color:#888">Kampanya kodu ekle</div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #EFEFEC;display:flex;justify-content:space-between;font-size:16px"><b style="font-weight:600">Toplam</b><b style="font-weight:700">640 ₺</b></div></div>
+    </div>
+    <div class="cta" style="margin-top:16px">Ödemeye geç</div>
+  </div></div>
+</section>
+
+<!-- 3.2-b · Ödeme adımında kargo ücreti ekleniyor -->
+<section class="cv" id="ux2-b">
+  <p class="cap"><b>Loma Ev</b> · ödeme adımı · 10 Eylül 2026</p>
+  <div class="phone" style="left:150px;top:60px"><div class="scr">
+    <div class="sb"><span>14:37</span><span>5G <i></i></span></div>
+    <div class="url">loma.com.tr/odeme</div>
+    <div class="lh"><span style="font-size:15px;font-weight:600">Ödeme</span><span style="font-size:12px;color:#888">3 / 3</span></div>
+    <div style="padding:14px 16px">
+      <div style="display:flex;gap:6px;margin-bottom:16px"><i style="flex:1;height:3px;border-radius:2px;background:#2F3A33"></i><i style="flex:1;height:3px;border-radius:2px;background:#2F3A33"></i><i style="flex:1;height:3px;border-radius:2px;background:#2F3A33"></i></div>
+      <div style="font-size:13px;color:#666;margin-bottom:6px">Kart bilgileri</div>
+      <div class="sel" style="margin-top:0;color:#999">Kart üzerindeki isim</div><div class="sel" style="color:#999">Kart numarası</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div class="sel" style="color:#999">AA / YY</div><div class="sel" style="color:#999">CVC</div></div>
+      <div style="margin-top:18px;padding:14px;border-radius:12px;background:#F6F5F2;font-size:13.5px">
+        <div style="display:flex;justify-content:space-between"><span style="color:#666">Ara toplam</span><span>640,00 ₺</span></div>
+        <div class="mk" style="display:flex;justify-content:space-between;margin:8px -6px 0;padding:4px 6px"><span class="b">1</span><span style="color:#666">Kargo</span><b style="font-weight:600;color:#E5484D;margin-right:14px">49,90 ₺</b></div>
+        <div style="display:flex;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid #E5E3DE;font-size:15px"><b style="font-weight:600">Toplam</b><b style="font-weight:700">689,90 ₺</b></div>
+      </div>
+    </div>
+    <div class="cta" style="margin-top:6px">Siparişi tamamla</div>
+  </div></div>
+</section>
+
+<!-- 3.3 · Mobil menüde üç seviye -->
+<section class="cv" id="ux3">
+  <p class="cap"><b>Loma Ev</b> · mobil menü · Nevresim takımlarına ulaşma yolu</p>
+  <div style="position:absolute;left:56px;top:96px;display:flex;gap:48px;align-items:flex-start">
+    <div style="width:300px">
+      <div style="font-size:12px;color:#888;margin-bottom:10px">1. dokunuş</div>
+      <div style="background:#fff;border:1px solid #E6E6E3;border-radius:18px;overflow:hidden">
+        <div class="lh"><span class="logo">loma</span><span style="font-size:20px;color:#555">×</span></div>
+        <div style="padding:6px 0;font-size:15px">
+          <div class="acc" style="margin:0 18px;border-color:#F0F0ED;background:rgba(229,72,77,.06);outline:2px solid #E5484D;outline-offset:-2px;border-radius:8px;padding:0 10px;margin:4px 10px">Ev Tekstili</div>
+          <div class="acc" style="margin:0 18px">Banyo</div><div class="acc" style="margin:0 18px">Mutfak</div><div class="acc" style="margin:0 18px">Dekorasyon</div><div class="acc" style="margin:0 18px">Yeni gelenler</div><div class="acc" style="margin:0 18px">Kampanyalar</div>
+        </div></div></div>
+    <div style="width:300px;margin-top:0">
+      <div style="font-size:12px;color:#888;margin-bottom:10px">2. dokunuş</div>
+      <div style="background:#fff;border:1px solid #E6E6E3;border-radius:18px;overflow:hidden">
+        <div class="lh"><span style="font-size:14px;font-weight:600">‹ Ev Tekstili</span><span></span></div>
+        <div style="padding:6px 0;font-size:15px">
+          <div class="acc" style="background:rgba(229,72,77,.06);outline:2px solid #E5484D;outline-offset:-2px;border-radius:8px;padding:0 10px;margin:4px 10px">Yatak Odası</div>
+          <div class="acc" style="margin:0 18px">Oturma Odası</div><div class="acc" style="margin:0 18px">Çocuk Odası</div><div class="acc" style="margin:0 18px">Tüm Ev Tekstili</div>
+        </div></div></div>
+    <div style="width:300px">
+      <div style="font-size:12px;color:#888;margin-bottom:10px">3. dokunuş</div>
+      <div style="background:#fff;border:1px solid #E6E6E3;border-radius:18px;overflow:hidden">
+        <div class="lh"><span style="font-size:14px;font-weight:600">‹ Yatak Odası</span><span></span></div>
+        <div style="padding:6px 0;font-size:15px">
+          <div class="acc" style="margin:0 18px">Çarşaf</div><div class="acc" style="margin:0 18px">Pike ve Battaniye</div><div class="acc" style="margin:0 18px">Yorgan</div><div class="acc" style="margin:0 18px">Yastık</div>
+          <div class="acc" style="background:rgba(229,72,77,.06);outline:2px solid #E5484D;outline-offset:-2px;border-radius:8px;padding:0 10px;margin:4px 10px">Nevresim Takımı</div>
+        </div></div></div>
+  </div>
+  <div style="position:absolute;left:374px;top:196px;font-size:22px;color:#E5484D">→</div>
+  <div style="position:absolute;left:722px;top:196px;font-size:22px;color:#E5484D">→</div>
+  <div style="position:absolute;left:56px;bottom:52px;right:56px;display:flex;gap:16px">
+    <div class="note" style="flex:1"><span class="n">1</span><div><b>En çok satan kategori en derinde</b><span>Nevresim takımları cironun %38'ini getiriyor ama menüde üçüncü seviyede, listenin sonunda.</span></div></div>
+    <div class="note" style="flex:1"><span class="n">2</span><div><b>Menüden kategoriye ulaşan az</b><span>Ziyaretçilerin çoğu menü yerine aramayı kullanıyor; arama da "nevresim seti" gibi eşanlamlıları tanımıyor.</span></div></div>
+  </div>
+</section>
+
+<!-- 4.1 · Kategori sayfasında yalnız fiyat filtresi -->
+<section class="cv" id="mr1">
+  <p class="cap"><b>Loma Ev</b> · kategori sayfası · masaüstü, Chrome · 11 Eylül 2026</p>
+  <div class="win"><div class="wbar"><i></i><i></i><i></i><span>loma.com.tr/nevresim-takimlari</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 28px;border-bottom:1px solid #EFEFEC"><span class="logo" style="font-size:22px">loma</span><span style="display:flex;gap:26px;font-size:13.5px;color:#444"><span>Ev Tekstili</span><span>Banyo</span><span>Mutfak</span><span>Dekorasyon</span><span>Kampanyalar</span></span><span class="ic"><span></span><span></span></span></div>
+    <div style="padding:20px 28px 0;font-size:12px;color:#888">Ev Tekstili / Yatak Odası / Nevresim Takımı</div>
+    <div style="display:flex;align-items:baseline;gap:10px;padding:6px 28px 0"><b style="font-size:24px;font-weight:600;letter-spacing:-.02em">Nevresim Takımları</b><span style="font-size:13px;color:#888">148 ürün</span></div>
+    <div style="display:grid;grid-template-columns:210px 1fr;gap:28px;padding:18px 28px">
+      <div>
+        <div style="position:relative;padding:14px;border:2px solid #E5484D;border-radius:12px;background:rgba(229,72,77,.04)">
+          <div style="font-size:13px;font-weight:600">Fiyat</div>
+          <div style="margin-top:14px;height:4px;border-radius:2px;background:#E4E2DD;position:relative"><i style="position:absolute;left:10%;right:30%;top:0;bottom:0;background:#2F3A33;border-radius:2px"></i><i style="position:absolute;left:calc(10% - 7px);top:-6px;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid #2F3A33"></i><i style="position:absolute;right:calc(30% - 7px);top:-6px;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid #2F3A33"></i></div>
+          <div style="display:flex;justify-content:space-between;margin-top:12px;font-size:12px;color:#666"><span>399 ₺</span><span>2.890 ₺</span></div>
+        </div>
+        <div style="margin-top:14px;font-size:12.5px;color:#999;line-height:1.9">Beden — yok<br>Malzeme — yok<br>Renk — yok</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+
+        <div><div style="height:150px;border-radius:10px;background:repeating-linear-gradient(90deg,#DCD1C2 0 6px,#E3D9CB 6px 12px)"></div><div style="font-size:12.5px;margin-top:8px">Saten Nevresim · Kum</div><b style="font-size:13px">1.249 ₺</b></div>
+        <div><div style="height:150px;border-radius:10px;background:repeating-linear-gradient(45deg,#C9D1C6 0 8px,#D3DAD0 8px 16px)"></div><div style="font-size:12.5px;margin-top:8px">Ranforce Nevresim · Adaçayı</div><b style="font-size:13px">899 ₺</b></div>
+        <div><div style="height:150px;border-radius:10px;background:#E9E4DD;box-shadow:inset 0 -40px 0 #DED6CB"></div><div style="font-size:12.5px;margin-top:8px">Keten Nevresim · Kırık Beyaz</div><b style="font-size:13px">1.690 ₺</b></div>
+        <div><div style="height:150px;border-radius:10px;background:repeating-linear-gradient(0deg,#5D6672 0 10px,#68717C 10px 20px)"></div><div style="font-size:12.5px;margin-top:8px">Pamuk Nevresim · Antrasit</div><b style="font-size:13px">1.049 ₺</b></div>
+        <div><div style="height:150px;border-radius:10px;background:repeating-linear-gradient(90deg,#EDE3E3 0 5px,#F3EBEB 5px 10px)"></div><div style="font-size:12.5px;margin-top:8px">Saten Nevresim · Gül</div><b style="font-size:13px">1.249 ₺</b></div>
+        <div><div style="height:150px;border-radius:10px;background:#DCE2E6;box-shadow:inset 0 -40px 0 #CFD7DC"></div><div style="font-size:12.5px;margin-top:8px">Bambu Nevresim · Buz Mavisi</div><b style="font-size:13px">1.390 ₺</b></div>
+        <div><div style="height:150px;border-radius:10px;background:repeating-linear-gradient(135deg,#E6DCCB 0 9px,#EDE5D8 9px 18px)"></div><div style="font-size:12.5px;margin-top:8px">Pike Takımı · Bej</div><b style="font-size:13px">799 ₺</b></div>
+        <div><div style="height:150px;border-radius:10px;background:repeating-linear-gradient(90deg,#D5D9D2 0 6px,#DDE1DA 6px 12px)"></div><div style="font-size:12.5px;margin-top:8px">Ranforce Nevresim · Mint</div><b style="font-size:13px">899 ₺</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="pin" style="left:304px;top:272px">1</div>
+  <div style="position:absolute;left:300px;top:308px;width:210px;background:#fff;border:1px solid #E6E6E3;border-radius:12px;padding:12px 14px;font-size:12.5px;line-height:1.5;color:#555;box-shadow:0 12px 24px -16px rgba(0,0,0,.3)"><b style="display:block;color:#111;font-size:13.5px">Yalnızca fiyat filtresi</b>148 üründe beden, malzeme ve renk filtresi yok; kullanıcı aradığı ürüne ortalama 6 kez kaydırarak ulaşıyor.</div>
+</section>
+
+<!-- 6.2 · İade durumunu soran destek talepleri -->
+<section class="cv" id="re2">
+  <p class="cap"><b>Destek talepleri</b> · Ağustos 2026 · e-posta ve WhatsApp · 458 talep</p>
+  <div class="win" style="height:600px"><div class="wbar"><i></i><i></i><i></i><span>Destek kutusu · konulara göre</span></div>
+    <div style="display:grid;grid-template-columns:330px 1fr;height:calc(100% - 38px)">
+      <div style="border-right:1px solid #EFEFEC;padding:22px 24px">
+        <div style="font-size:13px;color:#888">Konulara göre dağılım</div>
+        <div style="margin-top:16px;display:grid;gap:14px;font-size:13.5px">
+          <div style="position:relative;padding:10px 12px;margin:-10px -12px;border:2px solid #E5484D;border-radius:10px;background:rgba(229,72,77,.05)"><div style="display:flex;justify-content:space-between"><b style="font-weight:600">İadem ne durumda?</b><b>142</b></div><div style="margin-top:6px;height:6px;border-radius:3px;background:#F0EEEA"><i style="display:block;width:100%;height:100%;border-radius:3px;background:#E5484D"></i></div></div>
+          <div><div style="display:flex;justify-content:space-between"><span>Siparişim nerede?</span><b style="font-weight:600">118</b></div><div style="margin-top:6px;height:6px;border-radius:3px;background:#F0EEEA"><i style="display:block;width:83%;height:100%;border-radius:3px;background:#B9B9B5"></i></div></div>
+          <div><div style="display:flex;justify-content:space-between"><span>Değişim talebi</span><b style="font-weight:600">64</b></div><div style="margin-top:6px;height:6px;border-radius:3px;background:#F0EEEA"><i style="display:block;width:45%;height:100%;border-radius:3px;background:#B9B9B5"></i></div></div>
+          <div><div style="display:flex;justify-content:space-between"><span>Ürün bilgisi</span><b style="font-weight:600">52</b></div><div style="margin-top:6px;height:6px;border-radius:3px;background:#F0EEEA"><i style="display:block;width:37%;height:100%;border-radius:3px;background:#B9B9B5"></i></div></div>
+          <div><div style="display:flex;justify-content:space-between"><span>Fatura</span><b style="font-weight:600">38</b></div><div style="margin-top:6px;height:6px;border-radius:3px;background:#F0EEEA"><i style="display:block;width:27%;height:100%;border-radius:3px;background:#B9B9B5"></i></div></div>
+          <div><div style="display:flex;justify-content:space-between"><span>Diğer</span><b style="font-weight:600">44</b></div><div style="margin-top:6px;height:6px;border-radius:3px;background:#F0EEEA"><i style="display:block;width:31%;height:100%;border-radius:3px;background:#B9B9B5"></i></div></div>
+        </div>
+        <div style="margin-top:22px;padding-top:16px;border-top:1px solid #EFEFEC;font-size:12.5px;color:#666;line-height:1.55"><b style="color:#E5484D">%31</b> talep yalnızca iade durumunu soruyor. Ortalama ilk yanıt süresi 7 saat.</div>
+      </div>
+      <div style="padding:10px 0">
+
+        <div style="display:grid;gap:0">
+          <div style="display:grid;grid-template-columns:28px 1fr 110px 70px;gap:12px;align-items:center;padding:13px 24px;border-bottom:1px solid #F1F1EE;font-size:13px"><i style="width:22px;height:22px;border-radius:50%;background:#EEE"></i><div><b style="font-weight:600">İade kargom ulaştı mı?</b><div style="color:#888;margin-top:2px">Merhaba, 22 Ağustos'ta iade gönderdim, para iadesi ne zaman yapılır…</div></div><span style="justify-self:start;font-size:11.5px;padding:3px 8px;border-radius:6px;background:rgba(229,72,77,.1);color:#C6363B">İade durumu</span><span style="color:#999;font-size:12px">31 Ağu</span></div>
+          <div style="display:grid;grid-template-columns:28px 1fr 110px 70px;gap:12px;align-items:center;padding:13px 24px;border-bottom:1px solid #F1F1EE;font-size:13px"><i style="width:22px;height:22px;border-radius:50%;background:#EEE"></i><div><b style="font-weight:600">İade süreci</b><div style="color:#888;margin-top:2px">İade formunu doldurdum ama bir dönüş alamadım, durumu nasıl…</div></div><span style="justify-self:start;font-size:11.5px;padding:3px 8px;border-radius:6px;background:rgba(229,72,77,.1);color:#C6363B">İade durumu</span><span style="color:#999;font-size:12px">31 Ağu</span></div>
+          <div style="display:grid;grid-template-columns:28px 1fr 110px 70px;gap:12px;align-items:center;padding:13px 24px;border-bottom:1px solid #F1F1EE;font-size:13px"><i style="width:22px;height:22px;border-radius:50%;background:#EEE"></i><div><b style="font-weight:600">Siparişim nerede</b><div style="color:#888;margin-top:2px">Kargo takip numarası çalışmıyor, siparişim ne zaman…</div></div><span style="justify-self:start;font-size:11.5px;padding:3px 8px;border-radius:6px;background:#F1F1EE;color:#666">Kargo</span><span style="color:#999;font-size:12px">30 Ağu</span></div>
+          <div style="display:grid;grid-template-columns:28px 1fr 110px 70px;gap:12px;align-items:center;padding:13px 24px;border-bottom:1px solid #F1F1EE;font-size:13px"><i style="width:22px;height:22px;border-radius:50%;background:#EEE"></i><div><b style="font-weight:600">Para iadesi</b><div style="color:#888;margin-top:2px">Ürünü geri gönderdim, iadem onaylandı mı öğrenebilir…</div></div><span style="justify-self:start;font-size:11.5px;padding:3px 8px;border-radius:6px;background:rgba(229,72,77,.1);color:#C6363B">İade durumu</span><span style="color:#999;font-size:12px">30 Ağu</span></div>
+          <div style="display:grid;grid-template-columns:28px 1fr 110px 70px;gap:12px;align-items:center;padding:13px 24px;border-bottom:1px solid #F1F1EE;font-size:13px"><i style="width:22px;height:22px;border-radius:50%;background:#EEE"></i><div><b style="font-weight:600">Beden değişimi</b><div style="color:#888;margin-top:2px">Tek kişilik aldım, çift kişilik ile değiştirmek istiyorum…</div></div><span style="justify-self:start;font-size:11.5px;padding:3px 8px;border-radius:6px;background:#F1F1EE;color:#666">Değişim</span><span style="color:#999;font-size:12px">29 Ağu</span></div>
+          <div style="display:grid;grid-template-columns:28px 1fr 110px 70px;gap:12px;align-items:center;padding:13px 24px;border-bottom:1px solid #F1F1EE;font-size:13px"><i style="width:22px;height:22px;border-radius:50%;background:#EEE"></i><div><b style="font-weight:600">İade ne aşamada?</b><div style="color:#888;margin-top:2px">Bir haftadır bekliyorum, iade sürecimle ilgili bilgi…</div></div><span style="justify-self:start;font-size:11.5px;padding:3px 8px;border-radius:6px;background:rgba(229,72,77,.1);color:#C6363B">İade durumu</span><span style="color:#999;font-size:12px">29 Ağu</span></div>
+          <div style="display:grid;grid-template-columns:28px 1fr 110px 70px;gap:12px;align-items:center;padding:13px 24px;border-bottom:1px solid #F1F1EE;font-size:13px"><i style="width:22px;height:22px;border-radius:50%;background:#EEE"></i><div><b style="font-weight:600">Fatura talebi</b><div style="color:#888;margin-top:2px">Kurumsal fatura kesilebilir mi, vergi numaramı…</div></div><span style="justify-self:start;font-size:11.5px;padding:3px 8px;border-radius:6px;background:#F1F1EE;color:#666">Fatura</span><span style="color:#999;font-size:12px">28 Ağu</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- İyi örnek · Rakip B mobil ürün sayfası -->
+<section class="cv" id="ux1-ex">
+  <p class="cap"><b>Rakip B</b> · mobil ürün sayfası · iyi örnek · 11 Eylül 2026</p>
+  <div class="phone" style="left:441px;top:62px"><div class="scr">
+    <div class="sb"><span>11:08</span><span>5G <i></i></span></div>
+    <div class="url">rakip-b.com</div>
+    <div class="lh"><span style="display:inline-block;width:64px;height:16px;border-radius:4px;background:#C9C9C5"></span><span class="ic"><span></span><span></span></span></div>
+    <div class="pimg" style="height:170px;background:linear-gradient(180deg,#E8EBEE,#DDE2E6)"><div class="bed" style="bottom:18px;height:86px;background:repeating-linear-gradient(90deg,#C3CBD3 0 6px,#CCD3DA 6px 12px)"><i class="pil a"></i><i class="pil b"></i></div></div>
+    <div class="pb"><h1>Saten Nevresim Takımı · Çift Kişilik</h1><div class="price">1.190 ₺</div></div>
+    <div class="cta" style="background:#1F2937">Sepete ekle</div>
+    <div class="mk ok" style="margin:14px 16px 0;padding:2px 12px;font-size:13px;border:1px solid #E6E6E3"><span class="b">✓</span>
+      <div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #EDEDEA"><span style="color:#16A34A">●</span><span><b style="font-weight:600">Yarın kargoda</b> · 3 Ekim'de kapınızda</span></div>
+      <div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #EDEDEA"><span style="color:#16A34A">●</span><span><b style="font-weight:600">30 gün ücretsiz iade</b> · kapıdan alınır</span></div>
+      <div style="display:flex;gap:10px;align-items:center;padding:8px 0"><span style="color:#16A34A">●</span><span><b style="font-weight:600">400 ₺ üzeri ücretsiz kargo</b></span></div>
+    </div>
+    <div class="fi ok" style="margin-top:12px"><span>ilk ekran sınırı</span></div>
+    <div class="acc" style="margin-top:10px">Ürün özellikleri</div>
+  </div></div>
+</section>
+
+<!-- UX · Ana sayfa performans ölçümü (sorun yok) -->
+<section class="cv" id="ux-perf">
+  <p class="cap"><b>Mobil ana sayfa performansı</b> · 12 Eylül 2026 · mobil, 4G · 5 ölçümün ortancası</p>
+  <div class="win" style="height:590px"><div class="wbar"><i></i><i></i><i></i><span>Performans ölçümü · loma.com.tr</span></div>
+    <div style="padding:30px 36px">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+        <div style="border:1px solid #ECECE9;border-radius:14px;padding:20px 22px"><div style="font-size:13px;color:#777">Largest Contentful Paint</div><div style="margin-top:8px;font-size:34px;font-weight:600;letter-spacing:-.03em">2,1 sn</div><div style="margin-top:12px;height:6px;border-radius:3px;background:linear-gradient(90deg,#16A34A 0 62%,#F59E0B 62% 84%,#E5484D 84%)"></div><div style="position:relative;height:0"><i style="position:absolute;left:52%;top:-12px;width:2px;height:12px;background:#111"></i></div><div style="margin-top:12px;font-size:12.5px;color:#16A34A;font-weight:600">İyi · hedef 2,5 sn altı</div></div>
+        <div style="border:1px solid #ECECE9;border-radius:14px;padding:20px 22px"><div style="font-size:13px;color:#777">Interaction to Next Paint</div><div style="margin-top:8px;font-size:34px;font-weight:600;letter-spacing:-.03em">140 ms</div><div style="margin-top:12px;height:6px;border-radius:3px;background:linear-gradient(90deg,#16A34A 0 40%,#F59E0B 40% 100%)"></div><div style="position:relative;height:0"><i style="position:absolute;left:28%;top:-12px;width:2px;height:12px;background:#111"></i></div><div style="margin-top:12px;font-size:12.5px;color:#16A34A;font-weight:600">İyi · hedef 200 ms altı</div></div>
+        <div style="border:1px solid #ECECE9;border-radius:14px;padding:20px 22px"><div style="font-size:13px;color:#777">Cumulative Layout Shift</div><div style="margin-top:8px;font-size:34px;font-weight:600;letter-spacing:-.03em">0,03</div><div style="margin-top:12px;height:6px;border-radius:3px;background:linear-gradient(90deg,#16A34A 0 40%,#F59E0B 40% 100%)"></div><div style="position:relative;height:0"><i style="position:absolute;left:12%;top:-12px;width:2px;height:12px;background:#111"></i></div><div style="margin-top:12px;font-size:12.5px;color:#16A34A;font-weight:600">İyi · hedef 0,1 altı</div></div>
+      </div>
+      <div style="margin-top:26px;font-size:13px;color:#777">Yüklenme sırası</div>
+      <div style="margin-top:12px;display:grid;gap:9px;font-size:12.5px">
+        <div style="display:grid;grid-template-columns:190px 1fr;align-items:center;gap:14px"><span>HTML</span><i style="display:block;height:10px;border-radius:5px;margin-left:0;width:12%;background:#B9B9B5"></i></div>
+        <div style="display:grid;grid-template-columns:190px 1fr;align-items:center;gap:14px"><span>Stil ve font</span><i style="display:block;height:10px;border-radius:5px;margin-left:10%;width:18%;background:#B9B9B5"></i></div>
+        <div style="display:grid;grid-template-columns:190px 1fr;align-items:center;gap:14px"><span>Kampanya görseli (LCP)</span><i style="display:block;height:10px;border-radius:5px;margin-left:22%;width:30%;background:#16A34A"></i></div>
+        <div style="display:grid;grid-template-columns:190px 1fr;align-items:center;gap:14px"><span>Ürün görselleri</span><i style="display:block;height:10px;border-radius:5px;margin-left:40%;width:34%;background:#B9B9B5"></i></div>
+        <div style="display:grid;grid-template-columns:190px 1fr;align-items:center;gap:14px"><span>Analitik ve etiketler</span><i style="display:block;height:10px;border-radius:5px;margin-left:58%;width:26%;background:#D6D6D2"></i></div>
+      </div>
+      <div style="margin-top:22px;padding-top:16px;border-top:1px solid #EFEFEC;font-size:13px;color:#555">Sonuç: ana sayfa ve kampanya sayfaları hedef aralıkta. Sorun ürün sayfasında (bkz. Technology &amp; Data, Bulgu 5.2).</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

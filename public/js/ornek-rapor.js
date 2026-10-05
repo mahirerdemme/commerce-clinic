@@ -7,7 +7,11 @@
    Alan → incelenen başlıklar → bulgular → görseller → öneri → aksiyon
    ========================================================= */
 const R={client:'Loma Ev',site:'loma.com.tr',sector:'Ev tekstili',period:'1–18 Eylül 2026',date:'24 Eylül 2026',
-  consultant:'Mahir Erdem',role:'Lead Consultant',initials:'CC',final:'8 Ekim 2026, 14:00',finalShort:'8 Ekim',overall:57,bench:64};
+  consultant:'Mahir Erdem',role:'Lead Consultant',initials:'CC',final:'8 Ekim 2026, 14:00',finalShort:'8 Ekim',overall:57,bench:64,
+  /* Final görüşmesi notları: görüşmeden sonra doldurulur, rapor sürüm 1.1 olur.
+     {date:'8 Ekim 2026', items:[{t:'Karar', d:'Açıklama'}], open:['Cevabı 3 iş günü içinde verilecek soru']} */
+  finalNotes:null};
+R.version=R.finalNotes?'1.1':'1.0';
 
 const TERMS={
   business:['Business & Positioning','İş Modeli ve Konumlandırma'],
@@ -136,7 +140,13 @@ const TOPIC_NOTE={
  'merch|Çapraz satış, üst satış, setler':{r:'Set ve tamamlayıcı ürün önerisi yok; kampanya takvimi bulgusuyla birlikte ele alındı.',ref:['bp1']},
  'acquisition|Kanal dönüşüm sinyalleri':{r:'Kanal verisi ölçüm hatası nedeniyle eksik; ayrıntısı Technology & Data alanında.',ref:['td1']}
 };
-const IMG={td1:'/media/ce3756830b42.jpg',td2:'/media/7a4a6fde487f.jpg',re1:'/media/81b47ec5847d.jpg',bp1:'/media/0d4a279fea82.jpg',mc1:'/media/80ab5c18343f.jpg',am1:'/media/733448aefc3e.jpg',og1:'/media/c00f40266935.jpg'};
+/* bulgu görselleri: tek görsel ya da görsel sırasına göre dizi · EX: "İyi örnek" görseli · TIMG: incelenen başlık notu görseli
+   /media/rapor/*: design/rapor-gorselleri/gorseller.html'den üretilir (Loma Ev kurgusal mağaza) */
+const IMG={ux1:['/media/rapor/ux1-a.webp','/media/rapor/ux1-b.webp'],ux2:['/media/rapor/ux2-a.webp','/media/rapor/ux2-b.webp'],ux3:'/media/rapor/ux3.webp',mr1:'/media/rapor/mr1.webp',re2:'/media/rapor/re2.webp',
+  td1:'/media/ce3756830b42.jpg',td2:'/media/7a4a6fde487f.jpg',re1:'/media/81b47ec5847d.jpg',bp1:'/media/0d4a279fea82.jpg',mc1:'/media/80ab5c18343f.jpg',am1:'/media/733448aefc3e.jpg',og1:'/media/c00f40266935.jpg'};
+const EXIMG={ux1:'/media/rapor/ux1-ex.webp'};
+const TIMG={'ux|Ana sayfa ve açılış sayfaları':'/media/rapor/ux-perf.webp'};
+const imgOf=(k,i)=>{const v=IMG[k];return Array.isArray(v)?(v[i]||''):(i===0&&v)||''};
 const F=[
  {k:'ux1',m:'Mobil dönüşüm oranı',area:'ux',s:['Ürün detay','Mobil deneyim','Güven unsurları'],p:'bad',act:'pdp',
   t:'Mobil ürün sayfası, karar vermek için gereken bilgiyi ilk ekranda göstermiyor.',
@@ -250,12 +260,12 @@ const PHASES=[
 /* dönem kuralı: etki × efor */
 const PHASE_RULE=(imp,eff)=>((imp===3&&eff<=2)||(imp===2&&eff===1))?1:((imp===3&&eff===3)||(imp===2&&eff===2)||(imp===1&&eff===1))?2:3;
 const impW=['','Düşük etki','Orta etki','Yüksek etki'],effW=['','düşük efor','orta efor','yüksek efor'];
-/* kaynak: [ad, ayrıntı, monogram | 'talk'] — gerçek logo panelden görsel olarak eklenebilir */
-const SOURCES=[['Google Analytics 4','1 Haziran–31 Ağustos 2026','GA4'],['ikas yönetim paneli','Salt okunur erişim','ik'],['Meta Ads','Son 6 ay','M'],['Google Ads','Son 6 ay','G'],['Klaviyo','Akış ve kampanya raporları','K'],['Microsoft Clarity','14 günlük oturum kaydı','C'],['Discovery görüşmesi','3 Eylül 2026, 60 dk','talk']];
+/* kaynak: [ad, ayrıntı, monogram | 'talk', logo dosyası (public/media/brands, opsiyonel)] */
+const SOURCES=[['Google Analytics 4','1 Haziran–31 Ağustos 2026','GA4','ga4.png'],['ikas yönetim paneli','Salt okunur erişim','ik','ikas.png'],['Meta Ads','Son 6 ay','M','meta-ads.png'],['Google Ads','Son 6 ay','G','google-ads.png'],['Klaviyo','Akış ve kampanya raporları','K','klaviyo.png'],['Microsoft Clarity','14 günlük oturum kaydı','C','microsoft-clarity.png'],['Discovery görüşmesi','3 Eylül 2026, 60 dk','talk']];
 /* incelenen rakipler: ad, neden seçildi, neye baktık */
 const COMP=[['Rakip A','Aynı segment, benzer fiyat','Ana sayfa · kampanyalar · kargo ve iade'],['Rakip B','Mobil deneyimi güçlü','Ürün sayfası · sepet ve ödeme'],['Rakip C','Pazaryerinde en çok görülen','Fiyat · ürün gamı · kargo'],['Rakip D','Yeni ve hızlı büyüyen','Kampanyalar · reklam kreatifleri'],['Rakip E','Segmentin premium ucu','Ürün sunumu · değer önerisi · iade']];
 SOURCES.push(['Rakip incelemesi',COMP.length+' marka · 10–11 Eylül 2026','R']);
-const srcIc=s=>s[2]==='talk'?`<span class="sic" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 3.5h10a1 1 0 0 1 1 1v5.5a1 1 0 0 1-1 1H7l-3 2.5V11H3a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></span>`:`<span class="sic" aria-hidden="true">${esc(s[2])}</span>`;
+const srcIc=s=>s[2]==='talk'?`<span class="sic" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 3.5h10a1 1 0 0 1 1 1v5.5a1 1 0 0 1-1 1H7l-3 2.5V11H3a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></span>`:s[3]?`<span class="sic sic-img" aria-hidden="true"><img src="/media/brands/${s[3]}" alt="" width="16" height="16" loading="lazy"></span>`:`<span class="sic" aria-hidden="true">${esc(s[2])}</span>`;
 const THREE=[
  {t:'Mobil ürün sayfası karar vermeye yetmiyor.',d:'Teslimat, iade ve kargo bilgisi ilk ekranın altında kalıyor. Trafiğin %78\'i mobil; mobil dönüşüm %0,9, masaüstünde %2,1.',f:['ux1','ux2']},
  {t:'Kararlar eksik veriyle alınıyor.',d:'Ağustos\'taki 1.284 siparişin 861\'i GA4\'e ulaştı. Kanal ve bütçe kararları bu eksik tablo üzerinden veriliyor; sonuçları sahiplenen ortak bir yapı da yok.',f:['td1','og1']},
@@ -307,7 +317,7 @@ function rail(cur){
   const grp=(n,title,sub,on,body)=>`<div class="grp${on?' on':''}"><p class="gh"><span class="gnm">${n}</span><b>${title}</b><small>${sub}</small></p><ul>${body}</ul></div>`;
   return grp(1,'Durum','genel tablo',cur==='genel-bakis',li('genel-bakis','<span class="t">Genel bakış</span>',cur==='genel-bakis'))
   +grp(2,'Teşhis','8 alan',cur.startsWith('alan/'),AREAS.map(a=>li('alan/'+a.id,`<span class="dot ${st(a.score)}"></span><span class="t">${esc(T(a.id))}</span><span class="s">${a.score}</span>`,cur==='alan/'+a.id)).join(''))
-  +grp(3,'Plan','ne yapmalı, hangi sırayla',cur==='aksiyon-plani',li('aksiyon-plani',`<span class="t">${esc(T('roadmap'))}</span>`,cur==='aksiyon-plani')+li('aksiyon-plani/liste',`<span class="t">${esc(T('plan'))}</span>`,false)+li('aksiyon-plani/ilerleme','<span class="t">İlerleme takibi</span>',false))
+  +grp(3,'Plan','ne yapmalı, hangi sırayla',cur==='aksiyon-plani',li('aksiyon-plani',`<span class="t">${esc(T('roadmap'))}</span>`,cur==='aksiyon-plani')+li('aksiyon-plani/liste',`<span class="t">${esc(T('plan'))}</span>`,false)+li('aksiyon-plani/ilerleme','<span class="t">İlerleme takibi</span>',false)+li('aksiyon-plani/final','<span class="t">Final görüşmesi</span>',false))
   +`<div class="rail-foot"><button type="button" class="tour-btn" data-tour><span class="ic">?</span><span><b>Bu raporu nasıl okumalıyım?</b><small>Adım adım kısa tur</small></span></button>
     <div class="rail-lang"><span id="tlL">Terim dili</span><div class="seg" role="group" aria-labelledby="tlL"><button type="button" data-lang="orig" aria-pressed="${LANG==='orig'}">Orijinal</button><button type="button" data-lang="tr" aria-pressed="${LANG==='tr'}">Türkçe</button></div></div>
   </div>`;
@@ -325,10 +335,10 @@ function finding(f){
     <div class="fx-top"><span class="badge ${f.p}"><i></i>${PR[f.p]}</span><span class="badge topic">${esc(f.ss[0])}</span></div>
     <h3><span class="no">${f.no}</span><span>${esc(f.t)}</span></h3>
     ${f.m?`<p class="metric"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2.5 12.5 6 8.5l2.5 2.5 5-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Etkilediği metrik: <b>${esc(f.m)}</b></p>`:''}
-    ${f.img&&f.img.length?`<div class="gal${f.img.length===1?' one':''}">${f.img.map((g,i)=>slot(f.no+(f.img.length>1?'-'+L[i]:''),g[0],null,'',i===0?IMG[f.k]:'')).join('')}</div>`:''}
+    ${f.img&&f.img.length?`<div class="gal${f.img.length===1?' one':''}">${f.img.map((g,i)=>slot(f.no+(f.img.length>1?'-'+L[i]:''),g[0],null,'',imgOf(f.k,i))).join('')}</div>`:''}
     <div class="two"><div><h4>Ne gördük?</h4><p>${esc(f.obs)}</p></div><div><h4>Neden önemli?</h4><p>${esc(f.why)}</p></div></div>
     <div class="recx"><h4>Önerimiz</h4><p>${esc(f.rec)}</p>
-      ${f.ex?`<div class="ex">${slot('İyi örnek',f.ex,null)}</div>`:''}
+      ${f.ex?`<div class="ex">${slot('İyi örnek',f.ex,null,'',EXIMG[f.k]||'')}</div>`:''}
       ${a?`<a class="to-plan" href="#aksiyon-plani/${a.n}"><span><small>Aksiyon planındaki karşılığı</small><b>${a.n}. ${esc(a.t)}</b></span><i aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>`:''}</div>
   </article>`;
 }
@@ -345,7 +355,7 @@ function topicRow(a,n){
   return `<li class="tpc"><button type="button" class="tp-h" aria-expanded="false" aria-controls="${id}"><span class="dot ${s}"></span><span class="tt">${esc(n)}</span><span class="tc">${meta}</span><svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="tp-b" id="${id}" hidden>
       <div class="tp-g"><div><h4>Neye baktık?</h4><p>${esc(TOPIC_TPL[n]||'')}</p></div>${res?`<div><h4>Sonuç</h4><p>${esc(res)}</p></div>`:''}</div>
-      ${note.img?`<div class="tp-img">${slot('Görsel',note.img,null)}</div>`:''}
+      ${note.img?`<div class="tp-img">${slot('Görsel',note.img,null,'',TIMG[a.id+'|'+n]||'')}</div>`:''}
       ${(own.length||refs.length||good.length)?`<div class="tp-l">${own.map(f=>`<a class="ref" href="${fHref(f)}">Bulgu ${f.no}</a>`).join('')}${refs.map(f=>`<a class="ref" href="${fHref(f)}">${esc(T(f.area))} · Bulgu ${f.no}</a>`).join('')}${good.length?`<span class="ref ok-ref">${good.length} güçlü yan</span>`:''}${own.length>1?`<button type="button" class="tp-f" data-topic="${esc(n)}">Bu başlığın bulgularını listele</button>`:''}</div>`:''}
     </div></li>`;
 }
@@ -388,6 +398,7 @@ function vOverview(){
           </div>
         </div>
         <div class="ggrid">${AREAS.map(a=>`<a href="#alan/${a.id}">${gauge(a.score,{w:160,stroke:14,big:34,bench:null})}<span class="gn">${esc(T(a.id))}</span><span class="gc">${a.f.length} bulgu</span></a>`).join('')}</div>
+        <p class="h-note"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.2v3.8M8 5.1v.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Alan skorları, her alanda incelenen başlıklardaki bulgulara göre verilir; genel skor bu skorlardan hesaplanır. Skorlar check-up tarihindeki durumu gösterir, aksiyonlar tamamlandıkça değişmez.</span></p>
       </div>
     </div>
 
@@ -451,8 +462,17 @@ function actCard(a){
       <div><h4>Nereden geldi?</h4><p class="ac-src">${areas.map(id=>`<span>${esc(T(id))}</span> ${a.src.filter(f=>f.area===id).map(f=>`<a href="${fHref(f)}">Bulgu ${f.no}</a>`).join(' ')}`).join('<br>')}</p></div>
       <div><h4>Yapıldığında ne değişmeli?</h4><p>${esc(a.exp)}</p></div>
     </div>
+    <div class="ac-own"><label for="own-${a.k}">Sorumlu</label><select id="own-${a.k}" data-own="${a.k}"><option value="">Final görüşmesinde belirlenecek</option>${(typeof people!=='undefined'?people:[]).map(p=>`<option value="${esc(p.e)}"${OWN[a.k]===p.e?' selected':''}>${esc(p.e)}</option>`).join('')}</select></div>
     ${a.sig?`<p class="ac-sig"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7v4M8 4.8v.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Nasıl anlaşılır?</span> ${esc(a.sig)}</p>`:''}
   </article>`;
+}
+function finalBlock(){
+  const N=R.finalNotes;
+  return `<div class="block" id="final"><div class="block-head"><h2 class="h2">Final görüşmesi notları</h2><p class="micro">${N?esc(N.date)+' · Sürüm 1.1':'Sürüm 1.0'}</p></div>
+    ${N?`<div class="card fn"><ol class="fn-l">${(N.items||[]).map(i=>`<li><b>${esc(i.t)}</b><span>${esc(i.d)}</span></li>`).join('')}</ol>
+      ${N.open&&N.open.length?`<div class="fn-open"><h4>Açık sorular</h4><ul>${N.open.map(q=>`<li>${esc(q)}</li>`).join('')}</ul><p class="micro">Cevaplar en geç 3 iş günü içinde yazılı olarak iletilir.</p></div>`:''}</div>`
+    :`<div class="card fn fn-empty"><span class="fn-ic" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><rect x="2.5" y="3" width="11" height="10.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2.5 6.5h11M5.5 1.5v3M10.5 1.5v3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span><div><b>${esc(R.final)}</b><p>Final görüşmesinde konuşulan kararlar, aksiyonların sorumluları ve açık sorular görüşmeden sonra buraya eklenir; rapor Sürüm 1.1 olarak güncellenir.</p></div></div>`}
+  </div>`;
 }
 function vPlan(){
   const all=progress(ACTIONS),types=[...new Set(ACTIONS.map(a=>a.type))];
@@ -488,6 +508,7 @@ function vPlan(){
         ${recent.length?`<details class="pg-rec"><summary><h4>Son güncellemeler</h4><svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><ul>${recent.map(x=>`<li><span class="dot ${x.s===2?'ok':'warn'}"></span><span><b>${esc(who(x.by))}</b>, "${esc(x.a.t)}" aksiyonunu <b>${ST_W[x.s].toLowerCase()}</b> olarak işaretledi.</span><small>${esc(x.at)}</small></li>`).join('')}</ul></details>`:''}
       </div>
     </div>
+    ${finalBlock()}
     ${pager('alan/'+AREAS[AREAS.length-1].id,null,T(AREAS[AREAS.length-1].id),null)}
   </section>`;
 }
@@ -530,6 +551,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#how').classList
 const ST_W=['Başlanmadı','Devam ediyor','Tamamlandı'],ST_C=['st0','st1','st2'];
 let STAT=(()=>{try{const v=localStorage.getItem('cc-status');if(v)return JSON.parse(v)}catch(e){}return {pdp:{s:2,by:'ayse@loma.com.tr',at:'29 Eyl 2026'},ritual:{s:1,by:'mehmet@loma.com.tr',at:'30 Eyl 2026'},track:{s:1,by:'ayse@loma.com.tr',at:'1 Eki 2026'},menu:{s:2,by:'mehmet@loma.com.tr',at:'2 Eki 2026'}}})();
 const sOf=a=>(STAT[a.k]||{s:0}).s;
+/* aksiyon sorumlusu: rapora erişimi olan kişilerden seçilir (prototipte tarayıcıda) */
+let OWN=(()=>{try{const v=localStorage.getItem('cc-owner');if(v)return JSON.parse(v)}catch(e){}return {pdp:'ayse@loma.com.tr',ritual:'mehmet@loma.com.tr',track:'eticaret@ajans.com',menu:'mehmet@loma.com.tr'}})();
+function setOwner(k,e){if(e)OWN[k]=e;else delete OWN[k];try{localStorage.setItem('cc-owner',JSON.stringify(OWN))}catch(x){}}
 const who=e=>e?e.split('@')[0].replace(/^./,c=>c.toUpperCase()):'';
 function setStatus(k,s){const d=new Date();STAT[k]={s,by:(typeof me!=='undefined'&&me)||'siz',at:d.toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'})};try{localStorage.setItem('cc-status',JSON.stringify(STAT))}catch(e){}const y=scrollY;render();window.scrollTo(0,y)}
 function progress(list){const c=[0,0,0];list.forEach(a=>c[sOf(a)]++);return c}
@@ -538,7 +562,7 @@ function pbar(c,big){const n=c[0]+c[1]+c[2]||1;return `<div class="pb${big?' big
 /* ---------- render + routing ---------- */
 let curPh='all',curArea='';
 function render(){
-  $('#main').innerHTML=vOverview()+AREAS.map(vArea).join('')+vPlan()+`<footer class="rfoot"><span>Bu rapordaki bulgular ve yorumlar Commerce Clinic tarafından hazırlanmıştır. Gizlidir; yalnızca yetkilendirilen kişilerle paylaşılır.</span><span>© 2026 Commerce Clinic · Tüm hakları saklıdır.</span></footer>`;
+  $('#main').innerHTML=vOverview()+AREAS.map(vArea).join('')+vPlan()+`<footer class="rfoot"><span>Bu rapordaki bulgular ve yorumlar Commerce Clinic tarafından hazırlanmıştır. Gizlidir; yalnızca yetkilendirilen kişilerle paylaşılır. Sürüm ${R.version} · ${esc(R.date)}</span><span>© 2026 Commerce Clinic · Tüm hakları saklıdır.</span></footer>`;
   $('#how').innerHTML=howHTML();$('#how [data-close]').addEventListener('click',()=>how(false));
   $$('.pager button').forEach(b=>b.addEventListener('click',()=>{location.hash=b.dataset.go}));
   $$('.filters button').forEach(b=>b.addEventListener('click',()=>{curPh=b.dataset.f;applyPlan()}));
@@ -549,6 +573,7 @@ function render(){
   $$('[data-clear]').forEach(b=>b.addEventListener('click',()=>clearTopic(b.closest('.view'))));
   $$('.prf button').forEach(b=>b.addEventListener('click',()=>prio(b)));
   $$('[data-st]').forEach(b=>b.addEventListener('click',()=>setStatus(b.dataset.st,+b.dataset.v)));
+  $$('[data-own]').forEach(x=>x.addEventListener('change',()=>{setOwner(x.dataset.own,x.value);toast(x.value?`Sorumlu: ${x.value}`:'Sorumlu kaldırıldı.')}));
   route(true);
 }
 function topic(b){const v=b.closest('.view');v.dataset.topic=b.dataset.topic;filterArea(v,true)}
@@ -574,7 +599,7 @@ function route(keep){
   const h=decodeURIComponent(location.hash.slice(1))||'genel-bakis',parts=h.split('/');
   let view=parts[0],target=null;
   if(view==='alan'){view='alan/'+(parts[1]||'');target=parts[2]?'f-'+parts[2]:null}
-  else if(view==='aksiyon-plani'&&parts[1]){target=(parts[1]==='liste'||parts[1]==='ilerleme')?parts[1]:'r-'+parts[1];curPh='all';curArea=''}
+  else if(view==='aksiyon-plani'&&parts[1]){target=(parts[1]==='liste'||parts[1]==='ilerleme'||parts[1]==='final')?parts[1]:'r-'+parts[1];curPh='all';curArea=''}
   else if(view==='90-gun'){view='aksiyon-plani'}
   if(!$(`[data-view="${view}"]`))view='genel-bakis';
   $$('.view').forEach(v=>{v.hidden=v.dataset.view!==view;if(!v.hidden)clearTopic(v)});
@@ -713,11 +738,21 @@ function share(){
 $('#shareBtn').addEventListener('click',share);
 $('#share').addEventListener('click',e=>{if(e.target.id==='share')$('#share').hidden=true});
 $('#meBtn').addEventListener('click',e=>{let m=$('.me-menu');if(m){m.remove();return}m=document.createElement('div');m.className='me-menu';const r=e.currentTarget.getBoundingClientRect();m.style.top=(r.bottom+8)+'px';m.style.right=(innerWidth-r.right)+'px';
-  m.innerHTML=`<p>${esc(me)}</p><button type="button" data-a="share">Raporu paylaş</button><button type="button" data-a="out">Çıkış yap</button>`;document.body.appendChild(m);
+  m.innerHTML=`<p>${esc(me)}</p><button type="button" data-a="share">Raporu paylaş</button><button type="button" data-a="print">Yazdır / PDF olarak kaydet</button><button type="button" data-a="out">Çıkış yap</button>`;document.body.appendChild(m);
+  m.querySelector('[data-a=print]').onclick=()=>{m.remove();window.print()};
   m.querySelector('[data-a=share]').onclick=()=>{m.remove();share()};m.querySelector('[data-a=out]').onclick=()=>{m.remove();me=null;LS.set('cc-me',null);meBtn();$('#auth').hidden=false;authStep1()}});
 document.addEventListener('click',e=>{const m=$('.me-menu');if(m&&!m.contains(e.target)&&e.target.id!=='meBtn')m.remove()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#share').hidden=true});
 if(!me){me=OWNER;LS.set('cc-me',me)}meBtn();
+/* görsel büyütme: rapordaki görsele tıklayınca tam boy açılır; tıklama ya da Esc ile kapanır */
+document.addEventListener('click',e=>{const im=e.target.closest('img[data-zoom]');if(!im)return;
+  const z=document.createElement('div');z.className='zoom';z.setAttribute('role','dialog');z.setAttribute('aria-label',im.alt||'Görsel');
+  z.innerHTML=`<img src="${im.currentSrc||im.src}" alt="${esc(im.alt||'')}"><p>${esc(im.alt||'')}</p><button type="button" aria-label="Kapat">×</button>`;
+  const close=()=>{z.remove();document.removeEventListener('keydown',k)},k=ev=>{if(ev.key==='Escape')close()};
+  z.addEventListener('click',close);document.addEventListener('keydown',k);document.body.appendChild(z);z.querySelector('button').focus()});
+/* yazdırırken raporun tamamı basılır; sonra kalınan bölüme dönülür */
+addEventListener('beforeprint',()=>{document.body.classList.add('printing');$$('.view').forEach(v=>v.hidden=false);$$('#planBody .ac,#planBody .ph-g').forEach(r=>r.hidden=false)});
+addEventListener('afterprint',()=>{document.body.classList.remove('printing');route(true)});
 render();
 })();
 

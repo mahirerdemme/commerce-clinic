@@ -843,3 +843,45 @@ details.pg-rec ul{margin-top:.6rem}
 .rail .tour-btn{border-color:#EFE9E6;background:radial-gradient(55% 80% at 100% 0%,rgba(229,131,160,.11) 0%,rgba(229,131,160,0) 100%),radial-gradient(40% 60% at 0% 100%,rgba(243,150,117,.07) 0%,rgba(243,150,117,0) 100%),#fff}
 .rail .tour-btn:hover{border-color:#E3DBD7}
 .rail .tour-btn .ic{background:#FBF4F2;color:var(--cc-text);border-color:#EDE6E3}
+
+/* veri kaynakları: araç logoları */
+.sic.sic-img{background:#fff}
+.sic.sic-img img{width:16px;height:16px;object-fit:contain;border-radius:3px}
+/* Health Overview: skorların nasıl verildiğine dair ince not */
+.h-note{display:flex;gap:.5rem;align-items:flex-start;margin:0;padding:.9rem 1.5rem 1rem;border-top:1px solid var(--cc-border);font-size:.8125rem;line-height:1.5;color:var(--cc-text-2)}
+.h-note svg{flex:none;margin-top:.15rem}
+
+/* v27 · aksiyon sorumlusu, final görüşmesi notları, yazdırma */
+.ac-own{display:flex;align-items:center;gap:.6rem;margin:.9rem 0 0 2.9rem;font-size:.8125rem;color:var(--cc-text-2)}
+.ac-own label{font-weight:500;color:var(--cc-text)}
+.ac-own select{font:inherit;font-size:.8125rem;color:var(--cc-text);background:var(--cc-white);border:1px solid var(--cc-border);border-radius:8px;padding:.35rem 2rem .35rem .6rem;appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23666' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .5rem center;background-size:12px}
+.ac-own select:focus-visible{outline:2px solid var(--cc-text);outline-offset:1px}
+@media (max-width:760px){.ac-own{margin-left:0;flex-wrap:wrap}}
+.fn{background:var(--cc-white);border:1px solid var(--cc-border);border-radius:var(--r-l);padding:1.4rem clamp(1.25rem,3vw,1.75rem)}
+.fn-empty{display:flex;gap:1rem;align-items:flex-start}
+.fn-empty b{font-weight:500}
+.fn-empty p{margin:.3rem 0 0;color:var(--cc-text-2);font-size:.9375rem;line-height:1.55;max-width:40em}
+.fn-ic{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--cc-bg);border:1px solid var(--cc-border)}
+.fn-l{margin:0;padding-left:1.2rem}
+.fn-l li{margin:.6rem 0}.fn-l b{display:block;font-weight:500}.fn-l span{color:var(--cc-text-2)}
+.fn-open{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--cc-border)}
+.fn-open h4{margin:0 0 .4rem}
+
+@media print{
+  @page{size:A4;margin:14mm 12mm}
+  body{background:#fff!important}
+  .bar,.rail,.pager,.tour-band,.how-card button,.how-card .btn,.stw .sts button:not([aria-pressed="true"]),.filters,.pg-top .pg-l,#menuBtn,.ccb,.ccm,.toast,.me-menu,#auth,#share,.help,.flag,.ldr{display:none!important}
+  .view{display:block!important}
+  .view+.view{break-before:page}
+  .fx,.ac,.block,.slot,.fn{break-inside:avoid}
+  .ac-own select{border:0;padding:0;background:none}
+  a{text-decoration:none!important;color:inherit!important}
+  *{box-shadow:none!important;animation:none!important;transition:none!important}
+}
+/* görsel büyütme */
+.zoom{position:fixed;inset:0;z-index:80;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;padding:3rem 1.25rem 2rem;background:rgba(10,10,10,.82);cursor:zoom-out}
+.zoom img{max-width:min(1400px,100%);max-height:calc(100dvh - 8rem);border-radius:12px;background:#fff;box-shadow:0 30px 80px -30px rgba(0,0,0,.6)}
+.zoom p{margin:0;max-width:60em;text-align:center;color:#E8E8E6;font-size:.875rem;line-height:1.5}
+.zoom button{position:absolute;top:1rem;right:1rem;width:40px;height:40px;border:0;border-radius:10px;background:rgba(255,255,255,.12);color:#fff;font-size:1.5rem;line-height:1;cursor:pointer}
+@media print{.zoom{display:none!important}}

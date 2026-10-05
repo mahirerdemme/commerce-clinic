@@ -33,7 +33,7 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 ## Ücretsiz rehber
 
 - Tanıtım sayfası `/rehber/e-ticaret-altyapi-gecisi` indexlenir. Form doldurana `/rehber/e-ticaret-altyapi-gecisi/kontrol-listesi` bağlantısı verilir; bu sayfa noindex ve sitemap dışı, ama şifreli değil.
-- 78 kontrol maddesi var; 13'ü koşullu ve "Bizde yok" ile çıkarılabilir (`design/kontrol-listesi/altyapi-gecisi.mjs`). Mahir son okumayı yapmalı. Madde değişince script yeniden çalıştırılır; tanıtım sayfasındaki adım listesi de güncellenir.
+- 78 kontrol maddesi var; 13'ü koşullu etiketli, her madde × ile kaldırılabilir (`design/kontrol-listesi/altyapi-gecisi.mjs`). Mahir son okumayı yapmalı. Madde değişince script yeniden çalıştırılır; tanıtım sayfasındaki adım listesi de güncellenir.
 - Her madde × ile listeden kaldırılabilir; adımın altında "N madde kaldırıldı · Göster" ile geri alınır. Kullanıcı kendi maddesini ekleyemez (karar: liste bizim uzmanlığımız, link de kısa kalsın).
 - İlerleme tarayıcıda tutulur (Safari 7 gün girilmezse siler). "İlerlemeyi kaydet" durumu bağlantının `#k=` kısmına yazar: her cihazda açılır, ekiple paylaşılır, sunucuya gitmez. Madde sırası değişirse kod sürümü (`1.`) artırılmalı.
 - Teşekkür metni "bir kopyasını e-postanıza da gönderdik" diyor; Resend bağlanınca bağlantı gerçekten e-postayla gitmeli.

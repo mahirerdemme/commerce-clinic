@@ -76,10 +76,11 @@ Hedef: blog yazılarından SEO'da olabildiğince verim almak. Yazılar Kadir'le 
 Kurgu: Gündem haftada iki kez (salı, cuma 08:00) otomatik hazırlanır, Kadir onaylayınca gider; ekip ve aboneler alır, sitede yayınlanmaz (SEO'ya etkisi yok). Pratik yazılar blogda yayınlanır, abonelere de gider. Sitede ayrıca anlatılmıyor; LinkedIn ve sosyal medyada duyurulacak.
 
 - Hazır: şablon (`lib/email/newsletter.ts`), kapak (`/api/bulten/kapak`), haber toplama (`scripts/bulten/haberler.mjs`, 9 kaynak), sayıdan HTML (`olustur.mjs`), test gönderimi (`gonder.mjs --test`). İlk sayı `scripts/bulten/sayilar/2026-10-06.json`; Gmail testi tamam.
-- Yapılacak: önizleme e-postasında "Onayla ve gönder" + sitede onay sayfası (onaysız hiçbir şey gitmez).
-- Yapılacak: Claude Code zamanlanmış görevi (Kadir'in Max aboneliği, salı ve cuma 08:00). API'ye gerek yok; ileride istenirse aynı script'ler API ile Vercel'e taşınır.
+- Hazır: onay sistemi. Site önizlemeyi gönderir (`/api/bulten/onizleme-gonder`), "Onayla ve gönder" → `/bulten/onay` → gönderim. Onaysız hiçbir şey gitmez. Alan adına kadar test modu, yalnız `BULTEN_TEST_TO`.
+- Hazır: Claude Code zamanlanmış görevi "Commerce Notes · Gündem bülteni" (salı ve cuma 08:00, Opus 5.5, `bulten` ortamı, ağ: Full). https://claude.ai/code/routines/trig_017yvEzHwwA8ho1kK9mEvNTm. Görev gizli bilgi taşımaz.
+- Bekliyor: görev GitHub'a yazamıyor (403). Claude hesabı **kadirec** GitHub'ına bağlı, repo **mahirerdemme**'de. mahirerdemme repoya kadirec'i collaborator ekledi; Kadir daveti kabul edince görev bir kez elle çalıştırılıp denenecek.
 - Yapılacak: footer ve blogdaki bülten formlarını Resend'deki kitleye bağlamak; kayıtta iki seçenek (Gündem / Pratik yazılar), her biri için ayrı çıkış.
-- Yapılacak: ekip adresleri (Kadir'den).
+- Yapılacak: ekip adresleri (Kadir'den). Alan adı doğrulanınca onay/test alıcılarına mahir@agesoft.com.tr eklenecek (`BULTEN_ONAY_TO`, `BULTEN_TEST_TO`, virgülle).
 - Bekliyor: alan adı doğrulanana kadar Resend yalnız mahirerdemme@gmail.com'a gönderebiliyor; gönderen `onboarding@resend.dev`. Alan adı sonrası gönderen `bulten@thecommerceclinic.com` gibi olacak.
 - Bekliyor: e-posta alt bilgisindeki şirket unvanı / adres / MERSİS yer tutucu (yasal metinlerle aynı anda).
 - Güvenlik: Resend anahtarı sohbette paylaşıldı; her şey çalışınca Resend'de yenisi oluşturulup eskisi silinmeli (`vercel env add RESEND_API_KEY` + `.env.local`).

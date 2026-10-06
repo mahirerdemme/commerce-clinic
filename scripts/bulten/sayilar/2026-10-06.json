@@ -1,0 +1,61 @@
+{
+ "subject": "Google Ads promosyonları kendisi çekecek, TikTok'ta tek tıkla ödeme",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "6 Ekim 2026",
+ "issue": 1,
+ "items": [
+  {
+   "tag": "Reklam",
+   "title": "Google Ads, sitedeki kampanyaları reklamlara kendisi ekleyecek",
+   "summary": "12 Ekim'den itibaren Google, sitenizdeki promosyonları otomatik bulup Arama ve Performance Max kampanyalarına ekleyecek. Şimdilik konum öğeleri bağlı kampanyalar için geçerli.",
+   "takeaway": "Sitede süresi geçmiş kampanya kalmasın; reklamda yanlış indirim görünebilir. İstemiyorsanız ayarı kontrol edin.",
+   "url": "https://www.seroundtable.com/google-ads-automated-promotions-october-12-42223.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Sosyal ticaret",
+   "title": "TikTok'a yapay zekâ alışveriş asistanı ve tek tıkla ödeme geldi",
+   "summary": "TikTok, ürün keşfi ve satın almaya yardımcı olan bir alışveriş asistanını kullanıma sundu; akışta görülen ürün tek tıkla satın alınabilecek.",
+   "takeaway": "TikTok Shop'ta ürün bilgileri ve görselleri, asistanın önereceği içeriğin kendisi olacak.",
+   "url": "https://webrazzi.com/2026/10/06/tiktok-yapay-zeka-destekli-alisveris-asistanini-ve-tek-tikla-odeme-ozelligini-kullanima-sundu/",
+   "source": "Webrazzi"
+  },
+  {
+   "tag": "Ölçüm",
+   "title": "Google, AI Overviews linklerine takip parametresi eklemeyi test ediyor",
+   "summary": "Test yaygınlaşırsa, Google'ın yapay zekâ özetlerinden gelen tıklamalar normal arama sonuçlarından ayrı görülebilecek.",
+   "takeaway": "Yapay zekâ aramasından gelen trafiği ayrı izlemek mümkün olacak; analitikte bu kanal için yer açın.",
+   "url": "https://www.seroundtable.com/google-ai-overview-link-tracking-parameters-42219.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Sadakat",
+   "title": "Google'ın sadakat programı eşleştirmesi AI Mode ve Gemini'ye genişledi",
+   "summary": "Merchant Center'daki Loyalty Customer Match artık AI Mode ve Gemini'de de çalışıyor ve daha fazla bölgeye açıldı.",
+   "takeaway": "Sadakat programı olan markalar, üye fiyatlarını Merchant Center üzerinden yapay zekâ aramasında da gösterebilir.",
+   "url": "https://www.seroundtable.com/google-loyalty-customer-match-expands-42216.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Fiyat",
+   "title": "Yapay zekâ çağında fiyatlama taktikleri mercek altında",
+   "summary": "Dijital raf etiketleri ve fiyat algoritmaları, tüketicilerde kişisel veriyle dinamik fiyat uygulandığı endişesini artırıyor; Walmart ve McDonald's savunmada.",
+   "takeaway": "Kişiye göre değişen fiyat algısı güveni zedeler; fiyat değişikliklerinin gerekçesini açık tutun.",
+   "url": "https://www.modernretail.co/operations/pricing-tactics-come-under-scrutiny-in-the-age-of-ai/",
+   "source": "Modern Retail"
+  }
+ ],
+ "briefs": [
+  { "title": "ChatGPT, görsel oluşturma sonuçlarının yanında reklam göstermeyi test edecek", "url": "https://webrazzi.com/2026/10/06/openai-chatgptde-gorsel-olusturma-sonuclarinin-yaninda-reklam-gosterecek/", "source": "Webrazzi" },
+  { "title": "Gap, Banana Republic ve Old Navy sohbetle alışveriş asistanlarını açtı", "url": "https://www.retaildive.com/news/gap-ai-assisted-shopping-three-decades-after-website/832070/", "source": "Retail Dive" },
+  { "title": "Google: 2026'daki sık spam güncellemelerinin sebebi artan içerik hacmi", "url": "https://www.seroundtable.com/google-search-spam-updates-ai-42226.html", "source": "Search Engine Roundtable" },
+  { "title": "Search Console'a karanlık mod geliyor", "url": "https://www.seroundtable.com/google-search-console-dark-mode-42224.html", "source": "Search Engine Roundtable" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

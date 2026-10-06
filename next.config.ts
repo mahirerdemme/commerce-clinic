@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // bülten kapağı (app/api/bulten/kapak) fontu diskten okur; sunucu paketine dahil edilsin
+  outputFileTracingIncludes: { "/api/bulten/kapak": ["./assets/fonts/**", "./public/email/**"] },
   async redirects() {
     // Görüşme Planla bir popup; adres doğrudan açılırsa ana sayfada popup açılır
     return [

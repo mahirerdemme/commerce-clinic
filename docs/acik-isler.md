@@ -73,6 +73,10 @@ Hedef: blog yazılarından SEO'da olabildiğince verim almak. Yazılar Kadir'le 
 
 ## Örnek rapor (/ornek-rapor)
 
+- **Dil ve sayılar elden geçecek (Kadir):** rapor yapay zekâ yazmış gibi duruyor. "%38 etkisi" gibi hesaplanmış görünen ama dayanağı olmayan sayılar çıkarılacak; bugün `public/js/ornek-rapor.js` içinde 14 yüzde ifadesi var. Gerçek raporda inceleme ve yorumlar danışmanın kendisinin; yapay zekâ yalnız cümleyi toparlar. Ton insan ve danışman sesi olacak.
+- **Yapay zekâ işareti yalnız Overview'da:** "burası yapay zekâ ile özetlendi" notu yalnız Health Overview kısmında olacak, raporun geri kalanında olmayacak. (Not: önceki turda Health notu "AI'sız" yazılmıştı; bu karar onun yerine geçiyor, uygularken teyit edilecek.)
+- **Puanlar:** 0–100 puan kalıyor (Kadir). Puan bulgulardan gelir: kritik bulgusu çok olan alan düşük, bulgusu az ve güçlü yönü çok olan yüksek puan alır. Etiketler (Sağlıklı / Gelişmeli / Öncelikli; Kritik / Yüksek / Orta / Düşük) yanında kalır. Puanın nasıl anlatılacağı ve iç puan tablosu en sonda konuşulacak. Bulgulardaki sayılar yalnız markanın kendi verisinden ve kaynağıyla (GA4, Search Console vb.).
+- **Check-up bölümü** (sayfa ve süreç) ayrıca ele alınacak (Kadir).
 - Görseller kurgusal "Loma Ev" mağazası için tasarlandı (`design/rapor-gorselleri/`). Brief'teki "sahte arayüz yok" kuralına örnek rapor için bilinçli istisna; gerçek raporda ekranlar müşterinin kendi sitesinden alınır.
 - Giriş (e-posta + tek kullanımlık kod), davet e-postaları, aksiyon durumu ve sorumlu kaydı şu an tarayıcıda simüle ediliyor. Sunucu tarafı ilk gerçek Check-up gelince kurulacak (brief: sonraki faz).
 - Final görüşmesi notları: `R.finalNotes` doldurulunca rapor kendiliğinden Sürüm 1.1 olur.

@@ -10,7 +10,7 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 | "Son güncelleme" tarihi | `public/legal/*.html` (4 metin) | Yayın günü |
 | Saklama süreleri: görüşme talebi [2 yıl], rehber [1 yıl], log [2 yıl], bülten onay kayıtları [3 yıl] | `public/legal/kvkk.html` | Mahir + hukukçu |
 | Bülten aracı: Brevo mu Resend mi | `kvkk.html`, `gizlilik.html`, `ticari-ileti.html` | Karar (brief: açık karar) |
-| Kurumsal e-posta sağlayıcısı: Google Workspace mı Zoho mu | `kvkk.html`, `gizlilik.html` | Kadir |
+| Kurumsal e-posta sağlayıcısı: Google Workspace mı Zoho mu. Karar: 3 adres, mahir@ (kişisel), hello@ (formlar, genel iletişim, yasal metinler), notes@ (bülten gönderen). Öneri: tek ücretli hesap mahir@, hello@ ve notes@ takma ad | `kvkk.html`, `gizlilik.html` | Kadir |
 | GA4 ölçüm kimliği (`_ga_[ölçüm kimliği]`) | `public/legal/cerez-politikasi.html` | GA4 kurulunca |
 
 ## Kararlar
@@ -81,7 +81,7 @@ Kurgu: Gündem haftada iki kez (salı, cuma 08:00) otomatik hazırlanır, Kadir 
 - Bekliyor: görev GitHub'a yazamıyor (403). Claude hesabı **kadirec** GitHub'ına bağlı, repo **mahirerdemme**'de. mahirerdemme repoya kadirec'i collaborator ekledi; Kadir daveti kabul edince görev bir kez elle çalıştırılıp denenecek.
 - Yapılacak: footer ve blogdaki bülten formlarını Resend'deki kitleye bağlamak; kayıtta iki seçenek (Gündem / Pratik yazılar), her biri için ayrı çıkış.
 - Yapılacak: ekip adresleri (Kadir'den). Alan adı doğrulanınca onay/test alıcılarına mahir@agesoft.com.tr eklenecek (`BULTEN_ONAY_TO`, `BULTEN_TEST_TO`, virgülle).
-- Bekliyor: alan adı doğrulanana kadar Resend yalnız mahirerdemme@gmail.com'a gönderebiliyor; gönderen `onboarding@resend.dev`. Alan adı sonrası gönderen `bulten@thecommerceclinic.com` gibi olacak.
+- Bekliyor: alan adı doğrulanana kadar Resend yalnız mahirerdemme@gmail.com'a gönderebiliyor; gönderen `onboarding@resend.dev`. Alan adı sonrası gönderen `Commerce Notes <notes@thecommerceclinic.com>` olacak (`BULTEN_FROM`).
 - Bekliyor: e-posta alt bilgisindeki şirket unvanı / adres / MERSİS yer tutucu (yasal metinlerle aynı anda).
 - Güvenlik: Resend anahtarı sohbette paylaşıldı; her şey çalışınca Resend'de yenisi oluşturulup eskisi silinmeli (`vercel env add RESEND_API_KEY` + `.env.local`).
 - Not: Search Engine Land ve Digital Commerce 360 RSS'i dışarıdan engelliyor; kaynak listesi `haberler.mjs` içinde.

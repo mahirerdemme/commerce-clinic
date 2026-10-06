@@ -71,6 +71,20 @@ Hedef: blog yazılarından SEO'da olabildiğince verim almak. Yazılar Kadir'le 
 - Yayın tarihleri gerçek olmalı; şu anki Ağustos–Eylül tarihleri yer tutucu.
 - Şu an 1 gerçek yazı + 4 "yakında" başlık var.
 
+## Bülten (Commerce Notes)
+
+Kurgu: Gündem haftada iki kez (salı, cuma 08:00) otomatik hazırlanır, Kadir onaylayınca gider; ekip ve aboneler alır, sitede yayınlanmaz (SEO'ya etkisi yok). Pratik yazılar blogda yayınlanır, abonelere de gider. Sitede ayrıca anlatılmıyor; LinkedIn ve sosyal medyada duyurulacak.
+
+- Hazır: şablon (`lib/email/newsletter.ts`), kapak (`/api/bulten/kapak`), haber toplama (`scripts/bulten/haberler.mjs`, 9 kaynak), sayıdan HTML (`olustur.mjs`), test gönderimi (`gonder.mjs --test`). İlk sayı `scripts/bulten/sayilar/2026-10-06.json`; Gmail testi tamam.
+- Yapılacak: önizleme e-postasında "Onayla ve gönder" + sitede onay sayfası (onaysız hiçbir şey gitmez).
+- Yapılacak: Claude Code zamanlanmış görevi (Kadir'in Max aboneliği, salı ve cuma 08:00). API'ye gerek yok; ileride istenirse aynı script'ler API ile Vercel'e taşınır.
+- Yapılacak: footer ve blogdaki bülten formlarını Resend'deki kitleye bağlamak; kayıtta iki seçenek (Gündem / Pratik yazılar), her biri için ayrı çıkış.
+- Yapılacak: ekip adresleri (Kadir'den).
+- Bekliyor: alan adı doğrulanana kadar Resend yalnız mahirerdemme@gmail.com'a gönderebiliyor; gönderen `onboarding@resend.dev`. Alan adı sonrası gönderen `bulten@thecommerceclinic.com` gibi olacak.
+- Bekliyor: e-posta alt bilgisindeki şirket unvanı / adres / MERSİS yer tutucu (yasal metinlerle aynı anda).
+- Güvenlik: Resend anahtarı sohbette paylaşıldı; her şey çalışınca Resend'de yenisi oluşturulup eskisi silinmeli (`vercel env add RESEND_API_KEY` + `.env.local`).
+- Not: Search Engine Land ve Digital Commerce 360 RSS'i dışarıdan engelliyor; kaynak listesi `haberler.mjs` içinde.
+
 ## Örnek rapor (/ornek-rapor)
 
 - **Dil ve sayılar elden geçecek (Kadir):** rapor yapay zekâ yazmış gibi duruyor. "%38 etkisi" gibi hesaplanmış görünen ama dayanağı olmayan sayılar çıkarılacak; bugün `public/js/ornek-rapor.js` içinde 14 yüzde ifadesi var. Gerçek raporda inceleme ve yorumlar danışmanın kendisinin; yapay zekâ yalnız cümleyi toparlar. Ton insan ve danışman sesi olacak.

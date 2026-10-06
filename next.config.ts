@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     // onay sayfası ve gönderim, sayıları diskten okur
     "/bulten/onay": ["./scripts/bulten/sayilar/**"],
     "/api/bulten/gonder": ["./scripts/bulten/sayilar/**"],
+    "/api/bulten/onizleme-gonder": ["./scripts/bulten/sayilar/**"],
   },
   async redirects() {
     // Görüşme Planla bir popup; adres doğrudan açılırsa ana sayfada popup açılır

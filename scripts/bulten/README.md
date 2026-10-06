@@ -1,6 +1,6 @@
 # Commerce Notes bülteni · Gündem
 
-Salı ve cuma 08:00'de (İstanbul) Claude Code zamanlanmış görevi bu dosyadaki adımları uygular. Hiçbir sayı onaysız gönderilmez: görev yalnız taslağı hazırlar ve onaya yollar; gönderimi Kadir onay sayfasından yapar.
+Salı ve cuma 08:00'de (İstanbul) Claude Code zamanlanmış görevi bu dosyadaki adımları uygular. Hiçbir sayı onaysız gönderilmez: görev yalnız taslağı hazırlar ve onaya yollar; gönderimi Kadir onay sayfasından yapar. Elle önizleme/test için `gonder.mjs` (yerelde, `.env.local` ile).
 
 ## Adımlar
 
@@ -11,7 +11,7 @@ Salı ve cuma 08:00'de (İstanbul) Claude Code zamanlanmış görevi bu dosyadak
    - `cta`: bir önceki sayıyla aynı kalabilir (şu an rehber).
 3. Kontrol: `node scripts/bulten/olustur.mjs scripts/bulten/sayilar/<id>.json > /tmp/sayi.html` hatasız çalışmalı.
 4. Yayınla: yalnız yeni JSON dosyasını commit'le ve `main`'e gönder. Mesaj: `Bülten: sayı <issue> (<id>)`. Başka dosyaya dokunma.
-5. Onaya gönder: `node scripts/bulten/gonder.mjs scripts/bulten/sayilar/<id>.json --onizleme`. Script, sayı sitede yayına çıkana kadar (en çok 15 dakika) bekler, sonra önizlemeyi gönderir. Ortamda `RESEND_API_KEY`, `BULTEN_SECRET`, `BULTEN_ONAY_TO` olmalı.
+5. Onaya gönder: `node scripts/bulten/onaya-gonder.mjs <id>`. Sayı sitede yayına çıkana kadar (en çok 15 dakika) bekler, sonra site onay önizlemesini Kadir'e gönderir. Görevin hiçbir gizli bilgiye ihtiyacı yok; anahtarlar yalnız Vercel'de.
 
 ## Seçim kuralları
 

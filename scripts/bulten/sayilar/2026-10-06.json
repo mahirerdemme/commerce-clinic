@@ -1,0 +1,61 @@
+{
+ "subject": "Google Ads promosyonları otomatik ekliyor, TikTok'ta tek tıkla ödeme",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "6 Ekim 2026",
+ "issue": 1,
+ "items": [
+  {
+   "tag": "Reklam",
+   "title": "Google Ads, sitedeki promosyonları kampanyalara otomatik ekleyecek",
+   "summary": "Google, 12 Ekim'den itibaren sitenizdeki promosyonları kendisi tespit edip Arama ve Performance Max kampanyalarına uygulayacak. Özellik yalnız konum öğeleri bağlı kampanyaları kapsıyor.",
+   "takeaway": "Sitede süresi dolmuş indirim bırakmayın; reklamlarda yanlış teklif görünmesini istemiyorsanız hesap ayarlarını gözden geçirin.",
+   "url": "https://www.seroundtable.com/google-ads-automated-promotions-october-12-42223.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Sosyal ticaret",
+   "title": "TikTok'ta yapay zekâ alışveriş asistanı ve tek tıkla ödeme",
+   "summary": "TikTok, ürün keşfi ve satın almada yardımcı olan bir yapay zekâ alışveriş asistanını kullanıma sundu. Kullanıcılar akışta gördükleri ürünleri tek tıkla satın alabilecek.",
+   "takeaway": "TikTok Shop'ta satış yapıyorsanız ürün başlıkları, açıklamaları ve görsellerinin eksiksiz olmasına dikkat edin.",
+   "url": "https://webrazzi.com/2026/10/06/tiktok-yapay-zeka-destekli-alisveris-asistanini-ve-tek-tikla-odeme-ozelligini-kullanima-sundu/",
+   "source": "Webrazzi"
+  },
+  {
+   "tag": "Ölçüm",
+   "title": "Google, AI Overviews linklerinde takip parametresi deniyor",
+   "summary": "Google'ın AI Overviews ve AI Mode içindeki linklere takip parametresi eklemeyi test ettiği görüldü. Yaygınlaşırsa bu özetlerden gelen tıklamalar normal arama sonuçlarından ayrılabilecek.",
+   "takeaway": "Analitikte yapay zekâ aramasından gelen trafiği ayrı izlemeye hazırlanmak işinize yarayabilir.",
+   "url": "https://www.seroundtable.com/google-ai-overview-link-tracking-parameters-42219.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Yapay zekâ",
+   "title": "ChatGPT, görsel oluşturma ekranında reklam göstermeyi test edecek",
+   "summary": "OpenAI, ChatGPT'nin görsel oluşturma özelliğine görsel reklam formatı ekleyeceğini duyurdu. Test ekim ayında ABD'de sınırlı sayıda reklamverenle başlayacak.",
+   "takeaway": "Şimdilik yalnız ABD'de bir test; yapay zekâ asistanlarının yeni bir reklam kanalına dönüşmesini izlemeye değer.",
+   "url": "https://webrazzi.com/2026/10/06/openai-chatgptde-gorsel-olusturma-sonuclarinin-yaninda-reklam-gosterecek/",
+   "source": "Webrazzi"
+  },
+  {
+   "tag": "Sadakat",
+   "title": "Google'ın sadakat eşleştirmesi AI Mode ve Gemini'ye genişledi",
+   "summary": "Google, Merchant Center'daki sadakat programı belgelerini güncelledi. Loyalty Customer Match artık AI Mode ve Gemini'de de çalışıyor ve daha fazla bölgeye açıldı.",
+   "takeaway": "Sadakat programınız varsa Merchant Center'daki ayarlarınızı ve bölgenizin kapsama girip girmediğini kontrol edin.",
+   "url": "https://www.seroundtable.com/google-loyalty-customer-match-expands-42216.html",
+   "source": "Search Engine Roundtable"
+  }
+ ],
+ "briefs": [
+  { "title": "Tüketicilerin dinamik fiyat endişesi büyüyor; perakendeciler savunmada", "url": "https://www.modernretail.co/operations/pricing-tactics-come-under-scrutiny-in-the-age-of-ai/", "source": "Modern Retail" },
+  { "title": "Google Ads'e Arama kampanyalarını başka dillere uyarlayan araç geldi (beta)", "url": "https://www.seroundtable.com/google-ads-ai-campaign-localization-tool-42221.html", "source": "Search Engine Roundtable" },
+  { "title": "Gap, Banana Republic ve Old Navy sohbetle alışveriş asistanlarını açtı", "url": "https://www.retaildive.com/news/gap-ai-assisted-shopping-three-decades-after-website/832070/", "source": "Retail Dive" },
+  { "title": "Google: 2026'daki sık spam güncellemelerinin nedeni artan içerik hacmi", "url": "https://www.seroundtable.com/google-search-spam-updates-ai-42226.html", "source": "Search Engine Roundtable" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

@@ -1,5 +1,5 @@
 // Bülten · bir sayıyı e-postayla gönderir (Resend)
-// Önizleme (onaya): node --env-file=.env.local scripts/bulten/gonder.mjs scripts/bulten/sayilar/2026-10-06.json --onizleme
+// Önizleme (onaya): node --env-file=.env.local scripts/bulten/gonder.mjs scripts/bulten/ornek-sayi.json --onizleme
 //   → BULTEN_ONAY_TO adresine, üstünde "Onayla ve gönder" olan önizleme gider. Onay sayfası sayıyı sitedeki
 //     scripts/bulten/sayilar/<id>.json'dan okur; bu yüzden sayı önce repoya gönderilmiş (yayında) olmalı.
 // Test (tek adrese, onaysız): ... gonder.mjs <sayi.json> --test adres@ornek.com

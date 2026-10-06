@@ -5,8 +5,8 @@ Salı ve cuma 08:00'de (İstanbul) Claude Code zamanlanmış görevi bu dosyadak
 ## Adımlar
 
 1. Adayları topla: `node scripts/bulten/haberler.mjs 4 > /tmp/adaylar.json` (son 4 gün, 9 kaynak).
-2. Seç ve yaz: aşağıdaki kurallarla `scripts/bulten/sayilar/<YYYY-MM-DD>.json` dosyasını oluştur (bugünün tarihi, İstanbul saatiyle). Biçim `lib/email/newsletter.ts` içindeki `Newsletter` tipi; örnek: `scripts/bulten/sayilar/2026-10-06.json`.
-   - `issue`: klasördeki en büyük sayı + 1.
+2. Seç ve yaz: aşağıdaki kurallarla `scripts/bulten/sayilar/<YYYY-MM-DD>.json` dosyasını oluştur (bugünün tarihi, İstanbul saatiyle). Biçim `lib/email/newsletter.ts` içindeki `Newsletter` tipi; örnek: `scripts/bulten/ornek-sayi.json` (elle hazırlanmış örnek; ton ve uzunluk için referans).
+   - `issue`: `scripts/bulten/sayilar/` içindeki en büyük `issue` + 1; klasör boşsa 1.
    - `date`: "6 Ekim 2026" biçiminde.
    - `cta`: bir önceki sayıyla aynı kalabilir (şu an rehber).
 3. Kontrol: `node scripts/bulten/olustur.mjs scripts/bulten/sayilar/<id>.json > /tmp/sayi.html` hatasız çalışmalı.

@@ -2,6 +2,20 @@
 
 Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile birlikte okunur; burada kodda bırakılan yer tutucular, bekleyen kararlar ve kontroller tutulur. İş kapandıkça satır silinir.
 
+## Bağlantılar
+
+| Ne | Adres |
+|---|---|
+| Canlı site (geçici alan adı) | https://commerce-clinic-ashen.vercel.app |
+| Asıl alan adı (henüz bağlı değil) | https://thecommerceclinic.com |
+| GitHub repo | https://github.com/mahirerdemme/commerce-clinic (`main`'e push = canlıya yayın) |
+| Vercel projesi | https://vercel.com/mahirs-projects-6bc6f63f/commerce-clinic |
+| Bülten zamanlanmış görevi | https://claude.ai/code/routines/trig_017yvEzHwwA8ho1kK9mEvNTm |
+| Resend | https://resend.com (hesap: mahirerdemme@gmail.com) |
+| Local geliştirme | `cd ~/Desktop/commerce_clinic && npm run dev` → http://localhost:3000 |
+| Brief (tek kaynak) | Commerce Clinic Master Brief v2: `~/Downloads/Commerce-Clinic-Master-Brief-v2.pdf` (eski v1.0 `.md` dosyaları masaüstünde, geçersiz) |
+| Marka dosyaları | `~/Desktop/Commerce-Clinic-Logo-Pack-v2.1*`, `Commerce-Clinic-Brand-Identity-Board-v1.png` |
+
 ## Yer tutucular (kodda köşeli parantezle duruyor)
 
 | Ne | Nerede | Kimden |

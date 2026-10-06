@@ -10,7 +10,7 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 | "Son güncelleme" tarihi | `public/legal/*.html` (4 metin) | Yayın günü |
 | Saklama süreleri: görüşme talebi [2 yıl], rehber [1 yıl], log [2 yıl], bülten onay kayıtları [3 yıl] | `public/legal/kvkk.html` | Mahir + hukukçu |
 | Bülten aracı: Brevo mu Resend mi | `kvkk.html`, `gizlilik.html`, `ticari-ileti.html` | Karar (brief: açık karar) |
-| Kurumsal e-posta sağlayıcısı: Google Workspace mı Zoho mu. Karar: 3 adres, mahir@ (kişisel), hello@ (formlar, genel iletişim, yasal metinler), notes@ (bülten gönderen). Öneri: tek ücretli hesap mahir@, hello@ ve notes@ takma ad | `kvkk.html`, `gizlilik.html` | Kadir |
+| Kurumsal e-posta sağlayıcısı: açık (Google Workspace, Zoho ya da başka). Karar: 3 adres, mahir@ (kişisel), hello@ (formlar, genel iletişim, yasal metinler), notes@ (bülten gönderen). Öneri: sağlayıcı izin veriyorsa tek ücretli hesap mahir@, hello@ ve notes@ takma ad | `kvkk.html`, `gizlilik.html` | Kadir |
 | GA4 ölçüm kimliği (`_ga_[ölçüm kimliği]`) | `public/legal/cerez-politikasi.html` | GA4 kurulunca |
 
 ## Kararlar

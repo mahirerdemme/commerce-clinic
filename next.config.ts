@@ -2,8 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  // bülten kapağı (app/api/bulten/kapak) fontu diskten okur; sunucu paketine dahil edilsin
-  outputFileTracingIncludes: { "/api/bulten/kapak": ["./assets/fonts/**", "./public/email/**"] },
+  // bülten: kapak fontu/logoyu, onay ve gönderim sayı dosyalarını diskten okur; sunucu paketine dahil edilsin
+  outputFileTracingIncludes: {
+    "/api/bulten/kapak": ["./assets/fonts/**", "./public/email/**"],
+    // onay sayfası ve gönderim, sayıları diskten okur
+    "/bulten/onay": ["./scripts/bulten/sayilar/**"],
+    "/api/bulten/gonder": ["./scripts/bulten/sayilar/**"],
+  },
   async redirects() {
     // Görüşme Planla bir popup; adres doğrudan açılırsa ana sayfada popup açılır
     return [

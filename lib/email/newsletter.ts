@@ -74,7 +74,8 @@ function item(n: NewsItem, i: number, issue: number) {
 export const coverUrl = (d: Newsletter, base: string) =>
   `${base}/api/bulten/kapak?${new URLSearchParams({ sayi: String(d.issue), tarih: d.date, konular: [...new Set(d.items.map((n) => n.tag))].slice(0, 3).join(",") })}`;
 
-export function renderNewsletter(d: Newsletter, base: string) {
+/** onay: yalnız onaya giden önizlemede; üstte "Onayla ve gönder" çubuğu çıkar */
+export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: string } = {}) {
   const site = (path: string) => utm(`${base}${path}`, d.issue);
   return `<!doctype html>
 <html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
@@ -94,6 +95,15 @@ export function renderNewsletter(d: Newsletter, base: string) {
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all">${esc(d.preheader)}&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${C.bg}"><tr><td align="center" style="padding:32px 12px">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px">
+
+  ${opts.onay ? `
+  <!-- onay çubuğu: yalnız önizleme -->
+  <tr><td style="padding:0 0 16px">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#FFF8E6;border:1px solid #F0DDA8;border-radius:12px"><tr>
+      <td class="px" style="padding:16px 20px;font:400 14px/1.5 ${FONT};color:${C.ink}"><b style="font-weight:600">Önizleme.</b> Bu sayı henüz kimseye gönderilmedi. Uygunsa onaylayın; onaylamazsanız gönderilmez.</td>
+      <td align="right" style="padding:12px 16px 12px 0;white-space:nowrap"><table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td style="background:${C.dark};border-radius:10px"><a href="${esc(opts.onay)}" style="display:inline-block;padding:11px 16px;font:600 14px/1 ${FONT};color:${C.white};text-decoration:none">Onayla ve gönder</a></td></tr></table></td>
+    </tr></table>
+  </td></tr>` : ""}
 
   <!-- kart -->
   <tr><td style="background:${C.white};border:1px solid ${C.line};border-radius:16px">

@@ -249,6 +249,7 @@ body{padding-top:84px}
 @media (max-width:1100px){.lap-cta{left:50%}}
 
 .lap-link{display:none}
+.brands .lg{color:#5F5F5B}   /* hero marka logoları masaüstü + mobil bir ton koyu (Kadir, 9 Ekim) */
 
 /* mobil hero (9 Ekim 2026, Kadir): rapor ekranı en üstte, laptop çerçevesiz; altı beyaza solar,
    başlık ve yazılar hafif üstüne binerek onun altından gelir; butonlar ve marka şeridi sırası masaüstüyle aynı.
@@ -282,7 +283,6 @@ body{padding-top:84px}
   /* mobilde tek buton: Check-up; "Keşfet" yalnız masaüstünde */
   .hero-ctas{flex-wrap:nowrap;margin-top:1.75rem}
   .hero-ctas .btn-ghost{display:none}
-  .brands .lg{color:#5F5F5B}
 }
 
 /* ============ SECTIONS ============ */

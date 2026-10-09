@@ -1,0 +1,60 @@
+{
+ "subject": "Merchant Center'da sık değişen ürünler, Google Ads'te yeni ölçüm",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "9 Ekim 2026",
+ "issue": 2,
+ "items": [
+  {
+   "tag": "Reklam",
+   "title": "Merchant Center: günde birden çok değişen ürün onaylanmayabilir",
+   "summary": "Google, Merchant Center yardım belgesini güncelledi. Günde birden fazla değişen bir üründe uyuşmazlık tespit edilirse ürün güncellenmek yerine onaylanmayabilir.",
+   "takeaway": "Ürün bilgilerini sık değiştiriyorsanız feed ile sitedeki bilgilerin her an aynı kalmasına dikkat edin.",
+   "url": "https://www.seroundtable.com/google-merchant-center-disapprove-products-chnage-fast-42251.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Ölçüm",
+   "title": "Google Ads'te dönüşüm artışı ölçümü artık temsilcisiz kurulabiliyor",
+   "summary": "Google Ads, Conversion Lift ölçümünü reklamverenlerin kendisinin kurmasına izin veriyor. Bunun için en az 1.000 gözlemlenen dönüşüm ve 5.000 dolar bütçe gerekiyor.",
+   "takeaway": "Bu eşikleri karşılıyorsanız reklamların gerçekten ek satış getirip getirmediğini test etmek için kullanabilirsiniz.",
+   "url": "https://www.seroundtable.com/google-ads-conversion-lift-measurement-self-service-42250.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Yapay zekâ",
+   "title": "Markalar ChatGPT reklamlarını deniyor, sezon bütçesi yerinde kalıyor",
+   "summary": "Markalar OpenAI'ın ChatGPT reklamlarını test etmeye başladı. Yüksek maliyet ve zayıf satışlar nedeniyle tatil sezonu bütçesinin Google ve Meta'dan bu platformlara pek kayması beklenmiyor.",
+   "takeaway": "Ana bütçeyi sonuç aldığınız kanallarda tutup yeni yapay zekâ kanallarını küçük testlerle izlemek makul görünüyor.",
+   "url": "https://www.modernretail.co/marketing/why-chatgpt-ads-wont-likely-impact-holiday-sales-in-a-major-way-this-year/",
+   "source": "Modern Retail"
+  },
+  {
+   "tag": "Sosyal ticaret",
+   "title": "Shapermint, 35 yaş üstü içerik üreticileriyle TikTok Shop'ta büyüyor",
+   "summary": "Shapermint, bu yıl TikTok Shop'ta 10 milyon dolar satışa ulaşma yolunda. Markanın en iyi sonuç veren satış ortağı içerik üreticilerinin %60'ı 35 yaşın üzerinde.",
+   "takeaway": "Hedef kitleniz genç değilse, o yaş grubuna hitap eden içerik üreticileriyle çalışmayı düşünebilirsiniz.",
+   "url": "https://www.modernretail.co/marketing/shapermint-is-on-track-to-hit-10m-in-tiktok-shop-sales-by-targeting-women-ages-35-65/",
+   "source": "Modern Retail"
+  },
+  {
+   "tag": "Arama",
+   "title": "Google'ın yerel işletme panelinde WhatsApp butonu görünüyor",
+   "summary": "Google Arama'daki yerel işletme panelinde arama, yol tarifi ve web sitesi butonlarının yanında WhatsApp butonu da çıkmaya başladı. Kullanıcılar bu butonla işletmeye doğrudan WhatsApp'tan yazabiliyor.",
+   "takeaway": "Mağazanız yerel sonuçlarda görünüyorsa WhatsApp'tan gelecek mesajlara hızlı yanıt verecek bir düzen kurmak işinize yarayabilir.",
+   "url": "https://www.seroundtable.com/google-local-panel-whatsapp-button-42230.html",
+   "source": "Search Engine Roundtable"
+  }
+ ],
+ "briefs": [
+  { "title": "Google'ın Eylül 2026 spam güncellemesi iki haftada tamamlandı", "url": "https://www.seroundtable.com/google-september-2026-spam-update-done-42235.html", "source": "Search Engine Roundtable" },
+  { "title": "Google Ads raporlarına AI Max için yeni sütunlar ekleniyor", "url": "https://www.seroundtable.com/google-ads-new-ai-max-columns-42256.html", "source": "Search Engine Roundtable" },
+  { "title": "Yapay zekâ alışveriş ajanlarının önünde site engelleri var", "url": "https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in/", "source": "TechCrunch" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

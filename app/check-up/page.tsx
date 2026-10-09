@@ -1,5 +1,5 @@
 import "@/styles/check-up.css";
-import "@/styles/mobil.css";
+import "@/styles/ortak.css";
 import { LegacyPage, legacyMetadata, legacyViewport } from "@/lib/legacy-page";
 
 export const metadata = legacyMetadata("check-up");

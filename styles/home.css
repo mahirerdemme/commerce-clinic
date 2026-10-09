@@ -236,12 +236,6 @@ body{padding-top:84px}
 .rs-gauge text{font-family:var(--font);font-weight:600;letter-spacing:-.04em;text-anchor:middle;font-variant-numeric:tabular-nums}
 .rs-gauge text.ok{fill:var(--ok-ink)}.rs-gauge text.warn{fill:var(--warn-ink)}.rs-gauge text.bad{fill:var(--bad-ink)}
 @media (max-width:1100px){.laptop{position:relative;left:auto;top:auto;width:760px;margin:3.5rem 0 -2rem max(10%,2rem)}}
-@media (max-width:720px){
-  .hero .display{font-size:min(var(--fs-display),10vw)}
-  .hero-mark{width:110vw;right:-60vw;top:-6vw}
-  .lid{padding:10px 10px 16px;border-radius:16px 16px 5px 5px}
-  .brands{max-width:none}
-}
 
 
 /* v0.15 hero: laptop düz, kullanıcıya bakar; ekranın alt kısmı fade + örnek rapor CTA */
@@ -253,23 +247,42 @@ body{padding-top:84px}
 .lap-cta .btn{gap:.55rem;box-shadow:0 12px 30px -12px rgba(0,0,0,.45)}
 .lap-cta small{font-size:.75rem;color:var(--cc-text-2);white-space:nowrap}
 @media (max-width:1100px){.lap-cta{left:50%}}
-@media (max-width:720px){.lap-cta{left:38%}}
+
+.lap-link{display:none}
 
 /* mobil hero (9 Ekim 2026, Kadir): rapor ekranı en üstte, laptop çerçevesiz; altı beyaza solar,
    başlık ve yazılar hafif üstüne binerek onun altından gelir; butonlar ve marka şeridi sırası masaüstüyle aynı.
    Ekran 600px tasarım genişliğinde kalır, ekrana sığacak kadar ölçeklenir; --lap-s / --lap-h: public/js/home.js (fitLap). */
 @media (max-width:720px){
   .hero{padding-top:1.25rem}
+  .hero-mark{width:110vw;right:-60vw;top:-6vw}
   .hero .wrap{display:flex;flex-direction:column}
   .hero-copy{display:contents}
   .hero .display,.hero .lead,.hero-ctas,.brands{position:relative;z-index:2}
-  .laptop{order:-1;position:relative;left:auto;top:auto;width:100%;height:var(--lap-h,auto);margin:0 0 -3rem;overflow:hidden;z-index:1}
+  .laptop{order:-1;position:relative;left:auto;top:auto;width:100%;height:calc(var(--lap-h,320px) * .78);margin:0 0 -2.75rem;overflow:hidden;z-index:1}
+  .lap-link{display:inline-flex;order:-1;align-self:flex-end;position:relative;z-index:3;gap:.35rem;align-items:center;margin:0 0 .5rem;padding:.4rem .75rem;border:1px solid var(--cc-border);border-radius:999px;background:#fff;font-size:.8125rem;font-weight:500;color:var(--cc-text);text-decoration:none}
   .laptop-inner{width:600px;transform:scale(var(--lap-s,1))!important;transform-origin:top left}
-  .lid{background:transparent;padding:0;border-radius:0;box-shadow:none}
-  .screen{border-radius:12px;box-shadow:0 0 0 1px var(--cc-border)}
-  .lid::after{left:0;right:0;bottom:0;height:70%;border-radius:0;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.85) 55%,#fff 100%)}
+  /* çerçeve Check-up hero'sundaki .h4-frame ile aynı görünür (ölçek ~.58 olduğu için tasarım pikselleri büyük yazıldı) */
+  .lid{background:#141414;padding:11px;border-radius:26px;box-shadow:0 0 0 2px #2a2a2a inset}
+  .screen{border-radius:16px}
+  .lid::after{display:none}
+  .laptop::after{content:"";position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.92) 55%,#fff 72%,#fff 100%);pointer-events:none;z-index:2}
+  /* mock'un iç düzeni 600px tasarımda sıkışmasın: dar ray, tek satır başlık, skor kartı ferah */
+  .rs-body{grid-template-columns:176px 1fr}
+  .rs-main{padding:18px 20px}
+  .rs-h{margin-bottom:10px}
+  .rs-h small{display:none}
+  .rs-hm{grid-template-columns:150px 1fr;gap:18px;padding:18px 20px}
+  .rs-hm h4{font-size:14px}
+  .rs-hm p{font-size:11px}
   .base,.lap-cta{display:none}
-  .hero .display{margin-top:.5rem}
+  .hero .display{margin-top:.5rem;line-height:1.06}
+  .hero .lead{margin-top:1.5rem}
+  .brands{max-width:none}
+  /* mobilde tek buton: Check-up; "Keşfet" yalnız masaüstünde */
+  .hero-ctas{flex-wrap:nowrap;margin-top:1.75rem}
+  .hero-ctas .btn-ghost{display:none}
+  .brands .lg{color:#5F5F5B}
 }
 
 /* ============ SECTIONS ============ */

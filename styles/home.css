@@ -261,12 +261,12 @@ body{padding-top:84px}
   .hero-copy{display:contents}
   .hero .display,.hero .lead,.hero-ctas,.brands{position:relative;z-index:2}
   .laptop{order:-1;position:relative;left:auto;top:auto;width:100%;height:calc(var(--lap-h,320px) * .86);margin:0 0 -2rem;overflow:hidden;z-index:1}
-  .lap-link{display:inline-flex;position:absolute;z-index:3;top:-.7rem;right:calc(var(--page-pad) - .7rem);box-shadow:0 6px 16px -8px rgba(0,0,0,.35);gap:.35rem;align-items:center;padding:.4rem .75rem;border:1px solid var(--cc-border);border-radius:999px;background:#fff;font-size:.8125rem;font-weight:500;color:var(--cc-text);text-decoration:none}
+  .hero .lap-link{display:inline-flex;position:absolute;z-index:3;top:-.7rem;right:calc(var(--page-pad) - .7rem);min-height:40px;padding:0 .95rem;font-size:.875rem;gap:.4rem;box-shadow:0 6px 16px -8px rgba(0,0,0,.35)}   /* .btn .btn-white stili, köşeden taşar */
   .rs-top .sh,.rs-top .av{display:none}   /* sağ üstte bağlantı duruyor; mock'un Paylaş/avatarı gizli */
   .laptop-inner{width:600px;transform:scale(var(--lap-s,1))!important;transform-origin:top left}
   /* çerçeve Check-up hero'sundaki .h4-frame ile aynı görünür (ölçek ~.58 olduğu için tasarım pikselleri büyük yazıldı) */
-  .lid{background:#141414;padding:11px;border-radius:26px;box-shadow:0 0 0 2px #2a2a2a inset}
-  .screen{border-radius:16px}
+  .lid{background:#141414;padding:11px;border-radius:34px;box-shadow:0 0 0 2px #2a2a2a inset}
+  .screen{border-radius:17px}   /* ölçek ~.58: ekranda 20px / 10px, Check-up çerçevesiyle aynı */
   .lid::after{display:none}
   .laptop::after{content:"";position:absolute;left:-1px;right:-1px;bottom:-2px;height:calc(62% + 2px);background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.92) 55%,#fff 72%,#fff 100%);pointer-events:none;z-index:2}
   /* mock'un iç düzeni 600px tasarımda sıkışmasın: dar ray, tek satır başlık, skor kartı ferah */

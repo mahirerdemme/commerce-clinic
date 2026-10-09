@@ -45,6 +45,8 @@
   $$('.sys').forEach(s=>{const b=s.querySelector('.avs');s.querySelector('.sys-more').addEventListener('click',()=>b.click());
     b.addEventListener('click',()=>{const o=!s.classList.contains('open');$$('.sys.open').forEach(x=>{x.classList.remove('open');x.querySelector('.avs').setAttribute('aria-expanded','false')});s.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
   });
+  // başka bir yere dokunulunca açık sistem şeridi kapanır
+  document.addEventListener('click',e=>{$$('.sys.open').forEach(s=>{if(s.contains(e.target))return;s.classList.remove('open');s.querySelector('.avs').setAttribute('aria-expanded','false')})});
   let tick=false;
   function onScroll(){if(tick)return;tick=true;requestAnimationFrame(()=>{hdr();stack();tick=false})}
   addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
@@ -144,7 +146,9 @@
 
   // ===== CHECK-UP OUTPUT TABS =====
   const tabs=$$('.steps [role=tab]');
-  function act(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
+  function act(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on});
+    // mobilde seçilen adım yana kayan şeridin başına gelir
+    if(innerWidth<=720){const st=t.closest('.steps'),li=t.closest('li');if(st&&li)st.scrollTo({left:li.offsetLeft-st.offsetLeft-parseFloat(getComputedStyle(st).paddingLeft||0),behavior:'smooth'})}}
   tabs.forEach((t,i)=>{t.addEventListener('click',()=>act(t));t.addEventListener('keydown',e=>{let n=null;if(e.key==='ArrowDown'||e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];if(e.key==='ArrowUp'||e.key==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];if(n){e.preventDefault();act(n);n.focus()}})});
 
   // ===== PROTOTYPE HELPERS =====

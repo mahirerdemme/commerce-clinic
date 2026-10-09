@@ -1,4 +1,5 @@
 import "@/styles/danismanlik.css";
+import "@/styles/mobil.css";
 import { LegacyPage, legacyMetadata, legacyViewport } from "@/lib/legacy-page";
 
 export const metadata = legacyMetadata("danismanlik");

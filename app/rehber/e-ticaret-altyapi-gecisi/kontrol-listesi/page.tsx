@@ -1,5 +1,6 @@
 import "@/styles/hakkimizda.css";
 import "@/styles/kontrol-listesi.css";
+import "@/styles/mobil.css";
 import { LegacyPage, legacyMetadata, legacyViewport } from "@/lib/legacy-page";
 
 export const metadata = legacyMetadata("kontrol-listesi");

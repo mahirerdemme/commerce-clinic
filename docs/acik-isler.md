@@ -54,7 +54,11 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 
 ## Mobil revizyon
 
-- Kadir tüm sayfaları mobilde gezip belirli alanlar için revize listesi verecek; gelince sayfa sayfa ele alınacak.
+- Kadir'in 29 ekran görüntüsü (iPhone Safari): `~/Downloads/mobil-ss/IMG_1882–1910.PNG`. Görüntü görüntü gidiliyor; Kadir revize vermeden hiçbir şey değişmez. Sıra: ana sayfa → Check-up → Danışmanlık → Hakkımızda → rehber/blog → Görüşme Planla formu.
+- Yapıldı (9 Ekim): ana sayfa hero mobilde sıra başlık → açıklama → butonlar → rapor ekranı → marka şeridi; laptop mock ölçeklenerek sığıyor (`styles/home.css` @720, `public/js/home.js` fitLap). Mobil yazı ölçeği tek yerden, bir kademe küçük (`styles/mobil.css`, sayfa CSS'lerinden sonra import).
+- Kadir'in genel notları: hero alanları masaüstünde ve mobilde "takılıyor" hissi veriyor (giriş animasyonları / arka plan katmanı; incelenecek). Tekrar eden tablı bölümler (8 alan, 3'lü tablar) mobilde elden geçecek.
+- Yerel mobil kontrol: `node scripts/mobil-ss.mjs <url> <png> [y] [yükseklik]` (Chrome DevTools Protocol, 390×844, DPR 2, iPhone UA; sayfayı kaydırıp animasyonları tetikler). Önce `npm run build && npx next start -p 3100`.
+- Sıradaki görüntü: IMG_1884 (ana sayfa, E-ticaret Altyapıları kartı).
 
 ## Blog (Commerce Notes) ve rehberler · SEO
 

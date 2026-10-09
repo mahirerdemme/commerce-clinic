@@ -1,4 +1,5 @@
 import "@/styles/home.css";
+import "@/styles/mobil.css";
 import { LegacyPage, legacyMetadata, legacyViewport } from "@/lib/legacy-page";
 
 export const metadata = legacyMetadata("home");

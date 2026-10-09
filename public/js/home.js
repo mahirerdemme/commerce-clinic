@@ -98,6 +98,11 @@
   </div></div>`;
   $('#spBig').innerHTML=gauge(57,300,26,68);
   $('#spGG').innerHTML=RA.map(([n,v])=>`<li>${gauge(v,160,14,34)}${n}</li>`).join('');
+  // mobil: laptop 600px tasarım genişliğinde kalır, ekrana sığacak kadar ölçeklenir (styles/home.css @720)
+  const lap=$('.laptop'),lapIn=$('#lapInner'),mqLap=matchMedia('(max-width:720px)');
+  const fitLap=()=>{if(!mqLap.matches){lap.style.removeProperty('--lap-s');lap.style.removeProperty('--lap-h');return}
+    const s=lap.clientWidth/600;lap.style.setProperty('--lap-s',s.toFixed(4));lap.style.setProperty('--lap-h',(lapIn.offsetHeight*s).toFixed(1)+'px')};
+  fitLap();new ResizeObserver(fitLap).observe(lap);mqLap.addEventListener('change',fitLap);
 
   // ===== PROBLEM SYSTEM MAP =====
   const A=[['brand','Brand'],['product','Product'],['pricing','Pricing'],['marketing','Marketing'],['ux','UX'],['checkout','Checkout'],['tech','Technology'],['ops','Operations'],['crm','CRM'],['market','Marketplace']];

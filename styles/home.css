@@ -260,8 +260,8 @@ body{padding-top:84px}
   .hero .wrap{display:flex;flex-direction:column}
   .hero-copy{display:contents}
   .hero .display,.hero .lead,.hero-ctas,.brands{position:relative;z-index:2}
-  .laptop{order:-1;position:relative;left:auto;top:auto;width:100%;height:calc(var(--lap-h,320px) * .78);margin:0 0 -2.75rem;overflow:hidden;z-index:1}
-  .lap-link{display:inline-flex;position:absolute;z-index:3;top:.55rem;right:calc(var(--page-pad) + .55rem);gap:.35rem;align-items:center;padding:.4rem .75rem;border:1px solid var(--cc-border);border-radius:999px;background:#fff;font-size:.8125rem;font-weight:500;color:var(--cc-text);text-decoration:none}
+  .laptop{order:-1;position:relative;left:auto;top:auto;width:100%;height:calc(var(--lap-h,320px) * .86);margin:0 0 -2rem;overflow:hidden;z-index:1}
+  .lap-link{display:inline-flex;position:absolute;z-index:3;top:-.7rem;right:calc(var(--page-pad) - .7rem);box-shadow:0 6px 16px -8px rgba(0,0,0,.35);gap:.35rem;align-items:center;padding:.4rem .75rem;border:1px solid var(--cc-border);border-radius:999px;background:#fff;font-size:.8125rem;font-weight:500;color:var(--cc-text);text-decoration:none}
   .rs-top .sh,.rs-top .av{display:none}   /* sağ üstte bağlantı duruyor; mock'un Paylaş/avatarı gizli */
   .laptop-inner{width:600px;transform:scale(var(--lap-s,1))!important;transform-origin:top left}
   /* çerçeve Check-up hero'sundaki .h4-frame ile aynı görünür (ölçek ~.58 olduğu için tasarım pikselleri büyük yazıldı) */
@@ -281,9 +281,10 @@ body{padding-top:84px}
   .hero .display{margin-top:.5rem;line-height:1.06}
   .hero .lead{margin-top:1.5rem}
   .brands{max-width:none}
-  /* mobilde tek buton: Check-up; "Keşfet" yalnız masaüstünde */
+  /* mobilde iki buton yan yana; ikincisi kısa "Keşfet" (content/pages/home.html .full) */
   .hero-ctas{flex-wrap:nowrap;margin-top:1.75rem}
-  .hero-ctas .btn-ghost{display:none}
+  .hero-ctas .btn{flex:0 0 auto;white-space:nowrap}
+  .hero-ctas .full{display:none}
 }
 
 /* ============ SECTIONS ============ */

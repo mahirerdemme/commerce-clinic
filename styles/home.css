@@ -255,17 +255,21 @@ body{padding-top:84px}
 @media (max-width:1100px){.lap-cta{left:50%}}
 @media (max-width:720px){.lap-cta{left:38%}}
 
-/* mobil hero (9 Ekim 2026, Kadir): sıra başlık → açıklama → butonlar → rapor ekranı → marka şeridi.
-   Laptop 600px tasarım genişliğinde kalır, ekrana sığacak kadar ölçeklenir (yazılar da orantılı küçülür);
-   --lap-s ve --lap-h değerlerini public/js/home.js (fitLap) yazar. */
+/* mobil hero (9 Ekim 2026, Kadir): rapor ekranı en üstte, laptop çerçevesiz; altı beyaza solar,
+   başlık ve yazılar hafif üstüne binerek onun altından gelir; butonlar ve marka şeridi sırası masaüstüyle aynı.
+   Ekran 600px tasarım genişliğinde kalır, ekrana sığacak kadar ölçeklenir; --lap-s / --lap-h: public/js/home.js (fitLap). */
 @media (max-width:720px){
+  .hero{padding-top:1.25rem}
   .hero .wrap{display:flex;flex-direction:column}
   .hero-copy{display:contents}
-  .laptop{order:1;position:relative;left:auto;top:auto;width:100%;height:var(--lap-h,auto);margin:2.25rem 0 0;overflow:visible}
+  .hero .display,.hero .lead,.hero-ctas,.brands{position:relative;z-index:2}
+  .laptop{order:-1;position:relative;left:auto;top:auto;width:100%;height:var(--lap-h,auto);margin:0 0 -3rem;overflow:hidden;z-index:1}
   .laptop-inner{width:600px;transform:scale(var(--lap-s,1))!important;transform-origin:top left}
-  .base{margin:0 -5% 0 -4%}
-  .lap-cta{left:50%;bottom:16%;transform:translateX(-50%) scale(calc(1 / var(--lap-s,1)));transform-origin:center bottom}
-  .brands{order:2;margin-top:2.5rem}
+  .lid{background:transparent;padding:0;border-radius:0;box-shadow:none}
+  .screen{border-radius:12px;box-shadow:0 0 0 1px var(--cc-border)}
+  .lid::after{left:0;right:0;bottom:0;height:70%;border-radius:0;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.85) 55%,#fff 100%)}
+  .base,.lap-cta{display:none}
+  .hero .display{margin-top:.5rem}
 }
 
 /* ============ SECTIONS ============ */

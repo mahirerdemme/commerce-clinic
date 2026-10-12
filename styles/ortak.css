@@ -93,3 +93,24 @@ html.topbar-off body{padding-top:84px}
   html .faq summary,
   html .cs-q{font-size:var(--fs-lead)}
 }
+
+/* ===== 3) Mobil "yukarı çık" butonu (public/js/to-top.js) =====
+   Aşağı inince sağ altta belirir, en üstte gizli. Zemin sitenin beyaz butonu gibi, kenarında ince renkli şerit döner. */
+@property --g-a{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes toTopSpin{to{--g-a:360deg}}
+.to-top{display:none}
+@media (max-width:760px){
+  .to-top{display:grid;place-items:center;position:fixed;z-index:60;right:max(1rem,env(safe-area-inset-right));bottom:calc(1rem + env(safe-area-inset-bottom,0px));width:44px;height:44px;padding:0;border:0;border-radius:50%;
+    color:#0A0A0A;cursor:pointer;-webkit-tap-highlight-color:transparent;
+    background:radial-gradient(60% 120% at 100% 0%,rgba(156,128,232,.18) 0%,rgba(156,128,232,0) 70%),radial-gradient(55% 120% at 0% 100%,rgba(243,150,117,.16) 0%,rgba(243,150,117,0) 70%),#fff;
+    box-shadow:0 1px 2px rgba(0,0,0,.05),0 14px 30px -14px rgba(0,0,0,.45);
+    opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+  .to-top.on{opacity:1;transform:none;pointer-events:auto}
+  body:has(.header.theme-dark) .to-top{color:#fff;background:#161616;box-shadow:0 1px 2px rgba(0,0,0,.4),0 14px 30px -14px rgba(0,0,0,.8)}   /* koyu bölümde koyu, açıkta açık (header ile aynı denge) */
+  .to-top::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;
+    background:conic-gradient(from var(--g-a),rgba(156,128,232,0) 0%,#9C80E8 30%,#F39675 55%,rgba(243,150,117,0) 75%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .to-top.on::before{animation:toTopSpin 3.6s linear infinite}   /* görünmezken dönmez: @property animasyonu her karede stil hesaplatır */
+  body:has(.ccb) .to-top,.menu-open .to-top{display:none}   /* çerez bandı veya menü açıkken üstüne binmesin */
+}
+@media (prefers-reduced-motion:reduce){.to-top.on::before{animation:none}}

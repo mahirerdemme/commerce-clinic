@@ -1043,7 +1043,7 @@ img.fo-ph{display:block;object-fit:cover;background:#EDEDEB;border:0;width:144px
 .ab-hero{position:relative;overflow:hidden;padding:clamp(3.5rem,8vw,7rem) 0 clamp(3.5rem,7vw,6rem)}
 .ab-hero .display{max-width:13em}
 .ab-hero .lead{margin-top:1.75rem;max-width:36em}
-.ab-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--cc-text-2);border:1px solid var(--cc-border);border-radius:999px;padding:.4rem .9rem;margin:0 0 2rem;background:var(--cc-surface)}
+.ab-pill{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--cc-text-2);border:1px solid var(--cc-border);border-radius:999px;padding:.3rem .75rem;margin:0 0 2rem;background:var(--cc-surface)}
 .ab-pill a{color:inherit;text-decoration:none}.ab-pill a:hover{color:var(--cc-text)}
 .ab-mark{position:absolute;right:-17vw;top:-2vw;width:min(40vw,560px);color:#F0F0EE;pointer-events:none}
 .ab-hero .display{max-width:11.5em}
@@ -1293,6 +1293,21 @@ body.gp-open{overflow:hidden}
 .f-soc a:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.34)}
 @media (max-width:900px){.f-grid{grid-template-columns:1fr 1fr}.f-grid>div:last-child{grid-column:1/-1}.f-grid ul a{white-space:nowrap}}
 /*ft-end*/
+/* v0.22 · mobil footer: hello + sosyal "Tüm notları oku"nun altında, çizgiden üstte; alttaki satırda yalnız yasal linkler. İmza tek satır (Kadir) */
+.f-contact-m{display:none}
+@media (max-width:760px){
+  .f-contact-m{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;margin-top:1.75rem}
+  .f-bottom>.f-contact{display:none}
+  /* sosyal ikonların altı ile çizgiden sonraki © satırının üstü eşit (1.5rem) */
+  .f-bottom{margin-top:1.5rem}
+  .f-cookie{margin-top:5px}
+}
+/* imza konteyner genişliğine oturur (yazı ≈ 8.9em), alttan bilerek kesilir (harflerin alt kısmı); tabletleri de (≤860) kapsar, eski 13vw kuralı 768px'te taşıyordu */
+@media (max-width:860px){
+  .footer .f-sign{--fs:calc((100vw - 2 * var(--page-pad)) / 8.95);height:calc(var(--fs) * .74);overflow:hidden;padding:0 var(--page-pad)}
+  .footer .f-sign span{font-size:var(--fs);white-space:nowrap;line-height:1}
+}
+
 
 /* ===== canlı ortam: prototip yardımcıları kapalı ===== */
 .flag,.flag-toggle,.obj-toggle{display:none!important}
@@ -1315,3 +1330,65 @@ body.gp-open{overflow:hidden}
 /* ============ v0.19 · performans ============ */
 /* ekran dışındaki sonsuz animasyonlar durur (anim-off, sayfa JS'i) */
 .anim-off,.anim-off *,.anim-off::before,.anim-off::after,.anim-off *::before,.anim-off *::after{animation-play-state:paused!important}
+
+/* ============ v0.23 · mobil menü (Kadir, 12 Ekim 2026) ============
+   Menü tam ekran değil: header'ın kendisi aşağı doğru açılır. Scroll'dayken kapsül (etrafında boşluk), en üstteyken yerinde (duyuru şeridi kalır).
+   Panel bölümün temasını izler (koyu bölümde koyu, açık bölümde açık; header tema sınıfı public/js/*.js'de, footer dahil); arkadaki sayfa karartılır.
+   Rehber kartı iki temada da beyaz/renkli beyaz. Uyumluluk notu: styles/ortak.css ve docs/acik-isler.md "Mobil revizyon". */
+.nav .nav-foot{display:none}
+@media (max-width:860px){
+  /* bar içeriğe göre uzar: 1. satır logo + buton, 2. satır menü (kapalıyken 0 yükseklik) */
+  .header .bar{height:auto;grid-template-rows:68px auto;align-content:start;row-gap:0}
+  .header.scrolled .bar{height:auto;grid-template-rows:56px auto}
+  .header .logo,.header .menu-btn{grid-row:1}
+  .header .nav{position:static;grid-column:1/-1;grid-row:2;width:100%;height:auto;max-height:0;overflow:hidden;padding:0;background:none;transform:none;
+    opacity:0;visibility:hidden;transition:max-height .45s var(--ease),opacity .25s,visibility .25s}
+  /* kısa ekranda (yatay telefon) panel ekrana sığar, içinde kayar */
+  .menu-open .header .nav{max-height:min(640px,calc(100vh - 150px));max-height:min(640px,calc(100dvh - 150px));overflow-y:auto;overscroll-behavior:contain;opacity:1;visibility:visible;padding-bottom:1rem}
+  /* içerik (logo ve çarpı hariç) iki yandan eşit 24px içeride: kapsülde bar dolgusu 16/8px, şeritli en üst halde 20/20px */
+  .header.scrolled .nav{padding-left:.5rem;padding-right:1rem}
+  .header:not(.scrolled) .nav{padding-left:.25rem;padding-right:.25rem}
+  /* açık hal: cam zemin; sayfa karartılır */
+  body.menu-open .header .bar{height:auto;
+    background:color-mix(in srgb,var(--cc-surface) 90%,transparent)!important;-webkit-backdrop-filter:blur(20px) saturate(1.5)!important;backdrop-filter:blur(20px) saturate(1.5)!important;
+    box-shadow:none}
+  /* en üstte: şerit kalır, bar yerinde kalıp aşağı açılır (alt köşeler yuvarlanır) */
+  body.menu-open .header:not(.scrolled) .bar{border-radius:0 0 20px 20px}
+  /* scroll'da: kapsül aşağı büyür */
+  body.menu-open .header.scrolled{padding:calc(env(safe-area-inset-top,0px) + 8px) .75rem 0}
+  body.menu-open .header.scrolled .bar{border-radius:18px;border-color:var(--cc-border);padding:0 .5rem 0 1rem}
+  body.menu-open .header.theme-dark .bar{border-color:rgba(255,255,255,.16);box-shadow:0 30px 70px -24px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.04)}
+  /* arkadaki sayfa: karartma + hafif blur; dışına dokununca menü kapanır (public/js/to-top.js) */
+  body.menu-open::after{content:"";position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);animation:menuScrim .3s ease both}
+  /* logo: ikon ↔ yazılı logo genişliği menü açılıp kapanırken animasyonlu (menu-snap'in geçişsizliğini geçer) */
+  body[class] .header .logo{transition:width .45s var(--ease),color .5s!important}
+  body.menu-open .header.scrolled .logo svg{transform:none}
+  /* içerik: çok hafif, sıralı belirme (toplam ~0.3 sn); kapanırken anında */
+  body .header .nav>*{opacity:0;transform:translateY(6px)}
+  body.menu-open .header .nav>*{opacity:1;transform:none;transition:opacity .3s ease,transform .35s var(--ease);transition-delay:calc(var(--i,0) * 35ms + 50ms)}
+  .header .nav>:nth-child(1){--i:0}.header .nav>:nth-child(2){--i:1}.header .nav>:nth-child(3){--i:2}.header .nav>:nth-child(4){--i:3}.header .nav>:nth-child(5){--i:4}.header .nav>:nth-child(6){--i:5}
+  /* bağlantılar: çizgisiz, bir tık küçük */
+  .header .nav>a:not(.nav-cta){font-size:1.375rem;padding:.7rem 0;border-bottom:0}
+  .header .nav .nav-cta{margin-top:1rem}
+  /* alt alan */
+  .nav .nav-foot{display:flex;flex-direction:column;gap:.9rem;width:100%;padding:1.5rem 0 0}
+  body.menu-open .header .nav .nav-foot a.nav-guide{display:flex;align-items:center;gap:.8rem;width:100%;padding:1rem;border-radius:var(--r-m);color:#0A0A0A;background:#fff}   /* açık bölümde tam beyaz, çerçevesiz (ikon daireleriyle aynı) */
+  .nav-guide-a{flex:none}
+  .nav-guide-b{flex:none;padding:.6em .95em;line-height:1;border-radius:999px;font-size:.6875rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    background:radial-gradient(70% 140% at 100% 0%,rgba(156,128,232,.34) 0%,rgba(156,128,232,0) 72%),radial-gradient(65% 140% at 0% 100%,rgba(243,150,117,.32) 0%,rgba(243,150,117,0) 72%),#fff}   /* renk geçişli beyaz yalnız rozette */
+  /* koyu bölümde kart: şeffaf zemin, ince açık çerçeve, beyaz yazı; rozet koyu zeminde renkli parıltı */
+  body.menu-open .header.theme-dark .nav .nav-foot a.nav-guide{background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);color:#fff}
+  .header.theme-dark .nav-guide-b{color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);
+    background:radial-gradient(70% 140% at 100% 0%,rgba(156,128,232,.55) 0%,rgba(156,128,232,0) 72%),radial-gradient(65% 140% at 0% 100%,rgba(243,150,117,.5) 0%,rgba(243,150,117,0) 72%),rgba(255,255,255,.06)}
+  .nav-guide-t{flex:1;min-width:0;line-height:1.3;white-space:normal}
+  .nav-foot-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.35rem}
+  .menu-open .header .nav .nav-foot a:not(.btn){width:auto;height:auto;padding:0;border:0;border-radius:0;font-size:.875rem;font-weight:500;letter-spacing:-.01em;opacity:1;color:var(--cc-text)}
+  .menu-open .header .nav .nav-foot a.nav-mail{font-weight:400;color:color-mix(in srgb,var(--cc-text) 55%,transparent)}
+  .nav-soc{display:flex;gap:.5rem}
+  .menu-open .header .nav .nav-foot .nav-soc a{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--cc-border);border-radius:50%;background:#fff;color:#0A0A0A}
+  .menu-open .header.theme-dark .nav .nav-foot .nav-soc a{border-color:#fff}
+}
+@keyframes menuScrim{from{opacity:0}to{opacity:1}}
+@media (max-width:860px) and (prefers-reduced-motion:reduce){body.menu-open::after{animation:none}.header .nav,body.menu-open .header .nav>*{transition:none}body[class] .header .logo{transition:none!important}}
+/* backdrop-filter desteklemeyen eski tarayıcılarda blur yerine daha koyu perde */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){@media (max-width:860px){body.menu-open::after{background:rgba(0,0,0,.6)}}}

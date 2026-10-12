@@ -153,7 +153,7 @@ main{padding:clamp(2rem,4vw,3.5rem) clamp(1.25rem,4vw,4rem) 6rem;min-width:0}
 .sev b{font-variant-numeric:tabular-nums}
 
 /* ---------- area view ---------- */
-.crumb{font-size:.875rem;color:var(--cc-text-2);margin-bottom:1.5rem}
+.crumb{font-size:.75rem;color:var(--cc-text-2);margin-bottom:1.5rem}
 .crumb button{border:0;background:none;padding:0;text-decoration:underline;text-underline-offset:3px;color:inherit}
 .area-head{display:grid;grid-template-columns:minmax(0,1fr) 15rem;gap:2rem 3rem;align-items:end;padding-bottom:2rem;border-bottom:1px solid var(--cc-border)}
 .area-head .h1{font-size:clamp(2.25rem,4.4vw,3.5rem)}

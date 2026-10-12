@@ -7,7 +7,7 @@
   function hdr(){
     header.classList.toggle('scrolled',scrollY>40);
     const y=header.querySelector('.bar').getBoundingClientRect(),mid=y.top+y.height/2;
-    header.classList.toggle('theme-dark',$$('.chapter').some(c=>{const r=c.getBoundingClientRect();return r.top<=mid&&r.bottom>=mid}));
+    header.classList.toggle('theme-dark',$$('.chapter,.cta-final,.footer').some(c=>{const r=c.getBoundingClientRect();return r.top<=mid&&r.bottom>=mid}));
   }
   let hTick=0;addEventListener('scroll',()=>{if(!hTick)hTick=requestAnimationFrame(()=>{hTick=0;hdr()})},{passive:true});hdr();
   // mobil menü

@@ -11,7 +11,7 @@
   function hdr(){
     header.classList.toggle('scrolled',scrollY>40);
     const y=header.querySelector('.bar').getBoundingClientRect();const mid=y.top+y.height/2;
-    const dark=$$('.chapter').some(c=>{const r=c.getBoundingClientRect();return r.top<=mid&&r.bottom>=mid});
+    const dark=$$('.chapter,.cta-final,.footer').some(c=>{const r=c.getBoundingClientRect();return r.top<=mid&&r.bottom>=mid});
     header.classList.toggle('theme-dark',dark);
   }
 

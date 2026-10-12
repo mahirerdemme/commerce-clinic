@@ -29,6 +29,9 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 
 ## Kararlar
 
+- **Tema dengesi (Kadir, 12 Ekim 2026; kalıcı tasarım ilkesi, Master Brief v2'ye ek):** sitede beyaz ve siyah bölümler arasındaki denge her yerde korunur. Header, açılan menü, yukarı çık butonu gibi bölümün üstüne binen öğeler altındaki bölümün temasını izler: siyah bölümde (footer ve kapanış CTA'sı dahil) siyah, beyazda beyaz. Tek istisna rehber kartı: açık bölümde tam beyaz, koyu bölümde şeffaf çerçeveli. Yeni bir koyu bölüm eklenirse header'ın tema algısına (`public/js/*.js`, `.chapter,.cta-final,.footer`) eklenmeli. (Not: Master Brief PDF'i Mahir'den geliyor, burada kodlanmadı; bu satır brief'e eklenecek not olarak duruyor.)
+- **Kod temizliği ve cihaz uyumu (Kadir, 12 Ekim 2026):** kullanılmayan kural bırakılmaz; geri alınan her değişiklik CSS/JS'ten de silinir. Animasyonlu her parça Android dahil kontrol edilir: `prefers-reduced-motion`, `backdrop-filter` yedeği, kısa ekran (yatay telefon), tablet (761-860px), 320px genişlik.
+
 - Yasal metinlerin hukukçu son okuması (4 metin).
 - Yurt dışı aktarım için standart sözleşmeler (Vercel, Resend, Cloudflare, Google, bülten aracı) imzalanıp KVKK'ya bildirilmeli; metinler bunu taahhüt ediyor.
 - Ana sayfa hero şeridindeki referans marka logoları (Myvia, Tromox, Alfemo, Gözde Grubu, Kelebek…): kullanım izni var mı? Yoksa kaldırılmalı. (Mahir)
@@ -52,6 +55,19 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 - İlerleme tarayıcıda tutulur (Safari 7 gün girilmezse siler). "İlerlemeyi kaydet" durumu bağlantının `#k=` kısmına yazar: her cihazda açılır, ekiple paylaşılır, sunucuya gitmez. Madde sırası değişirse kod sürümü (`1.`) artırılmalı.
 - Teşekkür metni "bir kopyasını e-postanıza da gönderdik" diyor; Resend bağlanınca bağlantı gerçekten e-postayla gitmeli.
 
+## Kaldığımız yer (13 Ekim 2026, gece)
+
+**Biten (bu turda commit'lendi):** mobil footer düzeni (hello + sosyal "Tüm notları oku"nun altında, imza tek satır ve konteynere sığar, tablette de); sağ altta yukarı çık butonu; mobil menü (header'ın kendisi aşağı açılır, blur + karartma, çizgisiz linkler, rehber kartı, hello ve sosyal); footer ve kapanış CTA'sında header koyu tema; breadcrumb'lar tek tip hap ve 12px; kısa ekranda (yatay telefon) menü paneli kayar. Tema dengesi ilkesi "Kararlar"da.
+
+**Açık, sıradaki iş: sayfalar arası geçişte hero "takılarak" geliyor, arka plan rengi değişir gibi görünüyor (Kadir).**
+- Kadir iOS Simülatör'de (Safari, `localhost:3000`, `next dev`) test ediyor. Kayıt: `~/Desktop/Ekran Kaydı 2026-10-13 00.22.27.mov`.
+- Bulgular: simülatörün Safari'sinde çapraz geçiş çalışıyor (`PageRevealEvent`, `startViewTransition` var); kayıtta eski ve yeni sayfa ~0.3 sn üst üste biniyor (açık menünün hayaleti yeni sayfanın üstünde). Chrome'da kare yakalamada çapraz geçiş yeni sayfayı ~0.6 sn bekletiyordu (214 ms + 347 ms donma), geçişi kapatınca tek 70 ms boşluk kalıyordu. Hero animasyonu çapraz geçişle aynı anda başlıyor.
+- Üretim derlemesinde 390px, 4-6× yavaşlatılmış CPU'da scroll karelerinde takılma ve düzen kayması (CLS) yok; açılışta `setEh` (74 ms) ve `fitLap` (25 ms) senkron yerleşim hesaplıyor; hero rapor ekranı JS ile üretiliyor (tek karelik iş).
+- Denendi ve geri alındı: (1) site içi geçişte giriş animasyonunu kapatmak (Kadir animasyon istiyor), (2) `@view-transition{navigation:none}`, (3) zorla yerleşim düzenlemeleri, (4) mobil hero giriş sürelerini kısaltmak. Hiçbiri kalıcı değil; hepsi baştan değerlendirilecek.
+- Önerilen sıra: önce `npm run build && npx next start -p 3100` ile üretimde simülatörden test et (dev sunucusu gerçek hızı göstermez); sorun sürerse çapraz geçiş süresi/sıralama ve hero'yu geçişin bitişine bağlamak (`pagereveal` → `viewTransition.finished`) denenir.
+
+**Kontrol bekleyenler:** menü açılış/kapanış ve logo genişleme animasyonlarının hareketi (yalnız durağan görüntüyle doğrulandı); gerçek iPhone ve Android'de elle bakış; Next dev konsolundaki hydration uyarısı (bizden önce de vardı); rozet ve kart renkleri koyu/açık geçişte son bir kez gözle.
+
 ## Mobil revizyon
 
 - Kadir'in 29 ekran görüntüsü (iPhone Safari): `~/Downloads/mobil-ss/IMG_1882–1910.PNG`. Görüntü görüntü gidiliyor; Kadir revize vermeden hiçbir şey değişmez. Sıra: ana sayfa → Check-up → Danışmanlık → Hakkımızda → rehber/blog → Görüşme Planla formu.
@@ -60,6 +76,10 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 - Yapıldı (9-10 Ekim): ana sayfa mobil bölümleri sırayla elden geçti: çalışma modelleri kartı (obje küçüldü, siyah çizgi kalktı), danışmanlık maddeleri üst üste biner, problem haritası (alan isimleri noktaların yerinde), ekosistem kartları (ekran boyunda, üst üste biner, görsel başlığın altında, "Daha fazla" şeridi logoların üstüne biner, mobilde hover kapalı), Check-up bölümü (başlık, buton, yana kayan 1-2-3, sadeleşmiş rapor ve sekmeler), son çağrı bölümü (obje butonun sağında). Sıradaki: görüntü 1884 sonrası kalanlar ve diğer sayfalar (Check-up, Danışmanlık, Hakkımızda, rehber/blog, Görüşme Planla formu).
 - Tartışılacak (Kadir): ana sayfa hero görseli Check-up hero'suyla çok benzer; ileride ana sayfa için farklı bir görsel düşünülebilir.
 - Kadir'in genel notları: hero alanları masaüstünde ve mobilde "takılıyor" hissi veriyor (giriş animasyonları / arka plan katmanı; incelenecek). Tekrar eden tablı bölümler (8 alan, 3'lü tablar) mobilde elden geçecek.
+- Yapıldı (12 Ekim): footer mobil düzeni (hello + sosyal "Tüm notları oku"nun altında, imza tek satır ve konteynere sığar, alttan kesik), sağ altta "yukarı çık" butonu (`public/js/to-top.js`, `styles/ortak.css`; çerez bandı ve menü açıkken gizli, koyu bölümde koyu), mobil menü: header'ın kendisi aşağı açılır (kapsül/şerit), blur + karartma, çizgisiz linkler, rehber kartı, hello ve sosyal ikonlar (`content/partials/header.html`, `styles/*.css` "v0.23" bloğu). Footer ve kapanış CTA'sında header koyu temaya geçer. Kapsam: yalnız ≤860px; masaüstü davranışı aynı.
+- Cihaz kontrolü (12 Ekim): 320, 360, 390, 412, 768 ve yatay 740×360 ölçüldü: yatay taşma yok; imza her genişlikte sığar (eski 13vw kuralı 768px'te taşıyordu, düzeltildi); kısa ekranda menü paneli içinde kayar. Bilinen sınır: `@property` ile dönen şerit eski tarayıcılarda (Safari <16.4, Firefox <128) sabit durur, işlev aynı.
+- Yapıldı (13 Ekim): breadcrumb'lar tek tip hap ve daha küçük (12px): Check-up de diğer sayfalarla aynı (`.h4-pill` ↔ `.ab-pill`). Yukarı çık halkası yalnız görünürken döner.
+- Açık (13 Ekim): sayfalar arası geçişte hero'nun "takılarak" gelmesi ve geçişte arka plan renginin değişir gibi görünmesi. Kadir'in iOS Simülatör kaydında (`Ekran Kaydı 2026-10-13 00.22.27.mov`) eski ve yeni sayfa üst üste binen çapraz geçiş görülüyor (~0.3 sn). Denenenler geri alındı; baştan ele alınacak.
 - Yerel mobil kontrol: `node scripts/mobil-ss.mjs <url> <png> [y] [yükseklik]` (Chrome DevTools Protocol, 390×844, DPR 2, iPhone UA; sayfayı kaydırıp animasyonları tetikler). Önce `npm run build && npx next start -p 3100`.
 - Sıradaki görüntü: IMG_1884 (ana sayfa, E-ticaret Altyapıları kartı).
 

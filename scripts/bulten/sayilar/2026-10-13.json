@@ -1,0 +1,61 @@
+{
+ "subject": "ChatGPT'de sanal deneme, Merchant Center'da görsel kalitesi kuralı",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "13 Ekim 2026",
+ "issue": 3,
+ "items": [
+  {
+   "tag": "Yapay zekâ",
+   "title": "ChatGPT'ye sanal deneme özelliği geldi",
+   "summary": "OpenAI, ChatGPT'de kullanıcıların selfie çekip ya da yükleyip kıyafet ve aksesuarların üzerlerinde nasıl duracağını satın almadan önce görebildiği bir özellik sundu. Böylece ChatGPT'deki alışveriş özellikleri genişliyor.",
+   "takeaway": "Giyim ve aksesuar satıyorsanız ürün görsellerinin ve bilgilerinin yapay zekâ platformlarında da doğru görünmesine dikkat edin.",
+   "url": "https://www.retaildive.com/news/virtual-try-on-launch-chatgpt/832244/",
+   "source": "Retail Dive"
+  },
+  {
+   "tag": "Reklam",
+   "title": "Merchant Center: düşük kaliteli görsel artık ürünü durdurmuyor",
+   "summary": "Google, Merchant Center yardım belgesini güncelledi: bulanık ya da düşük çözünürlüklü görseli olan ürünler reklamlarda ve ücretsiz listelemelerde görünmeye devam edecek. Google kısa süre önce ürün görselleri için en küçük boyutu 500x500 piksel olarak güncellemişti.",
+   "takeaway": "Ürün görünse de kötü görsel tıklanmayı düşürebilir; feed'deki görselleri yine de gözden geçirin.",
+   "url": "https://www.seroundtable.com/google-merchant-center-poor-image-inclusion-42273.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Pazaryeri",
+   "title": "Amazon'un sonbahar indirim günleri satıcılara nasıl geçti",
+   "summary": "Adobe verilerine göre 6-7 Ekim'deki etkinlikte ABD'de çevrim içi satışlar 9,86 milyar dolara ulaştı ve geçen yıla göre %8,5 arttı. Alışverişçiler temel ürünlerde stok yaptı; satıcılar müşterilerin bu yıl fiyata daha duyarlı olduğunu söylüyor.",
+   "takeaway": "Sezon indirimleri öne kayıyor; kampanya ve stok planınızı daha erken başlayacak bir sezona göre kurmayı düşünün.",
+   "url": "https://www.modernretail.co/marketing/how-amazon-fall-prime-day-went-for-sellers/",
+   "source": "Modern Retail"
+  },
+  {
+   "tag": "Ölçüm",
+   "title": "GA4'te ChatGPT'den gelen trafik nasıl izlenir",
+   "summary": "Practical Ecommerce, ChatGPT'den gelen ziyaretleri GA4'te bir kaynak filtresiyle ayırıp hangi sayfalara geldiğini görmeyi anlatıyor. Yazara göre bu trafiğin bir kısmı, ChatGPT linklerindeki bir ayar nedeniyle GA4'te Direct ya da Unassigned olarak görünüyor.",
+   "takeaway": "Yapay zekâ kaynaklı trafiği ayrı izleyin; Unassigned trafikteki artışın bir kısmı buradan geliyor olabilir.",
+   "url": "https://www.practicalecommerce.com/how-to-track-chatgpt-traffic-in-ga4",
+   "source": "Practical Ecommerce"
+  },
+  {
+   "tag": "Tüketici",
+   "title": "ABD'de alışverişçilerin yarısına yakını sezon bütçesinden endişeli",
+   "summary": "ICSC anketine göre iş piyasası ve borç kaygıları tüketicilerin bu sezon ne kadar harcayacağını etkiliyor. Katılımcıların yaklaşık %70'i indirim ve özel fırsatların daha fazla alışverişe teşvik edeceğini söylüyor.",
+   "takeaway": "Bu sezon fiyat ve fırsat beklentisi yüksek; kampanyalarınızda değeri açıkça anlatmak öne çıkabilir.",
+   "url": "https://www.retaildive.com/news/shoppers-worried-affording-holidays-icsc/832615/",
+   "source": "Retail Dive"
+  }
+ ],
+ "briefs": [
+  { "title": "Google Ads, kampanya hedef ve öğelerini yapay zekâyla önermeyi test ediyor", "url": "https://www.seroundtable.com/google-ai-ads-goals-and-assets-42269.html", "source": "Search Engine Roundtable" },
+  { "title": "Search Console performans raporunda alışılmadık uzun gecikme", "url": "https://www.seroundtable.com/google-search-console-performance-report-delayed-42271.html", "source": "Search Engine Roundtable" },
+  { "title": "Google'ın engellemeleri nedeniyle sıralama takip araçları zorlanıyor", "url": "https://www.seroundtable.com/third-party-google-rank-tracking-broken-42272.html", "source": "Search Engine Roundtable" },
+  { "title": "Lowe's, Black Friday indirimlerini ekimde başlattı", "url": "https://www.retaildive.com/news/lowes-launches-black-friday-deals-in-october/832730/", "source": "Retail Dive" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

@@ -1,0 +1,61 @@
+{
+ "subject": "Google'da tek sepet, telefonda 12 ay taksit sınırı 40 bin TL",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "16 Ekim 2026",
+ "issue": 4,
+ "items": [
+  {
+   "tag": "Yapay zekâ",
+   "title": "Google'ın Universal Cart özelliği ABD'de kullanıma açıldı",
+   "summary": "Google Arama ve Gemini'de farklı mağazalardan ürünler tek sepette toplanıp tek seferde, Google Pay ile satın alınabiliyor; sepet fiyat değişikliklerini bildiriyor ve geçerli promosyon kodlarını kendisi ekliyor. Ödeme Universal Commerce Protocol (UCP) üzerinden çalışıyor; Google, Nike, Sephora, Walmart ve birçok Shopify mağazasının dahil olduğunu söylüyor.",
+   "takeaway": "Şimdilik yalnız ABD'de, ama alışverişin arama ve yapay zekâ asistanı içinde tamamlandığı bir düzene hazırlık olarak ürün verinizi ve promosyon bilgilerinizi güncel tutun.",
+   "url": "https://www.seroundtable.com/universal-cart-google-search-42312.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Yasal",
+   "title": "Sıfır cep telefonunda 12 ay taksit sınırı 40 bin TL'ye çıktı",
+   "summary": "15 Ekim tarihli Resmi Gazete'deki yönetmelik değişikliğiyle 40 bin TL ve altındaki sıfır telefonlar 12 ay taksitle satılabilecek; üzerindekilerde 3 ay sınırı sürüyor, yenilenmiş telefonlarda ise tutar sınırı olmadan 12 ay taksit mümkün. Elektronik, mobilya, beyaz eşya gibi diğer gruplarda taksit sınırları değişmedi.",
+   "takeaway": "Telefon ya da yenilenmiş ürün satıyorsanız ödeme sayfasındaki taksit seçeneklerini yeni sınırlara göre güncelleyin.",
+   "url": "https://www.marketingturkiye.com.tr/haberler/cep-telefonlarinda-12-ay-taksit-icin-fiyat-siniri-yukseltildi/",
+   "source": "Marketing Türkiye"
+  },
+  {
+   "tag": "Reklam",
+   "title": "Google Ads'e kanal önceliği ve bütçe paylaşımı ayarı geliyor",
+   "summary": "Reklamverenler Arama, Alışveriş, Performance Max ve ileride Demand Gen kampanyalarında kanalları yüksek ve düşük öncelikli olarak ayırabilecek; düşük öncelikli kanallar için günlük bütçeye yüzde sınırı konabilecek. Google, Şubat 2027'den itibaren Display Ağı açık Arama kampanyalarında mevcut harcama düzeninin kalkacağını belirtiyor.",
+   "takeaway": "Ayar hesabınıza geldiğinde Arama kampanyalarınızda Display Ağı'nın açık olup olmadığını kontrol edin ve kanal önceliklerini bilinçli belirleyin.",
+   "url": "https://www.seroundtable.com/google-ads-channel-prioritization-budget-allocation-42297.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Ödeme",
+   "title": "Amex, yapay zekâ ajanlarının izinsiz alışverişine karşı çerçeve sundu",
+   "summary": "American Express'in Intent Intelligence Framework'ü, ajan alışverişi tamamlamadan önce müşterinin talimatını (mağaza, en yüksek bütçe, ürün tercihleri) kaydedip müşteriye onaylatıyor. Şirket, bunun yapay zekâyla yapılan alışverişlerde sektör standardı olmasını umuyor.",
+   "takeaway": "Ajanlar üzerinden gelen siparişler arttıkça itiraz ve iade süreçleri de değişecek; ödeme sağlayıcınızın bu konudaki planını takip edin.",
+   "url": "https://techcrunch.com/2026/10/13/amex-introduces-a-framework-to-prevent-ai-agents-from-making-unauthorized-purchases/",
+   "source": "TechCrunch"
+  },
+  {
+   "tag": "Ölçüm",
+   "title": "Google, AI Mode ve AI Overviews'daki linkleri yine değiştirdi",
+   "summary": "Google yapay zekâ yanıtlarına daha fazla link ekliyor, bazı linkleri yukarı taşıyor ve bazı aramalarda görevi tamamlamak için gereken bir iki linki en üstte gösteriyor. Ancak bu yanıtlardan gelen tıklama verisi henüz raporlarda yer almıyor; Google ek metrikleri zamanla getireceğini söylüyor.",
+   "takeaway": "Yapay zekâ aramasının trafiğinize etkisini şimdilik kendi analitiğinizden izlemeniz gerekiyor; Search Console'da tıklama verisi beklemeyin.",
+   "url": "https://www.seroundtable.com/google-updates-links-in-ai-mode-and-ai-overviews-again-42308.html",
+   "source": "Search Engine Roundtable"
+  }
+ ],
+ "briefs": [
+  { "title": "Google Ads, arama terimi ve reklam kombinasyonlarını tek raporda göstermeyi test ediyor", "url": "https://www.seroundtable.com/google-ads-search-terms-and-ad-combinations-report-42287.html", "source": "Search Engine Roundtable" },
+  { "title": "FedEx ve Stripe, sevkiyat verisine dayalı satıcı finansmanı için iş birliği yapıyor", "url": "https://www.practicalecommerce.com/commerce-data-as-credit-data", "source": "Practical Ecommerce" },
+  { "title": "Bing, arama sonuçlarının en üstünde tek ve büyük bir reklam alanını test ediyor", "url": "https://www.seroundtable.com/bing-large-single-sponsored-ad-42283.html", "source": "Search Engine Roundtable" },
+  { "title": "Ruggable, bütçesinin bir kısmını performans reklamlarından içerik üreticilerine kaydırdı", "url": "https://www.modernretail.co/marketing/ruggables-new-ad-spend-strategy-shifts-focus-to-shopmy-creators/", "source": "Modern Retail" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

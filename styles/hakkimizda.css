@@ -1392,3 +1392,19 @@ body.gp-open{overflow:hidden}
 @media (max-width:860px) and (prefers-reduced-motion:reduce){body.menu-open::after{animation:none}.header .nav,body.menu-open .header .nav>*{transition:none}body[class] .header .logo{transition:none!important}}
 /* backdrop-filter desteklemeyen eski tarayıcılarda blur yerine daha koyu perde */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){@media (max-width:860px){body.menu-open::after{background:rgba(0,0,0,.6)}}}
+
+/* ============ mobil kapanış CTA'sı (Kadir, 18 Ekim): ana sayfadakiyle aynı; yalnız ≤760px ============ */
+@media (max-width:760px){
+  .cta-final{display:flex}
+  .cta-final .cta-grid{display:flex;flex-direction:column;align-items:stretch;position:relative;width:100%;gap:0;min-height:calc(11.5rem + (100vw - 2.5rem) * .5 * 1.157)}
+  .cta-final .cta-copy{padding:2.5rem 0 0}
+  .cta-final .cta-copy .trust{max-width:56%;font-size:.8125rem;line-height:1.45}
+  .cta-final .cta-obj{position:absolute;right:-12%;top:11.5rem;width:50%;margin:0;max-height:none}
+}
+
+/* mobil düzen (Kadir, 18 Ekim): boş hero alanı ve bölüm boşlukları azaldı; yalnız ≤760px */
+@media (max-width:760px){
+  :root{--space-section:3.75rem}
+  .ab-hero{min-height:0;padding:2.5rem 0 2.75rem}
+  .ab-logos{padding-bottom:var(--space-section)}
+}

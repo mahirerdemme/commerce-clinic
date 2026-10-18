@@ -81,6 +81,9 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 - Yapıldı (13 Ekim): breadcrumb'lar tek tip hap ve daha küçük (12px): Check-up de diğer sayfalarla aynı (`.h4-pill` ↔ `.ab-pill`). Yukarı çık halkası yalnız görünürken döner.
 - Açık (13 Ekim): sayfalar arası geçişte hero'nun "takılarak" gelmesi ve geçişte arka plan renginin değişir gibi görünmesi. Kadir'in iOS Simülatör kaydında (`Ekran Kaydı 2026-10-13 00.22.27.mov`) eski ve yeni sayfa üst üste binen çapraz geçiş görülüyor (~0.3 sn). Denenenler geri alındı; baştan ele alınacak.
 - Yerel mobil kontrol: `node scripts/mobil-ss.mjs <url> <png> [y] [yükseklik]` (Chrome DevTools Protocol, 390×844, DPR 2, iPhone UA; sayfayı kaydırıp animasyonları tetikler). Önce `npm run build && npx next start -p 3100`.
+- Yapıldı (18 Ekim): Check-up sayfası mobilde baştan sona elden geçti (hero rapor çerçevesi, yaklaşım cümleleri, 8 alan ve "elinizde ne olacak" yana kayan sekmeler, kimler için, süreç, erişimler, gizlilik, kapanış CTA'sı). Sekmelerde tüm paneller aynı hücrede üst üste durur, kutu sabit yükseklikte; dokunma ve kaydırma gerçek cihazda henüz denenmedi.
+- Yapıldı (18 Ekim, Kadir yokken, gözden geçirme bekliyor): Danışmanlık, Commerce Notes listesi, blog yazısı, ücretsiz rehber ve Hakkımızda mobilde elden geçti: bölüm boşlukları azaldı (`--space-section` 3,75rem), hero'daki boş alan kapandı, istatistikler sığdı, kapanış CTA'sı ana sayfadaki gibi (obje butonun sağında), blog yazısı okuma ölçüsü, "ilgili notlar" yana kayan şerit, rehberde "Ücretsiz rehberi al" başlığın altında. Yalnız ≤760px; masaüstü değişmedi. Kadir gözle bakıp revize verecek.
+- Bakılmadı: Görüşme Planla formu (ilk ekran düzgün), Kontrol listesi sayfası (`/rehber/.../kontrol-listesi`), Örnek rapor, yasal sayfalar.
 - Sıradaki görüntü: IMG_1884 (ana sayfa, E-ticaret Altyapıları kartı).
 
 ## Blog (Commerce Notes) ve rehberler · SEO

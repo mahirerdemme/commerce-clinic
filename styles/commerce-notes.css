@@ -1660,3 +1660,46 @@ body.gp-open{overflow:hidden}
 @media (max-width:860px) and (prefers-reduced-motion:reduce){body.menu-open::after{animation:none}.header .nav,body.menu-open .header .nav>*{transition:none}body[class] .header .logo{transition:none!important}}
 /* backdrop-filter desteklemeyen eski tarayıcılarda blur yerine daha koyu perde */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){@media (max-width:860px){body.menu-open::after{background:rgba(0,0,0,.6)}}}
+
+/* ============ mobil kapanış CTA'sı (Kadir, 18 Ekim): ana sayfadakiyle aynı; yalnız ≤760px ============ */
+@media (max-width:760px){
+  .cta-final{display:flex}
+  .cta-final .cta-grid{display:flex;flex-direction:column;align-items:stretch;position:relative;width:100%;gap:0;min-height:calc(11.5rem + (100vw - 2.5rem) * .5 * 1.157)}
+  .cta-final .cta-copy{padding:2.5rem 0 0}
+  .cta-final .cta-copy .trust{max-width:56%;font-size:.8125rem;line-height:1.45}
+  .cta-final .cta-obj{position:absolute;right:-12%;top:11.5rem;width:50%;margin:0;max-height:none}
+}
+
+/* ============ mobil okuma düzeni (Kadir, 18 Ekim): blog yazısı ve liste; yalnız ≤760px ============ */
+@media (max-width:760px){
+  :root{--space-section:3.75rem}
+  .cn-post{padding-top:2rem}
+  .cn-ph{margin-top:1.5rem}
+  .cn-ph .display{font-size:2rem;line-height:1.08}
+  .cn-by{margin-top:1.25rem}
+  .cn-body{margin-top:1.75rem}
+  .cn-text{font-size:1.0625rem;line-height:1.68}
+  .cn-text p{margin-bottom:1rem}
+  .cn-intro{font-size:1.1875rem;line-height:1.55}
+  .cn-text h2{margin:2rem 0 .55rem;font-size:1.3125rem;line-height:1.28}
+  .cn-note{margin:1.25rem 0;padding:1rem 1.1rem;font-size:.9375rem}
+  .cn-cta{margin-top:2rem;padding:1.25rem}
+  /* ilgili notlar: dikey iki dev kart yerine yana kayan şerit */
+  .cn-rel{margin-top:2.5rem;padding-top:1.5rem}
+  .cn-rel-g{display:flex;gap:.75rem;margin:0 calc(-1*var(--page-pad));padding:0 var(--page-pad) .25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--page-pad);scrollbar-width:none}
+  .cn-rel-g::-webkit-scrollbar{display:none}
+  .cn-rel-g .cn-rc{flex:0 0 78%;scroll-snap-align:start;padding:1rem}
+  .cn-rc b{font-size:1.0625rem}
+}
+
+/* mobil rehber (Kadir, 18 Ekim): ana eylem başlığın hemen altında; adım listesi ve form daha sıkı; yalnız ≤760px */
+.gd-jump{display:none}
+@media (max-width:760px){
+  .gd-jump{display:inline-flex;margin-top:1.25rem}
+  .cn-gd .cn-by{margin-top:1.5rem}
+  .gd-list{padding:1.1rem 1.1rem 1.25rem}
+  .gd-list ol{padding-left:1.25rem;gap:.55rem;font-size:.9375rem;line-height:1.5}
+  .gd-ph3:not(:first-child){margin-top:1.1rem;padding-top:1rem}
+  .gd-form{padding:1.25rem}
+  .gd-grid{grid-template-columns:1fr}
+}

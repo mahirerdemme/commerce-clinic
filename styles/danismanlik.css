@@ -1598,7 +1598,7 @@ body.gp-open{overflow:hidden}
   /* istatistikler: üç sütun kenara taşmasın */
   .co-stats div{padding:1.25rem .4rem 0 0}
   .co-stats div+div{padding-left:.85rem}
-  .co-stats dt{font-size:1.625rem}
+  .co-stats dt{font-size:1.5rem;white-space:nowrap}
   .co-stats dd{margin-top:.45rem;font-size:.8125rem;line-height:1.35}
   /* kapanış CTA'sı: ana sayfadakiyle aynı (obje butonun sağında, sağ kenardan taşar) */
   .cta-final{display:flex}
@@ -1606,4 +1606,16 @@ body.gp-open{overflow:hidden}
   .cta-final .cta-copy{padding:2.5rem 0 0}
   .cta-final .cta-copy .trust{max-width:56%;font-size:.8125rem;line-height:1.45}
   .cta-final .cta-obj{position:absolute;right:-12%;top:11.5rem;width:50%;margin:0;max-height:none}
+}
+
+/* mobil "Nasıl çalışır?" (Kadir, 18 Ekim): üç kart alt alta yerine yana kayan şerit, ~1,75 kart görünür; paddingler kısık */
+@media (max-width:760px){
+  .co-flow{display:flex;gap:.7rem;border:0;margin:1.75rem calc(-1*var(--page-pad)) 0;padding:0 var(--page-pad) .25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--page-pad);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .co-flow::-webkit-scrollbar{display:none}
+  .cf,.cf+.cf{flex:0 0 57%;scroll-snap-align:start;border:1px solid var(--cc-border);border-radius:14px;overflow:hidden}
+  .cf-v{height:9.5rem;padding:.75rem}
+  .cf-v>*{width:17rem;transform:scale(.62);flex:none}
+  .cf-t{padding:1rem 1rem 1.15rem}
+  .cf-t h3{font-size:1.0625rem}
+  .cf-t p{margin-top:.4rem;font-size:.875rem;line-height:1.5}
 }

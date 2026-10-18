@@ -5,6 +5,12 @@ document.documentElement.classList.add('js');(function(){var w=document.querySel
 (function(){
   const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
   const header=$('.header');
+  // sayılar yuvarlanarak gelir (ana sayfadaki gibi); azaltılmış harekette başlangıç ve bitiş zaten aynı rakam
+  const rolls=$$('.roll'),stats=$('.co-stats');
+  if(rolls.length&&stats&&'IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const rio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){rolls.forEach((r,i)=>setTimeout(()=>r.classList.add('go'),i*100));rio.disconnect()}})},{threshold:.5});
+    rio.observe(stats);
+  }
   function hdr(){
     header.classList.toggle('scrolled',scrollY>40);
     const y=header.querySelector('.bar').getBoundingClientRect(),mid=y.top+y.height/2;

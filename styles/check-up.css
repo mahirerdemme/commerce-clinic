@@ -1581,3 +1581,128 @@ body.gp-open{overflow:hidden}
 @media (max-width:860px) and (prefers-reduced-motion:reduce){body.menu-open::after{animation:none}.header .nav,body.menu-open .header .nav>*{transition:none}body[class] .header .logo{transition:none!important}}
 /* backdrop-filter desteklemeyen eski tarayıcılarda blur yerine daha koyu perde */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){@media (max-width:860px){body.menu-open::after{background:rgba(0,0,0,.6)}}}
+
+/* mobil (Kadir, 18 Ekim): Check-up hero rapor çerçevesi ana sayfadaki gibi küçük ölçekli, rapordan daha fazla alan görünür;
+   "Görünen" satırları siyah; "Checklist değil, teşhis" satırları sola dayalı */
+@media (max-width:760px){
+  .h4-stage{height:44vh}
+  .h4-frame{width:760px;transform:scale(.56);transform-origin:top left;border-radius:34px;padding:11px}
+  .h4-frame .screen{border-radius:17px}
+  .h4-frame .rs-top .sh,.h4-frame .rs-top .av,.h4-frame .rs-h small{display:none}
+  .sy-a{color:var(--cc-text)}
+  /* cümleler yan yana akar; satır başına düşen cümlede baştaki boşluk kalmasın diye sol boşluk yok, araları normal kelime boşluğu */
+  .appr li,.appr li:last-child{display:inline;margin:0}
+  .appr li+li{margin-left:0}
+  .appr li span{display:inline}
+  .appr li:nth-child(2) .a::after{content:"\A";white-space:pre}   /* yalnızca "Tek bir nokta değil," sonrası satır sonu; diğerleri akar */
+}
+
+/* mobil 8 alan (Kadir, 18 Ekim): ana sayfadaki "spot" gibi: sekmeler yana kayan şerit, altında sade panel.
+   Tüm paneller aynı hücrede üst üste durur, kutu en uzununa göre sabit yükseklikte kalır (sekme değişince sayfa zıplamaz). */
+@media (max-width:760px){
+  .al{grid-template-columns:minmax(0,1fr);gap:1.25rem}
+  .al>*{min-width:0}
+  .al-t{display:flex;gap:.6rem;border-bottom:0;margin:0 calc(-1*var(--page-pad));padding:0 var(--page-pad) .25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--page-pad);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .al-t::-webkit-scrollbar{display:none}
+  .al-t li{flex:0 0 72%;scroll-snap-align:start;display:flex}
+  .al-t button{grid-template-columns:1fr;gap:.3rem;align-content:start;height:100%;border:1px solid var(--cc-border);border-radius:var(--r-m);padding:.75rem .9rem .85rem;background:var(--cc-surface);transition:color .2s,border-color .2s,background-color .2s}
+  .al-t button[aria-selected="true"]{border-color:var(--cc-text);background:var(--cc-surface-alt)}
+  .al-t b{font-size:1.0625rem}
+  .al-p{display:grid}
+  .al-p>.ap{grid-area:1/1;padding:1.25rem}
+  .al-p>.ap[hidden]{display:block;visibility:hidden}
+  .ap-d{font-size:.9375rem;line-height:1.5}
+  .ap-n{display:none}   /* sekme kartında zaten yazıyor */
+  .ap-l{grid-template-columns:1fr}
+  .ap-l li{padding:.55rem 0;font-size:.875rem}
+  .ap-l li:nth-child(n+4){display:none}
+  .ap-l+.ap-k,.ap-s{display:none}
+  .ap-ex{margin-top:1.25rem;padding:1rem}
+}
+
+/* mobil sekme kartı: numara başlığın soluna, her şey tek satır; uzun ad mobilde kısalır (.dm masaüstü, .mo mobil) */
+.al-t .mo{display:none}
+@media (max-width:760px){
+  .al-t li{flex-basis:78%}
+  .al-t button{grid-template-columns:auto minmax(0,1fr);column-gap:.7rem;align-items:start;padding:.8rem .9rem}
+  .al-t .an{padding-top:.2rem}
+  .al-t b{font-size:1rem;white-space:nowrap}
+  .al-t small{white-space:nowrap}
+  .al-t .dm{display:none}.al-t .mo{display:inline}
+}
+
+/* mobil paneller: her sekmede aynı iskelet, aynı blok yükseklikleri; alt boşluk farkı olmasın */
+@media (max-width:760px){
+  .al-p>.ap{display:flex;flex-direction:column}
+  .al-p>.ap[hidden]{display:flex}
+  .ap-d{font-size:.875rem;line-height:1.5;color:var(--cc-text-2);min-height:calc(1.5em*4);margin:0 0 1rem}
+  .ap-l{margin-bottom:0}
+  .ap-ex{margin-top:auto;padding-top:1rem;padding-bottom:1rem;grid-template-columns:4.25rem minmax(0,1fr);gap:1rem;min-height:7.75rem;align-items:center}
+  .ap-f{font-size:.875rem;gap:.4rem}
+}
+
+/* mobil "Check-up sonunda elinizde ne olacak?" (Kadir, 18 Ekim): buton açıklamanın altında, 4 sekme yana kayan şerit,
+   paneller sade ve aynı yükseklikte (hepsi aynı hücrede üst üste; kutu en uzununa göre sabit) */
+@media (max-width:760px){
+  #rapor .wrap{display:flex;flex-direction:column}
+  #rapor .rpt,#rapor .rpt-l{display:contents}
+  #rapor .sec-head{order:0;margin-bottom:0}
+  #rapor .rpt-l>.btn{order:1;align-self:flex-start;margin:1.25rem 0 1.5rem}
+  #rapor .rpt-t{order:2;display:flex;gap:.6rem;margin:0 calc(-1*var(--page-pad));padding:0 var(--page-pad) .25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--page-pad);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #rapor .rpt-t::-webkit-scrollbar{display:none}
+  #rapor .rpt-t li,#rapor .rpt-t li:last-child{flex:0 0 78%;scroll-snap-align:start;display:flex;border:0}
+  #rapor .rpt-t button{height:100%;align-items:start;grid-template-columns:auto minmax(0,1fr);gap:.7rem;padding:.8rem .9rem;border:1px solid var(--cc-border);border-radius:var(--r-m);background:var(--cc-surface);transition:color .2s,border-color .2s,background-color .2s}
+  #rapor .rpt-t button[aria-selected="true"]{border-color:var(--cc-text);background:var(--cc-surface-alt)}
+  #rapor .rpt-t .rn{width:1.75rem;height:1.75rem}
+  #rapor .rpt-t b{font-size:.9375rem;white-space:nowrap}
+  #rapor .rpt-t small{display:block;white-space:nowrap;margin-top:.1rem;font-size:calc(var(--fs-small) - 1px)}
+  #rapor .rw{order:3;margin-top:1.25rem}
+  #rapor .rw-top{height:2.5rem;padding:0 1rem}
+  #rapor .rw-body{display:grid;min-height:0;padding:.9rem}
+  #rapor .rw-body>.rp{grid-area:1/1;display:flex;flex-direction:column}
+  #rapor .rw-body>.rp[hidden]{display:flex;visibility:hidden}
+  #rapor .rw-h{margin-bottom:.7rem}
+  #rapor .rw-h b{font-size:1rem}
+  #rapor .rw-h small{display:none}
+}
+@media (max-width:760px){
+  /* 1 · Health Overview: skor yan yana, alan göstergeleri 3 sütun (3-3-2), açıklama ve anahtar yok */
+  #rapor .rw-main{grid-template-columns:5.5rem minmax(0,1fr);gap:1rem;padding:.9rem 1rem}
+  #rapor .rw-main .rs-gauge{max-width:none}
+  #rapor .rw-main h4{font-size:.875rem;margin:0}
+  #rapor .rw-main .keys{display:none}
+  #rapor .rw-main p{font-size:.75rem;margin-top:.3rem}
+  #rapor .rw-gg{grid-template-columns:repeat(3,1fr)}
+  #rapor .rw-gg li,#rapor .rw-gg li:nth-child(n){font-size:.625rem;padding:.7rem .25rem;gap:.25rem;border-right:1px solid #EBEBEB;border-bottom:1px solid #EBEBEB}
+  #rapor .rw-gg li:nth-child(3n){border-right:0}
+  #rapor .rw-gg li:nth-last-child(-n+3){border-bottom:0}
+  #rapor .rw-gg .rs-gauge{width:3rem}
+  #rapor .rw-gg li{justify-content:center}
+  /* 2 · Findings: ekran görüntüleri ve "neden önemli" yok */
+  #rapor .rw-find{padding:1rem}
+  #rapor .rw-find h4{font-size:1rem}
+  #rapor .fm{margin:.5rem 0 .75rem}
+  #rapor .shots,#rapor .fg>div:nth-child(2){display:none}
+  #rapor .fg{margin-top:0}
+  #rapor .rec{margin-top:.9rem;padding-top:.75rem;font-size:.875rem}
+  /* 3 · Action plan: yalnız başlık ve durum */
+  #rapor .rw-act{padding:.9rem 1rem}
+  #rapor .rw-act h4{font-size:.9375rem}
+  #rapor .ag,#rapor .sig{display:none}
+  #rapor .adsc{display:none}
+  #rapor .rw-act,#rapor .rw-find{display:flex;flex-direction:column;justify-content:center}
+  #rapor .ah{gap:.75rem}
+  #rapor .sts{margin-top:.25rem}
+  /* 4 · Roadmap: dönem solda, maddeler sağda, "hedef" yok */
+  #rapor .rw-road{padding:.1rem 1rem}
+  #rapor .rr{grid-template-columns:5.5rem minmax(0,1fr);gap:.8rem;padding:.6rem 0}
+  #rapor .rr-l p{margin:.35rem 0 .05rem}
+  #rapor .rr-l h4{font-size:.875rem}
+  #rapor .rr li{font-size:.75rem;padding:.3rem .55rem}
+  #rapor .rr ol{gap:.3rem}
+  #rapor .rr .due{display:none}
+  #rapor .rp>.rw-card{flex:1 1 auto}   /* kısa paneller beyaz kartı uzatır; alt kenar tüm sekmelerde aynı */
+  #rapor .rw-card:not(.rw-road):not(.rw-act):not(.rw-find){display:flex;flex-direction:column}
+  #rapor .rw-card .rw-gg{flex:1 1 auto;align-content:stretch}
+  #rapor .rr li:nth-child(n+3){display:none}
+}

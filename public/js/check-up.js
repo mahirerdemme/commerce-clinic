@@ -34,7 +34,11 @@
   // sekmeler (8 alan + rapor)
   function tabs(sel){
     const t=$$(sel+' [role=tab]');
-    const act=b=>t.forEach(x=>{const on=x===b;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on});
+    const act=b=>{
+      t.forEach(x=>{const on=x===b;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on});
+      const st=b.closest('.al-t,.rpt-t'),li=b.closest('li');
+      if(st&&li&&innerWidth<=760)st.scrollTo({left:li.offsetLeft-st.offsetLeft-parseFloat(getComputedStyle(st).paddingLeft||0),behavior:'smooth'});
+    };
     t.forEach((b,i)=>{b.addEventListener('click',()=>act(b));b.addEventListener('keydown',e=>{let n=null;if(e.key==='ArrowDown'||e.key==='ArrowRight')n=t[(i+1)%t.length];if(e.key==='ArrowUp'||e.key==='ArrowLeft')n=t[(i-1+t.length)%t.length];if(n){e.preventDefault();act(n);n.focus()}})});
   }
   tabs('.al-t');tabs('.rpt-t');

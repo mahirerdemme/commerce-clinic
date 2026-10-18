@@ -1595,11 +1595,12 @@ body.gp-open{overflow:hidden}
   .co-act{flex-wrap:nowrap;gap:.6rem;margin-top:2rem}
   .co-act .btn{flex:0 0 auto;white-space:nowrap;padding:0 1.05rem}
   .ab-logos{padding-bottom:var(--space-section)}
-  /* istatistikler: üç sütun kenara taşmasın */
-  .co-stats div{padding:1.25rem .4rem 0 0}
-  .co-stats div+div{padding-left:.85rem}
-  .co-stats dt{font-size:1.5rem;white-space:nowrap}
-  .co-stats dd{margin-top:.45rem;font-size:.8125rem;line-height:1.35}
+  /* istatistikler: ana sayfadaki gibi alt alta, çizgiyle ayrılmış */
+  .co-stats{grid-template-columns:1fr;margin-top:2.25rem}
+  .co-stats div{padding:1.5rem 0 1.4rem;border-top:0}
+  .co-stats div+div{border-left:0;border-top:1px solid var(--cc-border);padding-left:0}
+  .co-stats dt{font-size:2.25rem}
+  .co-stats dd{margin-top:.6rem;font-size:.9375rem}
   /* kapanış CTA'sı: ana sayfadakiyle aynı (obje butonun sağında, sağ kenardan taşar) */
   .cta-final{display:flex}
   .cta-final .cta-grid{display:flex;flex-direction:column;align-items:stretch;position:relative;width:100%;gap:0;min-height:calc(11.5rem + (100vw - 2.5rem) * .5 * 1.157)}

@@ -29,7 +29,7 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 
 ## Kararlar
 
-- **Tema dengesi (Kadir, 12 Ekim 2026; kalıcı tasarım ilkesi, Master Brief v2'ye ek):** sitede beyaz ve siyah bölümler arasındaki denge her yerde korunur. Header, açılan menü, yukarı çık butonu gibi bölümün üstüne binen öğeler altındaki bölümün temasını izler: siyah bölümde (footer ve kapanış CTA'sı dahil) siyah, beyazda beyaz. Tek istisna rehber kartı: açık bölümde tam beyaz, koyu bölümde şeffaf çerçeveli. Yeni bir koyu bölüm eklenirse header'ın tema algısına (`public/js/*.js`, `.chapter,.cta-final,.footer`) eklenmeli. (Not: Master Brief PDF'i Mahir'den geliyor, burada kodlanmadı; bu satır brief'e eklenecek not olarak duruyor.)
+- **Tema dengesi (Kadir, 12 Ekim 2026; kalıcı tasarım ilkesi, Master Brief v2'ye ek):** sitede beyaz ve siyah bölümler arasındaki denge her yerde korunur. Header, açılan menü, yukarı çık butonu gibi bölümün üstüne binen öğeler altındaki bölümün temasını izler: siyah bölümde (footer ve kapanış CTA'sı dahil) siyah, beyazda beyaz. Tek istisna rehber kartı: açık bölümde tam beyaz, koyu bölümde şeffaf çerçeveli. Yeni bir koyu bölüm eklenirse header'ın tema algısına (`public/js/*.js`, `.chapter,.cta-final,.footer`) eklenmeli. (Not: Master Brief PDF'i Kadir'den geliyor, burada kodlanmadı; bu satır ve mobil ilkeler `docs/master-brief-v2-ek.md`'de brief'e eklenecek not olarak duruyor.)
 - **Kod temizliği ve cihaz uyumu (Kadir, 12 Ekim 2026):** kullanılmayan kural bırakılmaz; geri alınan her değişiklik CSS/JS'ten de silinir. Animasyonlu her parça Android dahil kontrol edilir: `prefers-reduced-motion`, `backdrop-filter` yedeği, kısa ekran (yatay telefon), tablet (761-860px), 320px genişlik.
 
 - Yasal metinlerin hukukçu son okuması (4 metin).
@@ -83,7 +83,9 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 - Yerel mobil kontrol: `node scripts/mobil-ss.mjs <url> <png> [y] [yükseklik]` (Chrome DevTools Protocol, 390×844, DPR 2, iPhone UA; sayfayı kaydırıp animasyonları tetikler). Önce `npm run build && npx next start -p 3100`.
 - Yapıldı (18 Ekim): Check-up sayfası mobilde baştan sona elden geçti (hero rapor çerçevesi, yaklaşım cümleleri, 8 alan ve "elinizde ne olacak" yana kayan sekmeler, kimler için, süreç, erişimler, gizlilik, kapanış CTA'sı). Sekmelerde tüm paneller aynı hücrede üst üste durur, kutu sabit yükseklikte; dokunma ve kaydırma gerçek cihazda henüz denenmedi.
 - Yapıldı (18 Ekim, Kadir yokken, gözden geçirme bekliyor): Danışmanlık, Commerce Notes listesi, blog yazısı, ücretsiz rehber ve Hakkımızda mobilde elden geçti: bölüm boşlukları azaldı (`--space-section` 3,75rem), hero'daki boş alan kapandı, istatistikler sığdı, kapanış CTA'sı ana sayfadaki gibi (obje butonun sağında), blog yazısı okuma ölçüsü, "ilgili notlar" yana kayan şerit, rehberde "Ücretsiz rehberi al" başlığın altında. Yalnız ≤760px; masaüstü değişmedi. Kadir gözle bakıp revize verecek.
-- Bakılmadı: Görüşme Planla formu (ilk ekran düzgün), Kontrol listesi sayfası (`/rehber/.../kontrol-listesi`), Örnek rapor, yasal sayfalar.
+- Bakılmadı: Kontrol listesi sayfası (`/rehber/.../kontrol-listesi`), Örnek rapor, yasal sayfalar. Görüşme Planla formunun ilk ekranı mobilde düzgündü, değişmedi.
+- Kaldırıldı (18 Ekim): blog yazısı ve rehber sayfalarındaki "İlgili notlar" (örnek içerik, bağlantılar `#`, güncel değildi). Yeni yazılar çıkınca geri gelecek; geri koyarken kart padding'i ve "İlgili notlar" başlık boyutu mobilde küçültülecek, kartlar yana kayan şerit olacak. Masaüstü kuralları (`.cn-rel*`, `.cn-rc`) `styles/commerce-notes.css`'te duruyor.
+- Mobil kararların ve nasıl yaptığımızın özeti, Master Brief v2'ye eklenecek ilkelerle birlikte: `docs/master-brief-v2-ek.md`. Kadir PDF brief'e satırları taşıyacak (PDF'i repo düzenlemiyor).
 - Sıradaki görüntü: IMG_1884 (ana sayfa, E-ticaret Altyapıları kartı).
 
 ## Blog (Commerce Notes) ve rehberler · SEO

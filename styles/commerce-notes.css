@@ -1686,12 +1686,6 @@ body.gp-open{overflow:hidden}
   .cn-text h2{margin:2rem 0 .55rem;font-size:1.3125rem;line-height:1.28}
   .cn-note{margin:1.25rem 0;padding:1rem 1.1rem;font-size:.9375rem}
   .cn-cta{margin-top:2rem;padding:1.25rem}
-  /* ilgili notlar: dikey iki dev kart yerine yana kayan şerit */
-  .cn-rel{margin-top:2.5rem;padding-top:1.5rem}
-  .cn-rel-g{display:flex;gap:.75rem;margin:0 calc(-1*var(--page-pad));padding:0 var(--page-pad) .25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--page-pad);scrollbar-width:none}
-  .cn-rel-g::-webkit-scrollbar{display:none}
-  .cn-rel-g .cn-rc{flex:0 0 78%;scroll-snap-align:start;padding:1rem}
-  .cn-rc b{font-size:1.0625rem}
 }
 
 /* mobil rehber (Kadir, 18 Ekim): kapağın başlığı altında minimal "Ücretsiz rehberi al" (aşağı iner); adım listesi ve form daha sıkı; yalnız ≤760px */

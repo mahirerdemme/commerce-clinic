@@ -1605,7 +1605,9 @@ body.gp-open{overflow:hidden}
   .cta-final{display:flex}
   .cta-final .cta-grid{display:flex;flex-direction:column;align-items:stretch;position:relative;width:100%;gap:0;min-height:calc(11.5rem + (100vw - 2.5rem) * .5 * 1.157)}
   .cta-final .cta-copy{padding:2.5rem 0 0}
-  .cta-final .cta-copy .trust{max-width:56%;font-size:.8125rem;line-height:1.45}
+  .cta-final .cta-copy .trust{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;white-space:normal;font-size:.8125rem;line-height:1.4}
+  .cta-final .trust .dm{display:none}
+  .cta-final .trust .mo{display:block}
   .cta-final .cta-obj{position:absolute;right:-12%;top:11.5rem;width:50%;margin:0;max-height:none}
 }
 
@@ -1620,3 +1622,6 @@ body.gp-open{overflow:hidden}
   .cf-t h3{font-size:1.0625rem}
   .cf-t p{margin-top:.4rem;font-size:.875rem;line-height:1.5}
 }
+
+/* CTA güvence satırı: masaüstü metni .dm, mobil (ana sayfadaki iki satır) .mo */
+@media (min-width:761px){.cta-final .trust .mo{display:none}}

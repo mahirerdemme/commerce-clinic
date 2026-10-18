@@ -1398,7 +1398,9 @@ body.gp-open{overflow:hidden}
   .cta-final{display:flex}
   .cta-final .cta-grid{display:flex;flex-direction:column;align-items:stretch;position:relative;width:100%;gap:0;min-height:calc(11.5rem + (100vw - 2.5rem) * .5 * 1.157)}
   .cta-final .cta-copy{padding:2.5rem 0 0}
-  .cta-final .cta-copy .trust{max-width:56%;font-size:.8125rem;line-height:1.45}
+  .cta-final .cta-copy .trust{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;white-space:normal;font-size:.8125rem;line-height:1.4}
+  .cta-final .trust .dm{display:none}
+  .cta-final .trust .mo{display:block}
   .cta-final .cta-obj{position:absolute;right:-12%;top:11.5rem;width:50%;margin:0;max-height:none}
 }
 
@@ -1407,4 +1409,18 @@ body.gp-open{overflow:hidden}
   :root{--space-section:3.75rem}
   .ab-hero{min-height:0;padding:2.5rem 0 2.75rem}
   .ab-logos{padding-bottom:var(--space-section)}
+}
+
+/* CTA güvence satırı: masaüstü metni .dm, mobil (ana sayfadaki iki satır) .mo */
+@media (min-width:761px){.cta-final .trust .mo{display:none}}
+
+/* mobil Hakkımızda (Kadir, 18 Ekim): hero işareti yazının arkasında, "Yakından bakın" butonu, küçük etiketler; yalnız ≤760px */
+.ab-go{display:none}
+@media (max-width:760px){
+  .ab-hero>.wrap{position:relative;z-index:1}
+  .ab-mark{z-index:0}
+  .ab-go{display:inline-flex;gap:.5rem;margin-top:1.75rem;color:var(--cc-text);border:1px solid rgba(0,0,0,.1);box-shadow:0 1px 2px rgba(0,0,0,.05),0 14px 30px -16px rgba(0,0,0,.35)}
+  .ab-what{scroll-margin-top:5rem}
+  .ab-disc{gap:.35rem;margin-top:1.5rem}
+  .ab-disc li{font-size:.8125rem;padding:.3rem .6rem;border-radius:6px}
 }

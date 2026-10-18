@@ -1694,10 +1694,10 @@ body.gp-open{overflow:hidden}
   .cn-rc b{font-size:1.0625rem}
 }
 
-/* mobil rehber (Kadir, 18 Ekim): ana eylem başlığın hemen altında; adım listesi ve form daha sıkı; yalnız ≤760px */
-.gd-jump{display:none}
+/* mobil rehber (Kadir, 18 Ekim): kapağın başlığı altında minimal "Ücretsiz rehberi al" (aşağı iner); adım listesi ve form daha sıkı; yalnız ≤760px */
+.cov-go{display:none}
 @media (max-width:760px){
-  .gd-jump{display:inline-flex;margin-top:1.25rem}
+  .cov-go{display:inline-flex;align-items:center;gap:.4rem;align-self:flex-start;margin-top:.8rem;padding:.4rem .8rem;font-size:.8125rem;font-weight:500;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(255,255,255,.08);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
   .cn-gd .cn-by{margin-top:1.5rem}
   .gd-list{padding:1.1rem 1.1rem 1.25rem}
   .gd-list ol{padding-left:1.25rem;gap:.55rem;font-size:.9375rem;line-height:1.5}

@@ -1752,3 +1752,17 @@ body.gp-open{overflow:hidden}
   .pv .pv-l li{padding:.85rem 0;font-size:.875rem;line-height:1.5}
   .pv .pv-l b{font-size:1rem;margin-bottom:.15rem}
 }
+
+/* mobil kapanış CTA'sı: ana sayfadakiyle aynı (Kadir, 18 Ekim): yazı üstte, obje buton ve güvence satırının sağında, sağ kenardan taşar;
+   güvence metni ana sayfadaki kısa iki satır (.mo), masaüstü metni .dm */
+.cta-final .trust .mo{display:none}
+@media (max-width:760px){
+  .cta-final{display:flex}
+  .cta-final .cta-grid{display:flex;flex-direction:column;position:relative;width:100%;gap:0;min-height:calc(8rem + (100vw - 2.5rem) * .5 * 1.157)}
+  .cta-final .cta-copy{padding:2.5rem 0 0}
+  .cta-final .cta-copy .cta-act{margin-top:1.75rem}
+  .cta-final .cta-copy .trust{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;white-space:normal;line-height:1.4}
+  .cta-final .trust .dm{display:none}
+  .cta-final .trust .mo{display:block}
+  .cta-final .cta-obj{position:absolute;right:-12%;top:8rem;width:50%;margin:0;max-height:none}
+}

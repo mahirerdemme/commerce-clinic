@@ -1,0 +1,60 @@
+{
+ "subject": "Kişisel AI Mode'a reklam geliyor, YouTube aramada önce yanıt",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "20 Ekim 2026",
+ "issue": 5,
+ "items": [
+  {
+   "tag": "Reklam",
+   "title": "Google, kişisel verili AI Mode'da reklam testine başladı",
+   "summary": "Google, uygulamalarını Personal Intelligence ile bağlayan kullanıcılara AI Mode'da reklam göstermeyi test ediyor; mart ayında bu deneyimin reklamsız olacağını söylemişti. Reklamlar sorgu, yanıtın bağlamı ve ilgi alanlarına göre belirleniyor; Google, Gmail ve Fotoğraflar içeriğinin doğrudan kullanılmadığını ve reklamverenlerin bağlı uygulamalara erişmediğini belirtiyor.",
+   "takeaway": "Yapay zekâ yanıtlarının içindeki reklam alanları genişliyor; AI Mode'daki reklam seçeneklerini ve hesabınıza gelecek yenilikleri takip edin.",
+   "url": "https://www.seroundtable.com/google-ads-ai-mode-personal-intelligence-42320.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Arama",
+   "title": "YouTube aramada videodan önce yapay zekâ yanıtını test ediyor",
+   "summary": "YouTube, \"Ask YouTube\" yanıtlarını masaüstü arama sonuçlarında video listesinin üstünde göstermeyi ABD'de sınırlı sayıda kullanıcıyla deniyor; yanıtlar özellikle \"nasıl yapılır\" sorularında metni videolardaki ilgili anlarla birleştiriyor. Türkiye dahil diğer ülkeler için bir takvim paylaşılmadı.",
+   "takeaway": "Ürün kullanımı ve rehber videoları üretiyorsanız, izlenmelerin bu tür yanıtlardan nasıl etkileneceğini izleyin ve videolarınızda net, bölümlenmiş anlatıma önem verin.",
+   "url": "https://www.marketingturkiye.com.tr/haberler/youtube-aramalarinda-yeni-denklem-izlemeden-ogren-donemi/",
+   "source": "Marketing Türkiye"
+  },
+  {
+   "tag": "Yasal",
+   "title": "Meta, işletme koşullarından \"eğitmek\" ifadesini çıkardı",
+   "summary": "30 Ekim'de yürürlüğe girecek yeni ticari koşullarda, işletme hesaplarına bağlı sitelerdeki içeriğin Meta ürünlerini \"eğitmek\" için kullanılabileceği ifadesi kaldırıldı. Ancak Meta'nın bu siteleri otomatik araçlarla tarama hakkı, reklam ve işletme ürünleri amacıyla sürüyor; site sahipleri tercihlerini robots.txt ile belirtebiliyor.",
+   "takeaway": "Meta işletme hesabınıza bağlı sitenizin taranacağını varsayın; ürün bilgilerinizin doğru olduğundan ve robots.txt ayarlarınızın tercihinizi yansıttığından emin olun.",
+   "url": "https://webrazzi.com/2026/10/19/meta-yapay-zeka-egitimi-tartismalarinin-ardindan-kullanim-kosullarini-degistirdi/",
+   "source": "Webrazzi"
+  },
+  {
+   "tag": "Fiyat",
+   "title": "ABD'de tatil alışverişi erkene kayıyor: ekim indirimleri öne çıktı",
+   "summary": "Deloitte'un ABD'de 4 bin tüketiciyle yaptığı ankete göre katılımcıların yüzde 42'si ekim indirimlerine katılmayı planlıyor ve alışveriş bütçesinin yüzde 28'inin ekim sonunda harcanmış olması bekleniyor; bu oran son altı yılın en yükseği. Fırsat kollayan alışverişçiler daha çok araştırıyor ve indirimi, kargo hızını, sadakat puanlarını birlikte değerlendiriyor.",
+   "takeaway": "Kampanya takviminizi yalnız Black Friday haftasına sıkıştırmayın; indirim, teslimat süresi ve puan avantajını ürün sayfasında açıkça gösterin.",
+   "url": "https://www.modernretail.co/operations/nearly-30-of-holiday-budgets-expected-to-be-spent-by-the-end-of-october/",
+   "source": "Modern Retail"
+  },
+  {
+   "tag": "Ölçüm",
+   "title": "ChatGPT Ads'e görsel formatlar ve yeni ölçüm ortakları geldi",
+   "summary": "OpenAI, ChatGPT reklamlarında masaüstünde daha büyük, mobilde tam genişlikte görselleri test ediyor ve yakında çoklu görselli bir format ekleyecek; dönüşüm sayfası yenilendi, reklamverenlere haftalık performans e-postası gönderilmeye başlandı. Ölçüm tarafına Northbeam, DV Rockerbox, INCRMNTAL ile Kochava, Tenjin ve Airbridge gibi ortaklar eklendi.",
+   "takeaway": "ChatGPT reklamlarını deniyorsanız ya da düşünüyorsanız, dönüşüm olaylarınızın doğru kurulduğunu ve kullandığınız ölçüm aracıyla eşleştiğini kontrol edin.",
+   "url": "https://www.seroundtable.com/openai-chatgpt-ads-updates-42321.html",
+   "source": "Search Engine Roundtable"
+  }
+ ],
+ "briefs": [
+  { "title": "Google aramada sıralama dalgalanması ve trafik düşüşü şikâyetleri arttı", "url": "https://www.seroundtable.com/google-search-ranking-volatility-chatter-42317.html", "source": "Search Engine Roundtable" },
+  { "title": "Google, işletme profilinde Google Posts bölümünü yukarı taşımayı test ediyor", "url": "https://www.seroundtable.com/google-posts-higher-42319.html", "source": "Search Engine Roundtable" },
+  { "title": "Yapay zekâ platformları etrafında uygulama, pazaryeri ve ödeme ekosistemi oluşuyor", "url": "https://www.practicalecommerce.com/ai-platforms-attract-a-growing-ecosystem", "source": "Practical Ecommerce" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

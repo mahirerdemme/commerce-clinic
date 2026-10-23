@@ -1059,8 +1059,9 @@ img.fo-ph{display:block;object-fit:cover;background:#EDEDEB;border:0;width:144px
 .fo-ph{width:112px;height:112px;border-radius:50%;background:var(--cc-surface);border:1px solid var(--cc-border);display:grid;place-items:center;font-size:1.25rem;font-weight:600;color:var(--cc-text-2);letter-spacing:.02em}
 .fo-n{margin:1.25rem 0 0;font-size:1.25rem;line-height:1.2;font-weight:600;letter-spacing:-.02em}
 .fo-r{margin:.25rem 0 0;font-size:.9375rem;color:var(--cc-text-2)}
-.fo-links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
-.fo-li{display:inline-flex;align-items:center;gap:.4rem;font-size:.875rem;font-weight:500;color:var(--cc-text);text-decoration:none;border:1px solid var(--cc-border);border-radius:999px;padding:.5rem .9rem}
+.fo-links{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.875rem}
+.fo-li{display:inline-flex;align-items:center;gap:.3rem;font-size:.8125rem;font-weight:500;color:var(--cc-text);text-decoration:none;border:1px solid var(--cc-border);border-radius:999px;padding:.35rem .7rem}
+.fo-li svg{width:12px;height:12px}
 .fo-li:hover{border-color:var(--cc-text)}
 .fo-card .flag{margin-top:1rem}
 .fo-text{max-width:40em}
@@ -1079,7 +1080,7 @@ img.fo-ph{display:block;object-fit:cover;background:#EDEDEB;border:0;width:144px
 .how-l h3{font-size:clamp(1.25rem,1.6vw,1.5rem);letter-spacing:-.02em;margin:.6rem 0 .6rem}
 .how-l p{margin:0;color:var(--cc-text-2);line-height:1.6}
 .how-note{margin:clamp(2.5rem,5vw,3.5rem) 0 0;max-width:46em;font-size:.9375rem;color:var(--cc-text-2);line-height:1.6;padding-top:1.25rem;border-top:1px solid var(--cc-border)}
-@media (max-width:900px){.ab-2col,.fo-grid{grid-template-columns:1fr}.fo-card{position:static;display:grid;grid-template-columns:auto 1fr;column-gap:1rem;align-items:center}.fo-ph{grid-row:span 3;width:72px;height:72px;font-size:1rem}.fo-n{margin:0}.fo-card .flag,.fo-links{grid-column:2}
+@media (max-width:900px){.ab-2col,.fo-grid{grid-template-columns:1fr}.fo-card{position:static;display:grid;grid-template-columns:auto 1fr;column-gap:1rem;align-items:center}.fo-ph{grid-row:span 2;width:88px;height:88px;font-size:1rem;align-self:center}.fo-n{margin:0;align-self:end}.fo-r{align-self:start}.fo-card .flag{grid-column:2}.fo-links{grid-column:1/-1;margin-top:1.25rem}
  .fo-strip{grid-template-columns:1fr 1fr}.fo-strip li,.fo-strip li+li{padding:1.25rem 0;border-left:0;border-bottom:1px solid var(--cc-border)}
  .how-l{grid-template-columns:1fr}.ab-mark{width:80vw;right:-30vw;top:-10vw}}
 

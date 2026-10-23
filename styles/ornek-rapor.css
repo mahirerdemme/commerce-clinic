@@ -885,3 +885,40 @@ details.pg-rec ul{margin-top:.6rem}
 .zoom p{margin:0;max-width:60em;text-align:center;color:#E8E8E6;font-size:.875rem;line-height:1.5}
 .zoom button{position:absolute;top:1rem;right:1rem;width:40px;height:40px;border:0;border-radius:10px;background:rgba(255,255,255,.12);color:#fff;font-size:1.5rem;line-height:1;cursor:pointer}
 @media print{.zoom{display:none!important}}
+
+/* ---------- mobil düzeltmeler (Kadir, 23 Ekim 2026) ---------- */
+.ac-more{display:none}
+@media (max-width:760px){
+  /* "Bu rapor nasıl ilerliyor?" numara daireleri ezilmesin */
+  .flow2 .fn{box-sizing:border-box;width:2.5rem;height:2.5rem;min-width:2.5rem;padding:0;line-height:1;justify-self:start}
+  /* "İncelenen başlıklar": uzun özet ikinci satıra iner, ok kart içinde kalır */
+  .tp-h{grid-template-columns:auto minmax(0,1fr) auto;gap:.15rem .75rem}
+  .tp-h .dot{grid-column:1;grid-row:1}
+  .tp-h .tt{grid-column:2;grid-row:1}
+  .tp-h .chev{grid-column:3;grid-row:1}
+  .tp-h .tc{grid-column:2/-1;grid-row:2;white-space:normal;font-size:.75rem;line-height:1.4}
+  .tp-b{padding-left:0}
+  /* kanıt görseli: küçük kalıyor; dokununca tam ekran açılır ve yana kaydırılır */
+  .slot .box.has::after{content:"Büyütmek için dokunun";position:absolute;right:.6rem;bottom:.6rem;z-index:1;pointer-events:none;padding:.2rem .55rem;border-radius:999px;background:rgba(10,10,10,.72);color:#fff;font-size:.6875rem;font-weight:500}
+  /* Önerimiz kutusu: iç içe kutuların boşluğu kısılır */
+  .recx{padding:1rem}
+  .ac{padding:1.1rem 1rem}
+  .ac-g,.ac-sig,.ac-own{margin-left:0}
+  .ac-g{padding:.85rem}
+  /* aksiyon kartları: durum ve sorumlu görünür, ayrıntı dokununca açılır */
+  .ac:not(.open) .ac-g,.ac:not(.open) .ac-sig{display:none}
+  .ac-more{display:inline-flex;align-items:center;gap:.35rem;margin:.75rem 0 0;padding:.35rem .75rem;border:1px solid var(--cc-border);border-radius:999px;background:var(--cc-white);font:inherit;font-size:.8125rem;font-weight:500;color:var(--cc-text)}
+  .ac-more::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+  .ac.open .ac-more::after{transform:translateY(1px) rotate(-135deg)}
+  .rm-r{gap:.75rem;padding:1.25rem 1rem}
+  .rm-l{grid-template-columns:1fr}
+  /* alan göstergeleri daha kompakt */
+  .ggrid a{padding:1rem .5rem}
+  .ggrid .gauge{max-width:5.5rem}
+  .ggrid .gn{font-size:.8125rem;min-height:2.4em}
+  /* büyütme: görsel tam ekranda iki yana kaydırılır */
+  .lb{display:block;overflow:auto;padding:1rem}
+  .lb img{max-width:none;width:210vw;max-height:none;margin-top:3rem}
+  .lb p{position:fixed}
+}
+@media print{.ac-more{display:none}}

@@ -458,6 +458,7 @@ function actCard(a){
   return `<article class="ac ${ST_C[s]}" id="r-${a.n}" data-ph="${a.ph}" data-areas="${areas.join(' ')}">
     <div class="ac-h"><span class="ac-n">${s===2?'<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>':a.n}</span><div><span class="badge topic">${esc(a.type)}</span><h3>${esc(a.t)}</h3><p class="ac-d">${esc(a.d)}</p></div>
       <div class="stw"><div class="sts" role="group" aria-label="Aksiyon durumu">${ST_W.map((w,i)=>`<button type="button" data-st="${a.k}" data-v="${i}" aria-pressed="${s===i}" class="${ST_C[i]}">${w}</button>`).join('')}</div></div></div>
+    <button type="button" class="ac-more" aria-expanded="false">Ayrıntıyı göster</button>
     <div class="ac-g">
       <div><h4>Nereden geldi?</h4><p class="ac-src">${areas.map(id=>`<span>${esc(T(id))}</span> ${a.src.filter(f=>f.area===id).map(f=>`<a href="${fHref(f)}">Bulgu ${f.no}</a>`).join(' ')}`).join('<br>')}</p></div>
       <div><h4>Yapıldığında ne değişmeli?</h4><p>${esc(a.exp)}</p></div>
@@ -670,7 +671,7 @@ const tour=(()=>{
   document.addEventListener('keydown',e=>{if(!on)return;if(e.key==='Escape')stop();else if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1)});
   return {start,stop};
 })();
-document.addEventListener('click',e=>{const im=e.target.closest('[data-zoom]');const lb=$('#lb');if(im){lb.querySelector('img').src=im.src;lb.querySelector('p').textContent=im.alt;lb.hidden=false;return}if(!lb.hidden&&e.target.closest('#lb'))lb.hidden=true});
+document.addEventListener('click',e=>{const mo=e.target.closest('.ac-more');if(mo){const c=mo.closest('.ac'),o=c.classList.toggle('open');mo.setAttribute('aria-expanded',o);mo.textContent=o?'Ayrıntıyı gizle':'Ayrıntıyı göster';return}const im=e.target.closest('[data-zoom]');const lb=$('#lb');if(im){lb.querySelector('img').src=im.src;lb.querySelector('p').textContent=im.alt;lb.hidden=false;lb.scrollLeft=(lb.scrollWidth-lb.clientWidth)/2;return}if(!lb.hidden&&e.target.closest('#lb'))lb.hidden=true});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#lb').hidden=true});
 window.addEventListener('hashchange',()=>route());
 function setLang(l){LANG=l;try{localStorage.setItem('cc-report-lang',LANG)}catch(e){}

@@ -7,7 +7,7 @@
    Alan → incelenen başlıklar → bulgular → görseller → öneri → aksiyon
    ========================================================= */
 const R={client:'Loma Ev',site:'loma.com.tr',sector:'Ev tekstili',period:'1–18 Eylül 2026',date:'24 Eylül 2026',
-  consultant:'Mahir Erdem',role:'Founder',initials:'CC',final:'8 Ekim 2026, 14:00',finalShort:'8 Ekim',overall:57,bench:64,
+  consultant:'Mahir Erdem',role:'Founder',initials:'CC',final:'8 Ekim 2026, 14:00',finalShort:'8 Ekim',overall:57,
   /* Final görüşmesi notları: görüşmeden sonra doldurulur, rapor sürüm 1.1 olur.
      {date:'8 Ekim 2026', items:[{t:'Karar', d:'Açıklama'}], open:['Cevabı 3 iş günü içinde verilecek soru']} */
   finalNotes:null};

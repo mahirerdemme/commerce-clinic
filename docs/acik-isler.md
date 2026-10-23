@@ -135,6 +135,10 @@ Kurgu: Gündem haftada iki kez (salı, cuma 08:00) otomatik hazırlanır, Kadir 
 - Güvenlik: Resend anahtarı sohbette paylaşıldı; her şey çalışınca Resend'de yenisi oluşturulup eskisi silinmeli (`vercel env add RESEND_API_KEY` + `.env.local`).
 - Not: Search Engine Land ve Digital Commerce 360 RSS'i dışarıdan engelliyor; kaynak listesi `haberler.mjs` içinde.
 
+## Yönetim paneli (/yonetim)
+
+Parola korumalı, arama motorlarına kapalı iç panel (23 Ekim 2026). Parola Vercel'de `YONETIM_PAROLA` (değiştirmek için ortam değişkenini güncelleyip yeniden yayınla); oturum çerezi `BULTEN_SECRET` ile imzalanır. İçerik: gönderim modu ve adresler (salt okunur), e-posta alan adı durumu, bülten sayıları (önizle ve onayla bağlantısı, gönderildi mi), aboneler (silme). Kod: `app/yonetim`, `lib/yonetim.ts`, `app/api/yonetim/*`. Ayarlar panelden değiştirilemez; bunun için Vercel API anahtarı gerekir (yapılmadı).
+
 ## Örnek rapor (/ornek-rapor)
 
 - **Dil ve sayılar elden geçecek (Kadir):** rapor yapay zekâ yazmış gibi duruyor. "%38 etkisi" gibi hesaplanmış görünen ama dayanağı olmayan sayılar çıkarılacak; bugün `public/js/ornek-rapor.js` içinde 14 yüzde ifadesi var. Gerçek raporda inceleme ve yorumlar danışmanın kendisinin; yapay zekâ yalnız cümleyi toparlar. Ton insan ve danışman sesi olacak.

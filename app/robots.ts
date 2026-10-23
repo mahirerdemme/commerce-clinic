@@ -4,7 +4,7 @@ import { INDEXABLE, SITE_URL } from "@/lib/site";
 export default function robots(): MetadataRoute.Robots {
   if (!INDEXABLE) return { rules: { userAgent: "*", disallow: "/" } };
   return {
-    rules: { userAgent: "*", allow: "/", disallow: ["/ornek-rapor"] },
+    rules: { userAgent: "*", allow: "/", disallow: ["/ornek-rapor", "/yonetim", "/api/"] },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

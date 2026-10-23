@@ -953,3 +953,13 @@ details.pg-rec ul{margin-top:.6rem}
   .plan-tools .filters::-webkit-scrollbar{display:none}
   .plan-tools .filters button{flex:none}
 }
+
+/* ---------- mobil: tur bandı tek satır (Kadir, 23 Ekim 2026) ---------- */
+@media (max-width:760px){
+  .tour-band{flex-wrap:nowrap;gap:.75rem;margin-top:1.5rem;padding:.85rem 1rem}
+  .tour-band .ic{width:32px;height:32px;font-size:.9375rem}
+  .tour-band div{flex:1 1 0;min-width:0}
+  .tour-band b{font-size:.9375rem;line-height:1.3}
+  .tour-band div span{display:none}
+  .tour-band button{flex:none;padding:.5rem .9rem;font-size:.8125rem}
+}

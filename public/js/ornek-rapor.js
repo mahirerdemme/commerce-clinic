@@ -566,8 +566,10 @@ function render(){
   $('#main').innerHTML=vOverview()+AREAS.map(vArea).join('')+vPlan()+`<footer class="rfoot"><span>Bu rapordaki bulgular ve yorumlar Commerce Clinic tarafından hazırlanmıştır. Gizlidir; yalnızca yetkilendirilen kişilerle paylaşılır. Sürüm ${R.version} · ${esc(R.date)}</span><span>© 2026 Commerce Clinic · Tüm hakları saklıdır.</span></footer>`;
   $('#how').innerHTML=howHTML();$('#how [data-close]').addEventListener('click',()=>how(false));
   $$('.pager button').forEach(b=>b.addEventListener('click',()=>{location.hash=b.dataset.go}));
-  $$('.filters button').forEach(b=>b.addEventListener('click',()=>{curPh=b.dataset.f;applyPlan()}));
-  $('#areaSel').addEventListener('change',e=>{curArea=e.target.value;applyPlan()});
+  // mobilde filtre yapışkan çubukta durur: seçince liste başına gelinir ki değişen şey görünsün
+  const planTop=()=>{if(innerWidth>900)return;const bd=$('#planBody'),st=$('.plan-tools');if(!bd)return;const off=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar'))||56)+(st?st.offsetHeight:0)+8;scrollTo({top:bd.getBoundingClientRect().top+scrollY-off,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})};
+  $$('.filters button').forEach(b=>b.addEventListener('click',()=>{curPh=b.dataset.f;applyPlan();planTop()}));
+  $('#areaSel').addEventListener('change',e=>{curArea=e.target.value;applyPlan();planTop()});
   $$('[data-tour]').forEach(b=>b.addEventListener('click',()=>tour.start()));
   $$('.tp-f').forEach(b=>b.addEventListener('click',()=>topic(b)));
   $$('.tp-h').forEach(b=>b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);document.getElementById(b.getAttribute('aria-controls')).hidden=!o}));

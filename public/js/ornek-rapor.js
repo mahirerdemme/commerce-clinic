@@ -7,7 +7,7 @@
    Alan → incelenen başlıklar → bulgular → görseller → öneri → aksiyon
    ========================================================= */
 const R={client:'Loma Ev',site:'loma.com.tr',sector:'Ev tekstili',period:'1–18 Eylül 2026',date:'24 Eylül 2026',
-  consultant:'Mahir Erdem',role:'Lead Consultant',initials:'CC',final:'8 Ekim 2026, 14:00',finalShort:'8 Ekim',overall:57,bench:64,
+  consultant:'Mahir Erdem',role:'Founder',initials:'CC',final:'8 Ekim 2026, 14:00',finalShort:'8 Ekim',overall:57,bench:64,
   /* Final görüşmesi notları: görüşmeden sonra doldurulur, rapor sürüm 1.1 olur.
      {date:'8 Ekim 2026', items:[{t:'Karar', d:'Açıklama'}], open:['Cevabı 3 iş günü içinde verilecek soru']} */
   finalNotes:null};
@@ -385,7 +385,7 @@ function vOverview(){
         <p>Loma Ev'in trafik tarafında ciddi bir sorunu yok. Reklamlar ve organik arama doğru kişileri siteye getiriyor, mobil ziyaretçilerin çoğu ürün sayfasına kadar ulaşıyor. Kayıp, ziyaretçinin karar verdiği yerde yaşanıyor.</p>
         <p>İncelememizde üç konu öne çıktı: mobil ürün sayfası satın alma kararını destekleyecek bilgiyi göstermiyor, siparişlerin yaklaşık üçte biri ölçümlere yansımıyor ve ilk siparişi veren müşteriyle sonrasında planlı bir iletişim kurulmuyor. Bu üçü birbirini besliyor.</p>
         <p>İlk 30 günde yapılacak işlerin çoğu düşük eforlu. Aksiyonları sizin ekibiniz ve mevcut iş ortaklarınızla uygulanabilecek şekilde sıraladık. ${esc(R.finalShort)}'deki final görüşmesinde her aksiyonun sahibini birlikte netleştireceğiz.</p>
-      </div><div class="sign"><span class="avatar fav">${FAV}</span><div><b>Mahir Erdem</b><span>Lead Consultant</span></div></div></div>
+      </div><div class="sign"><span class="avatar fav">${FAV}</span><div><b>Mahir Erdem</b><span>Founder</span></div></div></div>
     </div>
 
     <div class="block"><div class="block-head"><h2 class="h2">${esc(T('health'))}</h2><p class="micro">Check-up tarihindeki durum · ${esc(R.date)}</p></div>

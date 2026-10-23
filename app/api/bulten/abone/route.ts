@@ -1,4 +1,4 @@
-import { aboneBaglanti, emailOk, esc, frame, json, koruma, limitAsildi, sendMail, sonEpostalar, txt, yakinda } from "@/lib/email/forms";
+import { aboneBaglanti, emailOk, esc, frame, hacimUyarisi, json, koruma, limitAsildi, sendMail, sonEpostalar, txt, yakinda } from "@/lib/email/forms";
 
 /** Bülten kaydı, 1. adım: POST /api/bulten/abone · e-postaya onay bağlantısı gönderir (çift onay; kitleye ekleme /api/bulten/onayla'da) */
 export async function POST(req: Request) {
@@ -14,6 +14,7 @@ export async function POST(req: Request) {
   if (!emailOk(email) || b.consent !== true) return json(false, 400, "Eksik alan");
 
   const list = await sonEpostalar();
+  await hacimUyarisi(list); // uyarı, sınır dolmadan ve dolduğunda da gider
   if (limitAsildi(list)) return json(false, 429, "Yoğunluk, daha sonra deneyin");
   if (yakinda(list, email)) return json(true); // aynı adrese 10 dakikada bir onay e-postası
 

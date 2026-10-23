@@ -4,6 +4,7 @@ import path from "node:path";
 import type { Metadata } from "next";
 import { girisliMi, ayarliMi } from "@/lib/yonetim";
 import { imza, mod, siteBase, testAlicilar } from "@/lib/email/bulten";
+import { gunlukSinir, sonEpostalar, sonGunSayisi } from "@/lib/email/forms";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Yönetim | Commerce Clinic", robots: { index: false, follow: false } };
@@ -46,6 +47,7 @@ export default async function Page({ searchParams }: Q) {
   }
 
   const audience = process.env.RESEND_AUDIENCE_ID;
+  const gonderilen = await sonEpostalar();
   const [alan, kisiler, yayinlar] = await Promise.all([
     rj("/domains").then((d) => (d.data ?? []).find((x: { name: string }) => x.name === "thecommerceclinic.com")).catch(() => null),
     audience ? rj(`/audiences/${audience}/contacts`).then((d) => (d.data ?? []) as Kisi[]).catch(() => null) : Promise.resolve(null),
@@ -95,6 +97,29 @@ export default async function Page({ searchParams }: Q) {
             <dd>{alan ? <span className={`yn-tag ${alan.status === "verified" ? "ok" : "warn"}`}>{alan.status === "verified" ? "Doğrulandı" : alan.status}</span> : <span className="yn-tag bad">Okunamadı</span>} thecommerceclinic.com · Resend</dd>
             <dt>Abone listesi</dt><dd>{audience ? (kisiler ? <span className="yn-tag ok">Bağlı</span> : <span className="yn-tag bad">Okunamadı</span>) : <span className="yn-tag bad">Tanımlı değil</span>}</dd>
           </dl>
+        </section>
+
+        <section className="yn-card" aria-labelledby="y-hacim">
+          <h2 id="y-hacim">Hacim ve koruma</h2>
+          <p className="yn-sub">Bot saldırısı ya da olağandışı yoğunluk belirtisi: sitenin son 24 saatte gönderdiği e-posta sayısı.</p>
+          {gonderilen ? (() => {
+            const n = sonGunSayisi(gonderilen), sinir = gunlukSinir();
+            const son = gonderilen.filter((m) => Date.parse((m.created_at ?? "").replace(" ", "T").replace(/\+00$/, "Z")) > Date.now() - 24 * 3600 * 1000);
+            const talep = son.filter((m) => (m.subject ?? "").startsWith("Yeni görüşme talebi")).length;
+            const bulten = son.filter((m) => (m.subject ?? "").includes("aboneliğinizi onaylayın")).length;
+            const uyari = son.filter((m) => (m.subject ?? "").startsWith("[Uyarı]")).length;
+            const dur = n >= sinir ? "bad" : n >= sinir * 0.75 ? "warn" : "ok";
+            return (
+              <dl className="yn-dl">
+                <dt>Son 24 saat, toplam e-posta</dt>
+                <dd><span className={`yn-tag ${dur}`}>{n} / {sinir}</span> {dur === "ok" ? "normal" : dur === "warn" ? "yüksek: uyarı e-postası gönderildi" : "günlük sınıra ulaşıldı, yeni formlar geçici reddediliyor"}</dd>
+                <dt>Görüşme talebi</dt><dd>{talep}</dd>
+                <dt>Bülten onay isteği</dt><dd>{bulten}</dd>
+                <dt>Uyarı e-postası</dt><dd>{uyari ? "gönderildi" : "yok"}</dd>
+              </dl>
+            );
+          })() : <p className="yn-msg err">Sayaç okunamadı.</p>}
+          <p className="yn-note">Engellenen denemeler (tuzak alanı, jetonsuz ya da çok hızlı istek, IP sınırı) kişisel veri tutulmadan Vercel kayıtlarına yazılır: Vercel → proje → Logs → "[koruma]" ara. Saldırı sürerse Vercel → Firewall → Attack Challenge Mode açılabilir; kalıcı çözüm Cloudflare Turnstile.</p>
         </section>
 
         <section className="yn-card" aria-labelledby="y-sayilar">

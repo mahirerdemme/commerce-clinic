@@ -115,15 +115,18 @@ function tokenKontrol(t: string): "ok" | "yok" | "hizli" | "eski" {
 
 /** Her form ucunun ilk kontrolü: kaynak, sınır, tuzak alanı (botlar doldurur), zaman damgası. null = devam. */
 export function koruma(req: Request, b: Record<string, unknown>, tur: string): Response | null {
-  if (!originOk(req)) return json(false, 403, "Kaynak geçersiz");
-  if (!rateOk(req, tur)) return json(false, 429, "Çok fazla deneme");
+  // engellenen denemeler Vercel kayıtlarına yazılır (IP ya da kişisel veri yok): `vercel logs` / Vercel → Logs, "[koruma]" ile aranır
+  const engel = (neden: string) => console.warn(`[koruma] ${JSON.stringify({ neden, tur })}`);
+  if (!originOk(req)) return engel("kaynak"), json(false, 403, "Kaynak geçersiz");
+  if (!rateOk(req, tur)) return engel("ip-siniri"), json(false, 429, "Çok fazla deneme");
   if (!process.env.RESEND_API_KEY) return json(false, 500, "Sunucu ayarları eksik");
-  if (txt(b.cc_nick, 100)) return json(true); // tuzak alanı dolu: bota "başarılı" deriz, hiçbir şey gönderilmez
-  if (tokenKontrol(txt(b._t, 120)) !== "ok") return json(false, 429, "Lütfen tekrar deneyin");
+  if (txt(b.cc_nick, 100)) return engel("tuzak"), json(true); // tuzak alanı dolu: bota "başarılı" deriz, hiçbir şey gönderilmez
+  const k = tokenKontrol(txt(b._t, 120));
+  if (k !== "ok") return engel(`jeton-${k}`), json(false, 429, "Lütfen tekrar deneyin");
   return null;
 }
 
-type Giden = { to?: string[]; created_at?: string };
+type Giden = { to?: string[]; created_at?: string; subject?: string };
 const zaman = (s?: string) => Date.parse((s ?? "").replace(" ", "T").replace(/\+00$/, "Z"));
 
 /** Son gönderilen e-postalar (kalıcı sayaç: Resend kaydı; sunucu belleğine bağlı değil) */
@@ -141,11 +144,27 @@ export async function sonEpostalar(): Promise<Giden[] | null> {
 }
 
 /** Günlük toplam e-posta üst sınırı (FORM_GUNLUK_SINIR, varsayılan 80; Resend ücretsiz plan: 100/gün) */
+export const gunlukSinir = () => Number(process.env.FORM_GUNLUK_SINIR) || 80;
+export const sonGunSayisi = (list: Giden[]) => list.filter((m) => zaman(m.created_at) > Date.now() - 24 * 3600 * 1000).length;
+
 export function limitAsildi(list: Giden[] | null) {
   if (!list) return false; // sayaç okunamazsa engelleme (formlar çalışmaya devam eder)
-  const sinir = Number(process.env.FORM_GUNLUK_SINIR) || 80;
+  const n = sonGunSayisi(list);
+  if (n >= gunlukSinir()) console.warn(`[koruma] ${JSON.stringify({ neden: "gunluk-sinir", n })}`);
+  return n >= gunlukSinir();
+}
+
+/** Son 24 saatte e-posta sayısı sınırın %75'ine ulaştıysa ekibe tek bir uyarı gider (24 saatte en fazla 1) */
+export async function hacimUyarisi(list: Giden[] | null) {
+  if (!list) return;
+  const n = sonGunSayisi(list);
+  if (n < gunlukSinir() * 0.75) return;
   const gun = Date.now() - 24 * 3600 * 1000;
-  return list.filter((m) => zaman(m.created_at) > gun).length >= sinir;
+  if (list.some((m) => zaman(m.created_at) > gun && (m.subject ?? "").startsWith("[Uyarı]"))) return;
+  await notify(
+    `[Uyarı] Form e-postası yoğunluğu: ${n} / ${gunlukSinir()}`,
+    `<p style="font:15px/1.5 -apple-system,Segoe UI,Arial,sans-serif">Son 24 saatte siteden <b>${n}</b> e-posta gönderildi (günlük üst sınır ${gunlukSinir()}). Normalden fazlaysa bot saldırısı olabilir.</p><p style="font:15px/1.5 -apple-system,Segoe UI,Arial,sans-serif">Bakılacak yerler: ${siteUrl()}/yonetim · Vercel → Logs ("[koruma]" ara) · gerekirse Vercel → Firewall → Attack Challenge Mode.</p>`,
+  ).catch((e) => console.error("uyari", e));
 }
 
 /** Bu adrese son 10 dakikada e-posta gitti mi (aynı adrese tekrar tekrar posta gitmesini engeller) */

@@ -1,4 +1,4 @@
-import { emailOk, esc, frame, json, koruma, limitAsildi, notify, rows, sendMail, sonEpostalar, txt, yakinda } from "@/lib/email/forms";
+import { emailOk, esc, frame, json, koruma, hacimUyarisi, limitAsildi, notify, rows, sendMail, sonEpostalar, txt, yakinda } from "@/lib/email/forms";
 
 /** formun açıldığı sayfanın okunur adı (gp.html'e sayfa anahtarı yazılır) */
 const SAYFA: Record<string, string> = {
@@ -33,6 +33,7 @@ export async function POST(req: Request) {
   if (!name || !emailOk(email) || !site || !interest || (channel === "Telefon" && !phone)) return json(false, 400, "Eksik alan");
 
   const list = await sonEpostalar();
+  await hacimUyarisi(list); // uyarı, sınır dolmadan ve dolduğunda da gider
   if (limitAsildi(list)) return json(false, 429, "Yoğunluk, daha sonra deneyin");
   const teyitGider = !yakinda(list, email); // aynı adrese 10 dakikada en fazla 1 teyit
 

@@ -1,4 +1,4 @@
-import { aboneBaglanti, emailOk, esc, frame, json, koruma, limitAsildi, notify, rows, sendMail, siteUrl, sonEpostalar, txt, yakinda } from "@/lib/email/forms";
+import { aboneBaglanti, emailOk, esc, frame, json, koruma, hacimUyarisi, limitAsildi, notify, rows, sendMail, siteUrl, sonEpostalar, txt, yakinda } from "@/lib/email/forms";
 
 /** Ücretsiz rehber: POST /api/rehber · kontrol listesi bağlantısını e-postayla gönderir */
 const REHBERLER: Record<string, { ad: string; yol: string }> = {
@@ -25,6 +25,7 @@ export async function POST(req: Request) {
   if (!name || !emailOk(email) || !r) return json(false, 400, "Eksik alan");
 
   const list = await sonEpostalar();
+  await hacimUyarisi(list); // uyarı, sınır dolmadan ve dolduğunda da gider
   if (limitAsildi(list)) return json(false, 429, "Yoğunluk, daha sonra deneyin");
   const link = `${siteUrl()}${r.yol}`;
   try {

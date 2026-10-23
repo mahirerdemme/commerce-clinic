@@ -1,5 +1,17 @@
 import { emailOk, esc, frame, json, notify, originOk, rateOk, rows, sendMail, txt } from "@/lib/email/forms";
 
+/** formun açıldığı sayfanın okunur adı (gp.html'e sayfa anahtarı yazılır) */
+const SAYFA: Record<string, string> = {
+  home: "Ana sayfa",
+  "check-up": "Check-up",
+  danismanlik: "Danışmanlık",
+  hakkimizda: "Hakkımızda",
+  "commerce-notes": "Blog (Commerce Notes)",
+  "blog-platform-gecisi": "Blog yazısı · Platform değiştirmeden önce 7 soru",
+  "rehber-altyapi-gecisi": "Rehber · Altyapı değişikliği",
+  "kontrol-listesi": "Rehber kontrol listesi",
+};
+
 /** Görüşme Planla formu: POST /api/gorusme */
 export async function POST(req: Request) {
   if (!originOk(req)) return json(false, 403, "Kaynak geçersiz");
@@ -33,7 +45,7 @@ export async function POST(req: Request) {
         ["Konular", topics.join(", ")],
         ["Dönüş", channel === "Telefon" ? `Telefon · ${phone}` : "E-posta"],
         ["Mesaj", message],
-        ["Kaynak sayfa", txt(b.source_page, 60)],
+        ["Kaynak sayfa", SAYFA[txt(b.source_page, 60)] ?? txt(b.source_page, 60)],
         ["UTM", [txt(b.utm_source, 80), txt(b.utm_medium, 80), txt(b.utm_campaign, 80)].filter(Boolean).join(" / ")],
         ["Zaman", new Date().toLocaleString("tr-TR", { timeZone: "Europe/Istanbul" })],
       ]),

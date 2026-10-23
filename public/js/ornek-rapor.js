@@ -371,7 +371,7 @@ function vOverview(){
       <h1 class="h1" id="h-ov">${esc(R.client)}</h1>
       <p class="cover-kicker" style="margin:.9rem 0 0;font-size:1.125rem;color:var(--cc-text);font-weight:500">Commerce Check-up raporu</p>
       <p class="cover-site" style="margin-top:.35rem">${esc(R.site)} · ${esc(R.sector)}</p>
-      <p class="cover-note">Örnek rapor: marka, alan adı ve rakamlar kurgusaldır; gerçek bir müşteriyi göstermez.</p></div>
+      <p class="cover-note">Örnek rapor. Marka adı ve alan adı örnek amaçlıdır.</p></div>
       <aside class="how-card" aria-labelledby="hc-t"><h2 id="hc-t">Bu rapor nasıl hazırlandı?</h2>
         <p>Bu rapordaki her bulgu Commerce Clinic tarafından incelendi, kanıtla desteklendi ve yorumlandı.</p>
         <ul><li>Uzman incelemesi<b>18 saat</b></li><li>İncelenen ekran ve akış<b>46</b></li><li>İncelenen rakip<b>${COMP.length}</b></li></ul>

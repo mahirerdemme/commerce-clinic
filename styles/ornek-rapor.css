@@ -941,7 +941,11 @@ details.pg-rec ul{margin-top:.6rem}
   .ph-t{font-size:.875rem}
   .h-main .gwrap{max-width:13rem;margin:0 auto}
   .h-main h3,.h-main p,.h-main .keys{text-align:center;justify-content:center;margin-left:auto;margin-right:auto}
-  .area-head .gwrap{max-width:11rem}
+  /* alan başlığı: puan başlığın üstünde, küçük ve yan yana etiketle */
+  .area-head{display:flex;flex-direction:column;align-items:stretch;gap:1rem}
+  .area-head .area-score{order:-1;display:flex;align-items:center;gap:.75rem;max-width:none!important}
+  .area-head .area-score>:first-child{width:5.5rem;flex:none}
+  .area-head .area-score .micro{margin:0!important;text-align:left!important;font-weight:500;color:var(--cc-text)}
 }
 
 /* ---------- mobil: aksiyon planı filtreleri başlığa yapışır (Kadir, 23 Ekim 2026) ---------- */

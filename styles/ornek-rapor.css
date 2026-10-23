@@ -871,7 +871,7 @@ details.pg-rec ul{margin-top:.6rem}
 @media print{
   @page{size:A4;margin:14mm 12mm}
   body{background:#fff!important}
-  .bar,.rail,.pager,.tour-band,.how-card button,.how-card .btn,.stw .sts button:not([aria-pressed="true"]),.filters,.pg-top .pg-l,#menuBtn,.ccb,.ccm,.toast,.me-menu,#auth,#share,.help,.flag,.ldr{display:none!important}
+  .bar,.rail,.pager,.tour-band,.how-card button,.how-card .btn,.stw .sts button:not([aria-pressed="true"]),.filters,.pg-top .pg-l,#menuBtn,.ccb,.ccm,.toast,.me-menu,#auth,#share,.help,.ldr{display:none!important}
   .view{display:block!important}
   .view+.view{break-before:page}
   .fx,.ac,.block,.slot,.fn{break-inside:avoid}

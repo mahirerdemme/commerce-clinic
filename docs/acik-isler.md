@@ -29,6 +29,17 @@ Kodda köşeli parantezle yer tutucu kalmadı (23 Ekim 2026). Karar ve eksikler:
 | GA4 ölçüm kimliği | Çerez tablosunda `_ga_*` olarak yazıldı. |
 | "Son güncelleme" tarihi | 23 Ekim 2026. Metin değişince güncellenir. |
 
+## Doğrulanacak içerik (eski "taslak" etiketlerinden, 23 Ekim 2026)
+
+Sitedeki "Taslak metin / Doğrulanacak" etiketleri kaldırıldı (ziyaretçiye zaten görünmüyorlardı). Etiketlerin işaret ettiği, hâlâ onay bekleyen yerler:
+
+- **Kapanış CTA güvence metni** (tüm sayfalar): "Ücretsiz · Yaklaşık 30 dakika · Karşılıklı uygunluk değerlendirmesi".
+- **Rakamlar** (ana sayfa, Hakkımızda): 10+ yıl, 1.000+ marka, 2.000+ proje. (Mahir)
+- **Hakkımızda** kurucu metni: kurucu onaylayacak.
+- **Ana sayfa "Deneyimlenen altyapılar ve araçlar" logoları:** placeholder; etiketteki "resmî ortaklık değildir" notu sitede görünmüyor. İzin ve not gerekirse yeniden eklenmeli.
+- **Ana sayfa:** problem–alan ilişkileri ve kart/ekran metinleri taslak.
+- **Danışmanlık SSS** ve **Check-up SSS ile örnekler:** taslak, onaylanacak.
+
 ## Kararlar
 
 - **Tema dengesi (Kadir, 12 Ekim 2026; kalıcı tasarım ilkesi, Master Brief v2'ye ek):** sitede beyaz ve siyah bölümler arasındaki denge her yerde korunur. Header, açılan menü, yukarı çık butonu gibi bölümün üstüne binen öğeler altındaki bölümün temasını izler: siyah bölümde (footer ve kapanış CTA'sı dahil) siyah, beyazda beyaz. Tek istisna rehber kartı: açık bölümde tam beyaz, koyu bölümde şeffaf çerçeveli. Yeni bir koyu bölüm eklenirse header'ın tema algısına (`public/js/*.js`, `.chapter,.cta-final,.footer`) eklenmeli. (Not: Master Brief PDF'i Kadir'den geliyor, burada kodlanmadı; bu satır ve mobil ilkeler `docs/master-brief-v2-ek.md`'de brief'e eklenecek not olarak duruyor.)

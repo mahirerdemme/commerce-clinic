@@ -76,8 +76,6 @@
   matchMedia('(min-width:861px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});
 
   // ===== DRAFT FLAGS =====
-  const ft=$('#flagToggle');
-  ft.addEventListener('click',()=>{const h=document.body.classList.toggle('hide-flags');ft.setAttribute('aria-pressed',h);ft.textContent=h?'Taslak işaretlerini göster':'Taslak işaretlerini gizle'});
 
   // ===== HEALTH DATA (hero + report) =====
   const areas=[['Business & Positioning',61],['Market & Competition',72],['UX & Conversion',38],['Merchandising & Content',71],['Technology & Data',42],['Post-Purchase & Retention',49],['Acquisition & Marketing',70],['Organization & Growth',46]];
@@ -306,7 +304,7 @@ var vh=innerHeight,items=[];
   if(sec.contains(h)||sec.closest('.hero')||/cta-final|ab-why|hero/.test(sec.className))return;
   var c=sec.querySelector(':scope>.wrap')||sec;while(c.children.length===1&&c.firstElementChild.tagName!=='UL'&&!/^(H1|H2|H3|P)$/.test(c.firstElementChild.tagName))c=c.firstElementChild;
   [].forEach.call(c.children,function(ch){
-    if(/^(SCRIPT|STYLE)$/.test(ch.tagName)||/sg-l|sg-r|flag/.test(ch.className))return;
+    if(/^(SCRIPT|STYLE)$/.test(ch.tagName)||/sg-l|sg-r/.test(ch.className))return;
     var cs=getComputedStyle(ch);if(cs.position==='absolute'||cs.position==='fixed'||cs.position==='sticky')return;
     var kids=[].filter.call(ch.children,function(x){return !/^(SCRIPT|STYLE)$/.test(x.tagName)});
     if((cs.display==='grid'||/^(UL|OL)$/.test(ch.tagName))&&kids.length>=2&&kids.length<=9)kids.forEach(function(x,j){items.push([x,j])});else items.push([ch,0]);

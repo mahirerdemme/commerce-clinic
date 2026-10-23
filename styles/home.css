@@ -1401,3 +1401,6 @@ body.gp-open{overflow:hidden}
 @media (max-width:860px) and (prefers-reduced-motion:reduce){body.menu-open::after{animation:none}.header .nav,body.menu-open .header .nav>*{transition:none}body[class] .header .logo{transition:none!important}}
 /* backdrop-filter desteklemeyen eski tarayıcılarda blur yerine daha koyu perde */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){@media (max-width:860px){body.menu-open::after{background:rgba(0,0,0,.6)}}}
+
+/* platform logoları altındaki marka notu */
+.lg-note{margin:1.5rem 0 0;font-size:.75rem;line-height:1.5;color:var(--cc-text-2)}

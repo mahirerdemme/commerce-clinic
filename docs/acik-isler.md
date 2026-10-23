@@ -29,16 +29,9 @@ Kodda köşeli parantezle yer tutucu kalmadı (23 Ekim 2026). Karar ve eksikler:
 | GA4 ölçüm kimliği | Çerez tablosunda `_ga_*` olarak yazıldı. |
 | "Son güncelleme" tarihi | 23 Ekim 2026. Metin değişince güncellenir. |
 
-## Doğrulanacak içerik (eski "taslak" etiketlerinden, 23 Ekim 2026)
+## Onaylanan içerik (23 Ekim 2026)
 
-Sitedeki "Taslak metin / Doğrulanacak" etiketleri kaldırıldı (ziyaretçiye zaten görünmüyorlardı). Etiketlerin işaret ettiği, hâlâ onay bekleyen yerler:
-
-- **Kapanış CTA güvence metni** (tüm sayfalar): "Ücretsiz · Yaklaşık 30 dakika · Karşılıklı uygunluk değerlendirmesi".
-- **Rakamlar** (ana sayfa, Hakkımızda): 10+ yıl, 1.000+ marka, 2.000+ proje. (Mahir)
-- **Hakkımızda** kurucu metni: kurucu onaylayacak.
-- **Ana sayfa "Deneyimlenen altyapılar ve araçlar" logoları:** placeholder; etiketteki "resmî ortaklık değildir" notu sitede görünmüyor. İzin ve not gerekirse yeniden eklenmeli.
-- **Ana sayfa:** problem–alan ilişkileri ve kart/ekran metinleri taslak.
-- **Danışmanlık SSS** ve **Check-up SSS ile örnekler:** taslak, onaylanacak.
+Eski "taslak" etiketlerinin işaret ettiği yerler Mahir ve Kadir tarafından onaylandı: rakamlar (10+ yıl, 1.000+ marka, 2.000+ proje), kapanış güvence metni, referans marka logoları (izin var), platform logoları. Platform logolarının altına "Logolar ilgili firmaların tescilli markalarıdır; resmî bir ortaklık anlamına gelmez." notu eklendi (ana sayfa).
 
 ## Kararlar
 
@@ -47,8 +40,6 @@ Sitedeki "Taslak metin / Doğrulanacak" etiketleri kaldırıldı (ziyaretçiye z
 
 - Yasal metinlerin hukukçu son okuması (4 metin).
 - Yurt dışı aktarım için standart sözleşmeler (Vercel, Resend, Cloudflare, Google, bülten aracı) imzalanıp KVKK'ya bildirilmeli; metinler bunu taahhüt ediyor.
-- Ana sayfa hero şeridindeki referans marka logoları (Myvia, Tromox, Alfemo, Gözde Grubu, Kelebek…): kullanım izni var mı? Yoksa kaldırılmalı. (Mahir)
-- Rakamlar: sitede 10+ yıl / 1.000+ marka / 2.000+ proje, portfolyoda 8+ yıl / 500+ marka. (Mahir)
 
 - Çerez bandında "Kabul et" ve "Reddet" eşit görünürlükte (23 Ekim 2026); "Tercihler" metin bağlantısı olarak durur.
 

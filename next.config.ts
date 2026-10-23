@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     // Görüşme Planla bir popup; adres doğrudan açılırsa ana sayfada popup açılır
     return [
+      // geçici Vercel adresi → asıl alan adı
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "commerce-clinic-ashen.vercel.app" }],
+        destination: "https://thecommerceclinic.com/:path*",
+        permanent: true,
+      },
       // www → www'suz adres (kanonik: https://thecommerceclinic.com)
       {
         source: "/:path*",

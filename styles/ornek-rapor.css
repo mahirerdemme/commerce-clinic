@@ -638,7 +638,8 @@ main{padding:clamp(2rem,4vw,3.5rem) clamp(1.25rem,4vw,4rem) 6rem;min-width:0}
 .comp li+li{border-top:1px solid var(--cc-border)}
 .comp b{display:block;font-weight:500;font-size:.9375rem}
 .comp small{display:block;color:var(--cc-text-2);font-size:.8125rem}
-.comp .cw{color:var(--cc-text-2)}
+.comp .cw{display:flex;flex-wrap:wrap;gap:.35rem}
+.comp .cw i{font-style:normal;font-size:.75rem;line-height:1.4;color:var(--cc-text-2);border:1px solid var(--cc-border);border-radius:999px;padding:.15rem .6rem;background:var(--cc-white)}
 .ph-t{font-size:.9375rem;color:var(--cc-text-2);margin:2rem 0 .9rem}
 .ph-t:first-child{margin-top:0}
 .ph-t b{color:var(--cc-text);font-weight:600;margin-right:.4rem}
@@ -661,7 +662,7 @@ main{padding:clamp(2rem,4vw,3.5rem) clamp(1.25rem,4vw,4rem) 6rem;min-width:0}
 .ac-kpi{margin-top:.5rem;color:var(--cc-text-2)}
 .ac-kpi b{color:var(--cc-text);font-weight:500}
 .kpis a{color:var(--cc-text);text-underline-offset:3px}
-@media (max-width:700px){.ac-meta,.ac-g{margin-left:0}.ac-g{grid-template-columns:1fr}.comp li{grid-template-columns:28px 1fr}.comp .cw{grid-column:2}}
+@media (max-width:700px){.ac-meta,.ac-g{margin-left:0}.ac-g{grid-template-columns:1fr}.comp li{grid-template-columns:28px 1fr}.comp .cw{grid-column:2;margin-top:.1rem}}
 /* v27 plan */
 .rm{padding:0}
 .rm-r{display:grid;grid-template-columns:minmax(0,17rem) minmax(0,1fr);gap:1.5rem 2.5rem;padding:1.5rem clamp(1.25rem,3vw,2rem)}

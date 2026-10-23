@@ -38,7 +38,7 @@ const AREAS=[
  {id:'market',score:72,scope:'Seçilen rakiplerle fiyat, ürün gamı, kargo, iade, ödeme ve deneyim karşılaştırması.',
   s:[['Rakip seti','ok'],['Fiyat ve ürün gamı','ok'],['Kampanyalar','ok'],['Kargo, iade ve ödeme koşulları','warn'],['Deneyim ve ürün sunumu','ok'],['Değer önerisi karşılaştırması','ok']],
   assess:['Fiyat konumu segmentle uyumlu; Loma Ev ne en ucuz ne en pahalı marka. Ürün gamı ve görsel kalite rakiplerin üzerinde.','Belirgin tek dezavantaj ücretsiz kargo eşiği. İncelenen rakiplerin çoğu daha düşük bir eşik kullanıyor.'],
-  by:'İnceleme: 10–11 Eylül 2026 · Rakip A–E, mobil ve masaüstü satın alma akışı'},
+  by:'İnceleme: 10–11 Eylül 2026 · Rakip A–D, mobil ve masaüstü satın alma akışı'},
  {id:'ux',score:38,scope:'Keşiften ödemeye kadar satın alma kararını kolaylaştıran ve zorlaştıran noktalar.',
   s:[['Keşif ve navigasyon','warn'],['Ana sayfa ve açılış sayfaları','ok'],['Kategori ve listeleme','warn'],['Ürün detay','bad'],['Sepet ve ödeme','warn'],['Mobil deneyim','bad'],['Güven unsurları','warn']],
   assess:['Trafiğin %78\'i mobilden geliyor ama mobil dönüşüm oranı %0,9; masaüstünde bu oran %2,1. Aradaki farkın büyük kısmı ürün sayfasında oluşuyor.','Ziyaretçi ürünü beğeniyor; görseller ve açıklamalar iyi. Ancak teslimat tarihi, iade koşulu ve kargo ücreti gibi karar bilgileri mobilde ilk ekranın altında kalıyor. Kargo ücreti ilk kez ödeme adımında görünüyor ve en büyük kayıp o adımda yaşanıyor.'],
@@ -77,7 +77,7 @@ const TOPIC_TPL={
  'Müşteri yapısı':'Yeni ve tekrar eden müşteri oranı, müşteri segmentleri.',
  'Değer önerisi':'Markanın neden tercih edilmesi gerektiğinin sitede ve iletişimde nasıl anlatıldığı.',
  'Performans trendi ve hedefler':'Son 6–12 ayın satış trendi ve önümüzdeki dönemin hedefleri.',
- 'Rakip seti':'Karşılaştırma için seçilen rakipler ve seçim gerekçesi.',
+ 'Rakip seti':'Rakipleri hangi ölçütle seçtiğimizi ve seçilen markaların sizinle aynı müşteriye hitap edip etmediğini.',
  'Fiyat ve ürün gamı':'Benzer ürünlerde fiyat konumu ve ürün çeşitliliği.',
  'Kampanyalar':'Rakiplerin kampanya sıklığı, indirim seviyeleri ve sunumu.',
  'Kargo, iade ve ödeme koşulları':'Kargo eşiği ve ücreti, iade süresi ve yöntemi, ödeme seçenekleri.',
@@ -263,7 +263,7 @@ const impW=['','Düşük etki','Orta etki','Yüksek etki'],effW=['','düşük ef
 /* kaynak: [ad, ayrıntı, monogram | 'talk', logo dosyası (public/media/brands, opsiyonel)] */
 const SOURCES=[['Google Analytics 4','1 Haziran–31 Ağustos 2026','GA4','ga4.png'],['Shopify yönetim paneli','Salt okunur erişim','S','shopify.png'],['Meta Ads','Son 6 ay','M','meta-ads.png'],['Google Ads','Son 6 ay','G','google-ads.png'],['Klaviyo','Akış ve kampanya raporları','K','klaviyo.png'],['Microsoft Clarity','14 günlük oturum kaydı','C','microsoft-clarity.png'],['Discovery görüşmesi','3 Eylül 2026, 60 dk','talk']];
 /* incelenen rakipler: ad, neden seçildi, neye baktık */
-const COMP=[['Rakip A','Aynı segment, benzer fiyat','Ana sayfa · kampanyalar · kargo ve iade'],['Rakip B','Mobil deneyimi güçlü','Ürün sayfası · sepet ve ödeme'],['Rakip C','Pazaryerinde en çok görülen','Fiyat · ürün gamı · kargo'],['Rakip D','Yeni ve hızlı büyüyen','Kampanyalar · reklam kreatifleri'],['Rakip E','Segmentin premium ucu','Ürün sunumu · değer önerisi · iade']];
+const COMP=[['Rakip A','Aynı segment, benzer fiyat','Ana sayfa · kampanyalar · kargo ve iade'],['Rakip B','Mobil deneyimi güçlü','Ürün sayfası · sepet ve ödeme'],['Rakip C','Pazaryerinde en çok görülen','Fiyat · ürün gamı · kargo'],['Rakip D','Yeni ve hızlı büyüyen','Kampanyalar · reklam kreatifleri']];
 SOURCES.push(['Rakip incelemesi',COMP.length+' marka · 10–11 Eylül 2026','R']);
 const srcIc=s=>s[2]==='talk'?`<span class="sic" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 3.5h10a1 1 0 0 1 1 1v5.5a1 1 0 0 1-1 1H7l-3 2.5V11H3a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></span>`:s[3]?`<span class="sic sic-img" aria-hidden="true"><img src="/media/brands/${s[3]}" alt="" width="16" height="16" loading="lazy"></span>`:`<span class="sic" aria-hidden="true">${esc(s[2])}</span>`;
 const THREE=[
@@ -440,7 +440,7 @@ function vArea(a){
     <div class="assess panel" style="grid-template-columns:minmax(0,1fr)"><div class="body" style="max-width:var(--read)"><h2 class="sum-h">Alan özeti</h2>${a.assess.map(p=>`<p>${esc(p)}</p>`).join('')}<p class="info"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7v4M8 4.8v.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>${esc(a.by.replace(/^(İnceleme|Kaynak):\s*/,''))}</p></div></div>
 
     ${a.id==='market'?`<div class="block" style="margin-top:3rem"><div class="block-head"><h2 class="h2">İncelenen rakipler</h2><p class="micro">Rakiplerin tamamını değil, belirli başlıklarını inceledik.</p></div>
-      <div class="panel" style="padding-top:.5rem;padding-bottom:.5rem"><ul class="comp">${COMP.map(c=>`<li><span class="sic" aria-hidden="true">${esc(c[0].slice(-1))}</span><div><b>${esc(c[0])}</b><small>${esc(c[1])}</small></div><span class="cw">${esc(c[2])}</span></li>`).join('')}</ul></div></div>`:''}
+      <div class="panel" style="padding-top:.5rem;padding-bottom:.5rem"><ul class="comp">${COMP.map(c=>`<li><span class="sic" aria-hidden="true">${esc(c[0].slice(-1))}</span><div><b>${esc(c[0])}</b><small>${esc(c[1])}</small></div><span class="cw">${c[2].split(' · ').map(t=>`<i>${esc(t.charAt(0).toLocaleUpperCase('tr')+t.slice(1))}</i>`).join('')}</span></li>`).join('')}</ul></div></div>`:''}
     <div class="block" style="margin-top:3rem"><div class="block-head"><h2 class="h2">İncelenen başlıklar</h2><p class="micro">Her başlığa tıklayarak neye baktığımızı ve sonucu görün.</p></div>
       <div class="panel" style="padding-top:.5rem;padding-bottom:.5rem"><ul class="topics2">${a.s.map(([n])=>topicRow(a,n)).join('')}</ul></div>
     </div>

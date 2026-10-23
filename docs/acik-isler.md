@@ -56,7 +56,7 @@ Sitedeki "Taslak metin / Doğrulanacak" etiketleri kaldırıldı (ziyaretçiye z
 
 ## Teknik, bağlantı bekleyen
 
-- Formlar hâlâ hiçbir yere göndermiyor (Resend + alan adı + hello@ gerekiyor). Onay metinleri hazır; gönderim bağlanınca onay kaydı (tarih, kaynak, metin sürümü) da saklanmalı.
+- Formlar bağlandı (23 Ekim 2026): `/api/gorusme`, `/api/rehber`, `/api/bulten/abone` (`lib/email/forms.ts`). Bildirimler `FORM_TO` adreslerine gider (hello@ + yedek Gmail; hello@ posta kutusu açılınca Gmail çıkarılır). Bülten onay kaydı (tarih, kaynak, metin sürümü) her kayıtta ekibe e-postayla düşer. Spam koruması şimdilik kaynak kontrolü ve IP sınırı; gerekirse Cloudflare Turnstile eklenir (o zaman yasal metinlere geri yazılır). hello@ için gelen kutusu henüz yok.
 - Çerez bandı Consent Mode v2 ile hazır; GTM kimliği `NEXT_PUBLIC_GTM_ID` olarak Vercel'e girilince GTM yüklenir. GA4 etiketi GTM içinde, Consent Mode **temel (basic)** ayarıyla kurulmalı: onay yoksa etiket hiç çalışmaz, Google'a veri gitmez.
 - Örnek rapor sayfasında (`/ornek-rapor`) footer'da çerez tercihleri bağlantısı yok; bant orada da çıkıyor.
 

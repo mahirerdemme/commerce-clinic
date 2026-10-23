@@ -153,7 +153,7 @@
   const toast=document.createElement('div');toast.className='toast';toast.setAttribute('role','status');document.body.appendChild(toast);let tt;
   const say=m=>{toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),2600)};
   $$('a[data-page]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();say('Bu sayfa yakında yayında.')}));
-  $('#notesForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#nEmail');if(!v.checkValidity()){v.focus();say('Geçerli bir e-posta adresi girin.');return}const nc=$('#nConsent');$('#nConsent-l').classList.toggle('is-err',!nc.checked);if(!nc.checked){nc.focus();say('Bülten için ticari ileti onay kutusunu işaretleyin.');return}say('Teşekkürler. Bülten kaydı çok yakında aktif olacak.');v.value=''});
+  $('#notesForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#nEmail');if(!v.checkValidity()){v.focus();say('Geçerli bir e-posta adresi girin.');return}const nc=$('#nConsent');$('#nConsent-l').classList.toggle('is-err',!nc.checked);if(!nc.checked){nc.focus();say('Bülten için ticari ileti onay kutusunu işaretleyin.');return}window.ccPost('/api/bulten/abone',{email:v.value,consent:true,source:'footer'}).then(ok=>{if(ok){say('Teşekkürler. Aboneliğiniz alındı.');v.value=''}else say('Kayıt yapılamadı. Lütfen biraz sonra yeniden deneyin.')})});
 })();
 
 ;
@@ -254,6 +254,11 @@
     const interest=$('input[name="interest"]:checked').value;
     const topics=$$('input[name="topics"]:checked').map(x=>x.value);
     const ch=$('input[name="channel"]:checked').value;
+    const er=$('#gp-err2');if(!er.dataset.t)er.dataset.t=er.textContent;er.textContent=er.dataset.t;
+    const sb=form.querySelector('button[type="submit"]');sb.disabled=true;
+    window.ccPost('/api/gorusme',{interest:interest,topics:topics,channel:ch,name:$('#gp-name').value,email:$('#gp-email').value,site:$('#gp-site').value,message:$('#gp-msg').value,phone:$('#gp-phone').value,utm_source:$('#gp-utm-source').value,utm_medium:$('#gp-utm-medium').value,utm_campaign:$('#gp-utm-campaign').value,source_page:$('#gp-page').value}).then(sent=>{
+    sb.disabled=false;
+    if(!sent){er.textContent='Gönderilemedi. Lütfen biraz sonra yeniden deneyin ya da hello@thecommerceclinic.com adresine yazın.';er.hidden=false;return}
     const rows=[['İlgi alanı',interest]];
     if(topics.length)rows.push(['Konular',topics.join(', ')]);
     rows.push(['Marka / site',$('#gp-site').value.trim()],['Dönüş',ch==='Telefon'?'Telefon · '+$('#gp-phone').value.trim():'E-posta · '+$('#gp-email').value.trim()]);
@@ -264,6 +269,7 @@
     try{history.replaceState({gp:2},'',base+'#tesekkurler')}catch(e){location.hash='tesekkurler'}
     dl.push({event:'generate_lead',interest:interest,channel:ch});
     setTimeout(()=>done.focus(),60);
+    });
   });
 })();
 

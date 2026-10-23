@@ -60,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script src="/js/legal.js" async />
         <script src="/js/consent.js" async />
         <script src="/js/to-top.js" async />
+        <script src="/js/form-api.js" async />
         <script type="speculationrules" dangerouslySetInnerHTML={{ __html: JSON.stringify(speculationRules) }} />
       </body>
     </html>

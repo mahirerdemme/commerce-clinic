@@ -50,7 +50,7 @@ document.documentElement.classList.add('js');(function(){var w=document.querySel
   const toast=document.createElement('div');toast.className='toast';toast.setAttribute('role','status');document.body.appendChild(toast);let tt;
   const say=m=>{toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),2600)};
   $$('a[data-page]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();say('Bu sayfa yakında yayında.')}));
-  const nf=$('#notesForm');if(nf)nf.addEventListener('submit',e=>{e.preventDefault();const v=$('#nEmail');if(!v.checkValidity()){v.focus();say('Geçerli bir e-posta adresi girin.');return}const nc=$('#nConsent');$('#nConsent-l').classList.toggle('is-err',!nc.checked);if(!nc.checked){nc.focus();say('Bülten için ticari ileti onay kutusunu işaretleyin.');return}say('Teşekkürler. Bülten kaydı çok yakında aktif olacak.');v.value=''});
+  const nf=$('#notesForm');if(nf)nf.addEventListener('submit',e=>{e.preventDefault();const v=$('#nEmail');if(!v.checkValidity()){v.focus();say('Geçerli bir e-posta adresi girin.');return}const nc=$('#nConsent');$('#nConsent-l').classList.toggle('is-err',!nc.checked);if(!nc.checked){nc.focus();say('Bülten için ticari ileti onay kutusunu işaretleyin.');return}window.ccPost('/api/bulten/abone',{email:v.value,consent:true,source:'footer'}).then(ok=>{if(ok){say('Teşekkürler. Aboneliğiniz alındı.');v.value=''}else say('Kayıt yapılamadı. Lütfen biraz sonra yeniden deneyin.')})});
 })();
 
 (function(){
@@ -87,7 +87,7 @@ document.documentElement.classList.add('js');(function(){var w=document.querySel
   }));
   const say=m=>{const t=document.querySelector('.toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(say.t);say.t=setTimeout(()=>t.classList.remove('show'),2600)};
   document.querySelectorAll('[data-soon]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();say('Bu yazı çok yakında yayında.')}));
-  const f=document.getElementById('cnSub');f&&f.addEventListener('submit',e=>{e.preventDefault();const i=document.getElementById('cn-email');if(!i.value||!i.checkValidity()){i.focus();say('Geçerli bir e-posta adresi girin.');return}const cc=document.getElementById('cnConsent');document.getElementById('cnConsent-l').classList.toggle('is-err',!cc.checked);if(!cc.checked){cc.focus();say('Bülten için ticari ileti onay kutusunu işaretleyin.');return}say('Teşekkürler. Bülten kaydı çok yakında aktif olacak.');i.value=''});
+  const f=document.getElementById('cnSub');f&&f.addEventListener('submit',e=>{e.preventDefault();const i=document.getElementById('cn-email');if(!i.value||!i.checkValidity()){i.focus();say('Geçerli bir e-posta adresi girin.');return}const cc=document.getElementById('cnConsent');document.getElementById('cnConsent-l').classList.toggle('is-err',!cc.checked);if(!cc.checked){cc.focus();say('Bülten için ticari ileti onay kutusunu işaretleyin.');return}window.ccPost('/api/bulten/abone',{email:i.value,consent:true,source:'blog'}).then(ok=>{if(ok){say('Teşekkürler. Aboneliğiniz alındı.');i.value=''}else say('Kayıt yapılamadı. Lütfen biraz sonra yeniden deneyin.')})});
   // rehber indirme popup'ı
   function openRP(fromHash){
     const p=document.getElementById('rp');if(!p||!p.hidden)return;
@@ -121,10 +121,15 @@ document.documentElement.classList.add('js');(function(){var w=document.querySel
       [n,em].forEach(x=>{const bad=!x.value.trim()||(x.type==='email'&&!x.checkValidity());x.classList.toggle('is-err',bad);if(bad)ok=false});
       
       document.getElementById('rp-err').hidden=ok;if(!ok)return;
+      const sb=f.querySelector('button[type="submit"]');sb.disabled=true;
+      window.ccPost('/api/rehber',{resource:f.querySelector('[name="resource"]').value,name:n.value,email:em.value,site:document.getElementById('rp-site').value,news:document.getElementById('rp-news').checked}).then(sent=>{
+      sb.disabled=false;
       f.hidden=true;const d=document.getElementById('rp-done');d.hidden=false;
+      if(!sent){const p=d.querySelector('p');if(p&&!p.dataset.o){p.dataset.o=p.innerHTML}p.innerHTML='Bağlantıyı e-postanıza iletemedik; aşağıdaki düğmeyle rehberi şimdi açabilirsiniz. Geçiş planınızı birlikte gözden geçirmek isterseniz <a class="rp-gp" href="/gorusme-planla" data-page>kısa bir görüşme planlayabilirsiniz</a>.'}
       try{history.replaceState(null,'',location.pathname+location.search+'#tesekkurler-altyapi-kontrol-listesi')}catch(_){}
       (window.dataLayer=window.dataLayer||[]).push({event:'generate_lead',lead_type:'resource',resource:'altyapi-kontrol-listesi',newsletter:document.getElementById('rp-news').checked});
       d.focus();
+      });
     });
   }
   rpHash();
@@ -214,6 +219,11 @@ document.documentElement.classList.add('js');(function(){var w=document.querySel
     const interest=$('input[name="interest"]:checked').value;
     const topics=$$('input[name="topics"]:checked').map(x=>x.value);
     const ch=$('input[name="channel"]:checked').value;
+    const er=$('#gp-err2');if(!er.dataset.t)er.dataset.t=er.textContent;er.textContent=er.dataset.t;
+    const sb=form.querySelector('button[type="submit"]');sb.disabled=true;
+    window.ccPost('/api/gorusme',{interest:interest,topics:topics,channel:ch,name:$('#gp-name').value,email:$('#gp-email').value,site:$('#gp-site').value,message:$('#gp-msg').value,phone:$('#gp-phone').value,utm_source:$('#gp-utm-source').value,utm_medium:$('#gp-utm-medium').value,utm_campaign:$('#gp-utm-campaign').value,source_page:$('#gp-page').value}).then(sent=>{
+    sb.disabled=false;
+    if(!sent){er.textContent='Gönderilemedi. Lütfen biraz sonra yeniden deneyin ya da hello@thecommerceclinic.com adresine yazın.';er.hidden=false;return}
     const rows=[['İlgi alanı',interest]];
     if(topics.length)rows.push(['Konular',topics.join(', ')]);
     rows.push(['Marka / site',$('#gp-site').value.trim()],['Dönüş',ch==='Telefon'?'Telefon · '+$('#gp-phone').value.trim():'E-posta · '+$('#gp-email').value.trim()]);
@@ -224,6 +234,7 @@ document.documentElement.classList.add('js');(function(){var w=document.querySel
     try{history.replaceState({gp:2},'',base+'#tesekkurler')}catch(e){location.hash='tesekkurler'}
     dl.push({event:'generate_lead',interest:interest,channel:ch});
     setTimeout(()=>done.focus(),60);
+    });
   });
 })();
 

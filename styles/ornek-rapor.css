@@ -54,8 +54,6 @@ p{margin:0}
 .rail a .s{font-variant-numeric:tabular-nums;font-size:.8125rem;color:var(--cc-text-2);font-weight:500}
 .dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--cc-muted)}
 .dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.bad{background:var(--bad)}
-.rail-back{display:flex;align-items:center;gap:.45rem;margin:0 0 1rem;font-size:.8125rem;font-weight:500;color:var(--cc-text);text-decoration:none}
-.rail-back:hover{text-decoration:underline;text-underline-offset:3px}
 .rail-foot{margin-top:auto;padding:1.25rem .75rem 0;border-top:1px solid var(--cc-border);font-size:.8125rem;color:var(--cc-text-2);line-height:1.5}
 .rail-foot b{display:block;color:var(--cc-text);font-weight:600;font-size:.875rem;margin-top:.15rem}
 .rail-foot p+p{margin-top:.9rem}
@@ -969,3 +967,8 @@ details.pg-rec ul{margin-top:.6rem}
   .tour-band div span{display:none}
   .tour-band button{flex:none;padding:.5rem .9rem;font-size:.8125rem}
 }
+
+/* siteye dön oku (üst çubuk, logonun solunda) */
+.bar .bar-back{flex:none;display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--cc-border);border-radius:50%;background:var(--cc-white);color:var(--cc-text)}
+.bar .bar-back:hover{border-color:var(--cc-muted)}
+@media (max-width:560px){.bar .bar-back{width:30px;height:30px}}

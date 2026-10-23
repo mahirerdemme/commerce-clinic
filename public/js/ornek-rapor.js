@@ -318,7 +318,7 @@ function rail(cur){
   return grp(1,'Durum','genel tablo',cur==='genel-bakis',li('genel-bakis','<span class="t">Genel bakış</span>',cur==='genel-bakis'))
   +grp(2,'Teşhis','8 alan',cur.startsWith('alan/'),AREAS.map(a=>li('alan/'+a.id,`<span class="dot ${st(a.score)}"></span><span class="t">${esc(T(a.id))}</span><span class="s">${a.score}</span>`,cur==='alan/'+a.id)).join(''))
   +grp(3,'Plan','ne yapmalı, hangi sırayla',cur==='aksiyon-plani',li('aksiyon-plani',`<span class="t">${esc(T('roadmap'))}</span>`,cur==='aksiyon-plani')+li('aksiyon-plani/liste',`<span class="t">${esc(T('plan'))}</span>`,false)+li('aksiyon-plani/ilerleme','<span class="t">İlerleme takibi</span>',false)+li('aksiyon-plani/final','<span class="t">Final görüşmesi</span>',false))
-  +`<div class="rail-foot"><a class="rail-back" href="/"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Commerce Clinic sitesine dön</a><button type="button" class="tour-btn" data-tour><span class="ic">?</span><span><b>Bu raporu nasıl okumalıyım?</b><small>Adım adım kısa tur</small></span></button>
+  +`<div class="rail-foot"><button type="button" class="tour-btn" data-tour><span class="ic">?</span><span><b>Bu raporu nasıl okumalıyım?</b><small>Adım adım kısa tur</small></span></button>
     <div class="rail-lang"><span id="tlL">Terim dili</span><div class="seg" role="group" aria-labelledby="tlL"><button type="button" data-lang="orig" aria-pressed="${LANG==='orig'}">Orijinal</button><button type="button" data-lang="tr" aria-pressed="${LANG==='tr'}">Türkçe</button></div></div>
   </div>`;
 }

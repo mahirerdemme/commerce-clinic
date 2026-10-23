@@ -7,7 +7,7 @@
    Alan → incelenen başlıklar → bulgular → görseller → öneri → aksiyon
    ========================================================= */
 const R={client:'Loma Ev',site:'loma.com.tr',sector:'Ev tekstili',period:'1–18 Eylül 2026',date:'24 Eylül 2026',
-  consultant:'Mahir Erdem',role:'Founder',initials:'CC',final:'8 Ekim 2026, 14:00',finalShort:'8 Ekim',overall:57,
+  consultant:'Mahir Erdem',role:'Founder',initials:'CC',final:'8 Ekim 2026, 14:00',overall:57,
   /* Final görüşmesi notları: görüşmeden sonra doldurulur, rapor sürüm 1.1 olur.
      {date:'8 Ekim 2026', items:[{t:'Karar', d:'Açıklama'}], open:['Cevabı 3 iş günü içinde verilecek soru']} */
   finalNotes:null};
@@ -43,7 +43,7 @@ const AREAS=[
   s:[['Keşif ve navigasyon','warn'],['Ana sayfa ve açılış sayfaları','ok'],['Kategori ve listeleme','warn'],['Ürün detay','bad'],['Sepet ve ödeme','warn'],['Mobil deneyim','bad'],['Güven unsurları','warn']],
   assess:['Trafiğin %78\'i mobilden geliyor ama mobil dönüşüm oranı %0,9; masaüstünde bu oran %2,1. Aradaki farkın büyük kısmı ürün sayfasında oluşuyor.','Ziyaretçi ürünü beğeniyor; görseller ve açıklamalar iyi. Ancak teslimat tarihi, iade koşulu ve kargo ücreti gibi karar bilgileri mobilde ilk ekranın altında kalıyor. Kargo ücreti ilk kez ödeme adımında görünüyor ve en büyük kayıp o adımda yaşanıyor.'],
   by:'İnceleme: 9–12 Eylül 2026 · iPhone 13 (Safari) ve Chrome masaüstü · Clarity kayıtları, 14 gün'},
- {id:'merch',score:58,scope:'Ürün bilgisi, görseller, fiyat ve kampanya sunumu, arama ve filtre, kategori mimarisi, çapraz satış.',
+ {id:'merch',score:71,scope:'Ürün bilgisi, görseller, fiyat ve kampanya sunumu, arama ve filtre, kategori mimarisi, çapraz satış.',
   s:[['Ürün bilgileri','ok'],['Görseller','ok'],['Fiyat ve kampanya sunumu','ok'],['Arama ve filtre','warn'],['Kategori mimarisi','warn'],['Çapraz satış, üst satış, setler','warn'],['İçerik kalitesi','ok']],
   assess:['Ürün fotoğrafları ve malzeme anlatımı güçlü. Kategori sayfalarında ise kullanıcı aradığı ürüne ulaşmak için fazla kaydırıyor.','Set ve tamamlayıcı ürün önerileri yok. Ortalama sepet 1.140 ₺ ve siparişlerin %71\'i tek ürün içeriyor.'],
   by:'İnceleme: 11 Eylül 2026 · 6 kategori, 38 ürün sayfası'},
@@ -59,7 +59,7 @@ const AREAS=[
   s:[['Trafik kaynakları','ok'],['Paid ve organik dengesi','warn'],['Trafik kalitesi','ok'],['Reklam ve kreatif örnekleri','ok'],['Reklam vaadi ve açılış sayfası tutarlılığı','ok'],['Kanal dönüşüm sinyalleri','warn']],
   assess:['Reklamlar doğru kitleye ulaşıyor ve kreatiflerdeki vaat açılış sayfasında karşılığını buluyor.','Tek önemli bulgu bütçe verimliliğiyle ilgili: marka adıyla yapılan aramalarda reklam veriliyor.'],
   by:'İnceleme: 16 Eylül 2026 · Meta Ads ve Google Ads, son 6 ay'},
- {id:'org',score:56,scope:'Ekip rolleri, karar hızı, ajans ve iç ekip sorumlulukları, aksiyonları hayata geçirme kapasitesi.',
+ {id:'org',score:46,scope:'Ekip rolleri, karar hızı, ajans ve iç ekip sorumlulukları, aksiyonları hayata geçirme kapasitesi.',
   s:[['Ekip rolleri','ok'],['Karar hızı','warn'],['Operasyonel darboğazlar','warn'],['Ajans ve iç ekip sorumlulukları','bad'],['Uygulama kapasitesi','warn']],
   assess:['Ekip küçük ama deneyimli. Site, reklam ve CRM üç ayrı iş ortağında; her biri kendi raporunu kendi metriğiyle sunuyor.','Kimse toplam tabloyu sahiplenmiyor. Aksiyonları hayata geçirmenin ön koşulu tek bir KPI seti ve düzenli bir karar ritmi.'],
   by:'Kaynak: Discovery görüşmesi (3 Eylül) ve iş ortaklarının Ağustos raporları'}
@@ -385,7 +385,7 @@ function vOverview(){
       <div class="letter"><div class="body">
         <p>Loma Ev'in trafik tarafında ciddi bir sorunu yok. Reklamlar ve organik arama doğru kişileri siteye getiriyor, mobil ziyaretçilerin çoğu ürün sayfasına kadar ulaşıyor. Kayıp, ziyaretçinin karar verdiği yerde yaşanıyor.</p>
         <p>İncelememizde üç konu öne çıktı: mobil ürün sayfası satın alma kararını destekleyecek bilgiyi göstermiyor, siparişlerin yaklaşık üçte biri ölçümlere yansımıyor ve ilk siparişi veren müşteriyle sonrasında planlı bir iletişim kurulmuyor. Bu üçü birbirini besliyor.</p>
-        <p>İlk 30 günde yapılacak işlerin çoğu düşük eforlu. Aksiyonları sizin ekibiniz ve mevcut iş ortaklarınızla uygulanabilecek şekilde sıraladık. ${esc(R.finalShort)}'deki final görüşmesinde her aksiyonun sahibini birlikte netleştireceğiz.</p>
+        <p>İlk 30 günde yapılacak işlerin çoğu düşük eforlu. Aksiyonları sizin ekibiniz ve mevcut iş ortaklarınızla uygulanabilecek şekilde sıraladık. Final görüşmesinde her aksiyonun sahibini birlikte netleştiriyoruz.</p>
       </div><div class="sign"><span class="avatar fav">${FAV}</span><div><b>Mahir Erdem</b><span>Founder</span></div></div></div>
     </div>
 
@@ -399,7 +399,7 @@ function vOverview(){
           </div>
         </div>
         <div class="ggrid">${AREAS.map(a=>`<a href="#alan/${a.id}">${gauge(a.score,{w:160,stroke:14,big:34,bench:null})}<span class="gn">${esc(T(a.id))}</span><span class="gc">${a.f.length} bulgu</span></a>`).join('')}</div>
-        <p class="h-note"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.2v3.8M8 5.1v.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Alan skorları, her alanda incelenen başlıklardaki bulgulara göre verilir; genel skor bu skorlardan hesaplanır. Skorlar check-up tarihindeki durumu gösterir, aksiyonlar tamamlandıkça değişmez.</span></p>
+        <p class="h-note"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.2v3.8M8 5.1v.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Alan skorları, incelenen başlıklardaki bulguların önem derecesine göre verilir: kritik bulgu skoru en çok düşürür, güçlü yanlar yükseltir. Genel skor, alanların ticari etkisine göre ağırlıklandırılmış ortalamasıdır. Skorlar check-up tarihindeki durumu gösterir, aksiyonlar tamamlandıkça değişmez.</span></p>
       </div>
     </div>
 

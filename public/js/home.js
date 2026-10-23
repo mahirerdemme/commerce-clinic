@@ -80,11 +80,11 @@
   ft.addEventListener('click',()=>{const h=document.body.classList.toggle('hide-flags');ft.setAttribute('aria-pressed',h);ft.textContent=h?'Taslak işaretlerini göster':'Taslak işaretlerini gizle'});
 
   // ===== HEALTH DATA (hero + report) =====
-  const areas=[['Business & Positioning',61],['Market & Competition',72],['UX & Conversion',38],['Merchandising & Content',58],['Technology & Data',42],['Post-Purchase & Retention',49],['Acquisition & Marketing',70],['Organization & Growth',56]];
+  const areas=[['Business & Positioning',61],['Market & Competition',72],['UX & Conversion',38],['Merchandising & Content',71],['Technology & Data',42],['Post-Purchase & Retention',49],['Acquisition & Marketing',70],['Organization & Growth',46]];
   const st=v=>v<45?'bad':v<65?'warn':'ok';
   const bench=64;
   // hero ekranı: Clinic Report v32 — Genel bakış / Commerce Health Overview (örnek veri, rapordaki ile aynı)
-  const RA=[['Business & Positioning',61,1],['Market & Competition',72,1],['UX & Conversion',38,3],['Merchandising & Content',58,1],['Technology & Data',42,2],['Post-Purchase & Retention',49,2],['Acquisition & Marketing',70,1],['Organization & Growth Readiness',56,1]];
+  const RA=[['Business & Positioning',61,1],['Market & Competition',72,1],['UX & Conversion',38,3],['Merchandising & Content',71,1],['Technology & Data',42,2],['Post-Purchase & Retention',49,2],['Acquisition & Marketing',70,1],['Organization & Growth Readiness',46,1]];
   const gauge=(v,w,sw,fs)=>{const r=(w-sw)/2,cx=w/2,cy=r+sw/2,h=cy+sw/2+4,pt=t=>{const a=Math.PI*(1-t);return[cx+r*Math.cos(a),cy-r*Math.sin(a)]},[x0,y0]=pt(0),[x1,y1]=pt(1),[xs,ys]=pt(v/100),c=st(v);
     return `<svg class="rs-gauge" viewBox="-4 -4 ${w+8} ${h+4}"><path class="trk" stroke-width="${sw}" d="M${x0} ${y0}A${r} ${r} 0 0 1 ${x1} ${y1}"/><path class="val ${c}" stroke-width="${sw}" d="M${x0} ${y0}A${r} ${r} 0 0 1 ${xs.toFixed(2)} ${ys.toFixed(2)}"/><text class="${c}" x="${cx}" y="${cy-2}" font-size="${fs}">${v}</text></svg>`};
   const SYM='<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M224 128A96 96 0 0 1 59.78 195.55L93.89 161.77A48 48 0 0 0 176 128ZM32 127.99A96 96 0 0 1 196.22 60.46L162.11 94.23A48 48 0 0 0 80 128Z"/></svg>';

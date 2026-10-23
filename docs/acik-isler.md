@@ -47,7 +47,7 @@ Eski "taslak" etiketlerinin işaret ettiği yerler Mahir ve Kadir tarafından on
 
 ## Teknik, bağlantı bekleyen
 
-- Formlar bağlandı (23 Ekim 2026): `/api/gorusme`, `/api/rehber`, `/api/bulten/abone` (`lib/email/forms.ts`). Bildirimler `FORM_TO` adreslerine gider (hello@ + yedek Gmail; hello@ posta kutusu açılınca Gmail çıkarılır). Bülten onay kaydı (tarih, kaynak, metin sürümü) her kayıtta ekibe e-postayla düşer. Spam koruması şimdilik kaynak kontrolü ve IP sınırı; gerekirse Cloudflare Turnstile eklenir (o zaman yasal metinlere geri yazılır). hello@ için gelen kutusu henüz yok.
+- Formlar bağlandı (23 Ekim 2026): `/api/gorusme`, `/api/rehber`, `/api/bulten/abone` (`lib/email/forms.ts`). Bildirimler `FORM_TO` adresine (hello@) gider; hello@ ImprovMX ile Gmail'e yönlenir (alias: hello, notes, mahir ve * → Gmail; MX/SPF GoDaddy'de; 23 Ekim 2026'da dış gönderimle doğrulandı). Bülten onay kaydı (tarih, kaynak, metin sürümü) her kayıtta ekibe e-postayla düşer. Spam koruması şimdilik kaynak kontrolü ve IP sınırı; gerekirse Cloudflare Turnstile eklenir (o zaman yasal metinlere geri yazılır). 
 - Çerez bandı Consent Mode v2 ile hazır; GTM kimliği `NEXT_PUBLIC_GTM_ID` olarak Vercel'e girilince GTM yüklenir. GA4 etiketi GTM içinde, Consent Mode **temel (basic)** ayarıyla kurulmalı: onay yoksa etiket hiç çalışmaz, Google'a veri gitmez.
 - Örnek rapor sayfasında (`/ornek-rapor`) footer'da çerez tercihleri bağlantısı yok; bant orada da çıkıyor.
 

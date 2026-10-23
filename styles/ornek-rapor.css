@@ -922,3 +922,24 @@ details.pg-rec ul{margin-top:.6rem}
   .lb p{position:fixed}
 }
 @media print{.ac-more{display:none}}
+
+/* ---------- mobil: üst çubuk ve yazı ölçeği (Kadir, 23 Ekim 2026) ---------- */
+@media (max-width:900px){
+  /* logo solda; sağda İçindekiler, yalnız ikonlu Paylaş ve hesap */
+  .bar .logo{order:0}
+  .bar .sp{order:1}
+  .bar .menu-btn{order:2}
+  .bar .tbtn.share{order:3;font-size:0;gap:0;width:34px;height:34px;padding:0;justify-content:center}
+  .bar .tbtn.me{order:4}
+}
+@media (max-width:760px){
+  html{font-size:93.75%}
+  .h1,.area-head .h1{font-size:1.875rem;letter-spacing:-.03em}
+  .h2{font-size:1.375rem}
+  .lead{font-size:1rem}
+  .three h3{font-size:1.125rem}
+  .fx h3{font-size:1.0625rem}
+  .ph-t{font-size:.875rem}
+  .h-main .gwrap{max-width:13rem}
+  .area-head .gwrap{max-width:11rem}
+}

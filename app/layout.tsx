@@ -17,6 +17,10 @@ gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personali
 const topbarScript = `try{if(localStorage.getItem('cc-topbar')==='1')document.documentElement.classList.add('topbar-off')}catch(e){}
 addEventListener('click',function(e){var b=e.target&&e.target.closest&&e.target.closest('.topbar-x');if(!b)return;document.documentElement.classList.add('topbar-off');try{localStorage.setItem('cc-topbar','1')}catch(err){}});`;
 
+/** Sayfa geçişi (çapraz solma) bitene kadar giriş animasyonları bekler: sayfa JS'leri window.__vt.then(...) ile başlar.
+ *  pagereveal ilk boyamadan önce tetiklendiği için dinleyici head'de durur; F5 ve eski tarayıcılarda söz hemen çözülür. */
+const pageRevealScript = `window.__vt=new Promise(function(r){if(!('PageRevealEvent' in window))return r();addEventListener('pagereveal',function(e){var t=e.viewTransition;t?t.finished.then(r,r):r()});setTimeout(r,1500)});`;
+
 /** GTM yalnız Vercel'de NEXT_PUBLIC_GTM_ID girilince yüklenir; etiketler Consent Mode'a uyar */
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 const gtm = (id: string) =>
@@ -48,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: consentDefault }} />
         <script dangerouslySetInnerHTML={{ __html: topbarScript }} />
+        <script dangerouslySetInnerHTML={{ __html: pageRevealScript }} />
         {GTM_ID && <script dangerouslySetInnerHTML={{ __html: gtm(GTM_ID) }} />}
       </head>
       <body suppressHydrationWarning>

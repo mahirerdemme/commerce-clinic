@@ -3,7 +3,7 @@
 
 (function(){
   const root=document.documentElement,RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.add('ready')));
+  window.__vt.then(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.add('ready'))));
   const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 
   // ===== HEADER: compact + dark chapter =====
@@ -298,7 +298,7 @@ if(h&&!h.closest('.hero')&&!RM){
     var w=document.createElement('span');w.className='mw';w.style.setProperty('--i',i++);var s=document.createElement('span');s.textContent=p;w.appendChild(s);f.appendChild(w)});t.parentNode.replaceChild(f,t)});
   h.classList.add('mo-h');
   var k=0;[].forEach.call(h.parentNode.children,function(c){if(c===h||/^(SCRIPT|STYLE)$/.test(c.tagName))return;c.classList.add('hf');c.style.setProperty('--d',(0.35+0.1*k++)+'s');});
-  requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('mo-go');[].forEach.call(h.parentNode.querySelectorAll(':scope>.hf'),function(c){c.classList.add('mo-go')})})});
+  window.__vt.then(function(){requestAnimationFrame(function(){requestAnimationFrame(function(){h.classList.add('mo-go');[].forEach.call(h.parentNode.querySelectorAll(':scope>.hf'),function(c){c.classList.add('mo-go')})})})});
 }
 if(!SR||RM||!('IntersectionObserver' in window))return;
 var vh=innerHeight,items=[];

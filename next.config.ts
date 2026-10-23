@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     // Görüşme Planla bir popup; adres doğrudan açılırsa ana sayfada popup açılır
     return [
+      // www → www'suz adres (kanonik: https://thecommerceclinic.com)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.thecommerceclinic.com" }],
+        destination: "https://thecommerceclinic.com/:path*",
+        permanent: true,
+      },
       { source: "/gorusme-planla", destination: "/#gorusme-planla", permanent: false },
       // Commerce Notes'un eski adresi; eski #yazı bağlantıları /blog'da yazının kendi adresine yönlenir (public/js/commerce-notes.js)
       { source: "/commerce-notes", destination: "/blog", permanent: true },

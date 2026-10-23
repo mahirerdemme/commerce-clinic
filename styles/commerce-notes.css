@@ -1282,7 +1282,7 @@ a.cov:hover{transform:translateY(-3px)}
 .gd-body{grid-template-columns:minmax(0,760px) minmax(0,1fr)}
 .gd-body .cn-toc{grid-column:2}
 .gd-list{margin:1.5rem 0 0;padding:1.5rem 1.6rem;border:1px solid var(--cc-border);border-radius:var(--r-l);background:#fff}
-.gd-ph3{margin:0 0 .5rem;font-size:.8125rem;font-weight:600;color:#9A4A36}
+.gd-ph3{margin:0 0 .75rem;font-size:1.25rem;font-weight:600;letter-spacing:-.025em;line-height:1.2;color:var(--cc-text)}
 .gd-ph3:not(:first-child){margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--cc-border)}
 .gd-list ol{margin:0;padding-left:1.5rem;display:grid;gap:.7rem;font-size:1rem;line-height:1.55}
 .gd-list li::marker{color:var(--cc-text-2);font-variant-numeric:tabular-nums}
@@ -1327,8 +1327,8 @@ a.cov:hover{transform:translateY(-3px)}
 .cov-pdf .gd-ph{display:flex}
 .cov-pdf .gd-row{display:grid}
 @media (max-width:760px){.cov-pdf .gd-page{display:none}}
-.gd-sec,.gd-ph3{color:var(--cc-text)!important}
-.gd-ph3{font-size:.75rem!important;letter-spacing:.02em;color:var(--cc-text-2)!important}
+.gd-sec{color:var(--cc-text)!important}
+
 /* yazı sonu indirme alanı */
 .cn-dl{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin:3rem 0;padding:clamp(1.5rem,3vw,2.25rem);border-radius:var(--r-l);background:#0A0A0A;color:#F2F2F0;position:relative;overflow:hidden;isolation:isolate;scroll-margin-top:120px}
 .cn-dl::before{content:"";position:absolute;z-index:-1;right:-18%;bottom:-110%;width:70%;height:200%;border-radius:50%;filter:blur(44px);background:linear-gradient(100deg,#9C80E8,#D57EC7 25%,#E583A0 55%,#F39675);opacity:.55}
@@ -1696,6 +1696,11 @@ body.gp-open{overflow:hidden}
   .gd-list{padding:1.1rem 1.1rem 1.25rem}
   .gd-list ol{padding-left:1.25rem;gap:.55rem;font-size:.9375rem;line-height:1.5}
   .gd-ph3:not(:first-child){margin-top:1.1rem;padding-top:1rem}
+  /* yalnız adım başlıkları; açıklamalar masaüstünde (Kadir, 23 Ekim 2026) */
+  .gd-list li{font-size:0;line-height:0}
+  .gd-list li::marker{font-size:.9375rem}
+  .gd-list li b{display:block;font-size:.9375rem;line-height:1.45}
+  .gd-ph3{font-size:1.0625rem}
   .gd-form{padding:1.25rem}
   .gd-grid{grid-template-columns:1fr}
 }

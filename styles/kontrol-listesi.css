@@ -88,8 +88,13 @@
 .kl-end .btn-primary:hover{background:#E9E9E7}
 
 @media (max-width:900px){
-  .kl-grid{grid-template-columns:1fr}
-  .kl-side{position:sticky;top:68px;z-index:5;flex-direction:row;align-items:center;gap:1rem;margin:0 calc(-1 * var(--page-pad));padding:.75rem var(--page-pad);background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--cc-border)}
+  .kl-grid{grid-template-columns:minmax(0,1fr)}
+  .kl-main{min-width:0}
+  /* ilerleme çubuğu ekranın altında sabit: başparmakla erişilir (Kadir, 23 Ekim 2026) */
+  .kl-side{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:50;flex-direction:row;align-items:center;gap:1rem;margin:0;padding:.7rem var(--page-pad) calc(.7rem + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--cc-border)}
+  body:has(.kl-side){padding-bottom:5rem}
+  body:has(.kl-side) .to-top{bottom:calc(5.5rem + env(safe-area-inset-bottom,0px))}
+  body:has(.kl-side) .toast{bottom:calc(5.75rem + env(safe-area-inset-bottom,0px))}
   .kl-prog{flex:1}
   .kl-pt{margin-bottom:.4rem}.kl-pt b{font-size:1.25rem}
   .kl-nav,.kl-note,.kl-acts .kl-a-mute{display:none}
@@ -99,10 +104,15 @@
 }
 @media (max-width:560px){
   .kl-items,.kl-meta,.kl-hid{padding-left:0}
-  .kl-meta{grid-template-columns:1fr 1fr}
+  .kl-st{font-size:1rem}
+  .kl-tx{font-size:.875rem}
+  .kl-sd{font-size:.8125rem}
+  .kl-meta{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .kl-meta input{min-width:0;max-width:100%}
   .kl-sh{grid-template-columns:minmax(0,1fr) auto}.kl-n{display:none}
   #klSave{padding:0 .7rem}
 }
+@media (max-width:560px){.toast{width:min(calc(100vw - 2rem),26rem);font-size:.8125rem;line-height:1.5;text-align:center;padding:.75rem 1rem}}
 @media (prefers-reduced-motion:reduce){.kl-bar i,.kl-bx svg{transition:none}}
 
 @media print{

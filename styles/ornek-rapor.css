@@ -940,6 +940,7 @@ details.pg-rec ul{margin-top:.6rem}
   .three h3{font-size:1.125rem}
   .fx h3{font-size:1.0625rem}
   .ph-t{font-size:.875rem}
-  .h-main .gwrap{max-width:13rem}
+  .h-main .gwrap{max-width:13rem;margin:0 auto}
+  .h-main h3,.h-main p,.h-main .keys{text-align:center;justify-content:center;margin-left:auto;margin-right:auto}
   .area-head .gwrap{max-width:11rem}
 }

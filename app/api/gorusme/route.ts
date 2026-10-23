@@ -1,4 +1,4 @@
-import { emailOk, esc, frame, json, notify, originOk, rateOk, rows, sendMail, txt } from "@/lib/email/forms";
+import { emailOk, esc, frame, json, koruma, limitAsildi, notify, rows, sendMail, sonEpostalar, txt, yakinda } from "@/lib/email/forms";
 
 /** formun açıldığı sayfanın okunur adı (gp.html'e sayfa anahtarı yazılır) */
 const SAYFA: Record<string, string> = {
@@ -14,16 +14,14 @@ const SAYFA: Record<string, string> = {
 
 /** Görüşme Planla formu: POST /api/gorusme */
 export async function POST(req: Request) {
-  if (!originOk(req)) return json(false, 403, "Kaynak geçersiz");
-  if (!rateOk(req, "gorusme")) return json(false, 429, "Çok fazla deneme");
-  if (!process.env.RESEND_API_KEY) return json(false, 500, "Sunucu ayarları eksik");
-
   let b: Record<string, unknown>;
   try {
     b = await req.json();
   } catch {
     return json(false, 400, "Geçersiz istek");
   }
+  const red = koruma(req, b, "gorusme");
+  if (red) return red;
   const name = txt(b.name, 120);
   const email = txt(b.email, 200).toLowerCase();
   const site = txt(b.site, 200);
@@ -33,6 +31,10 @@ export async function POST(req: Request) {
   const message = txt(b.message, 2000);
   const topics = Array.isArray(b.topics) ? b.topics.map((t) => txt(t, 60)).filter(Boolean).slice(0, 10) : [];
   if (!name || !emailOk(email) || !site || !interest || (channel === "Telefon" && !phone)) return json(false, 400, "Eksik alan");
+
+  const list = await sonEpostalar();
+  if (limitAsildi(list)) return json(false, 429, "Yoğunluk, daha sonra deneyin");
+  const teyitGider = !yakinda(list, email); // aynı adrese 10 dakikada en fazla 1 teyit
 
   try {
     await notify(
@@ -52,7 +54,7 @@ export async function POST(req: Request) {
       email,
     );
     // kullanıcıya kısa teyit; bildirim gittiyse bu başarısız olsa da talep alınmıştır
-    await sendMail({
+    if (teyitGider) await sendMail({
       to: [email],
       subject: "Talebiniz bize ulaştı · Commerce Clinic",
       html: frame(

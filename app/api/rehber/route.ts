@@ -1,4 +1,4 @@
-import { addContact, emailOk, esc, frame, json, notify, originOk, rateOk, rows, sendMail, siteUrl, txt } from "@/lib/email/forms";
+import { aboneBaglanti, emailOk, esc, frame, json, koruma, limitAsildi, notify, rows, sendMail, siteUrl, sonEpostalar, txt, yakinda } from "@/lib/email/forms";
 
 /** Ücretsiz rehber: POST /api/rehber · kontrol listesi bağlantısını e-postayla gönderir */
 const REHBERLER: Record<string, { ad: string; yol: string }> = {
@@ -9,16 +9,14 @@ const REHBERLER: Record<string, { ad: string; yol: string }> = {
 };
 
 export async function POST(req: Request) {
-  if (!originOk(req)) return json(false, 403, "Kaynak geçersiz");
-  if (!rateOk(req, "rehber")) return json(false, 429, "Çok fazla deneme");
-  if (!process.env.RESEND_API_KEY) return json(false, 500, "Sunucu ayarları eksik");
-
   let b: Record<string, unknown>;
   try {
     b = await req.json();
   } catch {
     return json(false, 400, "Geçersiz istek");
   }
+  const red = koruma(req, b, "rehber");
+  if (red) return red;
   const name = txt(b.name, 120);
   const email = txt(b.email, 200).toLowerCase();
   const site = txt(b.site, 200);
@@ -26,18 +24,20 @@ export async function POST(req: Request) {
   const r = REHBERLER[txt(b.resource, 60)];
   if (!name || !emailOk(email) || !r) return json(false, 400, "Eksik alan");
 
+  const list = await sonEpostalar();
+  if (limitAsildi(list)) return json(false, 429, "Yoğunluk, daha sonra deneyin");
   const link = `${siteUrl()}${r.yol}`;
   try {
-    await sendMail({
+    // aynı adrese 10 dakikada en fazla 1 e-posta; sayfa yine de bağlantıyı gösterir
+    if (!yakinda(list, email)) await sendMail({
       to: [email],
       subject: `${r.ad} · bağlantınız`,
       html: frame(
         "Rehberiniz hazır.",
-        `<p>${esc(name)}, ${esc(r.ad)} için bağlantınız:</p><p><a href="${esc(link)}" style="display:inline-block;background:#0A0A0A;color:#fff;padding:12px 20px;border-radius:999px;text-decoration:none">Rehberi aç</a></p><p style="color:#666">İşaretlediğiniz maddeler tarayıcınızda tutulur. Başka bir cihazda devam etmek için sayfadaki "İlerlemeyi kaydet" düğmesini kullanabilirsiniz.</p>`,
+        `<p>${esc(name)}, ${esc(r.ad)} için bağlantınız:</p><p><a href="${esc(link)}" style="display:inline-block;background:#0A0A0A;color:#fff;padding:12px 20px;border-radius:999px;text-decoration:none">Rehberi aç</a></p><p style="color:#666">İşaretlediğiniz maddeler tarayıcınızda tutulur. Başka bir cihazda devam etmek için sayfadaki "İlerlemeyi kaydet" düğmesini kullanabilirsiniz.</p>${news ? `<p style="margin-top:24px">Commerce Notes bültenini de almak istediğinizi belirttiniz. Aboneliği onaylamak için: <a href="${esc(aboneBaglanti(email, "rehber"))}">aboneliği onayla</a>. Onaylamazsanız listeye eklenmezsiniz.</p>` : ""}`,
       ),
       replyTo: "hello@thecommerceclinic.com",
     });
-    if (news) await addContact(email).catch((e) => console.error("rehber-kitle", e));
     await notify(
       `Rehber indirildi · ${name}`,
       rows([
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
         ["E-posta", email],
         ["Marka / site", site],
         ["Rehber", r.ad],
-        ["Bülten onayı", news ? "Evet (ticari ileti onayı verildi; metin sürümü 1)" : "Hayır"],
+        ["Bülten isteği", news ? "Evet (e-postadaki onay bağlantısına basarsa listeye eklenir)" : "Hayır"],
         ["Zaman", new Date().toLocaleString("tr-TR", { timeZone: "Europe/Istanbul" })],
       ]),
       email,

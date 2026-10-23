@@ -1,33 +1,32 @@
-import { addContact, emailOk, json, notify, originOk, rateOk, rows, txt } from "@/lib/email/forms";
+import { aboneBaglanti, emailOk, esc, frame, json, koruma, limitAsildi, sendMail, sonEpostalar, txt, yakinda } from "@/lib/email/forms";
 
-/** Bülten kaydı: POST /api/bulten/abone · kitleye ekler, onay kaydını ekibe bildirir */
+/** Bülten kaydı, 1. adım: POST /api/bulten/abone · e-postaya onay bağlantısı gönderir (çift onay; kitleye ekleme /api/bulten/onayla'da) */
 export async function POST(req: Request) {
-  if (!originOk(req)) return json(false, 403, "Kaynak geçersiz");
-  if (!rateOk(req, "abone")) return json(false, 429, "Çok fazla deneme");
-  if (!process.env.RESEND_API_KEY) return json(false, 500, "Sunucu ayarları eksik");
-
   let b: Record<string, unknown>;
   try {
     b = await req.json();
   } catch {
     return json(false, 400, "Geçersiz istek");
   }
+  const red = koruma(req, b, "abone");
+  if (red) return red;
   const email = txt(b.email, 200).toLowerCase();
   if (!emailOk(email) || b.consent !== true) return json(false, 400, "Eksik alan");
 
+  const list = await sonEpostalar();
+  if (limitAsildi(list)) return json(false, 429, "Yoğunluk, daha sonra deneyin");
+  if (yakinda(list, email)) return json(true); // aynı adrese 10 dakikada bir onay e-postası
+
   try {
-    if (!(await addContact(email))) return json(false, 500, "Kitle tanımlı değil");
-    // onay kaydı: tarih, kaynak, metin sürümü (KVKK / ticari ileti)
-    await notify(
-      `Yeni bülten abonesi · ${email}`,
-      rows([
-        ["E-posta", email],
-        ["Onay", "Aydınlatma Metni kapsamında ticari ileti onayı (metin sürümü 1)"],
-        ["Kaynak", txt(b.source, 60)],
-        ["Zaman", new Date().toLocaleString("tr-TR", { timeZone: "Europe/Istanbul" })],
-      ]),
-      email,
-    ).catch(() => {});
+    await sendMail({
+      to: [email],
+      subject: "Commerce Notes aboneliğinizi onaylayın",
+      html: frame(
+        "Aboneliğinizi onaylayın.",
+        `<p>Commerce Notes bültenine bu adresle kayıt istendi. Onaylamak için aşağıdaki düğmeye basın.</p><p><a href="${esc(aboneBaglanti(email, txt(b.source, 40)))}" style="display:inline-block;background:#0A0A0A;color:#fff;padding:12px 20px;border-radius:999px;text-decoration:none">Aboneliği onayla</a></p><p style="color:#666">Bu isteği siz yapmadıysanız bu e-postayı yok sayın; onaylamadığınız sürece listeye eklenmezsiniz. Bağlantı 2 gün geçerlidir.</p>`,
+      ),
+      replyTo: "hello@thecommerceclinic.com",
+    });
   } catch (e) {
     console.error("abone", e);
     return json(false, 502, "Gönderilemedi");

@@ -5,6 +5,8 @@
  * - Kötüye kullanım: kaynak (Origin) kontrolü, alan uzunluk sınırları ve IP başına kısa pencere sınırı
  */
 
+import crypto from "node:crypto";
+
 const RESEND = "https://api.resend.com";
 
 export const siteUrl = () => (process.env.SITE_BASE ?? "https://thecommerceclinic.com").replace(/\/$/, "");
@@ -89,3 +91,87 @@ export function frame(title: string, body: string) {
 }
 
 export const json = (ok: boolean, status = 200, hata?: string) => Response.json({ ok, ...(hata ? { hata } : {}) }, { status });
+
+/* ---------- bot koruması ---------- */
+
+const hmac = (s: string) => crypto.createHmac("sha256", process.env.BULTEN_SECRET ?? "").update(s).digest("hex").slice(0, 32);
+const same = (a: string, b: string) => a.length === b.length && crypto.timingSafeEqual(Buffer.from(a), Buffer.from(b));
+
+/** Sayfa yüklenince alınan imzalı zaman damgası: form çok hızlı gönderilirse (insan değil) reddedilir */
+export const formToken = () => {
+  const ts = Date.now();
+  return `${ts}.${hmac(`form:${ts}`)}`;
+};
+
+function tokenKontrol(t: string): "ok" | "yok" | "hizli" | "eski" {
+  const [ts, sig] = t.split(".");
+  const n = Number(ts);
+  if (!n || !sig || !same(sig, hmac(`form:${n}`))) return "yok";
+  const yas = Date.now() - n;
+  if (yas < 2000) return "hizli";
+  if (yas > 6 * 3600 * 1000) return "eski";
+  return "ok";
+}
+
+/** Her form ucunun ilk kontrolü: kaynak, sınır, tuzak alanı (botlar doldurur), zaman damgası. null = devam. */
+export function koruma(req: Request, b: Record<string, unknown>, tur: string): Response | null {
+  if (!originOk(req)) return json(false, 403, "Kaynak geçersiz");
+  if (!rateOk(req, tur)) return json(false, 429, "Çok fazla deneme");
+  if (!process.env.RESEND_API_KEY) return json(false, 500, "Sunucu ayarları eksik");
+  if (txt(b.cc_nick, 100)) return json(true); // tuzak alanı dolu: bota "başarılı" deriz, hiçbir şey gönderilmez
+  if (tokenKontrol(txt(b._t, 120)) !== "ok") return json(false, 429, "Lütfen tekrar deneyin");
+  return null;
+}
+
+type Giden = { to?: string[]; created_at?: string };
+const zaman = (s?: string) => Date.parse((s ?? "").replace(" ", "T").replace(/\+00$/, "Z"));
+
+/** Son gönderilen e-postalar (kalıcı sayaç: Resend kaydı; sunucu belleğine bağlı değil) */
+export async function sonEpostalar(): Promise<Giden[] | null> {
+  try {
+    const r = await fetch(`${RESEND}/emails?limit=100`, {
+      headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}` },
+      cache: "no-store",
+    });
+    if (!r.ok) return null;
+    return ((await r.json()).data ?? []) as Giden[];
+  } catch {
+    return null;
+  }
+}
+
+/** Günlük toplam e-posta üst sınırı (FORM_GUNLUK_SINIR, varsayılan 80; Resend ücretsiz plan: 100/gün) */
+export function limitAsildi(list: Giden[] | null) {
+  if (!list) return false; // sayaç okunamazsa engelleme (formlar çalışmaya devam eder)
+  const sinir = Number(process.env.FORM_GUNLUK_SINIR) || 80;
+  const gun = Date.now() - 24 * 3600 * 1000;
+  return list.filter((m) => zaman(m.created_at) > gun).length >= sinir;
+}
+
+/** Bu adrese son 10 dakikada e-posta gitti mi (aynı adrese tekrar tekrar posta gitmesini engeller) */
+export function yakinda(list: Giden[] | null, email: string) {
+  if (!list) return false;
+  const e = email.toLowerCase();
+  const t = Date.now() - 10 * 60 * 1000;
+  return list.some((m) => zaman(m.created_at) > t && (m.to ?? []).some((x) => x.toLowerCase() === e));
+}
+
+/* ---------- bülten çift onay ---------- */
+
+const b64 = (s: string) => Buffer.from(s).toString("base64url");
+const unb64 = (s: string) => Buffer.from(s, "base64url").toString();
+
+/** E-postadaki onay bağlantısı: imzalı, 2 gün geçerli */
+export function aboneBaglanti(email: string, kaynak: string) {
+  const ts = Date.now();
+  const e = b64(`${email}|${kaynak}`);
+  return `${siteUrl()}/api/bulten/onayla?e=${e}&ts=${ts}&t=${hmac(`abone:${e}:${ts}`)}`;
+}
+
+export function aboneCoz(e: string, ts: string, t: string): { email: string; kaynak: string; istek: number } | null {
+  const n = Number(ts);
+  if (!e || !n || !same(t, hmac(`abone:${e}:${n}`))) return null;
+  if (Date.now() - n > 2 * 24 * 3600 * 1000) return null;
+  const [email, kaynak] = unb64(e).split("|");
+  return emailOk(email ?? "") ? { email, kaynak: kaynak ?? "", istek: n } : null;
+}

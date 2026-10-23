@@ -123,6 +123,7 @@ Kurgu: Gündem haftada iki kez (salı, cuma 08:00) otomatik hazırlanır, Kadir 
 
 - Hazır: şablon (`lib/email/newsletter.ts`), kapak (`/api/bulten/kapak`), haber toplama (`scripts/bulten/haberler.mjs`, 9 kaynak), sayıdan HTML (`olustur.mjs`), test gönderimi (`gonder.mjs --test`). İlk sayı `scripts/bulten/sayilar/2026-10-06.json`; Gmail testi tamam.
 - Hazır: onay sistemi. Site önizlemeyi gönderir (`/api/bulten/onizleme-gonder`), "Onayla ve gönder" → `/bulten/onay` → gönderim. Onaysız hiçbir şey gitmez. Alan adına kadar test modu, yalnız `BULTEN_TEST_TO`.
+- DURAKLATILDI (21 Ekim 2026, Kadir): zamanlanmış görev kapatıldı, boşuna deploy olmasın. Resend ve alan adı kurulunca yeniden açılacak (claude.ai/code/routines sayfasından ya da Claude'a "bülten görevini aç" denir). Son sayı: 2026-10-20 (sayı 5).
 - Hazır: Claude Code zamanlanmış görevi "Commerce Notes · Gündem bülteni" (salı ve cuma 08:00, Opus 5.5, `bulten` ortamı, ağ: Full). https://claude.ai/code/routines/trig_017yvEzHwwA8ho1kK9mEvNTm. Görev gizli bilgi taşımaz.
 - Tamam: görev GitHub'a yazabiliyor. kadirec collaborator oldu, 6 Ekim'de elle çalıştırılan görev `scripts/bulten/sayilar/2026-10-06.json` dosyasını commit'leyip push etti (5 haber + 4 kısa). Bundan sonra salı ve cuma 08:00'de kendiliğinden çalışır.
 - Yapılacak: footer ve blogdaki bülten formlarını Resend'deki kitleye bağlamak; kayıtta iki seçenek (Gündem / Pratik yazılar), her biri için ayrı çıkış.

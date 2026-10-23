@@ -944,3 +944,13 @@ details.pg-rec ul{margin-top:.6rem}
   .h-main h3,.h-main p,.h-main .keys{text-align:center;justify-content:center;margin-left:auto;margin-right:auto}
   .area-head .gwrap{max-width:11rem}
 }
+
+/* ---------- mobil: aksiyon planı filtreleri başlığa yapışır (Kadir, 23 Ekim 2026) ---------- */
+@media (max-width:900px){
+  .plan-tools{position:sticky;top:var(--bar);z-index:20;flex-wrap:nowrap;gap:.5rem;align-items:center;margin:0 calc(-1*clamp(1.25rem,4vw,4rem)) 1rem;padding:.6rem clamp(1.25rem,4vw,4rem);background:rgba(243,243,243,.98);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--cc-border)}
+  .plan-tools .sel{width:7.5rem;text-overflow:ellipsis}
+  .plan-tools label{order:-1;flex:none}
+  .plan-tools .filters{flex:1;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*clamp(1.25rem,4vw,4rem)) 0 0;padding-right:clamp(1.25rem,4vw,4rem)}
+  .plan-tools .filters::-webkit-scrollbar{display:none}
+  .plan-tools .filters button{flex:none}
+}

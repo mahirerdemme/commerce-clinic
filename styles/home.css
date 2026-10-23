@@ -1136,7 +1136,7 @@ body.gp-open{overflow:hidden}
   background:radial-gradient(50% 50% at -3.8% 55.2%,#8B5CF6 0%,#A78BFA 25%,#E583A0 50%,#F3967599 75%,#FAFAFA80 100%);
   transform:perspective(1200px) translateZ(420px) skewX(-70deg);transform-origin:70% 100%;opacity:.85}
 /* sağ · açık */
-.gp-r{position:relative;background:#F5F5F3;color:#111;overflow-y:auto;overscroll-behavior:contain;display:flex}
+.gp-r{position:relative;background:#F5F5F3;color:#111;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;display:flex}
 .gp-r-in{width:100%;max-width:640px;margin:auto;padding:clamp(4rem,9vh,6rem) clamp(1.5rem,5vw,4rem) 3rem}
 .gp-x{position:absolute;top:1.25rem;right:1.25rem;width:44px;height:44px;border-radius:50%;border:1px solid #E0E0DD;background:#fff;color:#111;display:grid;place-items:center;cursor:pointer;transition:border-color .2s}
 .gp-x:hover{border-color:#111}
@@ -1180,7 +1180,7 @@ body.gp-open{overflow:hidden}
 .gp-f input.is-err,.gp-f textarea.is-err{border-color:#C3281C!important;box-shadow:0 0 0 3px rgba(195,40,28,.08)}
 .gp-seg{display:inline-flex;padding:4px;border:1px solid #E0E0DD;border-radius:12px;background:#fff;align-self:flex-start;gap:4px}
 .gp-seg label{cursor:pointer}
-.gp-seg input{position:absolute;opacity:0;pointer-events:none}
+.gp-seg input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;padding:0;border:0;margin:0}
 .gp-seg span{display:block;font-size:.875rem;font-weight:500;padding:.5rem 1rem;border-radius:9px;color:#666;transition:all .2s}
 .gp-seg input:checked+span{background:#111;color:#fff}
 .gp-seg input:focus-visible+span{outline:2px solid #111;outline-offset:2px}

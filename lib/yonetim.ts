@@ -22,6 +22,15 @@ export function parolaDogru(girilen: string) {
   return crypto.timingSafeEqual(a, b);
 }
 
+/** Giriş sayfasını açan gizli anahtar (?k=): anahtarsız ziyaretçi 404 görür, giriş formu bile görünmez */
+export function anahtarDogru(k: string) {
+  const a = process.env.YONETIM_GIRIS ?? "";
+  if (!a || !k) return false;
+  const x = crypto.createHash("sha256").update(a).digest();
+  const y = crypto.createHash("sha256").update(k).digest();
+  return crypto.timingSafeEqual(x, y);
+}
+
 export const cerezDegeri = () => token();
 export const cerezOpts = (maxAge = SURE) => ({
   httpOnly: true,

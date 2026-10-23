@@ -137,7 +137,7 @@ Kurgu: Gündem haftada iki kez (salı, cuma 08:00) otomatik hazırlanır, Kadir 
 
 ## Yönetim paneli (/yonetim)
 
-Parola korumalı, arama motorlarına kapalı iç panel (23 Ekim 2026). Parola Vercel'de `YONETIM_PAROLA` (değiştirmek için ortam değişkenini güncelleyip yeniden yayınla); oturum çerezi `BULTEN_SECRET` ile imzalanır. İçerik: gönderim modu ve adresler (salt okunur), e-posta alan adı durumu, bülten sayıları (önizle ve onayla bağlantısı, gönderildi mi), aboneler (silme). Kod: `app/yonetim`, `lib/yonetim.ts`, `app/api/yonetim/*`. Ayarlar panelden değiştirilemez; bunun için Vercel API anahtarı gerekir (yapılmadı).
+Gizli iç panel (23-24 Ekim 2026): adres herkese 404 döner; yalnızca gizli anahtarlı bağlantı (`/yonetim?k=<YONETIM_GIRIS>`) giriş formunu açar, sonra parola (`YONETIM_PAROLA`) istenir. Anahtar ve parola Vercel ortam değişkenlerinde. Parola Vercel'de `YONETIM_PAROLA` (değiştirmek için ortam değişkenini güncelleyip yeniden yayınla); oturum çerezi `BULTEN_SECRET` ile imzalanır. İçerik: gönderim modu ve adresler (salt okunur), e-posta alan adı durumu, bülten sayıları (önizle ve onayla bağlantısı, gönderildi mi), aboneler (silme). Kod: `app/yonetim`, `lib/yonetim.ts`, `app/api/yonetim/*`. Ayarlar panelden değiştirilemez; bunun için Vercel API anahtarı gerekir (yapılmadı).
 
 ## Örnek rapor (/ornek-rapor)
 

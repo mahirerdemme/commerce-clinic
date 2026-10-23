@@ -2,7 +2,8 @@ import "./yonetim.css";
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { Metadata } from "next";
-import { girisliMi, ayarliMi } from "@/lib/yonetim";
+import { notFound } from "next/navigation";
+import { girisliMi, ayarliMi, anahtarDogru } from "@/lib/yonetim";
 import { imza, mod, siteBase, testAlicilar } from "@/lib/email/bulten";
 import { gunlukSinir, sonEpostalar, sonGunSayisi } from "@/lib/email/forms";
 
@@ -30,9 +31,12 @@ export default async function Page({ searchParams }: Q) {
   const mesaj = String(q.mesaj ?? ""), hata = String(q.hata ?? "");
 
   if (!(await girisliMi())) {
+    const k = String(q.k ?? "");
+    if (!anahtarDogru(k)) notFound(); // anahtarsız ziyaretçi için böyle bir sayfa yok
     return (
       <main className="yn">
         <form className="yn-card yn-login" method="post" action="/api/yonetim/giris">
+          <input type="hidden" name="k" value={k} />
           <h1 style={{ margin: "0 0 4px", fontSize: "1.25rem" }}>Yönetim</h1>
           <p className="yn-sub">Commerce Clinic iç kullanım paneli.</p>
           {!ayarliMi() && <p className="yn-msg err">Panel henüz yapılandırılmadı (YONETIM_PAROLA).</p>}

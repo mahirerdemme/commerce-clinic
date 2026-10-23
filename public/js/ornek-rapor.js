@@ -34,7 +34,7 @@ const AREAS=[
  {id:'business',score:61,scope:'İş modeli, ürün ve fiyat yapısı, marj, kampanya bağımlılığı ve önümüzdeki 6–12 ayın hedefleri.',
   s:[['İş modeli ve satış kanalları','ok'],['Ürün ve fiyat yapısı','ok'],['Marj ve ortalama sepet','warn'],['Kampanya bağımlılığı','bad'],['Müşteri yapısı','ok'],['Değer önerisi','ok'],['Performans trendi ve hedefler','warn']],
   assess:['Loma Ev\'in değer önerisi net ve rakiplerden ayrışıyor: organik pamuk ve yerli üretim, ürün sayfalarından reklam metinlerine kadar tutarlı anlatılıyor.','Sorun cironun ritminde. Son altı ayın cirosunun yaklaşık yarısı indirim haftalarından geliyor; kampanya dışındaki haftalarda satış belirgin şekilde düşüyor.'],
-  by:'Kaynak: Discovery görüşmesi (3 Eylül) ve ikas sipariş raporu, Mart–Ağustos 2026'},
+  by:'Kaynak: Discovery görüşmesi (3 Eylül) ve Shopify sipariş raporu, Mart–Ağustos 2026'},
  {id:'market',score:72,scope:'Seçilen rakiplerle fiyat, ürün gamı, kargo, iade, ödeme ve deneyim karşılaştırması.',
   s:[['Rakip seti','ok'],['Fiyat ve ürün gamı','ok'],['Kampanyalar','ok'],['Kargo, iade ve ödeme koşulları','warn'],['Deneyim ve ürün sunumu','ok'],['Değer önerisi karşılaştırması','ok']],
   assess:['Fiyat konumu segmentle uyumlu; Loma Ev ne en ucuz ne en pahalı marka. Ürün gamı ve görsel kalite rakiplerin üzerinde.','Belirgin tek dezavantaj ücretsiz kargo eşiği. İncelenen rakiplerin çoğu daha düşük bir eşik kullanıyor.'],
@@ -50,7 +50,7 @@ const AREAS=[
  {id:'tech',score:42,scope:'Altyapı, performans, entegrasyonlar, ölçümleme ve veri yapısı.',
   s:[['Altyapı','ok'],['Performans','warn'],['Entegrasyonlar','ok'],['Ölçümleme','bad'],['Veri yapısı','warn'],['Büyümeye uygunluk','ok']],
   assess:['Altyapı ve ERP entegrasyonu işini yapıyor; stok ve fatura aktarımı düzenli çalışıyor.','Asıl risk ölçümlemede. Ağustos ayında panelde 1.284 sipariş görünürken GA4\'e 861 satın alma olayı ulaşmış. Reklam bütçesi kararları bu eksik tabloya dayanıyor.'],
-  by:'İnceleme: 12–15 Eylül 2026 · GA4 okuma erişimi, ikas paneli (salt okunur), PageSpeed Insights'},
+  by:'İnceleme: 12–15 Eylül 2026 · GA4 okuma erişimi, Shopify paneli (salt okunur), PageSpeed Insights'},
  {id:'retention',score:49,scope:'Teslimat, iade, destek, sipariş sonrası iletişim, CRM ve tekrar satın alma.',
   s:[['Kargo ve teslimat','ok'],['İade ve değişim','warn'],['Müşteri desteği','warn'],['Sipariş sonrası iletişim','bad'],['E-posta, SMS ve CRM','warn'],['Sepet terk','ok'],['Tekrar satın alma ve sadakat','bad']],
   assess:['Teslimat hızlı ve güvenilir; ortalama teslim süresi 2,6 gün.','İlk siparişten sonra ise müşteriyle planlı bir iletişim yok. 90 gün içinde ikinci siparişi veren müşteri oranı %14.'],
@@ -172,7 +172,7 @@ const F=[
  {k:'td1',m:'Kanal raporlarının doğruluğu',area:'tech',s:'Ölçümleme',p:'bad',act:'track',
   t:'Satın alma olaylarının yaklaşık üçte biri GA4\'e ulaşmıyor.',
   img:[['3D Secure ile ödenen siparişlerde fark %44\'e çıkıyor.']],
-  obs:'Ağustos ayında ikas panelinde 1.284 sipariş, GA4\'te 861 satın alma olayı var. Fark en çok 3D Secure ile ödenen siparişlerde oluşuyor; kullanıcı bankadan dönerken olay tetiklenmiyor.',
+  obs:'Ağustos ayında Shopify panelinde 1.284 sipariş, GA4\'te 861 satın alma olayı var. Fark en çok 3D Secure ile ödenen siparişlerde oluşuyor; kullanıcı bankadan dönerken olay tetiklenmiyor.',
   why:'Reklam kanallarının getirisi olduğundan düşük görünüyor. Bütçe bu eksik veriye göre dağıtıldığı için iyi çalışan kanallar kısılabiliyor.',
   rec:'Önce 3D Secure dönüşündeki olay kaybını düzeltin. Ardından satın alma olayını sunucu tarafında da gönderen bir ölçüm yapısına geçin.'},
  {k:'td2',m:'Mobil dönüşüm oranı',area:'tech',s:'Performans',p:'warn',act:'speed',
@@ -261,7 +261,7 @@ const PHASES=[
 const PHASE_RULE=(imp,eff)=>((imp===3&&eff<=2)||(imp===2&&eff===1))?1:((imp===3&&eff===3)||(imp===2&&eff===2)||(imp===1&&eff===1))?2:3;
 const impW=['','Düşük etki','Orta etki','Yüksek etki'],effW=['','düşük efor','orta efor','yüksek efor'];
 /* kaynak: [ad, ayrıntı, monogram | 'talk', logo dosyası (public/media/brands, opsiyonel)] */
-const SOURCES=[['Google Analytics 4','1 Haziran–31 Ağustos 2026','GA4','ga4.png'],['ikas yönetim paneli','Salt okunur erişim','ik','ikas.png'],['Meta Ads','Son 6 ay','M','meta-ads.png'],['Google Ads','Son 6 ay','G','google-ads.png'],['Klaviyo','Akış ve kampanya raporları','K','klaviyo.png'],['Microsoft Clarity','14 günlük oturum kaydı','C','microsoft-clarity.png'],['Discovery görüşmesi','3 Eylül 2026, 60 dk','talk']];
+const SOURCES=[['Google Analytics 4','1 Haziran–31 Ağustos 2026','GA4','ga4.png'],['Shopify yönetim paneli','Salt okunur erişim','S','shopify.png'],['Meta Ads','Son 6 ay','M','meta-ads.png'],['Google Ads','Son 6 ay','G','google-ads.png'],['Klaviyo','Akış ve kampanya raporları','K','klaviyo.png'],['Microsoft Clarity','14 günlük oturum kaydı','C','microsoft-clarity.png'],['Discovery görüşmesi','3 Eylül 2026, 60 dk','talk']];
 /* incelenen rakipler: ad, neden seçildi, neye baktık */
 const COMP=[['Rakip A','Aynı segment, benzer fiyat','Ana sayfa · kampanyalar · kargo ve iade'],['Rakip B','Mobil deneyimi güçlü','Ürün sayfası · sepet ve ödeme'],['Rakip C','Pazaryerinde en çok görülen','Fiyat · ürün gamı · kargo'],['Rakip D','Yeni ve hızlı büyüyen','Kampanyalar · reklam kreatifleri'],['Rakip E','Segmentin premium ucu','Ürün sunumu · değer önerisi · iade']];
 SOURCES.push(['Rakip incelemesi',COMP.length+' marka · 10–11 Eylül 2026','R']);
@@ -367,10 +367,11 @@ function vOverview(){
   return `<section class="view" data-view="genel-bakis" aria-labelledby="h-ov">
     <div class="hero-x"><svg class="hero-mark" viewBox="0 0 256 256" aria-hidden="true"><path d="M224 128A96 96 0 0 1 59.78 195.55L93.89 161.77A48 48 0 0 0 176 128ZM32 127.99A96 96 0 0 1 196.22 60.46L162.11 94.23A48 48 0 0 0 80 128Z"/></svg><div class="hero-in">
     <div class="cover"><div>
-      <div class="client-logo real" aria-hidden="true" style="margin-bottom:1.75rem">loma</div>
+      <svg class="client-brand" viewBox="0 0 150 40" role="img" aria-label="Loma Ev logosu" style="margin-bottom:1.75rem"><rect width="40" height="40" rx="10" fill="#2F3A33"/><g fill="#EDE7DC"><rect x="10.5" y="10.5" width="5" height="19"/><rect x="17.5" y="10.5" width="5" height="19"/><rect x="24.5" y="10.5" width="5" height="19"/></g><g fill="#8FA596"><rect x="10.5" y="10.5" width="19" height="5"/><rect x="10.5" y="17.5" width="19" height="5"/><rect x="10.5" y="24.5" width="19" height="5"/></g><g fill="#EDE7DC"><rect x="10.5" y="10.5" width="5" height="5"/><rect x="24.5" y="10.5" width="5" height="5"/><rect x="17.5" y="17.5" width="5" height="5"/><rect x="10.5" y="24.5" width="5" height="5"/><rect x="24.5" y="24.5" width="5" height="5"/></g><text x="52" y="26" font-family="inherit" font-size="25" font-weight="600" letter-spacing="-0.6" fill="#2F3A33">loma</text><text x="53" y="37" font-family="inherit" font-size="7" font-weight="500" letter-spacing="1.6" fill="#6F7A72">EV TEKSTİLİ</text></svg>
       <h1 class="h1" id="h-ov">${esc(R.client)}</h1>
       <p class="cover-kicker" style="margin:.9rem 0 0;font-size:1.125rem;color:var(--cc-text);font-weight:500">Commerce Check-up raporu</p>
-      <p class="cover-site" style="margin-top:.35rem">${esc(R.site)} · ${esc(R.sector)}</p></div>
+      <p class="cover-site" style="margin-top:.35rem">${esc(R.site)} · ${esc(R.sector)}</p>
+      <p class="cover-note">Örnek rapor: marka, alan adı ve rakamlar kurgusaldır; gerçek bir müşteriyi göstermez.</p></div>
       <aside class="how-card" aria-labelledby="hc-t"><h2 id="hc-t">Bu rapor nasıl hazırlandı?</h2>
         <p>Bu rapordaki her bulgu Commerce Clinic tarafından incelendi, kanıtla desteklendi ve yorumlandı.</p>
         <ul><li>Uzman incelemesi<b>18 saat</b></li><li>İncelenen ekran ve akış<b>46</b></li><li>İncelenen rakip<b>${COMP.length}</b></li></ul>

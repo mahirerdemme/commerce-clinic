@@ -85,7 +85,6 @@ main{padding:clamp(2rem,4vw,3.5rem) clamp(1.25rem,4vw,4rem) 6rem;min-width:0}
 .cover-kicker{font-size:1rem;color:var(--cc-text-2);margin-bottom:.75rem}
 .cover-site{margin-top:1rem;font-size:1.125rem;color:var(--cc-text-2)}
 .cover-client{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
-.client-logo{width:64px;height:64px;border-radius:14px;border:1px dashed var(--cc-muted);display:grid;place-items:center;font-size:.6875rem;color:var(--cc-text-2);text-align:center;line-height:1.2;background:var(--cc-white)}
 .meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--cc-border)}
 .meta dt{font-size:.8125rem;color:var(--cc-text-2)}
 .meta dd{margin:.2rem 0 0;font-weight:500;font-size:.9375rem}
@@ -492,7 +491,8 @@ main{padding:clamp(2rem,4vw,3.5rem) clamp(1.25rem,4vw,4rem) 6rem;min-width:0}
 .lb[hidden]{display:none}
 .lb img{max-width:min(1200px,100%);max-height:88vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .lb p{position:absolute;left:0;right:0;bottom:1.25rem;text-align:center;color:#ddd;font-size:.875rem}
-.client-logo.real{border:0;background:#2F3A33;color:#EDE7DC;font-size:1.05rem;font-weight:600;letter-spacing:-.02em}
+.client-brand{display:block;height:40px;width:auto}
+.cover-note{margin:.9rem 0 0;font-size:.8125rem;line-height:1.5;color:var(--cc-text-2);max-width:30em}
 .gauge .mk{fill:var(--cc-text)}
 /* v10 */
 .hero-x{position:relative;overflow:hidden;background:var(--cc-white);border-bottom:1px solid var(--cc-border);margin:calc(-1*clamp(2rem,4vw,3.5rem)) calc(-1*clamp(1.25rem,4vw,4rem)) 0;padding:clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,4rem) clamp(2.5rem,4vw,3.5rem)}
@@ -760,7 +760,6 @@ details.pg-rec ul{margin-top:.6rem}
 .kvkk{color:inherit;text-underline-offset:2px}
 /* v31 cover logo stacked */
 .cover-client{flex-direction:column;align-items:flex-start;gap:1.1rem}
-.client-logo.real{width:fit-content;min-width:120px;max-width:200px;height:48px;padding:0 1.1rem;border-radius:10px;font-size:1.25rem;letter-spacing:.02em}
 /* tour */
 .tour{position:fixed;inset:0;z-index:70}
 .tour[hidden]{display:none}

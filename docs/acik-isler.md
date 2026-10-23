@@ -7,7 +7,7 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 | Ne | Adres |
 |---|---|
 | Canlı site (geçici alan adı) | https://commerce-clinic-ashen.vercel.app |
-| Asıl alan adı (henüz bağlı değil) | https://thecommerceclinic.com |
+| Asıl alan adı | https://thecommerceclinic.com · Vercel projesine eklendi (23 Ekim 2026); GoDaddy DNS'i bekliyor: `@` A kayıtları 216.198.79.1 ve 64.29.17.1, `www` CNAME 6a8caa8c3e23cb68.vercel-dns-017.com. Yayına açmak için Vercel'de `SITE_INDEXABLE=true` (şimdilik kapalı). |
 | GitHub repo | https://github.com/mahirerdemme/commerce-clinic (`main`'e push = canlıya yayın) |
 | Vercel projesi | https://vercel.com/mahirs-projects-6bc6f63f/commerce-clinic |
 | Bülten zamanlanmış görevi | https://claude.ai/code/routines/trig_017yvEzHwwA8ho1kK9mEvNTm |
@@ -115,7 +115,7 @@ Hedef: blog yazılarından SEO'da olabildiğince verim almak. Yazılar Kadir'le 
   - Yapay zekâ ile üretilen görsel kullanılırsa IPTC DigitalSourceType (TrainedAlgorithmicMedia) eklenir.
   - Üretim şeklini belirtmek önerilen ama zorunlu değil; yazar ve gerçek tarih her yazıda var.
 - Yayın tarihleri gerçek olmalı; şu anki Ağustos–Eylül tarihleri yer tutucu.
-- Şu an 1 gerçek yazı + 4 "yakında" başlık var.
+- Şu an listede 2 yazı var (altyapı rehberi ve platform geçişi yazısı). 4 "yakında" yer tutucu kart ve filtreleri gizlendi (23 Ekim 2026): `content/pages/commerce-notes.html` içinde yorum satırı olarak duruyor, yazılar gelince açılır. HTML yorumları yayına gitmez (`lib/legacy-page.tsx`).
 
 ## Bülten (Commerce Notes)
 

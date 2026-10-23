@@ -79,7 +79,8 @@ function withShared(slug: PageSlug, html: string) {
 
 export function LegacyPage({ slug }: { slug: PageSlug }) {
   const p = getPage(slug);
-  const html = withShared(slug, read("content/pages", `${slug}.html`));
+  // HTML yorumları (taslak notları, gizlenen bölümler) yayına gitmez
+  const html = withShared(slug, read("content/pages", `${slug}.html`)).replace(/<!--[\s\S]*?-->/g, "");
   const early = p.early + (p.bodyClass ? `document.body.classList.add(${JSON.stringify(p.bodyClass)});` : "");
   return (
     <>

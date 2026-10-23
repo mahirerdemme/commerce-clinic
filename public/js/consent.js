@@ -24,7 +24,7 @@
   let banner;
   function showBanner(){
     banner=document.createElement('div');banner.className='ccb';banner.setAttribute('role','region');banner.setAttribute('aria-label','Çerez tercihi');
-    banner.innerHTML='<p>Siteyi geliştirmek için, izin verirseniz analitik çerezler kullanılır. Ayrıntılar <a href="/cerez-politikasi">Çerez Politikası</a>\'nda.</p><div class="ccb-a"><button type="button" class="cc-btn ccb-yes" data-a>Kabul et</button><button type="button" class="cc-btn ccb-no" data-cc-open>Tercihler</button></div><button type="button" class="ccb-x" aria-label="Kapat ve reddet" data-r><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button>';
+    banner.innerHTML='<p>Siteyi geliştirmek için, izin verirseniz analitik çerezler kullanılır. Ayrıntılar <a href="/cerez-politikasi">Çerez Politikası</a>\'nda · <button type="button" class="cc-tl" data-cc-open>Tercihler</button></p><div class="ccb-a"><button type="button" class="cc-btn ccb-yes" data-a>Kabul et</button><button type="button" class="cc-btn ccb-yes" data-r>Reddet</button></div><button type="button" class="ccb-x" aria-label="Kapat ve reddet" data-r><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button>';
     // çarpı da reddet sayılır (yalnız zorunlu çerezler)
     banner.querySelectorAll('[data-r]').forEach(b=>b.addEventListener('click',()=>save(false)));
     banner.querySelector('[data-a]').addEventListener('click',()=>save(true));

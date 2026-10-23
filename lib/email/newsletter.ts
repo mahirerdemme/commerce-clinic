@@ -141,7 +141,7 @@ export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: str
   <tr><td class="px" style="padding:28px 8px 0;font:400 12px/1.6 ${FONT};color:${C.text2}">
     <p style="margin:0">Bu e-postayı Commerce Notes bültenine abone olduğunuz için alıyorsunuz. Haftada iki kez, e-ticarette markaları ilgilendiren gelişmeler.</p>
     <p style="margin:10px 0 0"><a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color:${C.text2};text-decoration:underline">Abonelikten çık</a> · <a href="${site("/blog")}" style="color:${C.text2};text-decoration:underline">Commerce Notes</a> · <a href="${base}/ticari-ileti" style="color:${C.text2};text-decoration:underline">Ticari ileti bilgilendirmesi</a></p>
-    <p style="margin:10px 0 0">Commerce Clinic · [Şirket unvanı] · [Adres] · [MERSİS]</p>
+    <p style="margin:10px 0 0">Commerce Clinic</p>
   </td></tr>
 
 </table>

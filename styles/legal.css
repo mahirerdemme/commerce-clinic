@@ -127,8 +127,7 @@ html.ccm-lock,html.ccm-lock body{overflow:hidden}
 .ccb .ccb-a{margin-right:-1.5rem}
 .ccb .ccb-yes{background:#fff;color:#0A0A0A;border-color:#fff}
 .ccb .ccb-yes:hover{background:#ECECEA;border-color:#ECECEA}
-.ccb .ccb-no{background:none;color:#fff;border-color:rgba(255,255,255,.22)}
-.ccb .ccb-no:hover{border-color:rgba(255,255,255,.45)}
+.ccb .cc-tl{padding:0;border:0;background:none;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .ccb .ccb-pref{color:#9C9C9A;margin-right:-1.5rem}
 .ccb .ccb-pref:hover{color:#fff}
 .ccb-x{position:absolute;top:.55rem;right:.55rem;display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:8px;background:none;color:#9C9C9A;cursor:pointer}

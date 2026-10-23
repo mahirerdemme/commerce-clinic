@@ -16,16 +16,18 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 | Brief (tek kaynak) | Commerce Clinic Master Brief v2: `~/Downloads/Commerce-Clinic-Master-Brief-v2.pdf` (eski v1.0 `.md` dosyaları masaüstünde, geçersiz) |
 | Marka dosyaları | `~/Desktop/Commerce-Clinic-Logo-Pack-v2.1*`, `Commerce-Clinic-Brand-Identity-Board-v1.png` |
 
-## Yer tutucular (kodda köşeli parantezle duruyor)
+## Yer tutucular
 
-| Ne | Nerede | Kimden |
-|---|---|---|
-| Şirket unvanı, adres, vergi dairesi/no, MERSİS, KEP | `public/legal/kvkk.html`, `ticari-ileti.html` | Mahir |
-| "Son güncelleme" tarihi | `public/legal/*.html` (4 metin) | Yayın günü |
-| Saklama süreleri: görüşme talebi [2 yıl], rehber [1 yıl], log [2 yıl], bülten onay kayıtları [3 yıl] | `public/legal/kvkk.html` | Mahir + hukukçu |
-| Bülten aracı: Brevo mu Resend mi | `kvkk.html`, `gizlilik.html`, `ticari-ileti.html` | Karar (brief: açık karar) |
-| Kurumsal e-posta sağlayıcısı: açık (Google Workspace, Zoho ya da başka). Karar: 3 adres, mahir@ (kişisel), hello@ (formlar, genel iletişim, yasal metinler), notes@ (bülten gönderen). Öneri: sağlayıcı izin veriyorsa tek ücretli hesap mahir@, hello@ ve notes@ takma ad | `kvkk.html`, `gizlilik.html` | Kadir |
-| GA4 ölçüm kimliği (`_ga_[ölçüm kimliği]`) | `public/legal/cerez-politikasi.html` | GA4 kurulunca |
+Kodda köşeli parantezle yer tutucu kalmadı (23 Ekim 2026). Karar ve eksikler:
+
+| Ne | Durum |
+|---|---|
+| Şirket unvanı, adres, vergi dairesi/no, MERSİS, KEP | **Şimdilik yok** (Kadir kararı). Yasal metinlerde veri sorumlusu "Commerce Clinic" + hello@ olarak duruyor; bilgiler gelince `public/legal/kvkk.html` (1. madde), `ticari-ileti.html` ve e-posta alt bilgisi (`lib/email/newsletter.ts`) eklenecek. Aydınlatma metni için veri sorumlusunun tam kimliği hukuken gerekli; hukukçu okumasında açılır. |
+| Saklama süreleri | Görüşme talebi 2 yıl, rehber 1 yıl, bülten onay kayıtları 3 yıl, log 2 yıl olarak yazıldı; hukukçu teyit edecek. |
+| Bülten aracı | Resend (form ve rehber e-postalarıyla aynı). Brevo seçeneği kalktı. |
+| Kurumsal e-posta sağlayıcısı | Henüz seçilmedi; metinlerde adı geçmiyor. Seçilince gizlilik ve KVKK metnindeki alıcı listesine eklenecek. Karar: 3 adres, mahir@ (kişisel), hello@ (formlar, genel iletişim, yasal metinler), notes@ (bülten gönderen). |
+| GA4 ölçüm kimliği | Çerez tablosunda `_ga_*` olarak yazıldı. |
+| "Son güncelleme" tarihi | 23 Ekim 2026. Metin değişince güncellenir. |
 
 ## Kararlar
 
@@ -37,7 +39,7 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 - Ana sayfa hero şeridindeki referans marka logoları (Myvia, Tromox, Alfemo, Gözde Grubu, Kelebek…): kullanım izni var mı? Yoksa kaldırılmalı. (Mahir)
 - Rakamlar: sitede 10+ yıl / 1.000+ marka / 2.000+ proje, portfolyoda 8+ yıl / 500+ marka. (Mahir)
 
-- Çerez bandında "Reddet" yazılı buton yok; reddetme sağ üstteki çarpıyla ve Tercihler'deki "Tümünü reddet"le. KVKK çerez rehberi reddetmenin kabul kadar görünür olmasını istiyor; hukukçu okumasında sorulmalı.
+- Çerez bandında "Kabul et" ve "Reddet" eşit görünürlükte (23 Ekim 2026); "Tercihler" metin bağlantısı olarak durur.
 
 - Bülten onay kutusu: "Aydınlatma Metni kapsamında ticari ileti onayı veriyorum." Kutu yalnız ticari ileti onayı veriyor, aydınlatmaya atıf yapıyor; hukukçu okumasında teyit edilmeli.
 

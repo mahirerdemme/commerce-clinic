@@ -117,7 +117,29 @@ Hedef: blog yazılarından SEO'da olabildiğince verim almak. Yazılar Kadir'le 
   - Yapay zekâ ile üretilen görsel kullanılırsa IPTC DigitalSourceType (TrainedAlgorithmicMedia) eklenir.
   - Üretim şeklini belirtmek önerilen ama zorunlu değil; yazar ve gerçek tarih her yazıda var.
 - Yayın tarihleri gerçek olmalı; şu anki Ağustos–Eylül tarihleri yer tutucu.
-- Şu an listede 2 yazı var (altyapı rehberi ve platform geçişi yazısı). 4 "yakında" yer tutucu kart ve filtreleri gizlendi (23 Ekim 2026): `content/pages/commerce-notes.html` içinde yorum satırı olarak duruyor, yazılar gelince açılır. HTML yorumları yayına gitmez (`lib/legacy-page.tsx`).
+- Listede (26 Ekim 2026): altyapı rehberi + 3 yazı (301 haritası, altyapı seçimi, site analizi). "Platform değiştirmeden önce 7 soru" kaldırıldı (299 kelime, ince içerik); eski adres altyapı seçimi yazısına 308 yönlenir, özü orada "beş soru" bölümünde. 4 "yakında" yer tutucu kart ve filtreleri gizlendi (23 Ekim 2026): `content/pages/commerce-notes.html` içinde yorum satırı olarak duruyor, yazılar gelince açılır. HTML yorumları yayına gitmez (`lib/legacy-page.tsx`).
+
+## SEO iş planı (26 Ekim 2026)
+
+Durum: 3 yazı 27 Ekim 2026'da yayına alındı (Kadir önce yerelde inceleyecek, sonra Mahir'e gösterilecek). Yazılar Google Search Central belgelerine dayanıyor; sahadan deneyim iddiası yok.
+
+**Kadir:**
+- Search Console'da `/rehber/e-ticaret-altyapi-gecisi` için "Dizine eklenmesini iste". Ana sayfa ve Check-up için yapıldı. Yazılar yayına çıkınca üçü için de.
+- LinkedIn ve Instagram profillerinin web sitesi alanına adres.
+- Yerelde 3 yazıyı incele: `SITE_INDEXABLE=true npm run build && npx next start -p 3100`, sonra /blog.
+- Yazılar Mahir'in adıyla çıkıyor: Mahir okuyup onaylamalı (özellikle "Satıcıya sorulacak sorular", "Sık yapılan hatalar", "Genel eğilim" cümleleri). Sahadan 1-2 gerçek tavsiye gelirse yazılara eklenir.
+- Yazı 1'de karşılığı olmayan sayfa için "üst kategoriye yönlendirme" gibi bir tercih varsa Mahir söyler (Google 404/410 öneriyor).
+- Şirket bilgileri gelince Google İşletme Profili.
+- Haftada bir: Search Console Performans (sorgu ve sayfa), Sayfa dizinleme.
+
+**Claude:**
+- Yayına çıkmadan önce: yazıların tarihi (`datePublished`, listedeki tarih; şimdi 26 Ekim 2026), rehberin `dateModified`'ı, sitemap lastmod.
+- **OG görselleri ve `logo.png` canlıda 404** (kontrol: 26 Ekim). `data/pages.json`'daki tüm `ogImage` adresleri (`/og/...png`), JSON-LD `logo` ve `image` adresleri boş gösteriyor; paylaşım önizlemesi ve yapılandırılmış veri bundan etkileniyor. Çözüm: `public/og/` altına 1200×630 görseller (ana sayfa, Check-up, Danışmanlık, Hakkımızda, Commerce Notes, rehber, 4 yazı) ve `public/logo.png`.
+- Rehber sayfası title'ına "kontrol listesi" eklemek (Google rehbere ilk bakışını yaptıktan sonra, birlikte).
+- Rehberdeki 12 adımın derinleştirilmesi: yazı 1 ile adım 5 bağlandı; diğer adımlar için yazı/başlık planı.
+- Yazı sonrası 4 gizli yer tutucu başlığın (sepet terki, pazaryeri, yapay zekâ, önceliklendirme) sırası.
+- LinkedIn ve Instagram duyuru metinleri (yaparız/ben yok), her yazı çıkınca.
+- Yazı başına title/description, iç bağlantı ve Search Console sorgularına göre güncelleme (2-3 ay sonra).
 
 ## Bülten (Commerce Notes)
 

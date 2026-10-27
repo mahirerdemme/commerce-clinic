@@ -30,6 +30,8 @@ const nextConfig: NextConfig = {
       { source: "/gorusme-planla", destination: "/#gorusme-planla", permanent: false },
       // Commerce Notes'un eski adresi; eski #yazı bağlantıları /blog'da yazının kendi adresine yönlenir (public/js/commerce-notes.js)
       { source: "/commerce-notes", destination: "/blog", permanent: true },
+      // kaldırılan ince yazı: içeriği altyapı seçimi yazısına taşındı
+      { source: "/blog/platform-degistirmeden-once-7-soru", destination: "/blog/e-ticaret-altyapisi-nasil-secilir", permanent: true },
     ];
   },
   async headers() {

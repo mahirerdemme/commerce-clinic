@@ -7,7 +7,9 @@ const SAYFA: Record<string, string> = {
   danismanlik: "Danışmanlık",
   hakkimizda: "Hakkımızda",
   "commerce-notes": "Blog (Commerce Notes)",
-  "blog-platform-gecisi": "Blog yazısı · Platform değiştirmeden önce 7 soru",
+  "blog-301-haritasi": "Blog yazısı · 301 yönlendirme haritası",
+  "blog-altyapi-secimi": "Blog yazısı · E-ticaret altyapısı nasıl seçilir",
+  "blog-site-analizi": "Blog yazısı · E-ticaret sitesi analizi",
   "rehber-altyapi-gecisi": "Rehber · Altyapı değişikliği",
   "kontrol-listesi": "Rehber kontrol listesi",
 };

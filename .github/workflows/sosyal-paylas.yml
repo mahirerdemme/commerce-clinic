@@ -1,0 +1,41 @@
+name: Instagram paylaşımı
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      kuru:
+        description: "Kuru çalışma (paylaşmaz, yalnız denetler)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sosyal-paylas
+
+jobs:
+  paylas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Paylaş
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: node scripts/sosyal/paylas.mjs ${{ github.event_name == 'workflow_dispatch' && inputs.kuru && '--kuru' || '' }}
+      - name: Kuyruk durumunu kaydet
+        if: always()
+        run: |
+          if ! git diff --quiet scripts/sosyal/kuyruk.json; then
+            git config user.name "sosyal-paylas"
+            git config user.email "actions@users.noreply.github.com"
+            git add scripts/sosyal/kuyruk.json
+            git commit -m "Sosyal kuyruk: durum güncellendi"
+            git push
+          fi

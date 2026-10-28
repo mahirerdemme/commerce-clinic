@@ -52,7 +52,12 @@ try {
   const gorseller = hedef.gorseller.map((g) => `${site}${g}`);
   for (const g of gorseller) {
     const res = await fetch(g, { method: "HEAD" });
-    if (!res.ok || !res.headers.get("content-type")?.startsWith("image/jpeg")) throw new Error(`görsel açılmıyor ya da JPEG değil: ${g} (${res.status})`);
+    if (!res.ok || !res.headers.get("content-type")?.startsWith("image/jpeg")) {
+      // site henüz yayına çıkmamış olabilir: gönderi bekliyor kalır, sonraki çalışmada yeniden denenir
+      console.error(`${hedef.post}: görsel henüz açılmıyor ya da JPEG değil: ${g} (${res.status}); sonra yeniden denenecek`);
+      kaydet();
+      process.exit(kuru ? 1 : 0);
+    }
   }
   const ben = await graf("me", { fields: "username" }, "GET");
   console.log(`${hedef.post}: ${gorseller.length} görsel hazır, hesap @${ben.username}${kuru ? " (kuru çalışma, paylaşılmadı)" : ""}`);

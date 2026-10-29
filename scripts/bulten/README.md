@@ -16,7 +16,8 @@ Salı ve cuma 08:00'de (İstanbul) Claude Code zamanlanmış görevi bu dosyadak
 ## Seçim kuralları
 
 - 5 ana haber, 2–4 kısa haber. Ölçüt: Türkiye'deki bir e-ticaret markasının (KOBİ ölçeği) yöneticisi bunu bilmeli mi? Reklam, arama ve yapay zekâ araması, pazaryerleri, ödeme, kargo, ölçüm, platformlar, yasal düzenlemeler, tüketici davranışı.
-- Alma: yatırım ve girişim haberleri (e-ticareti doğrudan etkilemiyorsa), şirket içi atamalar, genel teknoloji, "günlük özet" ve "video özet" yazıları, magazin.
+- Alma: e-ticaretle bağı olmayan yatırım ve girişim haberleri, şirket içi atamalar, genel teknoloji, "günlük özet" ve "video özet" yazıları, magazin.
+- Genişletme: bülten e-ticaret odaklı kalır, ama e-ticaretle bağı olan girişimcilik, yapay zekâ ve global yenilikler girebilir: yapay zekâ ile alışveriş ve ajan ticareti, e-ticaret girişimlerinin yatırım ve satın almaları, yeni satış kanalı ve ödeme modelleri, global pazaryeri ve platform hamleleri. Her birinde `takeaway` e-ticaret markasına dönmeli; bağ kurulamıyorsa haberi alma. Bir sayıda en fazla 1-2 haber bu türden olsun, çoğunluk e-ticaretin kendisi kalsın.
 - Aynı konudan tek haber; Türkçe kaynak varsa onu tercih et.
 - `tag`: tek-iki kelime (Reklam, Arama, Ölçüm, Pazaryeri, Ödeme, Kargo, Sosyal ticaret, Fiyat, Sadakat, Yapay zekâ, Yasal). İlk üç haberin etiketi kapakta görünür; farklı olsunlar.
 

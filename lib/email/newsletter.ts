@@ -16,6 +16,8 @@ export type NewsItem = {
   url: string;
   /** görünen kaynak adı: "Webrazzi", "Google Search Central" … */
   source: string;
+  /** doluysa özetin altında düğme çıkar ("Yazının devamı"); cuma yazı sayısında kullanılır */
+  button?: string;
   /** isteğe bağlı küçük görsel (kendi görselimiz ya da kullanım izni olan); yoksa yalnız metin */
   image?: string;
 };
@@ -28,6 +30,8 @@ export type Newsletter = {
   /** "7 Ekim 2026" */
   date: string;
   issue: number;
+  /** gündem: salı haber derlemesi (varsayılan); yazı: cuma blog yazısı önizlemesi (items[0] yazıdır) */
+  kind?: "gundem" | "yazi";
   items: NewsItem[];
   /** "Kısa kısa": tek satırlık haberler */
   briefs?: { title: string; url: string; source: string }[];
@@ -35,7 +39,11 @@ export type Newsletter = {
 };
 
 const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
-const C = { ink: "#111111", text2: "#5F5F5D", line: "#E5E5E3", bg: "#F5F5F3", white: "#FFFFFF", dark: "#0A0A0A", muted: "#A3A3A1" };
+const C = { ink: "#111111", text2: "#5F5F5D", line: "#E5E5E3", bg: "#F5F5F3", white: "#FFFFFF", dark: "#0A0A0A", muted: "#A3A3A1", tint: "#F6F3FC", accent: "#7C5CE0" };
+
+/** hafif rozet: kategori ve kaynak etiketleri */
+const badge = (inner: string, extra = "") =>
+  `<span style="display:inline-block;padding:5px 10px;border-radius:999px;background:#F0F0EE;font:600 11px/1 ${FONT};letter-spacing:.06em;text-transform:uppercase;color:${C.text2};${extra}">${inner}</span>`;
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -56,11 +64,16 @@ const utm = (url: string, issue: number) => {
 function item(n: NewsItem, i: number, issue: number) {
   const href = esc(utm(n.url, issue));
   const text = `
-    <p style="margin:0 0 8px;font:600 11px/1 ${FONT};letter-spacing:.08em;text-transform:uppercase;color:${C.text2}">${esc(n.tag)}</p>
-    <h2 style="margin:0;font:600 18px/1.35 ${FONT};letter-spacing:-.01em;color:${C.ink}"><a href="${href}" style="color:${C.ink};text-decoration:none">${esc(n.title)}</a></h2>
+    <p style="margin:0 0 10px">${badge(esc(n.tag))}</p>
+    <h2 style="margin:0;font:600 ${n.button ? 22 : 18}px/1.35 ${FONT};letter-spacing:-.01em;color:${C.ink}"><a href="${href}" style="color:${C.ink};text-decoration:none">${esc(n.title)}</a></h2>
     <p style="margin:8px 0 0;font:400 15px/1.55 ${FONT};color:#3A3A39">${esc(n.summary)}</p>
-    ${n.takeaway ? `<p style="margin:10px 0 0;font:400 14px/1.5 ${FONT};color:${C.ink}"><b style="font-weight:600">Markalar için:</b> ${esc(n.takeaway)}</p>` : ""}
-    <p style="margin:10px 0 0;font:500 13px/1 ${FONT}"><a href="${href}" style="color:${C.text2};text-decoration:underline">${esc(n.source)}</a></p>`;
+    ${n.takeaway ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:14px 0 0"><tr><td style="background:${C.tint};border-left:3px solid ${C.accent};border-radius:0 10px 10px 0;padding:12px 16px">
+      <p style="margin:0 0 5px;font:600 11px/1 ${FONT};letter-spacing:.08em;text-transform:uppercase;color:${C.accent}">Markalar için</p>
+      <p style="margin:0;font:400 14px/1.5 ${FONT};color:${C.ink}">${esc(n.takeaway)}</p>
+    </td></tr></table>` : ""}
+    ${n.button
+      ? `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:20px 0 0"><tr><td style="background:${C.dark};border-radius:10px"><a href="${href}" style="display:inline-block;padding:13px 20px;font:600 14px/1 ${FONT};color:${C.white};text-decoration:none">${esc(n.button)} &rarr;</a></td></tr></table>`
+      : `<p style="margin:14px 0 0"><a href="${href}" style="text-decoration:none">${badge(`${esc(n.source)} &#8599;`, "border:1px solid " + C.line + ";background:" + C.white)}</a></p>`}`;
   return `
 <tr><td style="padding:${i ? "24px" : "0"} 0 0">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"${i ? ` style="border-top:1px solid ${C.line}"` : ""}><tr>
@@ -72,10 +85,10 @@ function item(n: NewsItem, i: number, issue: number) {
 
 /** sayının kapak görseli: app/api/bulten/kapak */
 export const coverUrl = (d: Newsletter, base: string) =>
-  `${base}/api/bulten/kapak?${new URLSearchParams({ sayi: String(d.issue), tarih: d.date, konular: [...new Set(d.items.map((n) => n.tag))].slice(0, 3).join(",") })}`;
+  `${base}/api/bulten/kapak?${new URLSearchParams({ sayi: String(d.issue), tarih: d.date, konular: [...new Set(d.items.map((n) => n.tag))].slice(0, 3).join(","), ...(d.kind === "yazi" ? { tur: "yazi" } : {}) })}`;
 
 /** onay: yalnız onaya giden önizlemede; üstte "Onayla ve gönder" çubuğu çıkar */
-export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: string } = {}) {
+export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: string; web?: string } = {}) {
   const site = (path: string) => utm(`${base}${path}`, d.issue);
   return `<!doctype html>
 <html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
@@ -105,6 +118,14 @@ export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: str
     </tr></table>
   </td></tr>` : ""}
 
+  <!-- üst bağlantılar: site ve tarayıcı sürümü -->
+  <tr><td class="px" style="padding:0 8px 12px;font:500 12px/1 ${FONT};color:${C.text2}">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td align="left"><a href="${site("/")}" style="color:${C.text2};text-decoration:none">thecommerceclinic.com &#8599;</a></td>
+      ${opts.web ? `<td align="right"><a href="${esc(opts.web)}" style="color:${C.text2};text-decoration:underline">Tarayıcıda aç</a></td>` : ""}
+    </tr></table>
+  </td></tr>
+
   <!-- kart -->
   <tr><td style="background:${C.white};border:1px solid ${C.line};border-radius:16px">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -118,8 +139,8 @@ export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: str
       </td></tr>
       ${d.briefs?.length ? `
       <tr><td class="px" style="padding:0 40px 36px">
-        <p style="margin:0 0 6px;padding-top:28px;border-top:1px solid ${C.line};font:600 11px/1 ${FONT};letter-spacing:.08em;text-transform:uppercase;color:${C.text2}">Kısa kısa</p>
-        ${d.briefs.map((b) => `<p style="margin:12px 0 0;font:400 14px/1.5 ${FONT};color:${C.ink}"><a href="${esc(b.url)}" style="color:${C.ink};text-decoration:none">${esc(b.title)}</a> <span style="color:${C.text2}">· ${esc(b.source)}</span></p>`).join("")}
+        <p style="margin:0 0 4px;padding-top:28px;border-top:1px solid ${C.line}">${badge("Kısa kısa")}</p>
+        ${d.briefs.map((b) => `<p style="margin:14px 0 0;font:400 14px/1.5 ${FONT};color:${C.ink}"><a href="${esc(b.url)}" style="color:${C.ink};text-decoration:none">${esc(b.title)}</a> <a href="${esc(b.url)}" style="text-decoration:none">${badge(`${esc(b.source)} &#8599;`, "padding:3px 8px;font-size:10px;border:1px solid " + C.line + ";background:" + C.white + ";white-space:nowrap")}</a></p>`).join("")}
       </td></tr>` : ""}
     </table>
   </td></tr>
@@ -127,7 +148,7 @@ export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: str
   ${d.cta ? `
   <!-- CTA -->
   <tr><td style="padding-top:16px">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:${C.dark};border-radius:16px"><tr><td class="px" style="padding:32px 40px">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${C.dark}" style="background-color:${C.dark};background-image:radial-gradient(60% 90% at 100% 100%,rgba(229,131,160,.55) 0%,rgba(243,150,117,.25) 40%,rgba(10,10,10,0) 75%),radial-gradient(50% 80% at 0% 0%,rgba(139,92,246,.35) 0%,rgba(10,10,10,0) 70%);border-radius:16px"><tr><td class="px" style="padding:32px 40px">
       <p style="margin:0 0 10px;font:500 12px/1 ${FONT};color:${C.muted}">${esc(d.cta.eyebrow)}</p>
       <p style="margin:0;font:600 21px/1.3 ${FONT};letter-spacing:-.015em;color:${C.white}">${esc(d.cta.title)}</p>
       <p style="margin:10px 0 22px;font:400 14px/1.6 ${FONT};color:${C.muted}">${esc(d.cta.text)}</p>
@@ -139,7 +160,7 @@ export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: str
 
   <!-- alt bilgi: gönderen ve ret bağlantısı (6563 sayılı Kanun · ticari ileti) -->
   <tr><td class="px" style="padding:28px 8px 0;font:400 12px/1.6 ${FONT};color:${C.text2}">
-    <p style="margin:0">Bu e-postayı Commerce Notes bültenine abone olduğunuz için alıyorsunuz. Haftada iki kez, e-ticarette markaları ilgilendiren gelişmeler.</p>
+    <p style="margin:0">Bu e-postayı Commerce Notes bültenine abone olduğunuz için alıyorsunuz. E-ticarette markaları ilgilendiren gelişmeler ve yazılar.</p>
     <p style="margin:10px 0 0"><a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color:${C.text2};text-decoration:underline">Abonelikten çık</a> · <a href="${site("/blog")}" style="color:${C.text2};text-decoration:underline">Commerce Notes</a> · <a href="${base}/ticari-ileti" style="color:${C.text2};text-decoration:underline">Ticari ileti bilgilendirmesi</a></p>
     <p style="margin:10px 0 0">Commerce Clinic</p>
   </td></tr>

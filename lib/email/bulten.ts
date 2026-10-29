@@ -63,13 +63,14 @@ export async function gonderildiMi(id: string) {
 
 export async function gonder(id: string, sayi: Newsletter) {
   const base = siteBase();
+  const web = `${base}/bulten/${id}`;
   if (mod() === "canli") {
     const audience = process.env.RESEND_AUDIENCE_ID;
     if (!audience) throw new Error("RESEND_AUDIENCE_ID tanımlı değil");
     if (await gonderildiMi(id)) throw new Error("Bu sayı daha önce gönderildi");
     const b = await resend("/broadcasts", {
       method: "POST",
-      body: JSON.stringify({ audience_id: audience, from: from(), subject: sayi.subject, html: renderNewsletter(sayi, base), name: `sayi-${id}` }),
+      body: JSON.stringify({ audience_id: audience, from: from(), subject: sayi.subject, html: renderNewsletter(sayi, base, { web }), name: `sayi-${id}` }),
     });
     await resend(`/broadcasts/${b.id}/send`, { method: "POST", body: "{}" });
     return { mod: "canli" as const, alici: "aboneler" };
@@ -82,7 +83,7 @@ export async function gonder(id: string, sayi: Newsletter) {
       from: from(),
       to,
       subject: sayi.subject,
-      html: renderNewsletter(sayi, base).replace("{{{RESEND_UNSUBSCRIBE_URL}}}", `${base}/blog`),
+      html: renderNewsletter(sayi, base, { web }).replace("{{{RESEND_UNSUBSCRIBE_URL}}}", `${base}/blog`),
     }),
   });
   return { mod: "test" as const, alici: to.join(", ") };

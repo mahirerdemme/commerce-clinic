@@ -25,7 +25,7 @@ export async function POST(req: Request) {
       from: process.env.BULTEN_FROM ?? "Commerce Notes <onboarding@resend.dev>",
       to,
       subject: `[Onay bekliyor] ${sayi.subject}`,
-      html: renderNewsletter(sayi, base, { onay }).replace("{{{RESEND_UNSUBSCRIBE_URL}}}", `${base}/blog`),
+      html: renderNewsletter(sayi, base, { onay, web: `${base}/bulten/${id}` }).replace("{{{RESEND_UNSUBSCRIBE_URL}}}", `${base}/blog`),
     }),
   });
   if (!r.ok) return Response.json({ ok: false, hata: `Resend ${r.status}` }, { status: 502 });

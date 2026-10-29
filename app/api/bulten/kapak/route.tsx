@@ -11,6 +11,7 @@ export async function GET(req: Request) {
   const issue = (q.get("sayi") ?? "").slice(0, 4);
   const date = (q.get("tarih") ?? "").slice(0, 30);
   const topics = (q.get("konular") ?? "").split(",").map((t) => t.trim()).filter(Boolean).slice(0, 4);
+  const yazi = q.get("tur") === "yazi";
   const root = process.cwd();
   const [font, logo] = await Promise.all([
     fs.readFile(path.join(root, "assets/fonts/Inter-600.ttf")),
@@ -43,8 +44,8 @@ export async function GET(req: Request) {
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", fontSize: 28, color: "#A3A3A1", marginBottom: 18 }}>Commerce Notes · Bülten</div>
-          <div style={{ display: "flex", fontSize: 92, lineHeight: 1, letterSpacing: "-0.04em" }}>Bu hafta e-ticarette</div>
+          <div style={{ display: "flex", fontSize: 28, color: "#A3A3A1", marginBottom: 18 }}>{yazi ? "Commerce Notes" : "Commerce Notes · Bülten"}</div>
+          <div style={{ display: "flex", fontSize: 92, lineHeight: 1, letterSpacing: "-0.04em" }}>{yazi ? "Bu haftanın yazısı" : "Bu hafta e-ticarette"}</div>
           {topics.length > 0 && (
             <div style={{ display: "flex", gap: 14, marginTop: 36 }}>
               {topics.map((t) => (

@@ -1,0 +1,77 @@
+{
+ "subject": "AI Mode reklamları yeni ülkelerde, Merchant API güncellendi",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "29 Ekim 2026",
+ "issue": 6,
+ "items": [
+  {
+   "tag": "Reklam",
+   "title": "Google, AI Mode'daki reklamları yeni ülkelere açıyor",
+   "summary": "Google, AI Mode reklamlarını Avustralya, Kanada, Hindistan ve Singapur gibi birçok yeni ülkeye genişletti. Dördüncü çeyrekte Brezilya, Meksika ve Birleşik Krallık da listeye girecek.",
+   "takeaway": "Türkiye listede yok, ama yapay zekâ yanıtlarındaki reklam alanı hızla yayılıyor; ürün verinizi ve reklam yapınızı şimdiden buna hazır tutun.",
+   "url": "https://www.seroundtable.com/google-expands-ads-ai-mode-42412.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Ürün verisi",
+   "title": "Merchant API'ye Ekim güncellemesi geldi",
+   "summary": "Güncelleme YouTube Shopping ve yapay zekâ ticareti raporlamasını genişletiyor; video ve garanti ürün özellikleri ekliyor, ret teşhislerini iyileştiriyor.",
+   "takeaway": "Ürün feed'inizi yöneten ekip ya da ajansla yeni alanları ve kaldırılan raporları gözden geçirin.",
+   "url": "https://www.seroundtable.com/google-merchant-api-update-42410.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Pazaryeri",
+   "title": "Kolay iade, pazaryerlerinde satışı artıran bir koz olarak öne çıkıyor",
+   "summary": "Modern Retail'e göre TikTok Shop ve DoorDash'ın bu sonbaharki hamleleri, pazaryerleri ve teslimat platformlarının kolay iadeyi daha fazla satışın anahtarı olarak gördüğünü gösteriyor.",
+   "takeaway": "İade koşullarınız ürün sayfasında net mi? Karar anında en çok bakılan şeylerden biri olabilir.",
+   "url": "https://www.modernretail.co/operations/why-returns-are-becoming-a-bigger-focus-for-tiktok-shop-and-doordash/",
+   "source": "Modern Retail"
+  },
+  {
+   "tag": "Yasal",
+   "title": "USPS, satıcıya yabancı gümrük vergisi yansıtabilecek",
+   "summary": "Practical Ecommerce'e göre AB'nin Temmuz 2026'da de minimis muafiyetini kaldırması, USPS'in satıcılara yabancı gümrük vergilerini yansıtabilmesine dair kuralı tetikledi.",
+   "takeaway": "AB ve ABD'ye satış yapıyorsanız vergi ve teslimat koşullarını son kullanıcıya baştan göstermeyi düşünün.",
+   "url": "https://www.practicalecommerce.com/usps-can-bill-sellers-for-foreign-duties",
+   "source": "Practical Ecommerce"
+  },
+  {
+   "tag": "Perakende medyası",
+   "title": "MEDYA101, 21 bin 500 ekrana ulaşıyor",
+   "summary": "A101'in perakende medya yapılanması MEDYA101, Türkiye'nin en büyük dijital ekran ağı olarak 21 bin 500 ekrana ulaşıyor.",
+   "takeaway": "Perakende medyası Türkiye'de de büyüyor; mağaza zinciriyle çalışan markalar için yeni bir reklam kanalı olabilir.",
+   "url": "https://www.marketingturkiye.com.tr/haberler/turkiyenin-en-buyuk-dijital-ekran-agi-medya101-21-bin-500-ekrana-ulasiyor/",
+   "source": "Marketing Türkiye"
+  }
+ ],
+ "briefs": [
+  {
+   "title": "Google, AI Mode'da sponsorlu ürünleri organik ürün sonuçlarıyla karıştırmayı test ediyor",
+   "url": "https://www.seroundtable.com/google-ai-mode-all-sponsored-products-42402.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "title": "Google'dan 404 sayfaları için yeni video: neden korkutucu değiller",
+   "url": "https://www.seroundtable.com/google-404-errors-42405.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "title": "Google'ın arama reklam geliri üçüncü çeyrekte yüzde 10,5 arttı",
+   "url": "https://www.seroundtable.com/google-earnings-q326-42403.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "title": "Instagram, 90 dakikaya kadar yatay videoları test ediyor",
+   "url": "https://webrazzi.com/2026/10/27/instagram-90-dakikaya-kadar-yatay-videolari-test-ediyor/",
+   "source": "Webrazzi"
+  }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

@@ -118,13 +118,8 @@ export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: str
     </tr></table>
   </td></tr>` : ""}
 
-  <!-- üst bağlantılar: site ve tarayıcı sürümü -->
-  <tr><td class="px" style="padding:0 8px 12px;font:500 12px/1 ${FONT};color:${C.text2}">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-      <td align="left"><a href="${site("/")}" style="color:${C.text2};text-decoration:none">thecommerceclinic.com &#8599;</a></td>
-      ${opts.web ? `<td align="right"><a href="${esc(opts.web)}" style="color:${C.text2};text-decoration:underline">Tarayıcıda aç</a></td>` : ""}
-    </tr></table>
-  </td></tr>
+  ${opts.web ? `<!-- tarayıcı sürümü bağlantısı -->
+  <tr><td class="px" style="padding:0 8px 12px;font:500 12px/1 ${FONT};color:${C.text2};text-align:right"><a href="${esc(opts.web)}" style="color:${C.text2};text-decoration:underline">Tarayıcıda aç</a></td></tr>` : ""}
 
   <!-- kart -->
   <tr><td style="background:${C.white};border:1px solid ${C.line};border-radius:16px">
@@ -152,9 +147,11 @@ export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: str
       <p style="margin:0 0 10px;font:500 12px/1 ${FONT};color:${C.muted}">${esc(d.cta.eyebrow)}</p>
       <p style="margin:0;font:600 21px/1.3 ${FONT};letter-spacing:-.015em;color:${C.white}">${esc(d.cta.title)}</p>
       <p style="margin:10px 0 22px;font:400 14px/1.6 ${FONT};color:${C.muted}">${esc(d.cta.text)}</p>
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td style="background:${C.white};border-radius:10px">
-        <a href="${esc(site(d.cta.url))}" style="display:inline-block;padding:13px 20px;font:600 14px/1 ${FONT};color:${C.dark};text-decoration:none">${esc(d.cta.label)}</a>
-      </td></tr></table>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td style="background:${C.white};border-radius:10px"><a href="${esc(site(d.cta.url))}" style="display:inline-block;padding:13px 20px;font:600 14px/1 ${FONT};color:${C.dark};text-decoration:none">${esc(d.cta.label)}</a></td>
+        <td width="10"></td>
+        <td style="background:${C.white};border-radius:10px"><a href="${esc(site("/"))}" style="display:inline-block;padding:13px 20px;font:600 14px/1 ${FONT};color:${C.dark};text-decoration:none">Siteyi ziyaret et &#8599;</a></td>
+      </tr></table>
     </td></tr></table>
   </td></tr>` : ""}
 

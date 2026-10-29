@@ -1,10 +1,10 @@
 # Commerce Notes bülteni · Gündem
 
-Salı ve cuma 08:00'de (İstanbul) Claude Code zamanlanmış görevi bu dosyadaki adımları uygular. Hiçbir sayı onaysız gönderilmez: görev yalnız taslağı hazırlar ve onaya yollar; gönderimi Kadir onay sayfasından yapar. Elle önizleme/test için `gonder.mjs` (yerelde, `.env.local` ile).
+Salı 08:00'de (İstanbul) Gündem sayısını, cuma 08:00'de Yazı sayısını Claude Code zamanlanmış görevleri hazırlar. İkisi de aynı hattan geçer: sayı JSON'u repoya gider, site yayına çıkınca onay önizlemesi `BULTEN_ONAY_TO` adresine gönderilir, gönderimi insan onay sayfasından yapar. Hiçbir sayı onaysız gönderilmez. Elle önizleme/test için `gonder.mjs` (yerelde, `.env.local` ile).
 
 ## Adımlar
 
-1. Adayları topla: `node scripts/bulten/haberler.mjs 4 > /tmp/adaylar.json` (son 4 gün, 9 kaynak).
+1. Adayları topla: `node scripts/bulten/haberler.mjs 7 > /tmp/adaylar.json` (son 7 gün, 9 kaynak).
 2. Seç ve yaz: aşağıdaki kurallarla `scripts/bulten/sayilar/<YYYY-MM-DD>.json` dosyasını oluştur (bugünün tarihi, İstanbul saatiyle). Biçim `lib/email/newsletter.ts` içindeki `Newsletter` tipi; örnek: `scripts/bulten/ornek-sayi.json` (elle hazırlanmış örnek; ton ve uzunluk için referans).
    - `issue`: `scripts/bulten/sayilar/` içindeki en büyük `issue` + 1; klasör boşsa 1.
    - `date`: "6 Ekim 2026" biçiminde.
@@ -12,6 +12,15 @@ Salı ve cuma 08:00'de (İstanbul) Claude Code zamanlanmış görevi bu dosyadak
 3. Kontrol: `node scripts/bulten/olustur.mjs scripts/bulten/sayilar/<id>.json > /tmp/sayi.html` hatasız çalışmalı.
 4. Yayınla: yalnız yeni JSON dosyasını commit'le ve `main`'e gönder. Mesaj: `Bülten: sayı <issue> (<id>)`. Başka dosyaya dokunma.
 5. Onaya gönder: `node scripts/bulten/onaya-gonder.mjs <id>`. Sayı sitede yayına çıkana kadar (en çok 15 dakika) bekler, sonra site onay önizlemesini Kadir'e gönderir. Görevin hiçbir gizli bilgiye ihtiyacı yok; anahtarlar yalnız Vercel'de.
+
+## Cuma · Yazı sayısı
+
+Cuma görevi haber toplamaz; blogdan bir yazı önizlemesi gönderir.
+
+1. `node scripts/bulten/yazi-sec.mjs`: `scripts/bulten/yazilar.json` içindeki, daha önce bir Yazı sayısında kullanılmamış en eski yazıyı seçer ve `scripts/bulten/sayilar/<bugün>.json` dosyasını yazar. "Gönderilecek yazı yok" derse dur ve raporla; başka sayı üretme.
+2. `node scripts/bulten/olustur.mjs scripts/bulten/sayilar/<id>.json` hatasız çalışmalı.
+3. Yalnız yeni JSON'u commit'le, main'e gönder (`Bülten: yazı sayısı <issue> (<id>)`), ardından `node scripts/bulten/onaya-gonder.mjs <id>`.
+4. Yeni blog yazısı yayınlanınca `yazilar.json` sonuna eklenir (slug, tarih, tag, title, konu ≤70 karakter, onizleme, summary). `summary` yazının kendi giriş paragrafından alınır, yeni iddia eklenmez.
 
 ## Seçim kuralları
 

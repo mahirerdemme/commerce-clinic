@@ -150,7 +150,7 @@ export function renderNewsletter(d: Newsletter, base: string, opts: { onay?: str
       <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
         <td style="background:${C.white};border-radius:10px"><a href="${esc(site(d.cta.url))}" style="display:inline-block;padding:13px 20px;font:600 14px/1 ${FONT};color:${C.dark};text-decoration:none">${esc(d.cta.label)}</a></td>
         <td width="10"></td>
-        <td style="background:${C.white};border-radius:10px"><a href="${esc(site("/"))}" style="display:inline-block;padding:13px 20px;font:600 14px/1 ${FONT};color:${C.dark};text-decoration:none">Siteyi ziyaret et &#8599;</a></td>
+        <td style="border:1.5px solid ${C.white};border-radius:10px"><a href="${esc(site("/"))}" style="display:inline-block;padding:11.5px 18.5px;font:600 14px/1 ${FONT};color:${C.white};text-decoration:none">Siteyi ziyaret et &#8599;</a></td>
       </tr></table>
     </td></tr></table>
   </td></tr>` : ""}

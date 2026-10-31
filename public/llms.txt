@@ -1,0 +1,27 @@
+# Commerce Clinic
+
+> Commerce Clinic, e-ticaret markaları için bağımsız bir danışmanlıktır. Hiçbir ajansa, platforma ya da araca bağlı değildir; operasyonu devralmaz, uygulama satmaz. Problemin kaynağını teşhis eder, bulguları ticari etkisine göre önceliklendirir ve mevcut ekip ile iş ortaklarıyla uygulanabilir bir plana dönüştürür. Kurucu: Mahir Erdem (10+ yıllık e-ticaret deneyimi). Site Türkçedir.
+
+## Hizmetler
+
+- [Commerce Check-up](https://thecommerceclinic.com/check-up): E-ticaret sitesinin 8 alanda (iş modeli ve konumlandırma, pazar ve rekabet, kullanıcı deneyimi ve dönüşüm, ürün sunumu ve içerik, teknoloji ve veri, satış sonrası ve sadakat, müşteri kazanımı ve pazarlama, organizasyon ve büyümeye hazırlık) incelendiği tek seferlik bağımsız teşhis çalışması. Çıktı: önceliklendirilmiş bulgular ve 90 günlük roadmap. Süre: gerekli erişimler tamamlandıktan sonra 15 iş günü.
+- [Commerce Consulting (Danışmanlık)](https://thecommerceclinic.com/danismanlik): Problemin ya da hedefin net olduğu durumlarda süreç boyunca stratejik destek. Konular: e-ticaret stratejisi, kullanıcı deneyimi ve dönüşüm, pazarlama planlaması, ekip ve süreç yönetimi, altyapı seçimi ve platform geçişi, ERP ve entegrasyonlar, B2B e-ticaret, pazaryeri stratejisi, yapay zekâ ve otomasyon, ajans ve çözüm ortağı seçimi. Kapsam ilk görüşmeden sonra belirlenir.
+
+## Hakkında
+
+- [Hakkımızda](https://thecommerceclinic.com/hakkimizda): Commerce Clinic'in yaklaşımı ve kurucusu Mahir Erdem.
+- [Ana sayfa](https://thecommerceclinic.com/): Çalışma modelleri, deneyimlenen altyapılar ve araçlar, sık sorulan sorular.
+
+## Rehberler ve yazılar (Commerce Notes)
+
+- [Commerce Notes](https://thecommerceclinic.com/blog): E-ticarette strateji, kullanıcı deneyimi, altyapı ve büyüme üzerine notlar.
+- [E-ticaret Altyapı Geçişi Kontrol Listesi](https://thecommerceclinic.com/rehber/e-ticaret-altyapi-gecisi): Altyapı değiştirirken 12 adım ve 78 kontrol maddesi: veri ve üye taşıma, 301 yönlendirmeler, ERP, reklam kodları, canlıya geçiş.
+- [E-ticaret Altyapısı Nasıl Seçilir? 7 Kriter](https://thecommerceclinic.com/blog/e-ticaret-altyapisi-nasil-secilir): İhtiyaç, entegrasyon, ekip, toplam maliyet, SEO ve büyüme kriterleriyle hazır altyapı ve özel yazılım için karar çerçevesi.
+- [301 Yönlendirme Haritası Nasıl Hazırlanır?](https://thecommerceclinic.com/blog/301-yonlendirme-haritasi): Altyapı değişirken SEO'yu korumak için eski adreslerin listesi, eşleştirme, zincirler, test ve canlıya geçiş sonrası kontroller.
+- [E-ticaret Sitesi Analizi Nasıl Yapılır?](https://thecommerceclinic.com/blog/e-ticaret-sitesi-analizi-nasil-yapilir): 8 alanda site analizi kontrol listesi.
+
+## İletişim
+
+- E-posta: hello@thecommerceclinic.com
+- Ücretsiz, yaklaşık 30 dakikalık ön görüşme: [thecommerceclinic.com/danismanlik](https://thecommerceclinic.com/danismanlik)
+- Mahir Erdem LinkedIn: https://www.linkedin.com/in/mahir-erdem/

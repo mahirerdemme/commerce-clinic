@@ -107,13 +107,16 @@
   {
     "post": "post-8-secim",
     "zaman": "2026-10-31T05:00:00.000Z",
-    "durum": "bekliyor",
+    "durum": "paylasildi",
     "gorseller": [
       "/sosyal/post-8-secim/slayt-1.jpg",
       "/sosyal/post-8-secim/slayt-2.jpg",
       "/sosyal/post-8-secim/slayt-3.jpg"
     ],
-    "altyazi": "Hazır altyapı mı, özel yazılım mı? Karar, platform adından önce kriterlere göre verilir.\n\nYedi kriterin tamamı Commerce Notes'ta. Bağlantı biyografide."
+    "altyazi": "Hazır altyapı mı, özel yazılım mı? Karar, platform adından önce kriterlere göre verilir.\n\nYedi kriterin tamamı Commerce Notes'ta. Bağlantı biyografide.",
+    "paylasilma": "2026-10-31T07:35:16.914Z",
+    "medya": "18122200954915684",
+    "permalink": "https://www.instagram.com/p/DfJog9nli7I/"
   },
   {
     "post": "post-9-ekosistem",

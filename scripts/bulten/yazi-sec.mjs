@@ -9,7 +9,11 @@ import path from "node:path";
 
 const kuru = process.argv.includes("--kuru");
 const dir = "scripts/bulten/sayilar";
-const yazilar = JSON.parse(fs.readFileSync("scripts/bulten/yazilar.json", "utf8")).sort((a, b) => a.tarih.localeCompare(b.tarih));
+const bugun = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Istanbul" }).format(new Date());
+// "oncelik": true olan yazı önce seçilir; yayın tarihi bugünden sonra olan yazı (zamanlı blog yayını) atlanır
+const yazilar = JSON.parse(fs.readFileSync("scripts/bulten/yazilar.json", "utf8"))
+  .filter((y) => y.tarih <= bugun)
+  .sort((a, b) => Number(!!b.oncelik) - Number(!!a.oncelik) || a.tarih.localeCompare(b.tarih));
 const sayilar = fs.readdirSync(dir).filter((f) => f.endsWith(".json")).sort().map((f) => ({ f, ...JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) }));
 
 const kullanilan = new Set(sayilar.filter((s) => s.kind === "yazi").flatMap((s) => s.items.map((i) => i.url)));

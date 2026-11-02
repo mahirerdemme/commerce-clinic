@@ -6,12 +6,11 @@ Yayın ve duyuru öncesi bakılacaklar. Brief v2'nin "Öncelik sırası" ile bir
 
 | Ne | Adres |
 |---|---|
-| Canlı site (geçici alan adı) | https://commerce-clinic-ashen.vercel.app |
-| Asıl alan adı | https://thecommerceclinic.com · Vercel projesine eklendi (23 Ekim 2026); GoDaddy DNS'i bekliyor: `@` A kayıtları 216.198.79.1 ve 64.29.17.1, `www` CNAME 6a8caa8c3e23cb68.vercel-dns-017.com. Yayına açmak için Vercel'de `SITE_INDEXABLE=true` (şimdilik kapalı). |
+| Canlı site | https://thecommerceclinic.com (GoDaddy DNS → Vercel; www ve eski commerce-clinic-ashen.vercel.app buraya 308 yönlenir; arama motorlarına açık, `SITE_INDEXABLE=true`) |
 | GitHub repo | https://github.com/mahirerdemme/commerce-clinic (`main`'e push = canlıya yayın) |
 | Vercel projesi | https://vercel.com/mahirs-projects-6bc6f63f/commerce-clinic |
-| Bülten zamanlanmış görevi | https://claude.ai/code/routines/trig_017yvEzHwwA8ho1kK9mEvNTm |
-| Resend | https://resend.com (hesap: mahirerdemme@gmail.com) |
+| Bülten zamanlanmış görevi | https://claude.ai/code/routines/trig_017yvEzHwwA8ho1kK9mEvNTm (duraklatıldı) |
+| Resend | https://resend.com (hesap: mahirerdemme@gmail.com); alan adı doğrulandı |
 | Local geliştirme | `cd ~/Desktop/commerce_clinic && npm run dev` → http://localhost:3000 |
 | Brief (tek kaynak) | Commerce Clinic Master Brief v2: `~/Downloads/Commerce-Clinic-Master-Brief-v2.pdf` (eski v1.0 `.md` dosyaları masaüstünde, geçersiz) |
 | Marka dosyaları | `~/Desktop/Commerce-Clinic-Logo-Pack-v2.1*`, `Commerce-Clinic-Brand-Identity-Board-v1.png` |
@@ -48,7 +47,7 @@ Eski "taslak" etiketlerinin işaret ettiği yerler Mahir ve Kadir tarafından on
 ## Teknik, bağlantı bekleyen
 
 - Formlar bağlandı (23 Ekim 2026): `/api/gorusme`, `/api/rehber`, `/api/bulten/abone` (`lib/email/forms.ts`). Bildirimler `FORM_TO` adresine (hello@) gider; hello@ ImprovMX ile Gmail'e yönlenir (alias: hello, notes, mahir ve * → Gmail; MX/SPF GoDaddy'de; 23 Ekim 2026'da dış gönderimle doğrulandı). Bülten onay kaydı (tarih, kaynak, metin sürümü) her kayıtta ekibe e-postayla düşer. Bot koruması (24 Ekim 2026): imzalı zaman damgası (`/api/form-token`, form 2 sn'den hızlı gönderilirse reddedilir), gizli tuzak alanı (`cc_nick`), IP sınırı, aynı adrese 10 dakikada en fazla 1 e-posta ve günlük toplam e-posta üst sınırı (Resend kaydından sayılır; `FORM_GUNLUK_SINIR`, varsayılan 80). Bülten kaydı çift onaylı: `/api/bulten/abone` onay e-postası gönderir, `/api/bulten/onayla` kitleye ekler. Hâlâ yok: gerçek CAPTCHA (Cloudflare Turnstile; hesap gerekir, eklenirse yasal metinlere geri yazılır). Bilinen sınır: günlük üst sınır dolarsa meşru talepler de geçici olarak reddedilir. 
-- Çerez bandı Consent Mode v2 ile hazır; GTM kimliği `NEXT_PUBLIC_GTM_ID` olarak Vercel'e girilince GTM yüklenir. GA4 etiketi GTM içinde, Consent Mode **temel (basic)** ayarıyla kurulmalı: onay yoksa etiket hiç çalışmaz, Google'a veri gitmez.
+- Çerez bandı Consent Mode v2 ile çalışıyor; GTM (`NEXT_PUBLIC_GTM_ID`) canlıda, GA4 etiketi GTM içinde Consent Mode **temel (basic)** ayarıyla: onay yoksa etiket hiç çalışmaz, Google'a veri gitmez. GA4 akış URL'si www'suz yapılacak (Kadir).
 - Örnek rapor sayfasında (`/ornek-rapor`) footer'da çerez tercihleri bağlantısı yok; bant orada da çıkıyor.
 
 ## Ücretsiz rehber
@@ -57,105 +56,6 @@ Eski "taslak" etiketlerinin işaret ettiği yerler Mahir ve Kadir tarafından on
 - 78 kontrol maddesi var; 13'ü koşullu etiketli, her madde × ile kaldırılabilir (`design/kontrol-listesi/altyapi-gecisi.mjs`). Mahir son okumayı yapmalı. Madde değişince script yeniden çalıştırılır; tanıtım sayfasındaki adım listesi de güncellenir.
 - Her madde × ile listeden kaldırılabilir; adımın altında "N madde kaldırıldı · Göster" ile geri alınır. Kullanıcı kendi maddesini ekleyemez (karar: liste bizim uzmanlığımız, link de kısa kalsın).
 - İlerleme tarayıcıda tutulur (Safari 7 gün girilmezse siler). "İlerlemeyi kaydet" durumu bağlantının `#k=` kısmına yazar: her cihazda açılır, ekiple paylaşılır, sunucuya gitmez. Madde sırası değişirse kod sürümü (`1.`) artırılmalı.
-- Teşekkür metni "bir kopyasını e-postanıza da gönderdik" diyor; Resend bağlanınca bağlantı gerçekten e-postayla gitmeli.
-
-## Kaldığımız yer (13 Ekim 2026, gece)
-
-**Biten (bu turda commit'lendi):** mobil footer düzeni (hello + sosyal "Tüm notları oku"nun altında, imza tek satır ve konteynere sığar, tablette de); sağ altta yukarı çık butonu; mobil menü (header'ın kendisi aşağı açılır, blur + karartma, çizgisiz linkler, rehber kartı, hello ve sosyal); footer ve kapanış CTA'sında header koyu tema; breadcrumb'lar tek tip hap ve 12px; kısa ekranda (yatay telefon) menü paneli kayar. Tema dengesi ilkesi "Kararlar"da.
-
-**Sayfa geçişi (23 Ekim 2026):**
-- Çözüldü: giriş animasyonları artık çapraz geçiş bittikten sonra başlıyor (`app/layout.tsx` · `window.__vt`, sayfa JS'leri `__vt.then(...)`); eski ve yeni sayfa üst üste binmiyor. F5 etkilenmez.
-- Kalan (karar: şimdilik böyle): Danışmanlık ve rehber açılışında 100-200 ms'lik küçük bir kare düşmesi. Sebep tek bir yer değil, sayfanın ağırlığı (yavaşlatılmış CPU'da ~220 ms stil hesabı, ~115 ms betik, ~90 ms HTML ayrıştırma). Denendi ve geri alındı: geçiş sırasında sonsuz animasyonları durdurmak; sayfa betiğini geçiş sonrasına ertelemek. İkisi de ölçülebilir fark yaratmadı. Gerçek çözüm sayfa CSS'ini küçültmek; ayrı, büyük iş.
-- Kadir'in Simülatör kaydı: `~/Desktop/Ekran Kaydı 2026-10-13 00.22.27.mov` (eski durum).
-
-**Kontrol bekleyenler:** menü açılış/kapanış ve logo genişleme animasyonlarının hareketi (yalnız durağan görüntüyle doğrulandı); gerçek iPhone ve Android'de elle bakış; Next dev konsolundaki hydration uyarısı (bizden önce de vardı); rozet ve kart renkleri koyu/açık geçişte son bir kez gözle.
-
-## Mobil revizyon
-
-- Kadir'in 29 ekran görüntüsü (iPhone Safari): `~/Downloads/mobil-ss/IMG_1882–1910.PNG`. Görüntü görüntü gidiliyor; Kadir revize vermeden hiçbir şey değişmez. Sıra: ana sayfa → Check-up → Danışmanlık → Hakkımızda → rehber/blog → Görüşme Planla formu.
-- Yapıldı (9 Ekim): ana sayfa hero mobilde rapor ekranı en üstte, laptop çerçevesiz, altı beyaza solar, başlık hafif üstüne biner; sonrası masaüstüyle aynı sıra (açıklama → butonlar → marka şeridi); ekran ölçeklenerek sığıyor, "Örnek raporu inceleyin" butonu mobilde gizli (`styles/home.css` @720, `public/js/home.js` fitLap). Mobil yazı ölçeği tek yerden, bir kademe küçük (`styles/ortak.css`, sayfa CSS'lerinden sonra import).
-- Yapıldı (9 Ekim): hero'da çerçeve Check-up'taki gibi, ekran kısa, altında küçük "Örnek raporu gör"; mobilde tek buton (Check-up). Üst şerit yeniden: × ile kapanır (localStorage `cc-topbar`, head script `app/layout.tsx`), "ÜCRETSİZ" rozet, mobilde iki satır ve koyu köşeler; kurallar `styles/ortak.css`. Marka logoları mobilde bir ton koyu.
-- Yapıldı (9-10 Ekim): ana sayfa mobil bölümleri sırayla elden geçti: çalışma modelleri kartı (obje küçüldü, siyah çizgi kalktı), danışmanlık maddeleri üst üste biner, problem haritası (alan isimleri noktaların yerinde), ekosistem kartları (ekran boyunda, üst üste biner, görsel başlığın altında, "Daha fazla" şeridi logoların üstüne biner, mobilde hover kapalı), Check-up bölümü (başlık, buton, yana kayan 1-2-3, sadeleşmiş rapor ve sekmeler), son çağrı bölümü (obje butonun sağında). Sıradaki: görüntü 1884 sonrası kalanlar ve diğer sayfalar (Check-up, Danışmanlık, Hakkımızda, rehber/blog, Görüşme Planla formu).
-- Tartışılacak (Kadir): ana sayfa hero görseli Check-up hero'suyla çok benzer; ileride ana sayfa için farklı bir görsel düşünülebilir.
-- Kadir'in genel notları: hero alanları masaüstünde ve mobilde "takılıyor" hissi veriyor (giriş animasyonları / arka plan katmanı; incelenecek). Tekrar eden tablı bölümler (8 alan, 3'lü tablar) mobilde elden geçecek.
-- Yapıldı (12 Ekim): footer mobil düzeni (hello + sosyal "Tüm notları oku"nun altında, imza tek satır ve konteynere sığar, alttan kesik), sağ altta "yukarı çık" butonu (`public/js/to-top.js`, `styles/ortak.css`; çerez bandı ve menü açıkken gizli, koyu bölümde koyu), mobil menü: header'ın kendisi aşağı açılır (kapsül/şerit), blur + karartma, çizgisiz linkler, rehber kartı, hello ve sosyal ikonlar (`content/partials/header.html`, `styles/*.css` "v0.23" bloğu). Footer ve kapanış CTA'sında header koyu temaya geçer. Kapsam: yalnız ≤860px; masaüstü davranışı aynı.
-- Cihaz kontrolü (12 Ekim): 320, 360, 390, 412, 768 ve yatay 740×360 ölçüldü: yatay taşma yok; imza her genişlikte sığar (eski 13vw kuralı 768px'te taşıyordu, düzeltildi); kısa ekranda menü paneli içinde kayar. Bilinen sınır: `@property` ile dönen şerit eski tarayıcılarda (Safari <16.4, Firefox <128) sabit durur, işlev aynı.
-- Yapıldı (13 Ekim): breadcrumb'lar tek tip hap ve daha küçük (12px): Check-up de diğer sayfalarla aynı (`.h4-pill` ↔ `.ab-pill`). Yukarı çık halkası yalnız görünürken döner.
-- Sayfa geçişi: bkz. "Kaldığımız yer" (üst üste binme çözüldü, küçük takılma kaldı).
-- Yerel mobil kontrol: `node scripts/mobil-ss.mjs <url> <png> [y] [yükseklik]` (Chrome DevTools Protocol, 390×844, DPR 2, iPhone UA; sayfayı kaydırıp animasyonları tetikler). Önce `npm run build && npx next start -p 3100`.
-- Yapıldı (18 Ekim): Check-up sayfası mobilde baştan sona elden geçti (hero rapor çerçevesi, yaklaşım cümleleri, 8 alan ve "elinizde ne olacak" yana kayan sekmeler, kimler için, süreç, erişimler, gizlilik, kapanış CTA'sı). Sekmelerde tüm paneller aynı hücrede üst üste durur, kutu sabit yükseklikte; dokunma ve kaydırma gerçek cihazda henüz denenmedi.
-- Yapıldı (18 Ekim, Kadir yokken, gözden geçirme bekliyor): Danışmanlık, Commerce Notes listesi, blog yazısı, ücretsiz rehber ve Hakkımızda mobilde elden geçti: bölüm boşlukları azaldı (`--space-section` 3,75rem), hero'daki boş alan kapandı, istatistikler sığdı, kapanış CTA'sı ana sayfadaki gibi (obje butonun sağında), blog yazısı okuma ölçüsü, "ilgili notlar" yana kayan şerit, rehberde "Ücretsiz rehberi al" başlığın altında. Yalnız ≤760px; masaüstü değişmedi. Kadir gözle bakıp revize verecek.
-- Bakılmadı: Kontrol listesi sayfası (`/rehber/.../kontrol-listesi`), Örnek rapor, yasal sayfalar. Görüşme Planla formunun ilk ekranı mobilde düzgündü, değişmedi.
-- Kaldırıldı (18 Ekim): blog yazısı ve rehber sayfalarındaki "İlgili notlar" (örnek içerik, bağlantılar `#`, güncel değildi). Yeni yazılar çıkınca geri gelecek; geri koyarken kart padding'i ve "İlgili notlar" başlık boyutu mobilde küçültülecek, kartlar yana kayan şerit olacak. Masaüstü kuralları (`.cn-rel*`, `.cn-rc`) `styles/commerce-notes.css`'te duruyor.
-- Mobil kararların ve nasıl yaptığımızın özeti, Master Brief v2'ye eklenecek ilkelerle birlikte: `docs/master-brief-v2-ek.md`. Kadir PDF brief'e satırları taşıyacak (PDF'i repo düzenlemiyor).
-- Sıradaki görüntü: IMG_1884 (ana sayfa, E-ticaret Altyapıları kartı).
-
-## Blog (Commerce Notes) ve rehberler · SEO
-
-Hedef: blog yazılarından SEO'da olabildiğince verim almak. Yazılar Kadir'le birlikte yazılacak.
-
-- Adres yapısı kuruldu:
-  - Liste: `/blog` (`/commerce-notes` 308 ile buraya yönlenir).
-  - Yazı: `/blog/<yazi>`.
-  - Rehber tanıtımı: `/rehber/<rehber>`.
-  - Form sonrası kontrol listesi: `/rehber/<rehber>/kontrol-listesi` (noindex).
-  - Eski `#yazı` bağlantıları JS ile yeni adreslere gider.
-  - Yazı ve rehber sayfalarında Article/BlogPosting + BreadcrumbList var, rehberde FAQPage de var.
-  - Yeni yazı eklerken: `content/pages/<slug>.html`, `data/pages.json`, `app/blog/<yazi>/page.tsx`; davranış `commerce-notes.js`'ten (`"js": "commerce-notes"`).
-- Slug'da yıl yok. Yıl gerekiyorsa başlıkta durur ("… (2026)") ve yazı güncellenince değişir; adres kalıcı kalır.
-- Her yazı için:
-  - kendi adresi, benzersiz title ve description, canonical;
-  - kendi OG görseli;
-  - Article + BreadcrumbList yapısal verisi, SSS varsa FAQPage;
-  - yazar Mahir Erdem ve yazar sayfası;
-  - datePublished/dateModified, sitemap'te lastmod;
-  - Check-up, Danışmanlık ve rehberlere iç linkler.
-- Google'ın yapay zekâ içerik rehberi (güncelleme: 1 Ekim 2026, developers.google.com/search/docs/fundamentals/using-gen-ai-content) ile yazı kuralları:
-  - Az ama derin yazı; değer katmayan seri üretim spam sayılır.
-  - Fark yaratan şey sahadan deneyim: Kadir ve Mahir anlatır, metin birlikte toparlanır.
-  - Yayın öncesi elle doğrulanır: isim, tarih, fiyat, rakam, alıntı/kaynak, linkler, title/description, yapısal veri, görsel alt metinleri.
-  - Yapay zekâ ile üretilen görsel kullanılırsa IPTC DigitalSourceType (TrainedAlgorithmicMedia) eklenir.
-  - Üretim şeklini belirtmek önerilen ama zorunlu değil; yazar ve gerçek tarih her yazıda var.
-- Yayın tarihleri gerçek olmalı; şu anki Ağustos–Eylül tarihleri yer tutucu.
-- Listede (26 Ekim 2026): altyapı rehberi + 3 yazı (301 haritası, altyapı seçimi, site analizi). "Platform değiştirmeden önce 7 soru" kaldırıldı (299 kelime, ince içerik); eski adres altyapı seçimi yazısına 308 yönlenir, özü orada "beş soru" bölümünde. 4 "yakında" yer tutucu kart ve filtreleri gizlendi (23 Ekim 2026): `content/pages/commerce-notes.html` içinde yorum satırı olarak duruyor, yazılar gelince açılır. HTML yorumları yayına gitmez (`lib/legacy-page.tsx`).
-
-## SEO iş planı (26 Ekim 2026)
-
-Durum: 3 yazı 27 Ekim 2026'da yayına alındı (Kadir önce yerelde inceleyecek, sonra Mahir'e gösterilecek). Yazılar Google Search Central belgelerine dayanıyor; sahadan deneyim iddiası yok.
-
-**Kadir:**
-- Search Console'da `/rehber/e-ticaret-altyapi-gecisi` için "Dizine eklenmesini iste". Ana sayfa ve Check-up için yapıldı. Yazılar yayına çıkınca üçü için de.
-- LinkedIn ve Instagram profillerinin web sitesi alanına adres.
-- Yerelde 3 yazıyı incele: `SITE_INDEXABLE=true npm run build && npx next start -p 3100`, sonra /blog.
-- Yazılar Mahir'in adıyla çıkıyor: Mahir okuyup onaylamalı (özellikle "Satıcıya sorulacak sorular", "Sık yapılan hatalar", "Genel eğilim" cümleleri). Sahadan 1-2 gerçek tavsiye gelirse yazılara eklenir.
-- Yazı 1'de karşılığı olmayan sayfa için "üst kategoriye yönlendirme" gibi bir tercih varsa Mahir söyler (Google 404/410 öneriyor).
-- Şirket bilgileri gelince Google İşletme Profili.
-- Haftada bir: Search Console Performans (sorgu ve sayfa), Sayfa dizinleme.
-
-**Claude:**
-- Yayına çıkmadan önce: yazıların tarihi (`datePublished`, listedeki tarih; şimdi 26 Ekim 2026), rehberin `dateModified`'ı, sitemap lastmod.
-- **OG görselleri ve `logo.png` canlıda 404** (kontrol: 26 Ekim). `data/pages.json`'daki tüm `ogImage` adresleri (`/og/...png`), JSON-LD `logo` ve `image` adresleri boş gösteriyor; paylaşım önizlemesi ve yapılandırılmış veri bundan etkileniyor. Çözüm: `public/og/` altına 1200×630 görseller (ana sayfa, Check-up, Danışmanlık, Hakkımızda, Commerce Notes, rehber, 4 yazı) ve `public/logo.png`.
-- Rehber sayfası title'ına "kontrol listesi" eklemek (Google rehbere ilk bakışını yaptıktan sonra, birlikte).
-- Rehberdeki 12 adımın derinleştirilmesi: yazı 1 ile adım 5 bağlandı; diğer adımlar için yazı/başlık planı.
-- Yazı sonrası 4 gizli yer tutucu başlığın (sepet terki, pazaryeri, yapay zekâ, önceliklendirme) sırası.
-- LinkedIn ve Instagram duyuru metinleri (yaparız/ben yok), her yazı çıkınca.
-- Yazı başına title/description, iç bağlantı ve Search Console sorgularına göre güncelleme (2-3 ay sonra).
-
-## Bülten (Commerce Notes)
-
-Kurgu: Gündem haftada iki kez (salı, cuma 08:00) otomatik hazırlanır, Kadir onaylayınca gider; ekip ve aboneler alır, sitede yayınlanmaz (SEO'ya etkisi yok). Pratik yazılar blogda yayınlanır, abonelere de gider. Sitede ayrıca anlatılmıyor; LinkedIn ve sosyal medyada duyurulacak.
-
-- Hazır: şablon (`lib/email/newsletter.ts`), kapak (`/api/bulten/kapak`), haber toplama (`scripts/bulten/haberler.mjs`, 9 kaynak), sayıdan HTML (`olustur.mjs`), test gönderimi (`gonder.mjs --test`). İlk sayı `scripts/bulten/sayilar/2026-10-06.json`; Gmail testi tamam.
-- Hazır: onay sistemi. Site önizlemeyi gönderir (`/api/bulten/onizleme-gonder`), "Onayla ve gönder" → `/bulten/onay` → gönderim. Onaysız hiçbir şey gitmez. Alan adına kadar test modu, yalnız `BULTEN_TEST_TO`.
-- DURAKLATILDI (21 Ekim 2026, Kadir): zamanlanmış görev kapatıldı, boşuna deploy olmasın. Resend ve alan adı kurulunca yeniden açılacak (claude.ai/code/routines sayfasından ya da Claude'a "bülten görevini aç" denir). Son sayı: 2026-10-20 (sayı 5).
-- Hazır: Claude Code zamanlanmış görevi "Commerce Notes · Gündem bülteni" (salı ve cuma 08:00, Opus 5.5, `bulten` ortamı, ağ: Full). https://claude.ai/code/routines/trig_017yvEzHwwA8ho1kK9mEvNTm. Görev gizli bilgi taşımaz.
-- Tamam: görev GitHub'a yazabiliyor. kadirec collaborator oldu, 6 Ekim'de elle çalıştırılan görev `scripts/bulten/sayilar/2026-10-06.json` dosyasını commit'leyip push etti (5 haber + 4 kısa). Bundan sonra salı ve cuma 08:00'de kendiliğinden çalışır.
-- Yapılacak: footer ve blogdaki bülten formlarını Resend'deki kitleye bağlamak; kayıtta iki seçenek (Gündem / Pratik yazılar), her biri için ayrı çıkış.
-- Yapılacak: ekip adresleri (Kadir'den). Alan adı doğrulanınca onay/test alıcılarına mahir@agesoft.com.tr eklenecek (`BULTEN_ONAY_TO`, `BULTEN_TEST_TO`, virgülle).
-- Bekliyor: alan adı doğrulanana kadar Resend yalnız mahirerdemme@gmail.com'a gönderebiliyor; gönderen `onboarding@resend.dev` (bu yüzden önizleme Gmail'de spam'e düşüyor). Durum 6 Ekim: Resend'de alan adı henüz eklenmedi; thecommerceclinic.com GoDaddy'de, park sayfasında, MX/TXT kaydı yok. Sıra: Resend'e alan adı ekle (Europe) → GoDaddy'ye Resend DKIM/MX/SPF kayıtları + Vercel A/CNAME → "Verified" olunca Claude `BULTEN_FROM`, `BULTEN_TEST_TO`, `BULTEN_ONAY_TO` günceller. İlk abone/test alıcısı: mahir@agesoft.com.tr (Kadir). Alan adı sonrası gönderen `Commerce Notes <notes@thecommerceclinic.com>` olacak (`BULTEN_FROM`).
-- Bekliyor: e-posta alt bilgisindeki şirket unvanı / adres / MERSİS yer tutucu (yasal metinlerle aynı anda).
-- Güvenlik: Resend anahtarı sohbette paylaşıldı; her şey çalışınca Resend'de yenisi oluşturulup eskisi silinmeli (`vercel env add RESEND_API_KEY` + `.env.local`).
-- Not: Search Engine Land ve Digital Commerce 360 RSS'i dışarıdan engelliyor; kaynak listesi `haberler.mjs` içinde.
 
 ## Yönetim paneli (/yonetim)
 
@@ -170,3 +70,13 @@ Gizli iç panel (23-24 Ekim 2026): adres herkese 404 döner; yalnızca gizli ana
 - Giriş (e-posta + tek kullanımlık kod), davet e-postaları, aksiyon durumu ve sorumlu kaydı şu an tarayıcıda simüle ediliyor. Sunucu tarafı ilk gerçek Check-up gelince kurulacak (brief: sonraki faz).
 - Final görüşmesi notları: `R.finalNotes` doldurulunca rapor kendiliğinden Sürüm 1.1 olur.
 
+## İçerik, SEO, bülten ve sosyal medya
+
+Blog yazma, yazım dili, SEO, bülten ve sosyal medya üretimi ayrı dosyada: [icerik-ve-sosyal.md](icerik-ve-sosyal.md).
+
+## Mobil ve sayfa geçişi (özet)
+
+- Mobil revizyon tamamlandı (Ekim 2026): ana sayfa, Check-up, Danışmanlık, Hakkımızda, Commerce Notes, blog, rehber ve footer/menü ≤860px'te elden geçti; Kadir ekran görüntüleriyle revize verdi. Mobil kararlar ve ilkeler: `docs/master-brief-v2-ek.md`. Yerel kontrol: `node scripts/mobil-ss.mjs <url> <png> [y] [yükseklik]` (önce `npm run build && npx next start -p 3100`).
+- Kalan küçük takılma: Danışmanlık ve rehber açılışında sayfa geçişinde 100-200 ms kare düşmesi (sayfanın ağırlığından; gerçek çözüm sayfa CSS'ini küçültmek, ayrı ve büyük iş; karar: şimdilik böyle).
+- Bakılmadı: Kontrol listesi sayfası, Örnek rapor ve yasal sayfaların mobil görünümü; gerçek iPhone/Android'de dokunma ve kaydırma elle doğrulanmadı.
+- Ana sayfa hero görseli Check-up hero'suyla çok benzer; ileride farklı bir görsel düşünülebilir (Kadir).

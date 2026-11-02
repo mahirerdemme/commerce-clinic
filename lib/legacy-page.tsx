@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata, Viewport } from "next";
 import { getPage, INDEXABLE, type PageSlug } from "@/lib/site";
+import { BLOG_YAYIN, yayinda } from "@/lib/blog-takvim";
 
 /**
  * Prototip sayfalarını birebir yayınlar.
@@ -77,10 +78,23 @@ function withShared(slug: PageSlug, html: string) {
   return html.replace("<!--#header-->", header).replace("<!--#footer-->", footer).replace("<!--#gp-->", gp);
 }
 
+/** Yayın saati gelmemiş yazıların kartını, bağlantısını ve boşalan konu sekmesini çıkarır. */
+function gizle(html: string) {
+  const bekleyen = Object.keys(BLOG_YAYIN).filter((r) => !yayinda(r));
+  if (!bekleyen.length) return html;
+  for (const r of bekleyen) {
+    html = html.replace(new RegExp(`<article class="cn-row"[^>]*>(?:(?!</article>)[\\s\\S])*?href="${r}"[\\s\\S]*?</article>\\s*`, "g"), "");
+    html = html.replace(new RegExp(`<a href="${r}"[^>]*>([\\s\\S]*?)</a>`, "g"), "$1");
+  }
+  return html.replace(/<button role="tab"[^>]*data-f="([a-z]+)"[^>]*>[^<]*<\/button>\s*/g, (b, f) =>
+    f === "all" || new RegExp(`data-cat="[^"]*\\b${f}\\b`).test(html) ? b : "",
+  );
+}
+
 export function LegacyPage({ slug }: { slug: PageSlug }) {
   const p = getPage(slug);
-  // HTML yorumları (taslak notları, gizlenen bölümler) yayına gitmez
-  const html = withShared(slug, read("content/pages", `${slug}.html`)).replace(/<!--[\s\S]*?-->/g, "");
+  // HTML yorumları (gizlenen bölümler) yayına gitmez. Henüz yayın saati gelmemiş yazılar (lib/blog-takvim.ts) listeden ve bağlantılardan çıkarılır
+  const html = gizle(withShared(slug, read("content/pages", `${slug}.html`)).replace(/<!--[\s\S]*?-->/g, ""));
   const early = p.early + (p.bodyClass ? `document.body.classList.add(${JSON.stringify(p.bodyClass)});` : "");
   return (
     <>

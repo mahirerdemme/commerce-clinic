@@ -1,29 +1,66 @@
 [
-  {
-    "slug": "301-yonlendirme-haritasi",
-    "tarih": "2026-10-25",
-    "tag": "Altyapı",
-    "title": "Altyapı değiştirirken SEO'yu kaybetmemek: 301 yönlendirme haritası nasıl hazırlanır",
-    "konu": "Altyapı değiştirirken SEO'yu kaybetmemek: 301 haritası",
-    "onizleme": "Eski adreslerin yeni bir karşılığı yoksa arama trafiği 404'e düşer.",
-    "summary": "Altyapıyı değiştirdiğinizde adresleriniz de çoğunlukla değişir. Eski bir ürün adresinin yeni sitede karşılığı yoksa ziyaretçi 404 sayfasına düşer, Google da o adrese ne olduğunu anlayamaz. Bu yazı, Google'ın site taşıma rehberine dayanarak haritayı nasıl hazırlayacağınızı, nasıl test edeceğinizi ve canlıya geçtikten sonra nelere bakacağınızı adım adım gösteriyor."
-  },
-  {
-    "slug": "e-ticaret-altyapisi-nasil-secilir",
-    "tarih": "2026-10-26",
-    "tag": "Altyapı",
-    "title": "E-ticaret altyapısı nasıl seçilir? Shopify, ikas, Ticimax ve özel yazılım için karar çerçevesi",
-    "konu": "E-ticaret altyapısı nasıl seçilir? Yedi kriter",
-    "onizleme": "Özellik listelerine bakmadan önce kararı hangi kriterlerle vereceğinizi netleştirin.",
-    "summary": "\"Hangi altyapı en iyisi?\" sorusunun tek bir cevabı yok. İyi olan, işinizin ihtiyacına, ekibinizin gücüne ve büyüme planınıza uyandır. Bu yazı bir sıralama vermiyor, yöntemi anlatıyor: önce modeller, sonra yedi kriter, sonra satıcıya soracağınız sorular."
-  },
-  {
-    "slug": "e-ticaret-sitesi-analizi-nasil-yapilir",
-    "tarih": "2026-10-27",
-    "tag": "Analiz",
-    "title": "E-ticaret sitesi analizi nasıl yapılır? 8 alanda kendi kendinize kontrol",
-    "konu": "E-ticaret sitesi analizi nasıl yapılır? 8 alanda kontrol",
-    "onizleme": "Satışlar yavaşladığında tek bir noktaya yüklenmeden önce sekiz alana bakın.",
-    "summary": "Satışlar yavaşladığında ya da dönüşüm düştüğünde ilk tepki genellikle tek bir noktaya yüklenmek olur: reklama, tasarıma ya da fiyata. Oysa bir e-ticaret sitesinin performansı, birbirine bağlı birçok alanın toplamıdır. Bu yazıdaki kontrol listesi, sitenizi sekiz alanda kendi başınıza gözden geçirmeniz için hazırlandı."
-  }
+ {
+  "slug": "301-yonlendirme-haritasi",
+  "tarih": "2026-10-25",
+  "tag": "Altyapı",
+  "title": "Altyapı değiştirirken SEO'yu kaybetmemek: 301 yönlendirme haritası nasıl hazırlanır",
+  "konu": "Altyapı değiştirirken SEO'yu kaybetmemek: 301 haritası",
+  "onizleme": "Eski adreslerin yeni bir karşılığı yoksa arama trafiği 404'e düşer.",
+  "summary": "Altyapıyı değiştirdiğinizde adresleriniz de çoğunlukla değişir. Eski bir ürün adresinin yeni sitede karşılığı yoksa ziyaretçi 404 sayfasına düşer, Google da o adrese ne olduğunu anlayamaz. Bu yazı, Google'ın site taşıma rehberine dayanarak haritayı nasıl hazırlayacağınızı, nasıl test edeceğinizi ve canlıya geçtikten sonra nelere bakacağınızı adım adım gösteriyor."
+ },
+ {
+  "slug": "e-ticaret-altyapisi-nasil-secilir",
+  "tarih": "2026-10-26",
+  "tag": "Altyapı",
+  "title": "E-ticaret altyapısı nasıl seçilir? Shopify, ikas, Ticimax ve özel yazılım için karar çerçevesi",
+  "konu": "E-ticaret altyapısı nasıl seçilir? Yedi kriter",
+  "onizleme": "Özellik listelerine bakmadan önce kararı hangi kriterlerle vereceğinizi netleştirin.",
+  "summary": "\"Hangi altyapı en iyisi?\" sorusunun tek bir cevabı yok. İyi olan, işinizin ihtiyacına, ekibinizin gücüne ve büyüme planınıza uyandır. Bu yazı bir sıralama vermiyor, yöntemi anlatıyor: önce modeller, sonra yedi kriter, sonra satıcıya soracağınız sorular."
+ },
+ {
+  "slug": "e-ticaret-sitesi-analizi-nasil-yapilir",
+  "tarih": "2026-10-27",
+  "tag": "Analiz",
+  "title": "E-ticaret sitesi analizi nasıl yapılır? 8 alanda kendi kendinize kontrol",
+  "konu": "E-ticaret sitesi analizi nasıl yapılır? 8 alanda kontrol",
+  "onizleme": "Satışlar yavaşladığında tek bir noktaya yüklenmeden önce sekiz alana bakın.",
+  "summary": "Satışlar yavaşladığında ya da dönüşüm düştüğünde ilk tepki genellikle tek bir noktaya yüklenmek olur: reklama, tasarıma ya da fiyata. Oysa bir e-ticaret sitesinin performansı, birbirine bağlı birçok alanın toplamıdır. Bu yazıdaki kontrol listesi, sitenizi sekiz alanda kendi başınıza gözden geçirmeniz için hazırlandı."
+ },
+ {
+  "slug": "sepet-terki-nedenleri",
+  "tarih": "2026-11-03",
+  "tag": "Analiz",
+  "title": "Müşteriniz sepete ekleyip neden ödemeden çıkıyor?",
+  "konu": "Müşteri sepete ekleyip neden ödemeden çıkıyor?",
+  "onizleme": "Nedeni tahminle değil, huniden bulun.",
+  "summary": "Ziyaretçi sepete ürün ekleyip ödemeden çıkıyorsa nedeni tahminle değil huniden bulun. Altı olası neden, nereden bakılacağı ve düzeltme sırası.",
+  "oncelik": true
+ },
+ {
+  "slug": "e-ticaret-onceliklendirme",
+  "tarih": "2026-11-04",
+  "tag": "Analiz",
+  "title": "E-ticarette önce neyi düzeltmeli? Sıralama rehberi",
+  "konu": "E-ticarette önce neyi düzeltmeli? Sıralama rehberi",
+  "onizleme": "Her iş acil görünüyorsa sıralamayı üç soruyla yapın.",
+  "summary": "Listede onlarca iş var ve hepsi acil görünüyor. Etki, maliyet ve bağımlılıkla işleri sıralamak için sade bir yöntem."
+ },
+ {
+  "slug": "sepet-kurtarma-nasil-kurulur",
+  "tarih": "2026-11-05",
+  "tag": "Strateji",
+  "title": "Sepet kurtarma nasıl kurulur? E-posta, SMS ve WhatsApp ile örnek akış",
+  "konu": "Sepet kurtarma nasıl kurulur? E-posta, SMS, WhatsApp",
+  "onizleme": "Sepetini unutan müşteriyi geri getiren örnek akış.",
+  "summary": "Sepetini unutan müşteriyi geri getiren otomasyon: hangi kanal, kaç mesaj, ne zaman ve indirim kodu ne zaman devreye girer. Örnek akış ve araçlar."
+ },
+ {
+  "slug": "pazaryerinde-satarken-kendi-e-ticaret-siteniz",
+  "tarih": "2026-11-06",
+  "tag": "Strateji",
+  "title": "Pazaryerinde satıyorsanız kendi e-ticaret siteniz gerekir mi?",
+  "konu": "Pazaryerinde satıyorsanız kendi siteniz gerekir mi?",
+  "onizleme": "Pazaryeri talep getirir, ilişkiyi kendi siteniz kurar.",
+  "summary": "Pazaryeri satış getirir, müşteri ilişkisi ve marka ise kendi sitede kurulur. Hangi durumda kendi siteye ihtiyaç var, hangi durumda henüz yok?"
+ }
 ]

@@ -133,7 +133,7 @@
   {
     "post": "post-10-sepet-terki",
     "zaman": "2026-11-03T09:00:00.000Z",
-    "durum": "bekliyor",
+    "durum": "paylasildi",
     "gorseller": [
       "/sosyal/post-10-sepet-terki/slayt-1.jpg",
       "/sosyal/post-10-sepet-terki/slayt-2.jpg",
@@ -141,7 +141,10 @@
       "/sosyal/post-10-sepet-terki/slayt-4.jpg",
       "/sosyal/post-10-sepet-terki/slayt-5.jpg"
     ],
-    "altyazi": "Sepete eklenen ürünün ödemeye gelmeden terk edilmesi çoğu zaman tek bir sorun değildir. Kaybın hangi adımda olduğu, nedenin nerede aranacağını gösterir.\n\nNereden bakılacağı ve düzeltme sırası Commerce Notes'ta. Bağlantı biyografide."
+    "altyazi": "Sepete eklenen ürünün ödemeye gelmeden terk edilmesi çoğu zaman tek bir sorun değildir. Kaybın hangi adımda olduğu, nedenin nerede aranacağını gösterir.\n\nNereden bakılacağı ve düzeltme sırası Commerce Notes'ta. Bağlantı biyografide.",
+    "paylasilma": "2026-11-03T11:31:02.139Z",
+    "medya": "17911908438587041",
+    "permalink": "https://www.instagram.com/p/DfRx4PCm10J/"
   },
   {
     "post": "post-11-onceliklendirme",

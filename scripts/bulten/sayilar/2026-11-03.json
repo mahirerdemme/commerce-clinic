@@ -1,0 +1,61 @@
+{
+ "subject": "Sahte indirime 1 milyon TL ceza, siparişlerin beşte biri ChatGPT'den",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "3 Kasım 2026",
+ "issue": 6,
+ "items": [
+  {
+   "tag": "Yasal",
+   "title": "Sahte indirim reklamı yapan e-ticaret firmasına 1 milyon TL ceza",
+   "summary": "Ticaret Bakanlığı Reklam Kurulu, \"Son 14 günün en düşük fiyatı\" ve \"Sepette yüzde 80 indirim\" ifadeleriyle satış yapan bir internet alışveriş platformuna 1 milyon 83 bin 706 TL idari para cezası verdi ve reklamların durdurulmasına karar verdi. İncelemede ürünlerin referans gösterilen yüksek fiyattan gerçekte satılmadığı, indirimli diye duyurulan fiyatın kampanyadan önce de sürekli uygulandığı tespit edildi.",
+   "takeaway": "İndirimlerde gösterdiğiniz eski fiyatın gerçekten uygulandığını belgeleyebildiğinizden emin olun; kampanya dönemine girmeden fiyat geçmişinizi kontrol edin.",
+   "url": "https://www.marketingturkiye.com.tr/haberler/sahte-indirim-reklamina-1-milyon-tl-ceza/",
+   "source": "Marketing Türkiye"
+  },
+  {
+   "tag": "Ölçüm",
+   "title": "İspanyol çiçekçi: Online siparişlerin beşte biri ChatGPT'den geliyor",
+   "summary": "İspanya'daki Persa Flores, Shopify'ın kaydettiği ilk ve son ziyaret verisiyle eylülden bu yana online siparişlerinin yaklaşık beşte birinin ChatGPT'de kendisini bulan müşterilerden geldiğini tespit etti. Bu siparişlerin hepsi ChatGPT'nin eklediği utm_source=chatgpt.com etiketiyle gelirken, yalnız sekizde birinde yönlendiren site olarak ChatGPT görünüyordu.",
+   "takeaway": "Yapay zekâ kaynaklı trafiği yalnız yönlendiren siteye bakarak ölçmeyin; sipariş düzeyinde utm_source=chatgpt.com gibi etiketleri de raporlarınıza ekleyin.",
+   "url": "https://www.practicalecommerce.com/chatgpt-sends-1-in-5-orders-to-florist",
+   "source": "Practical Ecommerce"
+  },
+  {
+   "tag": "Arama",
+   "title": "Google, robots.txt'te ortak yapay zekâ eğitimi işaretini destekleyecek",
+   "summary": "Google, IETF'teki AIPREF çalışmasına dayanan ortak bir robots.txt işaretini destekleyeceğini açıkladı; site sahipleri bununla birden çok yapay zekâ sağlayıcısı için eğitim tercihini tek adımda belirtebilecek. Bu işaretle eğitimden çıkan siteler, Google-Extended ayrıca belirtilmemişse Google-Extended'ı engellemiş sayılacak; Google desteği 2027'de sunmayı hedefliyor.",
+   "takeaway": "robots.txt dosyanızda yapay zekâ eğitimi için tercihinizi şimdiden belirleyin; Gemini yanıtlarında kaynak olarak görünmenin Google-Extended iznine bağlı olduğunu unutmayın.",
+   "url": "https://developers.google.com/search/blog/2026/10/ai-training-control",
+   "source": "Google Search Central"
+  },
+  {
+   "tag": "Reklam",
+   "title": "ChatGPT reklamları 89 ülkede, Shopify entegrasyonu uluslararası açıldı",
+   "summary": "OpenAI'ın reklamverenlere gönderdiği haftalık e-postaya göre ChatGPT reklamları 26 ülke daha eklenerek 89 ülkede kullanılabiliyor, çoklu görselli reklamlar tüm reklamverenlere açık beta olarak sunuldu ve Shopify entegrasyonu uluslararası kullanıma açıldı. Masaüstünde sohbet genişliğini daha çok kullanan yeni standart reklam kartı ise mevcut kampanya ve görsellerle, reklamverenin bir şey yapmasına gerek kalmadan çalışıyor.",
+   "takeaway": "Shopify kullanıyorsanız ChatGPT reklamlarının hesabınızın ülkesinde açık olup olmadığını kontrol edin; açıksa küçük bir bütçeyle test etmeyi düşünebilirsiniz.",
+   "url": "https://www.seroundtable.com/chatgpt-ads-update-42427.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Yasal",
+   "title": "15 yaş altına sosyal medya yasağı başladı, gençlere reklam da sınırlı",
+   "summary": "1 Kasım'da yürürlüğe giren yönetmelikle sosyal ağların 15 yaşını doldurmamış çocuklara hizmet vermesi yasaklandı; yaş doğrulaması e-Devlet üzerinden yapılacak, mevcut hesaplar için geçiş süresi 31 Mart 2027'de bitiyor. 15-18 yaş grubundaki kullanıcıların kişisel verileri ise profilleme ve kişiselleştirilmiş ticari reklam için kullanılamayacak.",
+   "takeaway": "Ürünleriniz gençlere hitap ediyorsa sosyal medyada kişiselleştirilmiş reklamla ulaşabileceğiniz kitlenin daralabileceğini hesaba katın ve hedeflemenizi gözden geçirin.",
+   "url": "https://www.marketingturkiye.com.tr/haberler/turkiyede-15-yas-altina-sosyal-medya-yasagi-yururluge-girdi/",
+   "source": "Marketing Türkiye"
+  }
+ ],
+ "briefs": [
+  { "title": "Google, marka aramalarında yapay zekâ özetlerini sağ sütuna taşıdı", "url": "https://www.seroundtable.com/google-ai-overviews-brands-right-42440.html", "source": "Search Engine Roundtable" },
+  { "title": "Amazon: Alexa for Shopping'i son 12 ayda 400 milyonu aşkın müşteri kullandı", "url": "https://www.modernretail.co/technology/amazon-says-more-than-400m-customers-have-used-alexa-for-shopping-in-the-last-12-months/", "source": "Modern Retail" },
+  { "title": "DoorDash, Instacart'ı yaklaşık 17 milyar dolara satın alıyor", "url": "https://webrazzi.com/2026/10/30/doordash-instacarti-17-milyar-dolara-satin-almak-icin-anlasmaya-vardi/", "source": "Webrazzi" },
+  { "title": "Bing, Copilot destekli yapay zekâ özetlerinde reklam gösteriyor", "url": "https://www.seroundtable.com/bing-ads-copilot-ai-overviews-42416.html", "source": "Search Engine Roundtable" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

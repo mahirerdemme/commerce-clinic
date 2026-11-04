@@ -149,13 +149,16 @@
   {
     "post": "post-11-onceliklendirme",
     "zaman": "2026-11-04T17:15:29.000Z",
-    "durum": "bekliyor",
+    "durum": "paylasildi",
     "gorseller": [
       "/sosyal/post-11-onceliklendirme/slayt-1.jpg",
       "/sosyal/post-11-onceliklendirme/slayt-2.jpg",
       "/sosyal/post-11-onceliklendirme/slayt-3.jpg"
     ],
-    "altyazi": "Yapılacak iş çok ve hepsi acil görünüyor. Sorun çoğu zaman bilgi eksikliği değil, sıra eksikliğidir.\n\nİşleri sıralamak için sade bir yöntem Commerce Notes'ta. Bağlantı biyografide."
+    "altyazi": "Yapılacak iş çok ve hepsi acil görünüyor. Sorun çoğu zaman bilgi eksikliği değil, sıra eksikliğidir.\n\nİşleri sıralamak için sade bir yöntem Commerce Notes'ta. Bağlantı biyografide.",
+    "paylasilma": "2026-11-04T17:17:15.396Z",
+    "medya": "18114313151601308",
+    "permalink": "https://www.instagram.com/p/DfU-SjinOQC/"
   },
   {
     "post": "post-12-sepet-kurtarma",

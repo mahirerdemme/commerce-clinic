@@ -163,7 +163,7 @@
   {
     "post": "post-12-sepet-kurtarma",
     "zaman": "2026-11-05T09:00:00.000Z",
-    "durum": "bekliyor",
+    "durum": "paylasildi",
     "gorseller": [
       "/sosyal/post-12-sepet-kurtarma/slayt-1.jpg",
       "/sosyal/post-12-sepet-kurtarma/slayt-2.jpg",
@@ -172,7 +172,10 @@
       "/sosyal/post-12-sepet-kurtarma/slayt-5.jpg",
       "/sosyal/post-12-sepet-kurtarma/slayt-6.jpg"
     ],
-    "altyazi": "Sepetini unutan müşteriyi geri getirmek yalnız e-postayla yapılmaz. E-posta, SMS, web push ve WhatsApp birlikte kurulabilir. Hangisi olursa olsun, mesajdan önce ticari ileti onayı gerekir.\n\nÖrnek akış ve araçlar Commerce Notes'ta. Bağlantı biyografide.\n\nLogolar ilgili firmaların tescilli markalarıdır; resmî bir ortaklık anlamına gelmez."
+    "altyazi": "Sepetini unutan müşteriyi geri getirmek yalnız e-postayla yapılmaz. E-posta, SMS, web push ve WhatsApp birlikte kurulabilir. Hangisi olursa olsun, mesajdan önce ticari ileti onayı gerekir.\n\nÖrnek akış ve araçlar Commerce Notes'ta. Bağlantı biyografide.\n\nLogolar ilgili firmaların tescilli markalarıdır; resmî bir ortaklık anlamına gelmez.",
+    "paylasilma": "2026-11-05T09:21:02.976Z",
+    "medya": "18342186022261568",
+    "permalink": "https://www.instagram.com/p/DfWsmYcGxo3/"
   },
   {
     "post": "post-13-pazaryeri-gorus",

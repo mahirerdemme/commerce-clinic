@@ -1,0 +1,24 @@
+{
+  "kind": "yazi",
+  "subject": "Müşteri sepete ekleyip neden ödemeden çıkıyor?",
+  "preheader": "Nedeni tahminle değil, huniden bulun.",
+  "date": "6 Kasım 2026",
+  "issue": 7,
+  "items": [
+    {
+      "tag": "Analiz",
+      "title": "Müşteriniz sepete ekleyip neden ödemeden çıkıyor?",
+      "summary": "Ziyaretçi sepete ürün ekleyip ödemeden çıkıyorsa nedeni tahminle değil huniden bulun. Altı olası neden, nereden bakılacağı ve düzeltme sırası.",
+      "url": "https://thecommerceclinic.com/blog/sepet-terki-nedenleri?utm_source=bulten&utm_medium=email&utm_campaign=yazi-sepet-terki-nedenleri",
+      "source": "Commerce Notes",
+      "button": "Yazının devamı"
+    }
+  ],
+  "cta": {
+    "eyebrow": "Ücretsiz rehber",
+    "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+    "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+    "label": "Rehberi al",
+    "url": "/rehber/e-ticaret-altyapi-gecisi"
+  }
+}

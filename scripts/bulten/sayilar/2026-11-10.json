@@ -1,0 +1,61 @@
+{
+ "subject": "ChatGPT reklamları Google'ın gerisinde, TikTok Shop ayrı uygulama oldu",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "10 Kasım 2026",
+ "issue": 8,
+ "items": [
+  {
+   "tag": "Reklam",
+   "title": "Araştırma: ChatGPT reklamları Google'dan 6,6 kat az getiri sağlıyor",
+   "summary": "1.898 online mağazanın verisine dayanan bir ön çalışmaya göre, harcanan her 1 dolar ChatGPT reklamlarında 0,52 dolar, Google arama reklamlarında 3,40 dolar gelir getirdi; gelir verisi olan reklamverenlerin yüzde 82'si ChatGPT reklamlarından hiç satış alamadı. Çalışma henüz hakem değerlendirmesinden geçmedi.",
+   "takeaway": "ChatGPT reklamlarını denemek isteyen markalar bütçeyi küçük tutup sonuçları satış üzerinden ölçmeli; ana bütçeyi kanıtlanmış kanallardan çekmek için erken olabilir.",
+   "url": "https://www.marketingturkiye.com.tr/haberler/chatgpt-reklamlari-google-adsin-gerisinde-kaldi-66-kat-daha-dusuk-getiri-yaratiyor/",
+   "source": "Marketing Türkiye"
+  },
+  {
+   "tag": "Sosyal ticaret",
+   "title": "TikTok Shop ana uygulamadan ayrıldı, bağımsız uygulama oldu",
+   "summary": "TikTok, alışveriş hizmetini iOS ve Android'de ayrı bir uygulama olarak yayınladı; uygulama şimdilik Singapur, Malezya, Tayland ve Filipinler'de, canlı yayın ve kısa videoyla ürün keşfi, uygulama içi ödeme ve sipariş takibi sunuyor. Diğer pazarlara açılıp açılmayacağı henüz belli değil.",
+   "takeaway": "TikTok'un alışverişi ayrı bir mağazaya dönüştürdüğünü takip edin; sosyal ticarette video içeriği ile ürün kataloğunu birlikte hazır tutmak önem kazanabilir.",
+   "url": "https://webrazzi.com/2026/11/06/tiktok-tiktok-shop-icin-bagimsiz-alisveris-uygulamasini-kullanima-sundu/",
+   "source": "Webrazzi"
+  },
+  {
+   "tag": "Arama",
+   "title": "OpenAI, ChatGPT için Search Console benzeri bir panel hazırlıyor",
+   "summary": "Henüz yayına çıkmayan araç, işletmenin ChatGPT sohbetlerinde ne sıklıkla anıldığını, gösterim ve site tıklamalarını gösterecek; ürün ve işletme bilgisi eklemeye de izin verecek. Erişim, örneğin bir Shopify mağazası bağlanarak sahipliği doğrulanan işletmelerle sınırlı olacak.",
+   "takeaway": "ChatGPT'de nasıl göründüğünüzü ölçmek yakında kolaylaşabilir; ürün bilgilerinizin güncel ve tutarlı olmasını şimdiden sağlayın.",
+   "url": "https://www.seroundtable.com/chatgpt-tools-for-business-42476.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Yapay zekâ",
+   "title": "Amazon'da mesajla alışveriş: Alexa for Shopping'e yazarak sipariş",
+   "summary": "Amazon, alışveriş ajanı Alexa for Shopping'e kısa mesajla ulaşma imkânını ABD'de bazı müşterilere açtı; ajan sepete ürün ekleyip satın almayı tamamlayabiliyor, tekrar sipariş veriyor ve fiyat takibi yapıyor. Özelliğin önümüzdeki haftalarda milyonlarca kullanıcıya açılması planlanıyor.",
+   "takeaway": "Alışverişin bir kısmı ajanlara geçtikçe ürün başlığı, fiyat ve stok bilgisinin makinelerin okuyabileceği kadar net olması önem kazanır.",
+   "url": "https://www.retaildive.com/news/amazon-text-to-shop-ai-agent/874085/",
+   "source": "Retail Dive"
+  },
+  {
+   "tag": "Reklam",
+   "title": "Google Ads'de kanallara \"Yüksek\" ve \"Düşük\" öncelik verilebiliyor",
+   "summary": "Google Ads'in yeni kanal önceliklendirme özelliğiyle Performance Max ve Arama kampanyalarında her kanala yüksek ya da düşük öncelik atanabiliyor; düşük önceliğe alınan kanal için günlük harcamaya yüzde olarak üst sınır da konabiliyor. Ancak Arama, YouTube, Gmail, Discover ve Haritalar tek bir grup olarak aynı önceliği alıyor.",
+   "takeaway": "Performance Max'te verimsiz bulduğunuz kanalları kapatmadan harcamasını sınırlamak için bu ayarı kanal performans raporuyla birlikte değerlendirin.",
+   "url": "https://www.practicalecommerce.com/google-ads-loosens-channel-restrictions",
+   "source": "Practical Ecommerce"
+  }
+ ],
+ "briefs": [
+  { "title": "Google AI Mode'da takip sorularına çıkan reklamlar yayında", "url": "https://www.seroundtable.com/google-ai-mode-multiturn-ads-42478.html", "source": "Search Engine Roundtable" },
+  { "title": "Bing, AI Mode sonuçlarının en üstünde arama ve alışveriş reklamları gösteriyor", "url": "https://www.seroundtable.com/bing-ads-top-ai-mode-results-42479.html", "source": "Search Engine Roundtable" },
+  { "title": "Google Analytics'e veri bağlantılarını tek ekranda toplayan Data Manager geldi", "url": "https://www.seroundtable.com/data-manager-in-google-analytics-42480.html", "source": "Search Engine Roundtable" },
+  { "title": "Google, bazı işletme profillerine rezervasyon linkini kendisi ekliyor olabilir", "url": "https://www.seroundtable.com/google-business-profiles-adding-booking-links-42477.html", "source": "Search Engine Roundtable" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

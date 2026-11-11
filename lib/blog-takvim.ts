@@ -8,6 +8,9 @@ export const BLOG_YAYIN: Record<string, string> = {
   "/blog/e-ticaret-onceliklendirme": "2026-11-04T07:00:00+03:00",
   "/blog/sepet-kurtarma-nasil-kurulur": "2026-11-05T07:00:00+03:00",
   "/blog/pazaryerinde-satarken-kendi-e-ticaret-siteniz": "2026-11-06T07:00:00+03:00",
+  "/blog/alisveris-yapay-zeka-ajanlarina-gecerse": "2026-11-13T07:00:00+03:00",
+  "/blog/shopify-nedir-neler-yapabilirsiniz": "2026-11-20T07:00:00+03:00",
+  "/blog/yeni-reklam-kanalinda-butce-nasil-test-edilir": "2026-11-17T07:00:00+03:00",
 };
 
 export function yayinda(route: string, simdi = Date.now()): boolean {

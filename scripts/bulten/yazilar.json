@@ -62,5 +62,34 @@
   "konu": "Pazaryerinde satıyorsanız kendi siteniz gerekir mi?",
   "onizleme": "Pazaryeri talep getirir, ilişkiyi kendi siteniz kurar.",
   "summary": "Pazaryeri satış getirir, müşteri ilişkisi ve marka ise kendi sitede kurulur. Hangi durumda kendi siteye ihtiyaç var, hangi durumda henüz yok?"
+ },
+ {
+  "slug": "alisveris-yapay-zeka-ajanlarina-gecerse",
+  "tarih": "2026-11-13",
+  "tag": "Analiz",
+  "title": "Alışveriş yapay zekâ ajanlarına geçerse ne değişir?",
+  "konu": "Alışveriş yapay zekâ ajanlarına geçerse ne değişir?",
+  "onizleme": "Alexa mesajla sipariş alıyor, Clarity ajan trafiğini ayırıyor. Siteniz neye hazır olmalı?",
+  "summary": "Müşteri adına ürün seçen ve sipariş veren yapay zekâ ajanları test aşamasından çıkıyor. Bu yazıda neyin değişip neyin değişmediğine, sitenizde ajan trafiğine Microsoft Clarity ile nasıl bakacağınıza ve şimdi atılacak üç adıma bakıyoruz.",
+  "oncelik": true
+ },
+ {
+  "slug": "yeni-reklam-kanalinda-butce-nasil-test-edilir",
+  "tarih": "2026-11-17",
+  "tag": "Strateji",
+  "title": "Yeni bir reklam kanalında bütçe nasıl test edilir?",
+  "konu": "Yeni bir reklam kanalında bütçe nasıl test edilir?",
+  "onizleme": "ChatGPT, AI Mode ve Bing'de reklam yeni. Ana bütçeyi bozmadan küçük bir test nasıl kurulur?",
+  "summary": "Yeni bir kanalın getirisi henüz kanıtlanmamışken bütçeyi büyük değil, test olarak ayırmak gerekir. Tek bir soru, ayrı ve küçük bir bütçe, baştan yazılmış süre ve durdurma kuralı, satışla ölçüm: testin beş adımı."
+ },
+ {
+  "slug": "shopify-nedir-neler-yapabilirsiniz",
+  "tarih": "2026-11-20",
+  "tag": "Altyapı",
+  "title": "Shopify nedir, neler yapabilirsiniz? Son güncellemeler",
+  "konu": "Shopify nedir, neler yapabilirsiniz? Son güncellemeler",
+  "onizleme": "Shopify'a kapsamlı bir bakış: ne işe yarar, Türkiye'de nelere dikkat edilir, Haziran ve Kasım güncellemeleri.",
+  "summary": "Shopify nedir, hangi işleri yapabilirsiniz, Türkiye'de ödeme, fatura ve kargo tarafında nelere dikkat etmelisiniz? Haziran ve Kasım 2026 güncellemeleriyle birlikte kime uyduğu ve geçmeden önceki kontrol listesi.",
+  "oncelik": true
  }
 ]

@@ -1,0 +1,24 @@
+{
+  "kind": "yazi",
+  "subject": "Alışveriş yapay zekâ ajanlarına geçerse ne değişir?",
+  "preheader": "Alexa mesajla sipariş alıyor, Clarity ajan trafiğini ayırıyor. Siteniz neye hazır olmalı?",
+  "date": "13 Kasım 2026",
+  "issue": 9,
+  "items": [
+    {
+      "tag": "Analiz",
+      "title": "Alışveriş yapay zekâ ajanlarına geçerse ne değişir?",
+      "summary": "Müşteri adına ürün seçen ve sipariş veren yapay zekâ ajanları test aşamasından çıkıyor. Bu yazıda neyin değişip neyin değişmediğine, sitenizde ajan trafiğine Microsoft Clarity ile nasıl bakacağınıza ve şimdi atılacak üç adıma bakıyoruz.",
+      "url": "https://thecommerceclinic.com/blog/alisveris-yapay-zeka-ajanlarina-gecerse?utm_source=bulten&utm_medium=email&utm_campaign=yazi-alisveris-yapay-zeka-ajanlarina-gecerse",
+      "source": "Commerce Notes",
+      "button": "Yazının devamı"
+    }
+  ],
+  "cta": {
+    "eyebrow": "Ücretsiz rehber",
+    "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+    "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+    "label": "Rehberi al",
+    "url": "/rehber/e-ticaret-altyapi-gecisi"
+  }
+}

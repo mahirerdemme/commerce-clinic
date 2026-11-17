@@ -1,0 +1,61 @@
+{
+ "subject": "ChatGPT Wallet ile ajanlar ödüyor, Instagram'da .com markaları önde",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "17 Kasım 2026",
+ "issue": 10,
+ "items": [
+  {
+   "tag": "Ödeme",
+   "title": "OpenAI, ajanların ödeme yapabildiği ChatGPT Wallet'ı tanıttı",
+   "summary": "American Express, Mastercard ve Visa ile geliştirilen cüzdanda ajan, her satın alma için kullanıcı onayı alıyor; kart numarası yerine ödeme tokenı kullanıldığı için kart bilgisi ajanla ya da işletmeyle paylaşılmıyor. Özellik şimdilik ABD'deki bazı ChatGPT Pro abonelerine açık; OpenAI işletmeler için ürün bilgisinin ajanlara erişilebilir olmasını ve sitelerin ajanları engellememesini anlatan bir rehber de yayınladı.",
+   "takeaway": "Ajanla alışveriş Türkiye'ye gelmeden önce sitenizin ajanları engelleyip engellemediğini ve ürün bilgilerinin makinelerin okuyabileceği kadar düzenli olup olmadığını kontrol etmek iyi bir başlangıç olabilir.",
+   "url": "https://webrazzi.com/2026/11/16/openai-yapay-zeka-ajanlarinin-alisveris-yapmasini-saglayan-chatgpt-walleti-tanitti/",
+   "source": "Webrazzi"
+  },
+  {
+   "tag": "Sosyal ticaret",
+   "title": "Instagram'daki markalı içeriğin yarısına yakını .com markalarında",
+   "summary": "Hyperiser'ın üçüncü çeyrek raporuna göre Instagram'daki markalı içeriklerin yüzde 46'sında .com markaları anıldı ve story linklerinin yüzde 78'i Trendyol ile Hepsiburada'ya gitti. 1 Ağustos'ta yürürlüğe giren reklam yönetmeliğinden sonra #reklam etiketi yaygınlaştı; en çok etkileşim alan iş birliklerinde de sık görülüyor.",
+   "takeaway": "Influencer iş birliklerinde reklam beyanını açıkça yapmak etkileşimden ödün vermek anlamına gelmeyebilir; linklerin pazaryerine mi kendi sitenize mi gittiğini de bilinçli seçin.",
+   "url": "https://www.marketingturkiye.com.tr/haberler/markalar-instagramda-satisa-tiktokta-etkilesime-youtubeda-formata-odaklaniyor/",
+   "source": "Marketing Türkiye"
+  },
+  {
+   "tag": "Arama",
+   "title": "Google'ın Kasım 2026 çekirdek güncellemesi sürüyor",
+   "summary": "10 Kasım'da başlayan güncellemenin tamamlanması Google'a göre iki haftayı bulabilir; sıralama değişimleri hafta sonu belirginleşti. Bazı site sahipleri trafik ve dönüşüm dalgalanmaları bildirirken bazıları ticari sayfaların yerini bilgi içeriklerinin aldığını gözlemliyor.",
+   "takeaway": "Güncelleme bitmeden aceleyle değişiklik yapmak yerine kategori ve ürün sayfalarınızın trafiğini izleyin, değerlendirmeyi güncelleme tamamlandıktan sonra yapın.",
+   "url": "https://www.seroundtable.com/google-november-2026-core-update-ranking-volatility-42543.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Ölçüm",
+   "title": "ChatGPT'nin ürün önerilerinden gelen trafik GA4'te nasıl izlenir",
+   "summary": "ChatGPT, ürün önerilerindeki dış linklere utm_source=chatgpt.com&utm_medium=feed parametresi ekliyor. GA4'te Trafik edinme raporunu bu kaynak/araçla filtreleyip sayfa yoluna göre ayırarak hangi ürün sayfalarının bu trafiği aldığını, mobil ve web ayrımıyla görmek mümkün.",
+   "takeaway": "ChatGPT'den en çok trafik alan ürünlerde yanıtlardaki bilgilerin doğru ve güncel olup olmadığını, az dönüşüm alan sayfalarda da mobil deneyimi kontrol edin.",
+   "url": "https://www.practicalecommerce.com/track-chatgpt-product-referrals-in-ga4",
+   "source": "Practical Ecommerce"
+  },
+  {
+   "tag": "Tüketici",
+   "title": "Türkiye'de indirimler en çok marka sitelerinden takip ediliyor",
+   "summary": "18 ülkede 7.200 kişiyle yapılan araştırmanın Türkiye sonuçlarında indirim ve kampanyalardan haberdar olmak için en sık kullanılan kanal markaların web siteleri ve uygulamaları; onu fiyat karşılaştırma siteleri ve pazaryeri reklamları izliyor. Küresel sonuçlarda Z kuşağı kampanyaları daha çok sosyal medyadan takip ederken, şirket sahte ürün tanıtımları ve sahte alışveriş sitelerine karşı uyarıyor.",
+   "takeaway": "İndirim döneminde kampanyalarınızı önce kendi site ve uygulamanızda net biçimde duyurun; müşterilerin sahte sitelerle karıştırmaması için resmi kanallarınızı belirgin tutun.",
+   "url": "https://www.marketingturkiye.com.tr/haberler/z-kusagi-sosyal-medyada-baby-boomer-arama-motorlarinda-indirim-ariyor/",
+   "source": "Marketing Türkiye"
+  }
+ ],
+ "briefs": [
+  { "title": "Yandex: Türkiye'de alışveriş aramalarında elektronik ilk sırada", "url": "https://www.marketingturkiye.com.tr/haberler/2026nin-en-cok-aranan-alisveris-kategorisi-elektronik-oldu/", "source": "Marketing Türkiye" },
+  { "title": "Reddit, kullanıcı yorumlarını özetleyen Reddit Reviews'u ABD'de açtı", "url": "https://techcrunch.com/2026/11/10/reddit-is-turning-user-conversations-into-ai-powered-product-reviews/", "source": "TechCrunch" },
+  { "title": "Search Console API'ye markalı sorgu ve ülke/cihaz filtreleri geldi", "url": "https://developers.google.com/search/blog/2026/11/search-analytics-api-update", "source": "Google Search Central" },
+  { "title": "Google işletme profillerine Facebook Messenger hesabı eklenebiliyor", "url": "https://www.seroundtable.com/google-business-profiles-facebook-messenger-42549.html", "source": "Search Engine Roundtable" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

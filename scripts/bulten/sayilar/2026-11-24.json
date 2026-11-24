@@ -1,0 +1,61 @@
+{
+ "subject": "\"Hep Ucuz\" sloganına ceza, ChatGPT ürün sonuçlarında ifade değişti",
+ "preheader": "Bu hafta 5 gelişme ve markalar için anlamı.",
+ "date": "24 Kasım 2026",
+ "issue": 12,
+ "items": [
+  {
+   "tag": "Yasal",
+   "title": "Ticaret Bakanlığı'ndan \"Hep Ucuz\" sloganına 1 milyon lirayı aşan ceza",
+   "summary": "Reklam Kurulu, bir zincir marketin \"Hep Ucuz\" sloganının tüm ürünlerin her zaman rakiplerden ucuz olduğu izlenimi yarattığına ve bu iddianın kanıtlanamadığına karar verdi. Markete 1 milyon 83 bin 706 TL ceza verildi, reklamların durdurulmasına hükmedildi; şirketin sunduğu yaklaşık 500 ürünlük fiyat karşılaştırması da vaadi desteklemeye yeterli bulunmadı.",
+   "takeaway": "\"En ucuz\", \"hep ucuz\" gibi genel fiyat vaatlerini kullanmadan önce bunu tüm ürünlerde kanıtlayıp kanıtlayamayacağınızı düşünün; durdurulan kampanyaları sosyal medya hesaplarınızdan da kaldırın.",
+   "url": "https://www.marketingturkiye.com.tr/haberler/ticaret-bakanligindan-hep-ucuz-sloganina-1-milyon-lirayi-asan-ceza/",
+   "source": "Marketing Türkiye"
+  },
+  {
+   "tag": "Yapay zekâ",
+   "title": "ChatGPT ürün sonuçlarında \"iş ortaklığından bağımsız\" ifadesi kalktı",
+   "summary": "ChatGPT alışveriş yardım sayfasında ürün sonuçlarının OpenAI iş ortaklıklarından etkilenmediğini söyleyen cümle çıkarıldı; yeni metin yalnız sonuçların reklam olmadığını söylüyor ve seçimin nasıl yapıldığını aşağıda anlattığını belirtiyor.",
+   "takeaway": "ChatGPT'deki ürün görünürlüğünün yalnız ürün verisine bağlı kalmayabileceğini hesaba katın ve OpenAI'ın ürün ile satıcı seçimini anlatan kurallarını takip edin.",
+   "url": "https://www.seroundtable.com/chatgpt-product-results-may-be-influenced-by-openai-partnerships-42588.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Reklam",
+   "title": "Google Alışveriş reklamlarındaki satış adedi etiketi belgelendi",
+   "summary": "Google, uygun Alışveriş reklamlarında satış hacmini gösteren etiketler için yardım sayfası yayımladı; etiket, sepet verisiyle dönüşüm raporlayan ve gizlilik eşiğini karşılayan ürünlerde otomatik çıkabiliyor. Örneğin son 30 günde 1.500 satış, kesin rakam verilmeden \"1K+\" olarak gösteriliyor.",
+   "takeaway": "Çok satan ürünlerinizin bu etiketi alabilmesi için Google Ads'te dönüşümleri sepet verisiyle, ürün düzeyinde raporlayıp raporlamadığınızı kontrol edin.",
+   "url": "https://www.seroundtable.com/google-ads-purchase-signal-annotations-42587.html",
+   "source": "Search Engine Roundtable"
+  },
+  {
+   "tag": "Ödeme",
+   "title": "2027'nin e-ticaret dolandırıcılık riskleri: iade suistimali başta",
+   "summary": "Merchant Risk Council anketinde iade ve iade politikası suistimali en sık bildirilen dolandırıcılık türü oldu; onu anlık ödeme dolandırıcılığı, oltalama ile hesap ele geçirme ve kart denemesi izliyor. Yazıya göre yapay zekâ, sahte hasar fotoğrafları ve inandırıcı sahte mesajlarla bu yöntemleri daha hızlı ve yaygın hale getirebilir.",
+   "takeaway": "İade taleplerinde yalnız fotoğrafa dayanmayan bir kontrol adımı kurmayı ve ödeme sayfasında art arda gelen küçük siparişleri izlemeyi düşünün.",
+   "url": "https://www.practicalecommerce.com/top-ecommerce-fraud-risks-for-2027",
+   "source": "Practical Ecommerce"
+  },
+  {
+   "tag": "Tüketici",
+   "title": "ABD'de Black Friday hafta sonunda daha az alışverişçi bekleniyor",
+   "summary": "NRF'ye göre Şükran Günü hafta sonu alışveriş yapması beklenen kişi sayısı geçen yıla göre yüzde 2'den fazla azaldı; sebeplerden biri alışverişin uzayan kampanyalarla öne çekilmesi. Ankete katılanların yüzde 59'u alışverişte yapay zekâ kullanmayı planlıyor, çoğunluk da harcamayı kısmanın yollarını arıyor.",
+   "takeaway": "İndirim dönemini tek güne sıkıştırmak yerine kampanyayı haftalara yaymayı ve ürün bilgilerinizi yapay zekâ asistanlarının önerebileceği kadar açık tutmayı değerlendirin.",
+   "url": "https://www.retaildive.com/news/black-friday-cyber-monday-shopping-projected-to-slip/875473/",
+   "source": "Retail Dive"
+  }
+ ],
+ "briefs": [
+  { "title": "ChatGPT Business Hub'a reklam hesabı bağlanabiliyor", "url": "https://www.seroundtable.com/chatgpt-business-hub-ad-account-42592.html", "source": "Search Engine Roundtable" },
+  { "title": "Google Search Profiles ABD, Kanada ve Hindistan dışına da açılıyor", "url": "https://www.seroundtable.com/google-search-profiles-global-42591.html", "source": "Search Engine Roundtable" },
+  { "title": "ThredUp, depolarından TikTok Shop canlı yayınlarıyla satışa başladı", "url": "https://www.modernretail.co/operations/thredup-launches-tiktok-shop-livestreams-as-part-of-its-social-commerce-push/", "source": "Modern Retail" },
+  { "title": "Google AI Mode'da yanıt sonundaki linkler görselli ve daha belirgin hale geldi", "url": "https://www.seroundtable.com/google-ai-mode-dive-deeper-feature-live-42589.html", "source": "Search Engine Roundtable" }
+ ],
+ "cta": {
+  "eyebrow": "Ücretsiz rehber",
+  "title": "E-ticaret altyapısı değiştirirken 12 adımlık rehber",
+  "text": "78 maddelik kontrol listesi, ekibinizle birlikte.",
+  "label": "Rehberi al",
+  "url": "/rehber/e-ticaret-altyapi-gecisi"
+ }
+}

@@ -237,14 +237,17 @@
   {
     "post": "post-15-reklam-testi",
     "zaman": "2026-11-25T08:59:21.222Z",
-    "durum": "bekliyor",
+    "durum": "paylasildi",
     "gorseller": [
       "/sosyal/post-15-reklam-testi/slayt-1.jpg",
       "/sosyal/post-15-reklam-testi/slayt-2.jpg",
       "/sosyal/post-15-reklam-testi/slayt-3.jpg",
       "/sosyal/post-15-reklam-testi/slayt-4.jpg"
     ],
-    "altyazi": "ChatGPT, Google AI Mode ve Bing'de reklam yeni. Yeni bir kanalın getirisi henüz kanıtlanmamışken bütçeyi büyük değil, test olarak ayırmak ve sonucu satışla ölçmek gerekiyor.\n\nTestin nasıl kurulacağı Commerce Notes'ta. Bağlantı biyografide."
+    "altyazi": "ChatGPT, Google AI Mode ve Bing'de reklam yeni. Yeni bir kanalın getirisi henüz kanıtlanmamışken bütçeyi büyük değil, test olarak ayırmak ve sonucu satışla ölçmek gerekiyor.\n\nTestin nasıl kurulacağı Commerce Notes'ta. Bağlantı biyografide.",
+    "paylasilma": "2026-11-25T08:59:59.823Z",
+    "medya": "18361539517175943",
+    "permalink": "https://www.instagram.com/p/DgKKFcnHK2_/"
   },
   {
     "post": "post-16-shopify",
